@@ -13,7 +13,7 @@ if (isset($_POST['input_email'])){
 
     $errors = array();
 
-    echo time();
+//    echo time();
     $newPassword = md5(substr(md5(time()), 0, 6));
 
     $st = $pdo->prepare('SELECT COUNT(email) FROM `users` WHERE email=:email');
@@ -83,7 +83,7 @@ if (isset($_POST['input_email'])){
             </div>
             <form method="post" action="">
                 <div class="block_forgetpass_item">
-                     <p class="remind_p">Пожалуйста, укажите <b>Логин</b> или <b>e-mail</b>, который Вы использовали для входа на
+                     <p class="remind_p">Пожалуйста, укажите <b>E-mail</b>, который Вы использовали для входа на
                      сайт.</p>
                     <input type="text" name="input_email" class="name_sett_input">
                 </div>

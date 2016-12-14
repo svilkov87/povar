@@ -593,6 +593,7 @@ a#hidden_id,a#hidden_id_to_user,a#hidden_text_to_comment{
 }
 .span_about_text{
 	color: #7e95a6;
+	font-size: 13px;
 }
 .block_edit_twoblocks{
 	position: relative;
