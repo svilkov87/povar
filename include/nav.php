@@ -54,6 +54,7 @@ if(isset($_POST['enter'])) {
     $ResultOfCount = $st->fetchAll();
     if ($ResultOfCount[0]['COUNT(*)'] > 0){
         $Message[] = '<i class="fa fa-envelope-o" aria-hidden="true"></i>';
+        $AnotherMess = "+1";
     }
     else{
         $Message[] = "Нет сообщений";
@@ -75,7 +76,7 @@ if(isset($_POST['enter'])) {
 //echo "</pre>";
 
 //echo "<pre>";
-//var_dump($CommValueOne);
+//var_dump($_SESSION);
 //echo "</pre>";
 
 //echo "<pre>";
@@ -97,7 +98,6 @@ if(isset($_POST['enter'])) {
           <ul class="nav_font">
               <?php
               if(isset($_SESSION['email'])):?>
-<!--                  <li><span class="session_name">--><?php //echo $_SESSION['user_name'];?><!--</span></li>-->
                   <li><span style="color: #fff;"><?php  echo $Mess;?></span></li>
                   <li><i class="fa fa-circle" aria-hidden="true"></i></li>
                   <li><i class="fa fa-align-justify" aria-hidden="true"></i></li>

@@ -2,5 +2,5 @@
 #Options +FollwSymlinks
 #RewriteCond %{REQUEST_FILENAME} !-f
 #RewriteCond %{REQUEST_FILENAME} !-d
-
-#RewriteRule ^category/$ category.php [QSA,L]
+#
+#RewriteRule ^([a-z]+)/$ ?id=$1 [L]

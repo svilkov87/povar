@@ -1,18 +1,35 @@
 <?php
 //    echo "<pre>";
-//    var_dump($_SESSION);
+//    var_dump($Mess);
 //    echo "</pre>";
+
+    if ($Mess == "Нет сообщений"){
+        $AnotherMess = "";
+    }
+    else{
+        $AnotherMess = "+1";
+    }
+
 
 ?>
 <div class="stuff_menu">
-<ul class="user_panel">
-    <li class="user_panel_li">
-        <a href="../profile.php?id=<?php echo $_SESSION['user_id'];?>" class="user_panel_a"><?php echo ($_SESSION['user_name']);?></a>
-    </li>
-    <li class="user_panel_li">
-        <a href="blocks/logout.php" class="user_panel_a">Выйти</a>
-    </li>
-</ul>
+    <div class="menu_ava">
+            <img src="img/avatars/<?php echo $_SESSION['ava']; ?>" class="ava_img_fullusart"><br>
+    </div>
+<!--<ul class="user_panel">-->
+<!--    <li class="user_panel_li">-->
+    <div class="menu_ava">
+        <a href="../profile.php?id=<?php echo $_SESSION['user_id'];?>" class="user_panel_a">
+            <?php echo ($_SESSION['user_name']);?>
+        </a>
+    </div>
+<!--    </li>-->
+<!--    <li class="user_panel_li">-->
+    <div class="menu_ava">
+        <a href="blocks/logout.php" class="user_panel_exit">Выйти</a>
+<!--    </li>-->
+<!--</ul>-->
+    </div>
 </div>
 
 <div class="wrapp_all_stuff">
@@ -36,7 +53,10 @@
 
         <a class="stuff_menu" href="myanswers.php?id=<?php echo $_SESSION['user_id'];?>">
             <div class="left_icon"><i class="fa fa-comment-o" aria-hidden="true"></i></div>
-            <div class="right_info"><span class="span_left">мои ответы</span></div>
+            <div class="right_info"><span class="span_left">мои ответы
+                    <?php echo $AnotherMess;?>
+                </span>
+            </div>
         </a>
         <a class="stuff_menu" href="../profile.php?id=<?php echo $_SESSION['user_id'];?>">
             <div class="left_icon"><i class="fa fa-user" aria-hidden="true"></i></div>

@@ -153,7 +153,7 @@
                 <span class="sett_header">Регистрация</span>
             </div>
             <div class="reg_wrapper">
-                <p class="necessarily">* - обязательные поля</p>
+                <p class="necessarily">Это займет у Вас не более минуты...</p>
                 <div class="reg_forms">
                     <form method="post" action="reg.php" class="form_of_reg">
                         <?php

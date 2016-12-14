@@ -145,6 +145,16 @@ li{list-style: none;}
 }
 a.user_panel_a{
 	text-decoration: none;
+	font-weight: bold;
+}
+a.user_panel_exit{
+	text-decoration: none;
+	font-weight: bold;
+	color: darkred;
+}
+a.user_panel_exit:hover{
+	color: #000000;
+	text-decoration: none;
 }
 #blocks_input{
 	height: 40px;
@@ -203,13 +213,18 @@ a.stuff_menu{
 	font-weight: bold;
 	color: #000;
 }
+.menu_ava{
+	text-align: center;
+	padding: 5px;
+}
 .stuff_menu{
 	padding-top: 10px;
 	padding-bottom: 10px;
 	width:220px;
-	display: inline-flex;
+	display: block;
 	font-weight: bold;
 	color: #000;
+	margin: 0 auto;
 }
 #stuff_menu_add{
 	color: #2b98af;
@@ -1157,6 +1172,7 @@ font-weight: bold;
 .necessarily{
 	color: #8a8989;
 	font-size: 13px;
+	text-align: center;
 }
 .button_n_reg{
 	margin-top: 15px;
