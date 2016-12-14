@@ -41,7 +41,6 @@ $tags = $st->fetchAll();
 	<link rel="stylesheet" href="css/main.css" />
 	<link rel="stylesheet" href="css/media.css" />
 	<link rel="stylesheet" href="css/bootstrap.min.css" />
-<!--	<script type="text/javascript" src="js/modernizr.custom.86080.js"></script>-->
 </head>
 <body>
 <?php include("include/nav.php");?>
