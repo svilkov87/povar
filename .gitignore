@@ -1,0 +1,5 @@
+# no access
+# Ignore any file named foo.txt.
+connection.php
+
+admin/ckeditor

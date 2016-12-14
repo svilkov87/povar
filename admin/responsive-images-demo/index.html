@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta charset="utf-8">
+<title>Демо: Адаптивные изображения на CSS</title>
+<meta name="description" content="Простые методы для реализации адаптивных изображений с помощью CSS.">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="http://fonts.googleapis.com/css?family=Exo+2:300,300italic,500,600&amp;subset=latin,cyrillic" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="style.css">
+<!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script><![endif]-->
+<link rel="shortcut icon" href="http://dbmast.ru/favicon.ico">
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1>Адаптивные изображения с помощью CSS</h1>
+      <a class="button" href="http://dbmast.ru/adaptivnye-izobrazheniya-s-pomoshhyu-css">Изучить Детали</a>
+    </div>
+  </header>
+  <section class="instructions">
+    <div class="container">
+      Изменяйте размер окна браузера, чтобы увидеть следующие изображения, пропорционально масштабируемые относительно размеров окна просмотра.
+    </div>
+  </section>
+  <!-- Basic Responsive Image -->
+  <section id="basic-responsive-image">
+    <div class="container">
+      <h2>Одиночное адаптивное изображение</h2>
+      <p>Это изображение будет пропорционально изменять масштаб, так как его ширина составляет 100% от размера контейнера, для которого задана максимальная ширина 960px.</p>
+      <img src="images/image01.jpg" width="960" height="640" />
+    </div>
+  </section>
+  <!-- Responsive Images in Columns -->
+  <section id="responsive-images-columns">
+    <div class="container">
+      <h2>Адаптивные картинки в колонках</h2>
+      <p>Эти изображения отображаются рядом друг с другом. Они будут пропорционально изменяться в зависимости от размера окна просмотра, при эом сохраняя свои позиции.</p>
+      <h3>Две Колонки</h3>
+      <img class="two-columns" src="images/image01.jpg" width="960" height="640" />
+      <img class="two-columns" src="images/image02.jpg" width="960" height="640" />
+      <h3>Три Колонки</h3>
+      <img class="three-columns" src="images/image01.jpg" width="960" height="640" />
+      <img class="three-columns" src="images/image02.jpg" width="960" height="640" />
+      <img class="three-columns" src="images/image03.jpg" width="960" height="640" />
+    </div>
+  </section>
+  <!-- Responsive Images with Conditional Breakpoints !!!-->
+  <section id="responsive-images-breakpoints">
+    <div class="container">
+    <h2>Условная растановка изображений</h2>
+    <p>Эти изображения будут отображаться в одну колонку на небольших устройствах (например, смартфонах), в две колонки на средних устройствах (например, планшет), и в четыре колонки на экранах (например, ПК или ноутбук).</p>
+    <img class="breakpoint" src="images/image01.jpg" width="960" height="640" />
+    <img class="breakpoint" src="images/image02.jpg" width="960" height="640" />
+    <img class="breakpoint" src="images/image03.jpg" width="960" height="640" />
+    <img class="breakpoint" src="images/image04.jpg" width="960" height="640" />
+    </div>
+  </section>
+  <!-- Full-width Responsive Image -->
+  <section id="full-width-responsive-image">
+      <div class="container">
+        <h2>Большое фоновое изображение</h2>
+        <p>Это изображение всегда будет иметь 100% ширину, потому как его контейнеру не опредлено значение максимальной ширины (max-width) .</p>
+      </div>
+      <img src="images/image05.jpg" width="2446" height="1631" />
+  </section>
+
+  <section>
+    <div class="container">
+      <a class="button" href="http://dbmast.ru/adaptivnye-izobrazheniya-s-pomoshhyu-css">Изучить Детали</a>
+    </div>  
+  </section>
+</body>
+</html>

@@ -1,0 +1,147 @@
+@charset "UTF-8";
+/* CSS Сборс */
+* { margin: 0; padding: 0; }
+
+/* Базовый стил для адаптивной картинки */
+img {
+  width: 100%;
+  height: auto;
+}
+/* Адаптивные картинки в колонках */
+.two-columns {
+  width: 48%;
+  display: inline-block;
+}
+.three-columns {
+  width: 32%;
+  display: inline-block;
+}
+/* Условная расстановка картинок для различных устройств  */
+
+.breakpoint { /* Одна колонка для смартфонов */
+  max-width: 100%;
+  display: inline-block;
+}
+@media (min-width: 420px) { /* Две колонки для планшетов */
+  .breakpoint {
+    max-width: 48%;
+  }
+}
+@media (min-width: 760px) { /* Четыре колонки для больших экранов */
+  .breakpoint {
+    max-width: 24%;
+  }
+}
+/* Полномасштабная фоновая картинка */
+.full {
+  width: 100%;
+}
+
+/* Базовые стили демо страницы */
+body {
+  font: normal 300 18px/25px 'Exo 2', Tahoma, Verdana, Segoe, sans-serif;
+  color: #484848;
+  background: #fff;
+}
+/* Демо страница: типография */
+h1, h2, h3 {
+  font-weight: 700;
+}
+h2, h3 {
+  margin: 40px auto 20px auto;
+} 
+h1 {
+  margin: 10px auto 50px auto;
+  font-size: 38px;
+  line-height: 46px;
+  font-weight: 400;
+  letter-spacing: 2px;
+}
+h2 {
+  font-size: 28px;
+  line-height: 34px;
+}
+h3 {
+  font-size: 22px;
+  line-height: 26px;
+}
+p, .button {
+  margin: 5px auto 20px auto;
+}
+a {
+  color: #3185fc;
+  text-decoration: none;
+  font-weight: 700;
+}
+a:hover {
+  color: #1978fc;
+}
+/* Демо страница: макет */
+.container {
+  position: relative;
+  width: 96%;
+  max-width: 960px;
+  margin: 0 auto;
+  text-align: center;
+}
+header {
+  position: relative;
+  width: 100%;
+  background: #41afdf;
+  color: #fff;
+}
+header .container {
+  padding-top: 50px;
+  padding-bottom: 80px;
+}
+section {
+  margin: 60px auto;
+}
+/* Демо страница: инфо-элементы */
+.button {
+  display: block;
+  margin: 0 auto;
+  padding: 10px;
+  width: 96%;
+  max-width: 200px;
+  text-align: center;
+  background: #3185fc;
+  color: #e3eefc;
+  text-decoration: none;
+  transition: background-color 0.2s ease-in, color 0.2s ease-in;
+}
+.button:hover {
+  background: #1978fc;
+  color: #fff;
+  transition: background-color 0.2s ease-out, color 0.2s ease-out;
+}
+.instructions {
+  width: 100%;
+  margin: 0 auto;
+  padding-top: 60px;
+  padding-bottom: 60px;
+  background: #87d5f7;
+  color: #89043d;
+  font-weight: 700;
+}
+#credits {
+  color: #959595;
+}
+/* Демо-страница: медиа запросы */
+@media (max-width: 400px) {
+  body {
+    font-size: 16px;
+  }
+  h1 {
+    font-size: 28px;
+    line-height: 34px;
+  }
+  h2 {
+    font-size: 22px;
+    line-height: 26px;
+  }
+  h3 {
+    font-size: 18px;
+    line-height: 22px;
+  }
+}

@@ -1,0 +1,6 @@
+#RewriteEngine On
+#Options +FollwSymlinks
+#RewriteCond %{REQUEST_FILENAME} !-f
+#RewriteCond %{REQUEST_FILENAME} !-d
+
+#RewriteRule ^category/$ category.php [QSA,L]

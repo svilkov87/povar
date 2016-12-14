@@ -1,0 +1,210 @@
+/*==========  Desktop First Method  ==========*/
+
+/* Large Devices, Wide Screens */
+@media only screen and (max-width : 1200px) {
+
+}
+
+/* Medium Devices, Desktops */
+@media only screen and (max-width : 992px) {
+	/*.nav{*/
+		/*background-color: #000;*/
+	/*}*/
+	.menu_open {
+		width: 100%;
+		height: auto;
+		background-color: #f7f7f7;
+		top: 60px;
+		position: absolute;
+		margin: 0;
+		right: 0;
+		text-align: center;
+	}
+	.all_stuff{
+		margin-bottom: 25px;
+	}
+	.stuff_menu{
+		border-bottom: 1px solid rgba(255, 255, 255, 0.49);
+	}
+	a.stuff_menu{
+		color: #000;
+	}
+	.hr_line{
+		width: 350px;
+	}
+	.user_panel{
+		padding-left: 15px;
+	}
+	.list_of_recipes{
+		background: #fff;
+		padding: 10px;
+	}
+	.images_profile_link{
+		width: 60px;
+		height: 60px;
+	}
+	#img_circle{
+		margin-bottom: 25px;
+	}
+	.ava_block{
+		text-align: center;
+		margin-bottom: 10px;
+	}
+}
+
+/* Small Devices, Tablets */
+@media only screen and (max-width : 768px) {
+	/*.nav{*/
+		/*background-color: #000;*/
+	/*}*/
+	#block{
+		margin-top: 75px;
+	}
+	.list_of_recipes{
+		background: #fff;
+		padding: 10px;
+	}
+	.images_profile_link{
+		width: 50px;
+		height: 50px;
+	}
+	.block_left_answer,.block_right_answer{
+		float: none;
+		height: auto;
+	}
+	.wrapp_answer{
+		position: relative;
+		height: auto;
+	}
+	.user_name_of_topic {
+		height: auto;
+		float: left;
+		/* width: 80px; */
+		width: 20%;
+		text-align: center;
+	}
+	.block_middle_profile{
+		margin-left: 10px;
+		/*float: none;*/
+		float: left;
+	}
+	.block_middle_profile_admin{
+		margin-left: 55px;
+		float: none;
+	}
+	.date_full_art {
+		display: inline-block;
+		font-size: 12px;
+		margin: 0;
+	}
+	.block_right_prifile {
+		float: right;
+		margin: 0;
+		font-size: 13px;
+		color: #9c9c9c;
+	}
+
+
+}
+
+/* Extra Small Devices, Phones */
+@media only screen and (max-width : 480px) {
+	.settings_wrapper {
+		width: 385px;
+	}
+	.reg_forms {
+		padding: 0;
+	}
+
+}
+
+/* Custom, iPhone Retina */
+@media only screen and (max-width : 320px) {
+	.middle_content_comm{
+		text-align: left;
+		overflow: hidden;
+		margin: 0;
+		min-height: 90px;
+	}
+	.count_watches {
+		float: right;
+		color: #9a9a9a;
+		font-size: 13px;
+		font-weight: bold;
+	}
+	.reg_forms {
+		padding: 0;
+	}
+	.hr_line {
+		width: 275px;
+	}
+
+}
+
+@media only screen and (max-width : 375px) {
+	.ava{
+		float: left;
+	}
+	.col_7_media{
+		padding:0 !important;
+	}
+	.theme_topic_text{
+		font: bold 20px/100% Comic Sans MS;
+		padding-left: 45px;
+		color: #656262;
+	}
+	.middle_content_comm{
+		text-align: left;
+		overflow: hidden;
+		margin: 0;
+		min-height: 90px;
+	}
+	.count_watches {
+		float: right;
+		color: #9a9a9a;
+		font-size: 13px;
+		font-weight: bold;
+	}
+	.settings_wrapper {
+		width: 340px;
+	}
+	.reg_forms {
+		padding: 0;
+	}
+}
+@media only screen and (max-width : 320px) {
+	.settings_wrapper {
+		width: 295px;
+	}
+
+}
+
+
+/*==========  Mobile First Method  ==========*/
+
+/* Custom, iPhone Retina */
+@media only screen and (min-width : 320px) {
+
+
+}
+
+/* Extra Small Devices, Phones */
+@media only screen and (min-width : 480px) {
+
+}
+
+/* Small Devices, Tablets */
+@media only screen and (min-width : 768px) {
+	.top_links {
+		display: inline-block !important;
+	}
+}
+
+/* Medium Devices, Desktops */
+@media only screen and (min-width : 992px) {
+
+}
+/* Large Devices, Wide Screens */
+@media only screen and (min-width : 1200px){
+
+}
