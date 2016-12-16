@@ -3,9 +3,9 @@ include("functions/functions.php");
 include("include/connection.php");
 
 ## проверка ошибок
-error_reporting(E_ALL | E_STRICT);
-ini_set('display_errors', TRUE);
-ini_set('display_startup_errors', TRUE);
+//error_reporting(E_ALL | E_STRICT);
+//ini_set('display_errors', TRUE);
+//ini_set('display_startup_errors', TRUE);
 
 $email = $_POST['input_email'];
 
@@ -13,7 +13,6 @@ if (isset($_POST['input_email'])){
 
     $errors = array();
 
-//    echo time();
     $newPassword = md5(substr(md5(time()), 0, 6));
 
     $st = $pdo->prepare('SELECT COUNT(email) FROM `users` WHERE email=:email');

@@ -54,7 +54,6 @@ if(isset($_POST['enter'])) {
     $ResultOfCount = $st->fetchAll();
     if ($ResultOfCount[0]['COUNT(*)'] > 0){
         $Message[] = '<i class="fa fa-envelope-o" aria-hidden="true"></i>';
-        $AnotherMess = "+1";
     }
     else{
         $Message[] = "Нет сообщений";
@@ -91,8 +90,8 @@ if(isset($_POST['enter'])) {
 <div class="nav"">
   <div class="container">
       <div id="brand">
-          <a href="index.php" class="logo_link">IMPOVAR</a>
-          <a href="reg.php" class="registration_link">Регистрация</a>
+          <a href="http://impovar.tt90.ru/home" class="logo_link">IMPOVAR</a>
+          <a href="http://impovar.tt90.ru/registration" class="registration_link">Регистрация</a>
       </div>
       <div id="fa-align">
           <ul class="nav_font">
@@ -121,7 +120,7 @@ if(isset($_POST['enter'])) {
                       </div>
                       <div class="col-md-12" id="blocks_input">
                           <div class="btn_forget">
-                              <a href="remind-pass.php" class="button_forget_pass">Забыли пароль?</a>
+                              <a href="http://impovar.tt90.ru/remindpass" class="button_forget_pass">Забыли пароль?</a>
 <!--                              <div id="modalWindow">-->
 <!--                                  <div class="window">-->
 <!--                                      <a href="#fa_close_window" class="fa_close_window">x</a><br>-->

@@ -1,6 +1,10 @@
-#RewriteEngine On
+
+RewriteEngine On
 #Options +FollwSymlinks
-#RewriteCond %{REQUEST_FILENAME} !-f
-#RewriteCond %{REQUEST_FILENAME} !-d
-#
-#RewriteRule ^([a-z]+)/$ ?id=$1 [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+RewriteRule ^home?$ index.php
+RewriteRule ^registration?$ reg.php
+RewriteRule ^remindpass?$ remind-pass.php
+#RewriteRule ^category/([0-9]+)/?$ category.php?id=$1 [L]
