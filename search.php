@@ -43,29 +43,34 @@ echo "</pre>";*/
 <!--лого-->
 <div class="col-md-12 logo_block">
     <img src="img/category_images/logo.svg" alt="logo" class="img_logo">
-    <h1 class="logo_header">IMPOVAR</h1>
-    <p class="logo_par">Энциклопедия рецептов</p>
-    <hr class="hr_line">
+    <h1 class="logo_header">GRANDPOVAR</h1>
 </div>
 <div class="container">
     <div class="row">
 <!--/лого-->
         <div class="col-md-6 col-md-offset-3">
+            <div class="no_comment_body">
+                <p class="no_comment_p">По запросу <span class="poisk_word"><?php echo $poisk;?></span> найдено:</p>
+            </div>
             <?php foreach($data as $item): ?>
-            <div class="panel panel-default">
-                <div class="panel-heading"><h1 style="font-size: 18px;"><?php echo $item['title'];?></h1></div>
-                <div class="panel-body">
+                <div class="col-md-12">
                     <div class="row">
-                        <div class="col-md-12">
-                            <div class="thumbnail">
-                                <img src="admin/images/<?php echo $item['intro_image']; ?>" alt="...">
-                                <p><?php echo $item['intro_text']; ?></p>
-                            </div>
-                            <a href="full.php?id=<?php echo $item['id'];?>" class="btn btn-primary" role="button">Смотреть</a>
+                <div class="link_panel">
+                    <div class="panel_head_link">
+                        <h1 style="font-size: 15px;">
+                            <a href="full.php?id=<?php echo $item['id'];?>" class="full_link_search">
+                            <?php echo $item['title'];?>
+                            </a>
+                        </h1>
+                    </div>
+                    <div class="link_body">
+                        <div class="img_block_link">
+                            <img src="admin/images/<?php echo $item['intro_image']; ?>" alt="..." class="img_link_search">
                         </div>
                     </div>
                 </div>
-            </div>
+                    </div>
+                </div>
             <?php endforeach; ?>
         </div>
     </div><!--/row-->

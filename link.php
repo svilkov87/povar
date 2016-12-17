@@ -89,7 +89,7 @@ if(!empty($_GET)){
         <!--лого-->
         <div class="col-md-12 logo_block">
             <img src="img/category_images/logo.svg" alt="logo" class="img_logo">
-            <h1 class="logo_header">IMPOVAR</h1>
+            <h1 class="logo_header">GRANDPOVAR</h1>
             <p class="logo_par">Энциклопедия рецептов</p>
             <hr class="hr_line">
         </div>

@@ -44,9 +44,6 @@ ini_set('display_startup_errors', TRUE);
     <link rel="stylesheet" href="css/bootstrap.min.css" />
 </head>
 <body>
-<style>
-
-</style>
 <html>
 <?php include("include/nav.php");?>
 <div class="container">

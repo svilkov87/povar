@@ -23,13 +23,13 @@ if(!empty($_GET)) {
     $st->bindParam(':id', $id, PDO::PARAM_INT);
     $st->execute();
     $profile_data = $st->fetchAll();
-    $intro_image = $profile_data[0]['ava'];
-    if ($intro_image == ""){
-        $intro_image = "no_ava.png";
+    $user_image = $profile_data[0]['ava'];
+    if ($user_image == ""){
+        $user_image = "no_ava.png";
     }
 
-    ##подсчет кол-ва статей
-    $st = $pdo->prepare('SELECT COUNT(user_id) FROM `article` WHERE user_id=:user_id');
+//    считаем количество рецептов
+    $st = $pdo->prepare('SELECT COUNT(user_id) FROM `article` WHERE user_id=:user_id AND main_id != 2');
     $st->bindParam(':user_id', $id, PDO::PARAM_INT);
     $st->execute();
     $art_column = $st->fetchColumn();
@@ -59,7 +59,7 @@ if(!empty($_GET)) {
 //echo "</pre>";
 //
 //echo "<pre>";
-//var_dump($serv);
+//var_dump($NullValue);
 //echo "</pre>";
 
 //проверка, существует ли такая статья. удалял ли ее автор или не
@@ -102,69 +102,54 @@ if(!isset($_SESSION['email'])){
 <div class="container">
     <div class="row">
         <div class="col-md-4 ava_block">
-            <a href="#">
-<!--                --><?php //foreach($profile_data as $item):?>
-                    <img src="img/avatars/<?php echo $intro_image; ?>" class="ava_img">
-<!--                --><?php //endforeach;?>
+            <a href="profile.php?id=<?php echo $_SESSION['user_id'];?>">
+                    <img src="img/avatars/<?php echo $user_image; ?>" class="ava_img">
             </a>
         </div>
         <div class="col-md-8" style="margin-bottom: 25px;">
             <div class="profile_panel">
-                <?php foreach($profile_data as $item):?>
-                    <div class="panel_heading">
+                <div class="panel_heading">
+                    <?php foreach($profile_data as $item):?>
                         <span class="name_of_user_profile"><?php echo $item['username']; ?></span>
                         <br>
-                        <a href="#">изменить статус</a>
-                    </div>
-                <?php endforeach;?>
-                <div class="panel_profile_header">
-                    <div class="col-md-2 panel_items">
-                        <span class="panel_items_number"><?php echo $art_column; ?></span>
-                        <span class="panel_items_text">рецепт(ов)</span>
-                    </div>
-                    <div class="col-md-2 panel_items">
-                        <span class="panel_items_number">0%</span>
-                        <span class="panel_items_text">рейтинг</span>
-                    </div>
-                    <div class="col-md-2 panel_items">3</div>
-                    <div class="col-md-2 panel_items">4</div>
+                    <?php endforeach;?>
                 </div>
             </div>
             <div class="chapters_of_answers">
                 <span class="span_answer">Уведомления</span>
-                <span class="span_answer"><?php echo $number_of_answer;?></b></span>
+                <span class="span_answer_number">Новых: <?php echo $NumberMess;?></b></span>
             </div>
             <?php
             if($user_id_art == ""):?>
-
-                <div class="list_of_recipes"">
-<!--                    <div class="panel-heading">-->
-                    У вас пока нет уведомлений...
-<!--                    </div>     -->
+                <div class="chapters_of_answers">
+                    <span class="span_answer">У Вас пока нет уведомлений...</span>
                 </div>
             <?php endif;?>
             <?php foreach ($user_from as $item):?>
                     <div class="wrapp_answer">
                         <div class="block_left_answer">
+                            <p class="myanswer_pext_p"><?php echo $item['text']; ?></p><br>
+                            <span class="who_is_answer">Написал:</span>
                             <a href="profile.php?id=<?php echo $item['user_id']; ?>">
                                 <b><?php echo $item['user_name']; ?>:</b>
                             </a>
                             <br>
-                            <p class="myanswer_pext_p"><?php echo $item['text']; ?></p><br>
-
-
                         <?php
                             //если ответ был к статье
                         if($item['to_comment'] == 0 AND $item['article_id'] != 0):?>
-                            <span class="answer_before">ответ к статье</span>
-                            <br>
+<!--                            <span class="who_is_answer">Ответ к статье</span>-->
+<!--                            <br>-->
                             <span class="date_answer"><?php echo $item['date']; ?></span><br>
 
                          <?php
                             //если ответ был к комментарию
                         elseif($item['to_comment'] != 0):?>
-                            <span class="answer_before">ответ на коммент</span>
-                            <span class="answer_before"><?php echo $item['answer_for_comment']; ?></span>
+                            <span class="who_is_answer">Ответ на коммент</span>
+                            <span class="answer_before">
+                                <a href="full.php?id=<?php echo $item['article_id']; ?>#answer_item_id<?php echo $item['id']; ?>">
+                                <?php echo $item['answer_for_comment']; ?>
+                                </a>
+                            </span>
                             <br>
                             <span class="date_answer"><?php echo $item['date']; ?></span><br>
 <!--                        --><?php //endif;?>
@@ -172,7 +157,7 @@ if(!isset($_SESSION['email'])){
                          <?php
                             //если ответ был к топику
                          elseif($item['topic_id'] != 0):?>
-                         <span class="answer_before">ответ к топику</span>
+                         <span class="who_is_answer">Ответ к топику</span>
                              <br>
                              <span class="date_answer"><?php echo $item['date']; ?></span><br>
 
@@ -191,14 +176,15 @@ if(!isset($_SESSION['email'])){
                         <?php
                             //вывод правой части уведомления
                         if($item['topic_id'] != 0):?>
-                            <div class="block_right_answer">
+                            <div class="block_right_answer_topic">
                                 <a href="full_topic_theme.php?id=<?php echo $item['topic_id'];?>#answer_item_id<?php echo $item['id']; ?>">
-                                    <span><?php echo $item['topic_theme'];?></span>
+                                    <span class="who_is_answer"><?php echo $item['topic_theme'];?></span>
                                 </a>
                             </div>
                             <?php else:?>
                         <div class="block_right_answer">
                                 <a href="full.php?id=<?php echo $item['article_id'];?>#answer_item_id<?php echo $item['id'];  ?>">
+                                    <span class="who_is_answer">Рецепт</span>
                                     <img src="admin/images/<?php echo $item['article_intro_image']; ?>" alt="" class="answer_intro_image">
                                 </a>
                         </div>

@@ -16,9 +16,9 @@ if(!empty($_GET)) {
     $st->bindParam(':id', $id, PDO::PARAM_INT);
     $st->execute();
     $profile_data = $st->fetchAll();
-    $intro_image = $profile_data[0]['ava'];
-    if ($intro_image == ""){
-        $intro_image = "no_ava.png";
+    $user_image = $profile_data[0]['ava'];
+    if ($user_image == ""){
+        $user_image = "no_ava.png";
     }
 
 
@@ -35,6 +35,10 @@ if(!empty($_GET)) {
     $st->bindParam(':user_id', $forAdminId, PDO::PARAM_INT);
     $st->execute();
     $art = $st->fetchAll();
+
+    //Выбираем последние 20 статей для отображения в профиле юзера, у которого нет ни одной статьи
+    $st = $pdo->query('SELECT * FROM `article` ORDER BY id DESC LIMIT 0, 20');
+    $LastArt = $st->fetchAll();
 //    $us_id = $art[0]['user_id'];
 
     $cat = $art[0]["cat_id"];
@@ -57,6 +61,19 @@ if(!empty($_GET)) {
     $st->execute();
     $art_of_user = $st->fetchAll();
 
+    //сколько топиков оставлял юзер
+    $st = $pdo->prepare('SELECT COUNT(id)FROM `forum_questions` WHERE user_id=:user_id');
+    $st->bindParam(':user_id', $id, PDO::PARAM_INT);
+    $st->execute();
+    $Number = $st->fetchAll();
+
+    $StringArray = array();
+    for ($i = 0; $i < count($Number); $i++) {
+        $StringArray[] = $Number[$i]["COUNT(id)"];
+    }
+    ## Превращение одномерного массива в строку
+    $NumberOfTopic = implode(',', $StringArray);
+
 
 //    $st = $pdo->prepare('SELECT * FROM `article` WHERE user_id=:user_id ORDER BY id DESC');
 //    $st->bindParam(':user_id', $id, PDO::PARAM_INT);
@@ -66,11 +83,11 @@ if(!empty($_GET)) {
 
 }
 //echo "<pre>";
-//var_dump($art);
+//var_dump($id);
 //echo "</pre>";
-
+//
 //echo "<pre>";
-//var_dump($forAdminId);
+//var_dump($NumberOfTopic);
 //echo "</pre>";
 
 
@@ -103,24 +120,45 @@ if(!empty($_GET)) {
 </head>
 <body>
 <html>
+<!--call confirm modal-->
+<!--<div id="modalWindow">-->
+<!--    <div class="window">-->
+<!--        <a href="#fa_close_window" class="fa_close_window">x</a><br>-->
+<!--        <div class="mindow_items">-->
+<!--            <p class="remind_p">Хотите удалить  статью безвозвратно?</p>-->
+<!--            <div class="confirm_block">-->
+<!--                <a href="" class="last_confirn_del">Удалить</a>-->
+<!--                <a href="#fa_close_window" class="last_confirn_del_no">Нет</a>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+<!--/call confirm modal-->
 <?php include("include/nav.php");?>
 <div class="container">
     <div class="row">
         <div class="col-md-4 ava_block">
-            <a href="#">
-                <img src="img/avatars/<?php echo $intro_image; ?>" class="ava_img">
+            <a href="profile.php?id=<?php echo $_SESSION['user_id'];?>">
+                <img src="img/avatars/<?php echo $user_image; ?>" class="ava_img">
             </a>
         </div>
         <div class="col-md-8">
             <div class="profile_panel">
-
                 <div class="panel_heading">
                     <?php foreach($profile_data as $item):?>
                     <span class="name_of_user_profile"><?php echo $item['username']; ?></span>
                     <br>
                     <div class="about_me">
-                        <span class="span_about">О cебе:</span><br>
+                        <span class="span_about">О cебе:</span>
                         <span class="span_about_text"><?php echo $item['about']; ?></span>
+                    </div>
+                    <div class="about_me">
+                        <span class="span_about">Любимое блюдо:</span>
+                        <span class="span_about_text"><?php echo $item['fav_food']; ?></span>
+                    </div>
+                    <div class="about_me">
+                        <span class="span_about">Профессия:</span>
+                        <span class="span_about_text"><?php echo $item['profession']; ?></span>
                     </div>
                     <?php endforeach;?>
                 </div>
@@ -134,83 +172,115 @@ if(!empty($_GET)) {
                         <span class="panel_items_number">0%</span>
                         <span class="panel_items_text">рейтинг</span>
                     </div>
-                    <div class="col-md-2 panel_items">3</div>
-                    <div class="col-md-2 panel_items">4</div>
+                    <div class="col-md-2 panel_items">
+                        <span class="panel_items_number"><?php echo $NumberOfTopic; ?></span>
+                        <span class="panel_items_text">вопросы/форум</span>
+                    </div>
                 </div>
             </div>
-<!--        </div>-->
-<!--        <div class="col-md-8">-->
                     <?php
                     if($art_column  == 0):?>
                         <div class="list_of_recipes">
-<!--                            <div class="panel-heading">-->
                                 <span class="span_answer">Нет ни одного рецепта</span>
-<!--                            </div> -->
+                        </div>
+                        <div class="last_of_body">
+                                <span class="span_last_rec">Последние рецепты пользователей:</span>
+                        </div>
+                        <div class="list_of_recipes">
+                            <?php foreach ($LastArt as $item):?>
+                                <div class="col-md-4 col-sm-6 col-xs-12">
+                                    <div class="last_art_body">
+                                        <div class="last_art_header">
+                                    <span class="span_last">
+                                        <a href="full.php?id=<?php echo $item['id'];?>">
+                                            <?php echo $item['title'];?>
+                                        </a>
+                                    </span>
+                                        </div>
+                                        <div class="wrapp_last">
+                                            <img src="admin/images/<?php echo $item['intro_image']; ?>" alt="" class="last_intro_image">
+                                            <div class="bottom_prof">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="block_edit_twoblocks">
+                                        <div class="block_right_profile_edit">
+                                            <span class="wathes_full_art">просмотров</span>
+                                            <span>&nbsp;<?php echo $item['watches'];?></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            <?php endforeach;?>
+                        </div>
+                        <?php else:?>
+                        <div class="last_of_body">
+                            <span class="span_last_rec">Рецепты Автора:</span>
                         </div>
                     <?php endif; ?>
-                    <?php if($id == 14){
-                    foreach($art_of_user as $item):?>
+            <?php if ($id == $_SESSION['user_id']): ?>
                         <div class="list_of_recipes">
-                            <div class="block_left_profile">
-                                <img src="admin/images/<?php echo $item['intro_image'];?>" alt="" class="images_profile_link">
+                            <?php foreach ($art_of_user as $item):?>
+                                <div class="col-md-4 col-sm-6 col-xs-12">
+                                    <div class="last_art_body">
+                                        <div class="last_art_header">
+                                            <span class="span_last">
+                                            <a href="full.php?id=<?php echo $item['id'];?>">
+                                                <?php echo $item['title'];?>
+                                            </a>
+                                                </span>
+                                        </div>
+                                        <div class="wrapp_last">
+                                            <img src="admin/images/<?php echo $item['intro_image']; ?>" alt="" class="last_intro_image">
+                                            <div class="bottom_prof">
+                                                    <a href="delete_article.php?id=<?php echo $item['id'];?>" onclick="return confirm('Удалить статью?')">
+                                                        <i class="fa fa-trash fa-trash-del" aria-hidden="true" ></i>
+                                                    </a>
+
+                                                <a href="edit_article.php?id=<?php echo $item['id'];?>&user=<?php echo $item['user_id']; ?>" class="fa-trash-del">
+                                                    <i class="fa fa-pencil-square" aria-hidden="true"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="block_edit_twoblocks">
+                                        <div class="block_right_profile_edit">
+                                            <span class="wathes_full_art">просмотров</span>
+                                            <span>&nbsp;<?php echo $item['watches'];?></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            <?php endforeach;?>
+                        </div>
+            <?php endif;?>
+            <?php if ($id != $_SESSION['user_id']): ?>
+                <div class="list_of_recipes">
+                    <?php foreach ($art_of_user as $item):?>
+                        <div class="col-md-4 col-sm-6 col-xs-12">
+                            <div class="last_art_body">
+                                <div class="last_art_header">
+                                    <span class="span_last">
+                                        <a href="full.php?id=<?php echo $item['id'];?>">
+                                        <?php echo $item['title'];?>
+                                        </a>
+                                    </span>
+                                </div>
+                                <div class="wrapp_last">
+                                    <img src="admin/images/<?php echo $item['intro_image']; ?>" alt="" class="last_intro_image">
+                                    <div class="bottom_prof">
+                                    </div>
+                                </div>
                             </div>
-                            <div class="block_middle_profile_admin">
-                                    <a href="full.php?id=<?php echo $item['id'];?>"><?php echo $item['title'];?></a>
-                                <br>
-                                <span class="date_full_art"><?php echo $item['date'];?></span>
-                            </div>
-                            <div class="block_right_prifile">
-                                <span class="wathes_full_art">просмотров</span>
-                                <span>&nbsp;<?php echo $item['watches'];?></span>
+                            <div class="block_edit_twoblocks">
+                                <div class="block_right_profile_edit">
+                                    <span class="wathes_full_art">просмотров</span>
+                                    <span>&nbsp;<?php echo $item['watches'];?></span>
+                                </div>
                             </div>
                         </div>
-                    <?php endforeach;}
-                    if($_SESSION['user_id'] == $id AND $id != 14){
-                        foreach($art_of_user as $item):?>
-                            <div class="list_of_recipes">
-                                <div class="block_left_profile">
-                                    <img src="admin/images/<?php echo $item['intro_image'];?>" alt="" class="images_profile_link">
-                                </div>
-                                <div class="block_middle_profile">
-                                    <a href="full_users_article.php?id=<?php echo $item['id'];?>"><?php echo $item['title'];?></a>
-                                    <br>
-                                    <span class="date_full_art"><?php echo $item['date'];?></span>
-                                </div>
-                                <div class="block_edit_twoblocks">
-                                    <div class="block_edit_prifile">
-                                         <a href="edit_article.php?id=<?php echo $item['id'];?>&user=<?php echo $item['user_id']; ?>">
-                                             <i class="fa fa-pencil" aria-hidden="true" style="color: #71b1f7;"></i>
-                                         </a>
-                                         <a href="delete_article.php?id=<?php echo $item['id'];?>">
-                                             <i class="fa fa-trash-o" aria-hidden="true" style="color: #f76666;"></i>
-                                         </a>
-                                    </div>
-                                    <div class="block_right_profile_edit">
-                                        <span class="wathes_full_art">просмотров</span>
-                                        <span>&nbsp;<?php echo $item['watches'];?></span>
-                                    </div>
-                                </div>
-                            </div>
-                        <?php endforeach;}?>
-                        <?php
-                        if($id !== 14 && $_SESSION['user_id'] != $id){
-                            foreach($art_of_user as $item):?>
-                                <div class="list_of_recipes">
-                                    <div class="block_left_profile">
-                                        <img src="admin/images/<?php echo $item['intro_image'];?>" alt="" class="images_profile_link">
-                                    </div>
-                                    <div class="block_middle_profile">
-                                        <a href="full.php?id=<?php echo $item['id'];?>"><?php echo $item['title'];?></a>
-                                        <br>
-                                        <span class="date_full_art"><?php echo $item['date'];?></span>
-                                    </div>
-                                    <div class="block_right_prifile">
-                                        <span class="wathes_full_art">просмотров</span>
-                                        <span>&nbsp;<?php echo $item['watches'];?></span>
-                                    </div>
-                                </div>
-                            <?php endforeach;}?>
-<!--        </div>-->
+                    <?php endforeach;?>
+                </div>
+            <?php endif;?>
+        </div>
     </div>
 </div>
 <?php include("include/footer.php");?>

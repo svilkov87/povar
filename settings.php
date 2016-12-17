@@ -20,6 +20,20 @@ if(!empty($_GET)) {
     $name_info = $profile_data[0]['username'];
     $sex_info = $profile_data[0]['sex'];
     $intro_image = $profile_data[0]['ava'];
+    $about = $profile_data[0]['about'];
+    $proff_info = $profile_data[0]['profession'];
+    if ($proff_info == ""){
+        $proff_info = "Не указано";
+    }
+    $food_info = $profile_data[0]['fav_food'];
+    if ($food_info == ""){
+        $food_info = "Не указано";
+    }
+    $hobby_info = $profile_data[0]['hobby'];
+    if ($hobby_info == ""){
+        $hobby_info = "Не указано";
+    }
+
     if ($sex_info == 1) {
         $sex = "Мужской";
         $ava = "ava_men.png";
@@ -30,16 +44,17 @@ if(!empty($_GET)) {
         $sex = "Не выбран";
     }
 
-//    считаем количество рецептов
-    $st = $pdo->prepare('SELECT COUNT(user_id) FROM `article` WHERE user_id=:user_id');
-    $st->bindParam(':user_id', $id, PDO::PARAM_INT);
-    $st->execute();
-    $art_column = $st->fetchColumn();
 
-    $st = $pdo->prepare('SELECT * FROM `article` WHERE user_id=:user_id ORDER BY id DESC');
-    $st->bindParam(':user_id', $id, PDO::PARAM_INT);
-    $st->execute();
-    $art_of_user = $st->fetchAll();
+//    считаем количество рецептов
+//    $st = $pdo->prepare('SELECT COUNT(user_id) FROM `article` WHERE user_id=:user_id');
+//    $st->bindParam(':user_id', $id, PDO::PARAM_INT);
+//    $st->execute();
+//    $art_column = $st->fetchColumn();
+
+//    $st = $pdo->prepare('SELECT * FROM `article` WHERE user_id=:user_id ORDER BY id DESC');
+//    $st->bindParam(':user_id', $id, PDO::PARAM_INT);
+//    $st->execute();
+//    $art_of_user = $st->fetchAll();
 
 //редактура настроек
     $user_id = $_SESSION['user_id'];
@@ -47,6 +62,9 @@ if(!empty($_GET)) {
         $input_name = $_POST['input_name'];
         $sex = $_POST["sex"];
         $about = $_POST["about_me"];
+        $fav_food = $_POST["food"];
+        $proff = $_POST["proff"];
+        $hobby = $_POST["hobby"];
             $insert = $pdo->prepare("
             UPDATE 
             `users` 
@@ -54,6 +72,9 @@ if(!empty($_GET)) {
             username=:username, 
             sex=:sex, 
             about=:about, 
+            fav_food=:fav_food, 
+            profession=:profession, 
+            hobby=:hobby, 
             ava=:ava 
             WHERE 
             id=:id
@@ -63,6 +84,9 @@ if(!empty($_GET)) {
             $insert->bindParam(':ava', $ava);
             $insert->bindParam(':sex', $_POST["sex"]);
             $insert->bindParam(':about', $about);
+            $insert->bindParam(':fav_food', $fav_food);
+            $insert->bindParam(':profession', $proff);
+            $insert->bindParam(':hobby', $hobby);
             $insert->execute();
             header("Location: profile.php?id=$user_id");
             exit();
@@ -128,12 +152,24 @@ if(!isset($_SESSION['email'])){
                     <?php endforeach;?>
                  </div>
                 <div class="block_settings_item">
-                    <span class="sett_chapters">Расскажите о себе</span><br>
+                    <span class="sett_chapters">Расскажите о себе, вкратце:</span><br>
                     <textarea name="about_me" class="about_me_textarea" cols="30" rows="5"></textarea>
+                </div>
+                <div class="block_settings_item">
+                    <span class="sett_chapters">Ваше любимое блюдо</span><br>
+                    <input type="text" name="food" class="name_sett_input" value="<?php echo $food_info;?>">
+                </div>
+                <div class="block_settings_item">
+                    <span class="sett_chapters">Ваша профессия</span><br>
+                    <input type="text" name="proff" class="name_sett_input" value="<?php echo $proff_info;?>">
+                </div>
+                <div class="block_settings_item">
+                    <span class="sett_chapters">Ваше Хобби</span><br>
+                    <input type="text" name="hobby" class="name_sett_input" value="<?php echo $hobby_info;?>">
                 </div>
 
                  <div class="block_margin">
-                    <button type="submit" name="button_newsettings"  class="btn_sett">Отправить</button>
+                    <button type="submit" name="button_newsettings"  class="btn_sett">Сохранить</button>
                  </div>
              </form>
         </div>

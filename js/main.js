@@ -1,9 +1,9 @@
 // выпадающее меню
 $(document).ready(function(){
-  $(".fa-align-justify").click(function(){
+  $(".fa-angle-down").click(function(){
     $(".menu_open").fadeToggle(500);
+    // $(".fa-angle-down").css("transform", "rotate(180deg)");
   });
-
 
 // выпадающий поиск
 
@@ -71,8 +71,7 @@ $(document).ready(function(){
 //     })
 //     }
 //   });
-
-
+  
 
   //Плавный скролл до блока textarea по клику на .send_name
   //Документация: https://github.com/flesler/jquery.scrollTo
@@ -93,6 +92,7 @@ $(document).ready(function(){
     $('#answer_input_image').val($(this).siblings('#hidden_image_to_comment').html().trim());
   });
 
+  
   //удаление данных
   $('.span_delete_items').on('click', function() {
     $('li.span_delete_username').html('');

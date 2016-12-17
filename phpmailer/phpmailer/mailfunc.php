@@ -1,11 +1,11 @@
 ﻿<?php
 require 'PHPMailer/PHPMailerAutoload.php';
 
-//$m_from ='mihomusic@yandex.ru';
-//$m_reply ='mihomusic@yandex.ru';
+//$m_from ='svilkov00@yandex.ru';
+//$m_reply ='svilkov00@yandex.ru';
 $m_hostmail = "smtp.yandex.ru";
 $m_port= 587;
-$m_password="yourpassword";  //465  587
+$m_password="vfvby1955";  //465  587
 $m_SMTPAuth=false;
 $m_debug = false;
 $m_secure = 'tls';

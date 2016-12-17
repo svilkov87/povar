@@ -16,32 +16,10 @@ if(!empty($_GET)) {
     $st->bindParam(':id', $user, PDO::PARAM_INT);
     $st->execute();
     $profile_data = $st->fetchAll();
-
-////    Выбираем статьи, относящиеся к этому юзеру. если это админ, то считаем только статьи админа
-//    if($user == 14){
-//        $st = $pdo->prepare('SELECT * FROM `article` WHERE user_id=:user_id ORDER BY id DESC');
-//        $st->bindParam(':user_id', $id, PDO::PARAM_INT);
-//        $st->execute();
-//        $art_of_user = $st->fetchAll();
-////
-////    Считаем общее количество статей
-//        $st = $pdo->prepare('SELECT COUNT(user_id) FROM `article` WHERE user_id=:user_id');
-//        $st->bindParam(':user_id', $user, PDO::PARAM_INT);
-//        $st->execute();
-//        $art_column = $st->fetchColumn();
-//    }
-//////    $art_column = $pdo->query('SELECT COUNT() FROM `article` WHERE user_id="$id"')->fetchColumn();
-//    else{
-////        $st = $pdo->prepare('SELECT * FROM `article_from_users` WHERE user_id=:user_id ORDER BY id DESC');
-////        $st->bindParam(':user_id', $id, PDO::PARAM_INT);
-////        $st->execute();
-////        $art_of_user = $st->fetchAll();
-////
-//        $st = $pdo->prepare('SELECT COUNT(user_id) FROM `article_from_users` WHERE user_id=:user_id');
-//        $st->bindParam(':user_id', $user, PDO::PARAM_INT);
-//        $st->execute();
-//        $art_column = $st->fetchColumn();
-//    }
+    $user_image = $profile_data[0]['ava'];
+    if ($user_image == ""){
+        $user_image = "no_ava.png";
+    }
 
     //    Считаем общее количество статей
         $st = $pdo->prepare('SELECT COUNT(user_id) FROM `article` WHERE user_id=:user_id');
@@ -72,7 +50,20 @@ if(isset($_POST['button_newarticle'])){
         $image_tmp = $_FILES['image']['tmp_name'];
         $upload = "admin/images/";
         move_uploaded_file($image_tmp, $upload.$image_name);
-        $update = $pdo->prepare("UPDATE `article` SET title=:title, text=:text, user_name=:user_name, intro_image=:intro_image WHERE id=:id");
+        if($_FILES["image"]["name"] == ""){
+            $image_name = "no_intro.png";
+        }
+        $update = $pdo->prepare
+        ("
+        UPDATE 
+        `article` 
+        SET 
+        title=:title, 
+        text=:text,
+        user_name=:user_name, 
+        intro_image=:intro_image 
+        WHERE 
+        id=:id");
         $update->bindParam(':title', $title);
         $update->bindParam(':text', $text);
         $update->bindParam(':user_name', $user_name);
@@ -84,9 +75,9 @@ if(isset($_POST['button_newarticle'])){
     }
 }
 
-/*echo '<pre>';
-var_dump($_FILES);
-echo '</pre>';*/
+echo '<pre>';
+var_dump($user_image);
+echo '</pre>';
 
 
 ?>
@@ -100,7 +91,7 @@ echo '</pre>';*/
 <!--<![endif]-->
 <head>
     <meta charset="utf-8" />
-    <title>IMPOVAR</title>
+    <title>Редактировать статью</title>
     <script src="admin/ckeditor/ckeditor.js"></script>
     <meta name="description" content="IMPOVAR" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -122,54 +113,42 @@ echo '</pre>';*/
 <?php include("include/nav.php");?>
 <div class="container">
     <div class="row">
-        <div class="col-md-4">
-            <a href="#" class="thumbnail">
-                <img src="http://placehold.it/200x200">
+        <div class="col-md-4 ava_block">
+            <a href="profile.php?id=<?php echo $_SESSION['user_id'];?>">
+                <img src="img/avatars/<?php echo $user_image; ?>" class="ava_img">
             </a>
         </div>
-        <div class="col-md-8">
-            <div class="panel panel-default">
-                <?php foreach($profile_data as $item):?>
-                    <div class="panel-heading">
+        <div class="col-md-8" style="margin-bottom: 25px; background: #eeeff2;">
+            <div class="profile_panel">
+                <div class="panel_heading">
+                    <?php foreach($profile_data as $item):?>
                         <span class="name_of_user_profile"><?php echo $item['username']; ?></span>
                         <br>
-                        <a href="#">изменить статус</a>
-                    </div>
-                <?php endforeach;?>
-                <div class="panel-body">
-                    <!--                           Panel content-->
-                    <div class="col-md-2 panel_items">
-                        <span class="panel_items_number"><?php echo $art_column; ?></span>
-                        <span class="panel_items_text">рецепт(ов)</span>
-                    </div>
-                    <div class="col-md-2 panel_items">
-                        <span class="panel_items_number">0%</span>
-                        <span class="panel_items_text">рейтинг</span>
-                    </div>
-                    <div class="col-md-2 panel_items">3</div>
-                    <div class="col-md-2 panel_items">4</div>
+                    <?php endforeach;?>
                 </div>
             </div>
-        </div>
-        <div class="col-md-8">
+            <div class="chapters_of_answers">
+                <span class="span_answer">Раздел добавления статьи</span>
+            </div>
             <form method="post" action="" enctype="multipart/form-data">
                 <div class="form-group">
+                    <label class="label_admin_user">Заголовок статьи</label>
                     <input type="text" class="form-control" name="title" id="field1" placeholder="Введите название статьи" value="<?php echo $title; ?>">
                 </div>
 
                 <div class="form-group">
+                    <label class="label_admin_user">Превью-фото</label>
                     <input type="file" name="image" class="preview_file">
                 </div>
 
                 <div class="form-group">
-                    <label class="label_admin">Текст статьи</label>
+                    <label class="label_admin_user">Текст статьи</label>
                     <textarea class="form-control" name="text" id="text" placeholder="Пишите вашу стаью">
                         <?php echo $text;?>
                     </textarea>
                 </div>
                 <button type="submit" name="button_newarticle"  class="btn btn-success" style="    margin-bottom: 125px;">Отправить</button>
             </form>
-        </div>
     </div>
 </div>
 </div>

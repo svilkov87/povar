@@ -54,9 +54,11 @@ if(isset($_POST['enter'])) {
     $ResultOfCount = $st->fetchAll();
     if ($ResultOfCount[0]['COUNT(*)'] > 0){
         $Message[] = '<i class="fa fa-envelope-o" aria-hidden="true"></i>';
+        $NumberMess = $ResultOfCount[0]['COUNT(*)'];
     }
     else{
         $Message[] = "Нет сообщений";
+        $NumberMess = "0";
     }
 
     if($_SERVER['REQUEST_URI'] == '/myanswers.php?id='.$_SESSION['user_id'].'' AND $ResultOfCount[0]['COUNT(*)'] > 0){
@@ -87,23 +89,22 @@ if(isset($_POST['enter'])) {
 //echo "</pre>";
 
 ?>
-<div class="nav"">
+<div class="nav">
   <div class="container">
       <div id="brand">
-          <a href="http://impovar.tt90.ru/home" class="logo_link">IMPOVAR</a>
+          <a href="http://impovar.tt90.ru/home" class="logo_link">GRANDPOVAR</a>
           <a href="http://impovar.tt90.ru/registration" class="registration_link">Регистрация</a>
       </div>
       <div id="fa-align">
-          <ul class="nav_font">
               <?php
               if(isset($_SESSION['email'])):?>
-                  <li><span style="color: #fff;"><?php  echo $Mess;?></span></li>
-                  <li><i class="fa fa-circle" aria-hidden="true"></i></li>
-                  <li><i class="fa fa-align-justify" aria-hidden="true"></i></li>
-              <?php else:?>
-                  <li><i class="fa fa-align-justify" aria-hidden="true"></i></li>
+                      <span style="color: #fff;"><?php  echo $Mess;?></span>
+                      <i class="fa fa-circle" aria-hidden="true"></i>
+                      <i class="fa fa-angle-down" aria-hidden="true"></i>
+              <?php else:
+                  ?>
+                      <i class="fa fa-angle-down" aria-hidden="true"></i>
               <?php endif;?>
-          </ul>
       </div>
         <div class="menu_open" style="display: none;">
             <div class="block_auth">
@@ -121,22 +122,6 @@ if(isset($_POST['enter'])) {
                       <div class="col-md-12" id="blocks_input">
                           <div class="btn_forget">
                               <a href="http://impovar.tt90.ru/remindpass" class="button_forget_pass">Забыли пароль?</a>
-<!--                              <div id="modalWindow">-->
-<!--                                  <div class="window">-->
-<!--                                      <a href="#fa_close_window" class="fa_close_window">x</a><br>-->
-<!--                                      <div class="mindow_items">-->
-<!--                                              <p class="remind_p">Пожалуйста, укажите Логин или e-mail, который Вы использовали для входа на-->
-<!--                                                  сайт.</p>-->
-<!--                                          <p id="message_remind"></p>-->
-<!--                                              <input type="text" name="forget_pass" id="form_forget" placeholder="Email">-->
-<!--                                          <div class="button_forget_block">-->
-<!--                                              <button type="submit" name="enter_forget" id="button_forget">Выслать</button>-->
-<!--<!--                                              <p id="button_forget">Выслать</p>-->
-<!--                                          </div>-->
-<!--                                      </div>-->
-<!--                                  </div>-->
-<!---->
-<!--                              </div>-->
                               <button type="submit" name="enter" id="button_enter">Войти</button>
                           </div>
                           </form>

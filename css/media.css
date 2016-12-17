@@ -7,9 +7,9 @@
 
 /* Medium Devices, Desktops */
 @media only screen and (max-width : 992px) {
-	/*.nav{*/
-		/*background-color: #000;*/
-	/*}*/
+	.logo_link{
+		color: red;
+	}
 	.menu_open {
 		width: 100%;
 		height: auto;
@@ -115,7 +115,9 @@
 	.reg_forms {
 		padding: 0;
 	}
-
+	.registration_link{
+		display: none;
+	}
 }
 
 /* Custom, iPhone Retina */
@@ -138,7 +140,9 @@
 	.hr_line {
 		width: 275px;
 	}
-
+	.registration_link{
+		display: none;
+	}
 }
 
 @media only screen and (max-width : 375px) {
@@ -171,12 +175,14 @@
 	.reg_forms {
 		padding: 0;
 	}
+	a.registration_link{
+		display: none;
+	}
 }
 @media only screen and (max-width : 320px) {
 	.settings_wrapper {
 		width: 295px;
 	}
-
 }
 
 
@@ -184,7 +190,6 @@
 
 /* Custom, iPhone Retina */
 @media only screen and (min-width : 320px) {
-
 
 }
 

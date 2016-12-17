@@ -10,6 +10,18 @@ ini_set('display_startup_errors', TRUE);
 if(!empty($_GET)) {
 
     $id = intval($_GET['id']);
+
+    //Выбираем юзера, чей аккаунт
+    $st = $pdo->prepare('SELECT * FROM `users` WHERE id=:id');
+    $st->bindParam(':id', $id, PDO::PARAM_INT);
+    $st->execute();
+    $profile_data = $st->fetchAll();
+    $user_image = $profile_data[0]["ava"];
+    if ($user_image == ""){
+        $user_image = "no_ava.png";
+    }
+
+
     //Выбираем юзера, чей аккаунт
     $st = $pdo->prepare('SELECT * FROM `users` WHERE id=:id');
     $st->bindParam(':id', $id, PDO::PARAM_INT);
@@ -43,28 +55,44 @@ if(isset($_POST['button_newarticle'])){
         $image_tmp = $_FILES['image']['tmp_name'];
         $upload = "admin/images/";
         move_uploaded_file($image_tmp, $upload.$image_name);
-//        $insert = $pdo->prepare("INSERT INTO `article_from_users` SET title=:title,  user_id=:user_id, intro_image=:intro_image, text=:text, name=:name");
-        $insert = $pdo->prepare("INSERT INTO `article` SET title=:title,  user_id=:user_id, user_name=:user_name,intro_image=:intro_image, text=:text");
+        if($_FILES["image"]["name"] == ""){
+            $image_name = "no_intro.png";
+        }
+        $insert = $pdo->prepare
+        ("
+        INSERT INTO 
+        `article` 
+        SET 
+        title=:title,  
+        user_id=:user_id, 
+        user_name=:user_name, 
+        intro_image=:intro_image, 
+        text=:text
+        ");
         $insert->bindParam(':title', $title);
         $insert->bindParam(':text', $text);
         $insert->bindParam(':user_id', $user_id );
         $insert->bindParam(':user_name', $user_name);
         $insert->bindParam(':intro_image', $image_name);
         $insert->execute();
-//        header("Location: ".$_SERVER["HTTP_REFERER"]);
         header("Location: profile.php?id=$user_id");
         exit;
 
 //    echo '<pre>';
-//    var_dump($_FILES);
+//    var_dump($_FILES["image"]["name"]);
 //    echo '</pre>';
-    }
 
+
+    }
 }
 
 //echo "<pre>";
-//var_dump($user_name);
+//var_dump($profile_data);
 //echo "</pre>";
+//
+//echo '<pre>';
+//var_dump($user_image);
+//echo '</pre>';
 
 ?>
 
@@ -77,7 +105,7 @@ if(isset($_POST['button_newarticle'])){
 <!--<![endif]-->
 <head>
     <meta charset="utf-8" />
-    <title>IMPOVAR</title>
+    <title>Добавить статью</title>
     <script src="admin/ckeditor/ckeditor.js"></script>
     <meta name="description" content="IMPOVAR" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -100,38 +128,33 @@ if(isset($_POST['button_newarticle'])){
 <div class="container">
     <div class="row">
         <div class="col-md-4 ava_block">
-            <a href="#">
-                <img src="img/avatars/<?php echo $intro_image; ?>" class="ava_img">
+            <a href="profile.php?id=<?php echo $_SESSION['user_id'];?>">
+                <img src="img/avatars/<?php echo $user_image; ?>" class="ava_img">
             </a>
         </div>
-        <div class="col-md-8" style="margin-bottom: 25px;">
+        <div class="col-md-8" style="margin-bottom: 25px; background: #eeeff2;">
             <div class="profile_panel">
-                <?php foreach($profile_data as $item):?>
                 <div class="panel_heading">
-                    <span class="name_of_user_profile"><?php echo $item['username']; ?></span>
-                    <br>
-                    <a href="#">изменить статус</a>
+                    <?php foreach($profile_data as $item):?>
+                        <span class="name_of_user_profile"><?php echo $item['username']; ?></span>
+                        <br>
+                    <?php endforeach;?>
                 </div>
-                <?php endforeach;?>
-                <div class="panel-body">
-                    <div class="col-md-2 panel_items">
-                        <span class="panel_items_number"><?php echo $art_column; ?></span>
-                        <span class="panel_items_text">рецепт(ов)</span>
-                    </div>
-                    <div class="col-md-2 panel_items">2</div>
-                    <div class="col-md-2 panel_items">3</div>
-                    <div class="col-md-2 panel_items">4</div>
-                </div>
+            </div>
+            <div class="chapters_of_answers">
+                <span class="span_answer">Раздел добавления статьи</span>
             </div>
 
 <!--        <div class="col-md-8">-->
             <div class="wrapp_add_art">
                 <form method="post" action="" enctype="multipart/form-data">
                     <div class="form-group">
+                        <label class="label_admin_user">Заголовок статьи</label>
                         <input type="text" class="form-control" name="title" id="field1" placeholder="Введите название статьи">
                     </div>
                     <!--загрузка картинок-->
                     <div class="form-group">
+                        <label class="label_admin_user">Превью-фото</label>
                         <input type="file" name="image" class="preview_file">
                     </div>
                     <!--/загрузка картинок-->
@@ -144,6 +167,7 @@ if(isset($_POST['button_newarticle'])){
                 </form>
             </div>
         </div>
+    </div>
     </div>
 
 <!---->

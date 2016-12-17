@@ -3,9 +3,9 @@ include("functions/functions.php");
 include("include/connection.php");
 
 ## проверка ошибок
-//error_reporting(E_ALL | E_STRICT);
-//ini_set('display_errors', TRUE);
-//ini_set('display_startup_errors', TRUE);
+error_reporting(E_ALL | E_STRICT);
+ini_set('display_errors', TRUE);
+ini_set('display_startup_errors', TRUE);
 
 $email = $_POST['input_email'];
 
@@ -30,14 +30,25 @@ if (isset($_POST['input_email'])){
             $update->bindParam(':email', $email);
             $update->execute();
 
+            // Уведомление по почте о регистрации
+            include_once ("phpmailer/phpmailer/mailfunc.php");
+            $m_to   = $email; // кому - ящик (из формы)
+            $m_nameto = ""; // Кому
+            $m_namefrom = "Impovar.ru"; // Поле От в письме
+            $subj = "Восстановление пароля";
+            $tmsg = "Ваш новый пароль $newPassword";
+            $m_from ='svilkov00@yandex.ru'; // от кого
+            $m_reply ='svilkov00@yandex.ru'; // адрес для обратного ответа
+            $mail1 = phpmailer($subj, $tmsg, $m_to,$m_nameto,$m_namefrom,$m_from,$m_reply,$m_hostmail,$m_port,$m_password,$m_secure);
+
             $errors[] = "На ваш почтовый ящик был выслан новый пароль";
         }
 
 }
 
-//echo "<pre>";
-//var_dump($newPassword);
-//echo "</pre>";
+echo "<pre>";
+var_dump($newPassword);
+echo "</pre>";
 //
 //echo "<pre>";
 //var_dump($email_data);

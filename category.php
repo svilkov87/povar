@@ -41,7 +41,6 @@ if(!empty($_GET)){
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="shortcut icon" href="img/favicon/favicon.ico" />
-<!--    <link rel="stylesheet" href="libs/bootstrap/bootstrap-grid-3.3.1.min.css" />-->
     <link rel="stylesheet" href="libs/font-awesome-4.2.0/css/font-awesome.min.css" />
     <link rel="stylesheet" href="libs/fancybox/jquery.fancybox.css" />
     <link rel="stylesheet" href="libs/owl-carousel/owl.carousel.css" />
@@ -63,7 +62,7 @@ if(!empty($_GET)){
 <!--лого-->
         <div class="col-md-12 logo_block">
             <img src="img/category_images/logo.svg" alt="logo" class="img_logo">
-            <h1 class="logo_header">IMPOVAR</h1>
+            <h1 class="logo_header">GRANDPOVAR</h1>
             <p class="logo_par">Энциклопедия рецептов</p>
             <hr class="hr_line">
         </div>
