@@ -142,7 +142,7 @@ echo '</pre>';
                 </div>
 
                 <div class="form-group">
-                    <label class="label_admin_user">Текст статьи</label>
+                    <label class="label_admin_user">Содержание статьи</label>
                     <textarea class="form-control" name="text" id="text" placeholder="Пишите вашу стаью">
                         <?php echo $text;?>
                     </textarea>

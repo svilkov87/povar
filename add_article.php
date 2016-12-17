@@ -160,7 +160,7 @@ if(isset($_POST['button_newarticle'])){
                     <!--/загрузка картинок-->
 
                     <div class="form-group">
-                        <label class="label_admin">Текст статьи</label>
+                        <label class="label_admin_user">Содержание статьи</label>
                         <textarea class="form-control" name="text" id="text" placeholder="Пишите вашу стаью"></textarea>
                     </div>
                     <button type="submit" name="button_newarticle"  class="btn_default" style="    margin-bottom: 125px;">Отправить</button>

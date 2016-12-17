@@ -397,18 +397,24 @@ a.stuff_menu_search_field{
 	position: absolute;
 	width: 100%;
 	height: 155px;
-	background: rgba(18, 123, 238, 0.54);
+	background: rgba(255, 159, 7, 0.67);
 	margin-top: -50px;
 	-webkit-transition: all 0.5s ease-in-out;
 	-o-transition: all 0.5s ease-in-out;
 	-moz-transition: all 0.5s ease-in-out;
 	transition: all 0.5s ease-in-out;
 }
+.last_art_body:hover{
+	-webkit-box-shadow: 0px 1px 7px 0px rgba(50, 50, 50, 0.56);
+	-moz-box-shadow:    0px 1px 7px 0px rgba(50, 50, 50, 0.56);
+	box-shadow:         0px 1px 7px 0px rgba(50, 50, 50, 0.56);
+}
 .last_intro_image{
+	border: 1px solid #e9e7e7;
 	/*position: relative;*/
 	/*z-index: 1;*/
 	width: 100%;
-	height: auto;
+	height: 180px;
 	/*overflow: hidden;*/
 }
 
@@ -663,6 +669,7 @@ a#hidden_id,a#hidden_id_to_user,a#hidden_text_to_comment{
 /*страница профиля*/
 .last_art_body{
 	padding: 5px;
+	border: 1px solid #e0d3d3;
 }
 .span_last_rec{
 	color: #0f7d58;
@@ -692,9 +699,11 @@ a#hidden_id,a#hidden_id_to_user,a#hidden_text_to_comment{
 	overflow: hidden;
 }
 .about_me{
+	/*width: 66%;*/
 	padding-top: 10px;
 	padding-bottom: 7px;
 	border-bottom: 1px dashed #d8d8d8;
+	/*margin: 0 auto;*/
 }
 .name_of_user_profile{
 	font-weight: bold;
@@ -704,7 +713,7 @@ a#hidden_id,a#hidden_id_to_user,a#hidden_text_to_comment{
 	color: #22345d;
 }
 .span_about_text{
-	color: #8a4a9a;
+	color: #962d2d;
 	font-size: 15px;
 }
 .block_edit_twoblocks{
@@ -786,7 +795,10 @@ a#hidden_id,a#hidden_id_to_user,a#hidden_text_to_comment{
 	color: #9c9c9c;
 }
 .wathes_full_art{
-	font-size: 12px;
+	font-size: 14px;
+	color: #fff;
+	padding-left: 10px;
+	font-weight: bold;
 }
 .date_full_art{
 	margin-top: 16px;
@@ -797,10 +809,41 @@ a#hidden_id,a#hidden_id_to_user,a#hidden_text_to_comment{
 	text-align: right;
 }
 .ava_img{
+	background: #fcfeff;
 	width: 150px;
 	height: 150px;
 	border-radius: 50%;
 	border: 1px solid #ccc;
+	animation-name: spinOut;
+	animation-duration: 2s;
+}
+.ava_img:hover {
+	animation-name: spin;
+	animation-duration: 2s;
+	animation-iteration-count: 3;
+	-webkit-transition: all 0.5s  ease-in-out;
+	-o-transition: all 0.5s ease-in-out;
+	-moz-transition: all 0.5s ease-in-out;
+	transition: all 0.5s  ease-in-out;
+	-webkit-box-shadow: -1px 3px 50px -10px rgba(0,0,0,0.75);
+	-moz-box-shadow: -1px 3px 50px -10px rgba(0,0,0,0.75);
+	box-shadow: -1px 3px 50px -10px rgba(0,0,0,0.75);
+}
+@keyframes spin {
+	from{
+		transform:  rotate(0deg);
+	}
+	to{
+		transform:  rotate(360deg);
+	}
+}
+@keyframes spinOut {
+	from{
+		transform: rotate(360deg);
+	}
+	to{
+		transform: rotate(0deg);
+	}
 }
 .images_profile_link{
 	width: 50px;
@@ -1042,6 +1085,7 @@ font-weight: bold;
 	padding: 10px;
 	/*background: #fff;*/
 }
+/*.dfg:hover .ava_img{*/
 .ava_imgonforum{
 	width: 50px;
 	height: 50px;
@@ -1426,8 +1470,6 @@ label{
 }
 .all_user_body{
 	height: 140px;
-	/*width: 150px;*/
-	background: #fff5f5;
 	margin: 1px;
 }
 .all_user_body:hover{

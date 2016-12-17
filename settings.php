@@ -153,7 +153,7 @@ if(!isset($_SESSION['email'])){
                  </div>
                 <div class="block_settings_item">
                     <span class="sett_chapters">Расскажите о себе, вкратце:</span><br>
-                    <textarea name="about_me" class="about_me_textarea" cols="30" rows="5"></textarea>
+                    <textarea name="about_me" class="about_me_textarea"></textarea>
                 </div>
                 <div class="block_settings_item">
                     <span class="sett_chapters">Ваше любимое блюдо</span><br>

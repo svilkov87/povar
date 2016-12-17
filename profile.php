@@ -17,6 +17,7 @@ if(!empty($_GET)) {
     $st->execute();
     $profile_data = $st->fetchAll();
     $user_image = $profile_data[0]['ava'];
+    $user_id = $profile_data[0]['id'];
     if ($user_image == ""){
         $user_image = "no_ava.png";
     }
@@ -137,20 +138,23 @@ if(!empty($_GET)) {
 <?php include("include/nav.php");?>
 <div class="container">
     <div class="row">
-        <div class="col-md-4 ava_block">
-            <a href="profile.php?id=<?php echo $_SESSION['user_id'];?>">
-                <img src="img/avatars/<?php echo $user_image; ?>" class="ava_img">
-            </a>
-        </div>
-        <div class="col-md-8">
+        <div class="col-md-12">
             <div class="profile_panel">
                 <div class="panel_heading">
                     <?php foreach($profile_data as $item):?>
+                        <div class="col-md-4 ava_block">
+                            <a href="profile.php?id=<?php echo $user_id;?>" class="dfg">
+                                <img src="img/avatars/<?php echo $user_image; ?>" class="ava_img">
+                            </a>
+                        </div>
+                        <div class="col-md-8">
                     <span class="name_of_user_profile"><?php echo $item['username']; ?></span>
                     <br>
                     <div class="about_me">
                         <span class="span_about">О cебе:</span>
-                        <span class="span_about_text"><?php echo $item['about']; ?></span>
+                        <div class="span_about_text">
+                            <?php echo $item['about']; ?>
+                        </div>
                     </div>
                     <div class="about_me">
                         <span class="span_about">Любимое блюдо:</span>
@@ -160,6 +164,7 @@ if(!empty($_GET)) {
                         <span class="span_about">Профессия:</span>
                         <span class="span_about_text"><?php echo $item['profession']; ?></span>
                     </div>
+                        </div>
                     <?php endforeach;?>
                 </div>
 
@@ -232,22 +237,21 @@ if(!empty($_GET)) {
                                         <div class="wrapp_last">
                                             <img src="admin/images/<?php echo $item['intro_image']; ?>" alt="" class="last_intro_image">
                                             <div class="bottom_prof">
-                                                    <a href="delete_article.php?id=<?php echo $item['id'];?>" onclick="return confirm('Удалить статью?')">
+                                                    <a href="delete_article.php?id=<?php echo $item['id'];?>" onclick="return confirm('Удалить статью?')" class="fa-trash-del">
                                                         <i class="fa fa-trash fa-trash-del" aria-hidden="true" ></i>
                                                     </a>
-
                                                 <a href="edit_article.php?id=<?php echo $item['id'];?>&user=<?php echo $item['user_id']; ?>" class="fa-trash-del">
                                                     <i class="fa fa-pencil-square" aria-hidden="true"></i>
                                                 </a>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="block_edit_twoblocks">
-                                        <div class="block_right_profile_edit">
-                                            <span class="wathes_full_art">просмотров</span>
-                                            <span>&nbsp;<?php echo $item['watches'];?></span>
-                                        </div>
-                                    </div>
+<!--                                    <div class="block_edit_twoblocks">-->
+<!--                                        <div class="block_right_profile_edit">-->
+<!--                                            <span class="wathes_full_art">просмотров</span>-->
+<!--                                            <span>&nbsp;--><?php //echo $item['watches'];?><!--</span>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
                                 </div>
                             <?php endforeach;?>
                         </div>
@@ -267,15 +271,19 @@ if(!empty($_GET)) {
                                 <div class="wrapp_last">
                                     <img src="admin/images/<?php echo $item['intro_image']; ?>" alt="" class="last_intro_image">
                                     <div class="bottom_prof">
+                                        <span class="wathes_full_art">просмотров:</span>
+                                        <span class="wathes_full_art"><?php echo $item['watches'];?></span>
+                                        <br>
+                                        <span class="wathes_full_art">комменты:</span>
+                                        <span class="wathes_full_art"><?php echo $item['watches'];?></span>
                                     </div>
                                 </div>
                             </div>
-                            <div class="block_edit_twoblocks">
-                                <div class="block_right_profile_edit">
-                                    <span class="wathes_full_art">просмотров</span>
-                                    <span>&nbsp;<?php echo $item['watches'];?></span>
-                                </div>
-                            </div>
+<!--                            <div class="block_edit_twoblocks">-->
+<!--                                <div class="block_right_profile_edit">-->
+<!--                                    -->
+<!--                                </div>-->
+<!--                            </div>-->
                         </div>
                     <?php endforeach;?>
                 </div>
