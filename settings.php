@@ -7,10 +7,12 @@ include("include/connection.php");
 //ini_set('display_errors', TRUE);
 //ini_set('display_startup_errors', TRUE);
 
-if(!empty($_GET)) {
+if (!empty($_GET)) {
 
     $id = intval($_GET['id']);
-    if ($id === 0){die('Ошибка сжатия чёрной дыры');}
+    if ($id === 0) {
+        die('Ошибка сжатия чёрной дыры');
+    }
 
     //Выбираем юзера, чей аккаунт
     $st = $pdo->prepare('SELECT * FROM `users` WHERE id=:id');
@@ -22,15 +24,15 @@ if(!empty($_GET)) {
     $intro_image = $profile_data[0]['ava'];
     $about = $profile_data[0]['about'];
     $proff_info = $profile_data[0]['profession'];
-    if ($proff_info == ""){
+    if ($proff_info == "") {
         $proff_info = "Не указано";
     }
     $food_info = $profile_data[0]['fav_food'];
-    if ($food_info == ""){
+    if ($food_info == "") {
         $food_info = "Не указано";
     }
     $hobby_info = $profile_data[0]['hobby'];
-    if ($hobby_info == ""){
+    if ($hobby_info == "") {
         $hobby_info = "Не указано";
     }
 
@@ -65,7 +67,7 @@ if(!empty($_GET)) {
         $fav_food = $_POST["food"];
         $proff = $_POST["proff"];
         $hobby = $_POST["hobby"];
-            $insert = $pdo->prepare("
+        $insert = $pdo->prepare("
             UPDATE 
             `users` 
             SET 
@@ -79,17 +81,17 @@ if(!empty($_GET)) {
             WHERE 
             id=:id
             ");
-            $insert->bindParam(':username', $input_name);
-            $insert->bindParam(':id', $user_id);
-            $insert->bindParam(':ava', $ava);
-            $insert->bindParam(':sex', $_POST["sex"]);
-            $insert->bindParam(':about', $about);
-            $insert->bindParam(':fav_food', $fav_food);
-            $insert->bindParam(':profession', $proff);
-            $insert->bindParam(':hobby', $hobby);
-            $insert->execute();
-            header("Location: profile.php?id=$user_id");
-            exit();
+        $insert->bindParam(':username', $input_name);
+        $insert->bindParam(':id', $user_id);
+        $insert->bindParam(':ava', $ava);
+        $insert->bindParam(':sex', $_POST["sex"]);
+        $insert->bindParam(':about', $about);
+        $insert->bindParam(':fav_food', $fav_food);
+        $insert->bindParam(':profession', $proff);
+        $insert->bindParam(':hobby', $hobby);
+        $insert->execute();
+        header("Location: profile.php?id=$user_id");
+        exit();
     }
 
 }
@@ -97,40 +99,43 @@ if(!empty($_GET)) {
 //var_dump($intro_image);
 //echo "</pre>";
 
-if(!isset($_SESSION['email'])){
+if (!isset($_SESSION['email'])) {
     header("Location: index.php");
     exit;
 }
 ?>
 
 <!DOCTYPE html>
-<!--[if lt IE 7]><html lang="ru" class="lt-ie9 lt-ie8 lt-ie7"><![endif]-->
-<!--[if IE 7]><html lang="ru" class="lt-ie9 lt-ie8"><![endif]-->
-<!--[if IE 8]><html lang="ru" class="lt-ie9"><![endif]-->
+<!--[if lt IE 7]>
+<html lang="ru" class="lt-ie9 lt-ie8 lt-ie7"><![endif]-->
+<!--[if IE 7]>
+<html lang="ru" class="lt-ie9 lt-ie8"><![endif]-->
+<!--[if IE 8]>
+<html lang="ru" class="lt-ie9"><![endif]-->
 <!--[if gt IE 8]><!-->
 <html lang="ru">
 <!--<![endif]-->
 <head>
-    <meta charset="utf-8" />
+    <meta charset="utf-8"/>
     <title>IMPOVAR</title>
-    <meta name="description" content="IMPOVAR" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="shortcut icon" href="img/favicon/favicon.ico" />
-    <link rel="stylesheet" href="libs/font-awesome-4.2.0/css/font-awesome.min.css" />
-    <link rel="stylesheet" href="libs/fancybox/jquery.fancybox.css" />
-    <link rel="stylesheet" href="libs/owl-carousel/owl.carousel.css" />
-    <link rel="stylesheet" href="libs/countdown/jquery.countdown.css" />
+    <meta name="description" content="IMPOVAR"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="shortcut icon" href="img/favicon/favicon.ico"/>
+    <link rel="stylesheet" href="libs/font-awesome-4.2.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="libs/fancybox/jquery.fancybox.css"/>
+    <link rel="stylesheet" href="libs/owl-carousel/owl.carousel.css"/>
+    <link rel="stylesheet" href="libs/countdown/jquery.countdown.css"/>
     <link rel="stylesheet" href="remodal/remodal.css">
     <link rel="stylesheet" href="remodal/remodal-default-theme.css">
-    <link rel="stylesheet" href="css/fonts.css" />
-    <link rel="stylesheet" href="css/main.css" />
-    <link rel="stylesheet" href="css/media.css" />
-    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/fonts.css"/>
+    <link rel="stylesheet" href="css/main.css"/>
+    <link rel="stylesheet" href="css/media.css"/>
+    <link rel="stylesheet" href="css/bootstrap.min.css"/>
 </head>
 <body>
 <html>
-<?php include("include/nav.php");?>
+<?php include("include/nav.php"); ?>
 <div class="container">
     <div class="row">
         <div class="settings_wrapper">
@@ -140,42 +145,42 @@ if(!isset($_SESSION['email'])){
             <form method="post" action="" enctype="multipart/form-data">
                 <div class="block_settings_item">
                     <span class="sett_chapters">Ваше имя</span><br>
-                    <input type="text" name="input_name" class="name_sett_input" value="<?php echo $name_info;?>">
+                    <input type="text" name="input_name" class="name_sett_input" value="<?php echo $name_info; ?>">
                 </div>
                 <div class="block_settings_item">
                     <span class="sett_chapters">Пол</span><br>
-                    <?php foreach ($profile_data as $item):?>
+                    <?php foreach ($profile_data as $item): ?>
                         <select name="sex" class="sex_select">
-                                <option value="1">Мужской</option>
-                                <option value="2">Женский</option>
+                            <option value="1">Мужской</option>
+                            <option value="2">Женский</option>
                         </select>
-                    <?php endforeach;?>
-                 </div>
+                    <?php endforeach; ?>
+                </div>
                 <div class="block_settings_item">
                     <span class="sett_chapters">Расскажите о себе, вкратце:</span><br>
                     <textarea name="about_me" class="about_me_textarea"></textarea>
                 </div>
                 <div class="block_settings_item">
                     <span class="sett_chapters">Ваше любимое блюдо</span><br>
-                    <input type="text" name="food" class="name_sett_input" value="<?php echo $food_info;?>">
+                    <input type="text" name="food" class="name_sett_input" value="<?php echo $food_info; ?>">
                 </div>
                 <div class="block_settings_item">
                     <span class="sett_chapters">Ваша профессия</span><br>
-                    <input type="text" name="proff" class="name_sett_input" value="<?php echo $proff_info;?>">
+                    <input type="text" name="proff" class="name_sett_input" value="<?php echo $proff_info; ?>">
                 </div>
                 <div class="block_settings_item">
                     <span class="sett_chapters">Ваше Хобби</span><br>
-                    <input type="text" name="hobby" class="name_sett_input" value="<?php echo $hobby_info;?>">
+                    <input type="text" name="hobby" class="name_sett_input" value="<?php echo $hobby_info; ?>">
                 </div>
 
-                 <div class="block_margin">
-                    <button type="submit" name="button_newsettings"  class="btn_sett">Сохранить</button>
-                 </div>
-             </form>
+                <div class="block_margin">
+                    <button type="submit" name="button_newsettings" class="btn_sett">Сохранить</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>
-<?php include("include/footer.php");?>
+<?php include("include/footer.php"); ?>
 <!--[if lt IE 9]-->
 <script src="libs/html5shiv/es5-shim.min.js"></script>
 <script src="libs/html5shiv/html5shiv.min.js"></script>

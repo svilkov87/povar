@@ -8,9 +8,9 @@ ini_set('display_errors', TRUE);
 ini_set('display_startup_errors', TRUE);
 
 
-    //Выбираем всех юзеров
-    $st = $pdo->query('SELECT * FROM `users`');
-    $all_users = $st->fetchAll();
+//Выбираем всех юзеров
+$st = $pdo->query('SELECT * FROM `users`');
+$all_users = $st->fetchAll();
 
 //echo "<pre>";
 //var_dump($all_users);
@@ -19,60 +19,63 @@ ini_set('display_startup_errors', TRUE);
 ?>
 
 <!DOCTYPE html>
-<!--[if lt IE 7]><html lang="ru" class="lt-ie9 lt-ie8 lt-ie7"><![endif]-->
-<!--[if IE 7]><html lang="ru" class="lt-ie9 lt-ie8"><![endif]-->
-<!--[if IE 8]><html lang="ru" class="lt-ie9"><![endif]-->
+<!--[if lt IE 7]>
+<html lang="ru" class="lt-ie9 lt-ie8 lt-ie7"><![endif]-->
+<!--[if IE 7]>
+<html lang="ru" class="lt-ie9 lt-ie8"><![endif]-->
+<!--[if IE 8]>
+<html lang="ru" class="lt-ie9"><![endif]-->
 <!--[if gt IE 8]><!-->
 <html lang="ru">
 <!--<![endif]-->
 <head>
-    <meta charset="utf-8" />
+    <meta charset="utf-8"/>
     <title>IMPOVAR</title>
-    <meta name="description" content="IMPOVAR" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="shortcut icon" href="img/favicon/favicon.ico" />
-    <link rel="stylesheet" href="libs/font-awesome-4.2.0/css/font-awesome.min.css" />
-    <link rel="stylesheet" href="libs/fancybox/jquery.fancybox.css" />
-    <link rel="stylesheet" href="libs/owl-carousel/owl.carousel.css" />
-    <link rel="stylesheet" href="libs/countdown/jquery.countdown.css" />
+    <meta name="description" content="IMPOVAR"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="shortcut icon" href="img/favicon/favicon.ico"/>
+    <link rel="stylesheet" href="libs/font-awesome-4.2.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="libs/fancybox/jquery.fancybox.css"/>
+    <link rel="stylesheet" href="libs/owl-carousel/owl.carousel.css"/>
+    <link rel="stylesheet" href="libs/countdown/jquery.countdown.css"/>
     <link rel="stylesheet" href="remodal/remodal.css">
     <link rel="stylesheet" href="remodal/remodal-default-theme.css">
-    <link rel="stylesheet" href="css/fonts.css" />
-    <link rel="stylesheet" href="css/main.css" />
-    <link rel="stylesheet" href="css/media.css" />
-    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/fonts.css"/>
+    <link rel="stylesheet" href="css/main.css"/>
+    <link rel="stylesheet" href="css/media.css"/>
+    <link rel="stylesheet" href="css/bootstrap.min.css"/>
 </head>
 <body>
 <html>
-<?php include("include/nav.php");?>
+<?php include("include/nav.php"); ?>
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
-            <?php foreach($all_users as $item):?>
-            <div class="col-md-2 col-sm-3 col-xs-4">
-                <div class="row">
-                    <a href="profile.php?id=<?php echo $item['id'];?>">
-                        <div class="all_user_body">
-                            <div class="all_us_ava_block">
-                                <img src="img/avatars/<?php echo $item['ava'];?>" alt="" class="all_us_img">
+            <?php foreach ($all_users as $item): ?>
+                <div class="col-md-2 col-sm-3 col-xs-4">
+                    <div class="row">
+                        <a href="profile.php?id=<?php echo $item['id']; ?>">
+                            <div class="all_user_body">
+                                <div class="all_us_ava_block">
+                                    <img src="img/avatars/<?php echo $item['ava']; ?>" alt="" class="all_us_img">
+                                </div>
+                                <div class="all_us_link_block">
+                                    <a href="profile.php?id=<?php echo $item['id']; ?>" class="all_us_link_to_profile">
+                                        <?php echo $item['username']; ?>
+                                    </a>
+                                </div>
                             </div>
-                            <div class="all_us_link_block">
-                                <a href="profile.php?id=<?php echo $item['id'];?>" class="all_us_link_to_profile">
-                                    <?php echo $item['username'];?>
-                                </a>
-                            </div>
-                        </div>
-                    </a>
+                        </a>
+                    </div>
                 </div>
-            </div>
-            <?php endforeach;?>
+            <?php endforeach; ?>
         </div>
     </div>
 </div>
 
 
-<?php include("include/footer.php");?>
+<?php include("include/footer.php"); ?>
 <!--[if lt IE 9]-->
 <script src="libs/html5shiv/es5-shim.min.js"></script>
 <script src="libs/html5shiv/html5shiv.min.js"></script>

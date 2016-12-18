@@ -7,14 +7,14 @@ error_reporting(E_ALL | E_STRICT);
 ini_set('display_errors', TRUE);
 ini_set('display_startup_errors', TRUE);
 
-if(!empty($_GET)) {
+if (!empty($_GET)) {
     $id = intval($_GET['id']);
     if ($id === 0) {
         die('Ошибка сжатия чёрной дыры');
     }
 
     //выборка для вставки в форму для редактирования
-    $stmt = $pdo ->prepare('SELECT * FROM `forum_questions` WHERE id =:id');
+    $stmt = $pdo->prepare('SELECT * FROM `forum_questions` WHERE id =:id');
     $stmt->bindParam(':id', $id, PDO::PARAM_INT);
     $stmt->execute();
     $row = $stmt->fetch();
@@ -25,7 +25,7 @@ if(!empty($_GET)) {
     $user_id = $_SESSION['user_id'];
     $user_name = $_SESSION['user_name'];
     $user_ava = $_SESSION['ava'];
-    if(isset($_POST['edit_comment'])) {
+    if (isset($_POST['edit_comment'])) {
         $title = strip_tags($_POST['title']);
         $text = strip_tags($_POST['text']);
         $id = $_GET['id'];
@@ -58,18 +58,18 @@ if(!empty($_GET)) {
 <head>
     <meta charset="utf-8">
     <title>Редактировать Тему</title>
-    <meta name="description" content="IMPOVAR" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="shortcut icon" href="img/favicon/favicon.ico" />
-    <link rel="stylesheet" href="libs/font-awesome-4.2.0/css/font-awesome.min.css" />
-    <link rel="stylesheet" href="libs/fancybox/jquery.fancybox.css" />
-    <link rel="stylesheet" href="libs/owl-carousel/owl.carousel.css" />
-    <link rel="stylesheet" href="libs/countdown/jquery.countdown.css" />
-    <link rel="stylesheet" href="css/fonts.css" />
-    <link rel="stylesheet" href="css/main.css" />
-    <link rel="stylesheet" href="css/media.css" />
-    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <meta name="description" content="IMPOVAR"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="shortcut icon" href="img/favicon/favicon.ico"/>
+    <link rel="stylesheet" href="libs/font-awesome-4.2.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="libs/fancybox/jquery.fancybox.css"/>
+    <link rel="stylesheet" href="libs/owl-carousel/owl.carousel.css"/>
+    <link rel="stylesheet" href="libs/countdown/jquery.countdown.css"/>
+    <link rel="stylesheet" href="css/fonts.css"/>
+    <link rel="stylesheet" href="css/main.css"/>
+    <link rel="stylesheet" href="css/media.css"/>
+    <link rel="stylesheet" href="css/bootstrap.min.css"/>
 </head>
 <body>
 <?php
@@ -86,11 +86,11 @@ if(!empty($_GET)) {
                 <div class="add_topic_body">
                     <form method="post" action="">
                         <label for="m" class="label_add">Тема</label><br>
-                        <input type="text" name="title" id="m" value="<?php echo $title;?>"/>
-                        <br />
+                        <input type="text" name="title" id="m" value="<?php echo $title; ?>"/>
+                        <br/>
                         <label for="f" class="label_add">Текст сообщения</label><br>
                         <textarea name="text" id="f" cols="30" rows="10"">
-                            <?php echo $text;?>
+                        <?php echo $text; ?>
                         </textarea><br>
                         <button class="btn_default" type="submit" name="edit_comment">вперед</button>
                     </form>
@@ -99,7 +99,7 @@ if(!empty($_GET)) {
         </div>
     </div>
 </div>
-<?php include("include/footer.php");?>
+<?php include("include/footer.php"); ?>
 <!--[if lt IE 9]>
 <script src="libs/html5shiv/es5-shim.min.js"></script>
 <script src="libs/html5shiv/html5shiv.min.js"></script>

@@ -116,26 +116,26 @@ if(!empty($_GET)){
 <hr class="hr_line">
 <div class="container">
 <div class="col-md-6 col-md-offset-3">
-    <?php foreach($art as $item): ?>
+    <?php foreach ($art as $item): ?>
         <div class="link_panel">
             <div class="panel_head_link">
-                <h1 style="font-size: 15px;"><?php echo $item['title'];?></h1></div>
+                <h1 style="font-size: 15px;"><?php echo $item['title']; ?></h1></div>
             <div class="link_body">
-                        <div class="img_block_link">
-                            <img src="admin/images/<?php echo $item['intro_image']; ?>" alt="..." class="img_link">
-                        </div>
-                        <div class="intro_text_link">
-                            <p><?php echo $item['intro_text']; ?></p>
-                        </div>
-                        <div class="look_article">
-                            <a href="full.php?id=<?php echo $item['id'];?>" class="btn_link">Смотреть</a>
-                            <br>
-                            <div class="link_like_comm_look">
-                                <i class="fa fa-heart" aria-hidden="true"></i>
-                                <i class="fa fa-comment-o" aria-hidden="true"></i>
-                                <i class="fa fa-eye" aria-hidden="true"></i>
-                            </div>
-                        </div>
+                <div class="img_block_link">
+                    <img src="admin/images/<?php echo $item['intro_image']; ?>" alt="..." class="img_link">
+                </div>
+                <div class="intro_text_link">
+                    <p><?php echo $item['intro_text']; ?></p>
+                </div>
+                <div class="look_article">
+                    <a href="full.php?id=<?php echo $item['id']; ?>" class="btn_link">Смотреть</a>
+                    <br>
+                    <div class="link_like_comm_look">
+                        <i class="fa fa-heart" aria-hidden="true"></i>
+                        <i class="fa fa-comment-o" aria-hidden="true"></i>
+                        <i class="fa fa-eye" aria-hidden="true"></i>
+                    </div>
+                </div>
             </div>
         </div>
     <?php endforeach; ?>
