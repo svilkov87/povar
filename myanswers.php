@@ -3,17 +3,32 @@ include("functions/functions.php");
 include("include/connection.php");
 
 ## проверка ошибок
-error_reporting(E_ALL | E_STRICT);
-ini_set('display_errors', TRUE);
-ini_set('display_startup_errors', TRUE);
+//error_reporting(E_ALL | E_STRICT);
+//ini_set('display_errors', TRUE);
+//ini_set('display_startup_errors', TRUE);
 
 if (!empty($_GET)) {
 
     $id = intval($_GET['id']);
-    if ($id === 0) {
-        die('Ошибка сжатия чёрной дыры');
+
+    // если зло вручную поставит другой id пользвателя, то он не попадет на чужую страницу с ответами
+        if ($id === 0 OR $id != $_SESSION['user_id']) {
+//        die('Ошибка сжатия чёрной дыры');
+            header("Location: index.php");
+            exit;
     }
 
+//    echo "<pre>";
+//    var_dump($_SESSION['user_id']);
+//    echo "</pre>";
+//
+//    echo "<pre>";
+//    var_dump($id);
+//    echo "</pre>";
+
+//    if ($id != $_SESSION['id']){
+//        die('Ошибка сжатия чёрной дыры');
+//    }
 //        $update = $pdo->prepare("UPDATE `comments` SET isnew=:isnew WHERE id=:id");
 //        $update->bindParam(':isnew', $no);
 //        $update->bindParam(':id', $id);

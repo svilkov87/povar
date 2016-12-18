@@ -55,13 +55,13 @@ $all_users = $st->fetchAll();
             <?php foreach ($all_users as $item): ?>
                 <div class="col-md-2 col-sm-3 col-xs-4">
                     <div class="row">
-                        <a href="profile.php?id=<?php echo $item['id']; ?>">
+                        <a href="http://impovar.tt90.ru/profile/<?php echo $item['id']; ?>">
                             <div class="all_user_body">
                                 <div class="all_us_ava_block">
                                     <img src="img/avatars/<?php echo $item['ava']; ?>" alt="" class="all_us_img">
                                 </div>
                                 <div class="all_us_link_block">
-                                    <a href="profile.php?id=<?php echo $item['id']; ?>" class="all_us_link_to_profile">
+                                    <a href="http://impovar.tt90.ru/profile/<?php echo $item['id']; ?>" class="all_us_link_to_profile">
                                         <?php echo $item['username']; ?>
                                     </a>
                                 </div>

@@ -17,8 +17,9 @@ $(document).ready(function(){
   // навигация при скроллинге
 
   $(window).scroll(function() {
-    if ($(this).scrollTop() > 10){
-      $('.nav').addClass("nav_fixed");
+    if ($(this).scrollTop() > 80){
+      $('.nav').addClass("nav_fixed"),
+        $('.nav').fadeIn(2000);
     }
     else{
       $('.nav').removeClass("nav_fixed");
@@ -48,30 +49,6 @@ $(document).ready(function(){
   });
 
 
-// ответ юзеру(перемещение информации в поля отправки)
-//   $('#button_forget').click(function(){
-//     // e.preventDefault();
-//     var recall_email = $('#form_forget').val();
-//     if (recall_email == ""){
-//       $('#form_forget').css("borderColor","red");
-//     }
-//     else {
-//       $('#form_forget').css("borderColor","green");
-//
-//     $.ajax({
-//       type: "POST",
-//       url: "../include/remind-pass.php",
-//       data: "email="+recall_email,
-//       dataType: "html",
-//       cache: false,
-//       success: function (data) {
-//         if (data == 'yes')
-//             $('#message_remind').attr("class","message_remind_success").html("На почту отправлено");
-//       }
-//     })
-//     }
-//   });
-  
 
   //Плавный скролл до блока textarea по клику на .send_name
   //Документация: https://github.com/flesler/jquery.scrollTo

@@ -10,6 +10,12 @@ ini_set('display_startup_errors', TRUE);
 if(!empty($_GET)) {
 
     $id = intval($_GET['id']);
+    // если зло вручную поставит другой id пользвателя, то он не попадет на чужую страницу с ответами
+    if ($id === 0 OR $id != $_SESSION['user_id']) {
+//        die('Ошибка сжатия чёрной дыры');
+        header("Location: http://impovar.tt90.ru/home");
+        exit;
+    }
 
     //Выбираем юзера, чей аккаунт
     $st = $pdo->prepare('SELECT * FROM `users` WHERE id=:id');
@@ -75,7 +81,7 @@ if(isset($_POST['button_newarticle'])){
         $insert->bindParam(':user_name', $user_name);
         $insert->bindParam(':intro_image', $image_name);
         $insert->execute();
-        header("Location: profile.php?id=$user_id");
+        header("Location: http://impovar.tt90.ru/profile/$user_id");
         exit;
 
 //    echo '<pre>';
@@ -106,41 +112,28 @@ if(isset($_POST['button_newarticle'])){
 <head>
     <meta charset="utf-8" />
     <title>Добавить статью</title>
-    <script src="admin/ckeditor/ckeditor.js"></script>
+    <script src="http://impovar.tt90.ru/admin/ckeditor/ckeditor.js"></script>
     <meta name="description" content="IMPOVAR" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="shortcut icon" href="img/favicon/favicon.ico" />
-    <link rel="stylesheet" href="libs/font-awesome-4.2.0/css/font-awesome.min.css" />
-    <link rel="stylesheet" href="libs/fancybox/jquery.fancybox.css" />
-    <link rel="stylesheet" href="libs/owl-carousel/owl.carousel.css" />
-    <link rel="stylesheet" href="libs/countdown/jquery.countdown.css" />
-    <link rel="stylesheet" href="remodal/remodal.css">
-    <link rel="stylesheet" href="remodal/remodal-default-theme.css">
-    <link rel="stylesheet" href="css/fonts.css" />
-    <link rel="stylesheet" href="css/main.css" />
-    <link rel="stylesheet" href="css/media.css" />
-    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="shortcut icon" href="http://impovar.tt90.ru/img/favicon/favicon.ico" />
+    <link rel="stylesheet" href="http://impovar.tt90.ru/libs/font-awesome-4.2.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="http://impovar.tt90.ru/libs/fancybox/jquery.fancybox.css" />
+    <link rel="stylesheet" href="http://impovar.tt90.ru/libs/owl-carousel/owl.carousel.css" />
+    <link rel="stylesheet" href="http://impovar.tt90.ru/libs/countdown/jquery.countdown.css" />
+    <link rel="stylesheet" href="http://impovar.tt90.ru/remodal/remodal.css">
+    <link rel="stylesheet" href="http://impovar.tt90.ru/remodal/remodal-default-theme.css">
+    <link rel="stylesheet" href="http://impovar.tt90.ru/css/fonts.css" />
+    <link rel="stylesheet" href="http://impovar.tt90.ru/css/main.css" />
+    <link rel="stylesheet" href="http://impovar.tt90.ru/css/media.css" />
+    <link rel="stylesheet" href="http://impovar.tt90.ru/css/bootstrap.min.css" />
 </head>
 <body>
 <html>
 <?php include("include/nav.php");?>
 <div class="container">
     <div class="row">
-        <div class="col-md-4 ava_block">
-            <a href="profile.php?id=<?php echo $_SESSION['user_id'];?>">
-                <img src="img/avatars/<?php echo $user_image; ?>" class="ava_img">
-            </a>
-        </div>
-        <div class="col-md-8" style="margin-bottom: 25px; background: #eeeff2;">
-            <div class="profile_panel">
-                <div class="panel_heading">
-                    <?php foreach($profile_data as $item):?>
-                        <span class="name_of_user_profile"><?php echo $item['username']; ?></span>
-                        <br>
-                    <?php endforeach;?>
-                </div>
-            </div>
+        <div class="col-md-8 col-md-offset-2" style="margin-bottom: 25px; background: #eeeff2;">
             <div class="chapters_of_answers">
                 <span class="span_answer">Раздел добавления статьи</span>
             </div>
@@ -161,9 +154,9 @@ if(isset($_POST['button_newarticle'])){
 
                     <div class="form-group">
                         <label class="label_admin_user">Содержание статьи</label>
-                        <textarea class="form-control" name="text" id="text" placeholder="Пишите вашу стаью"></textarea>
+                        <textarea rows="10" cols="20" class="form-control" name="text" id="text" placeholder="Пишите вашу стаью"></textarea>
                     </div>
-                    <button type="submit" name="button_newarticle"  class="btn_default" style="    margin-bottom: 125px;">Отправить</button>
+                    <button type="submit" name="button_newarticle"  class="btn_default">Разместить</button>
                 </form>
             </div>
         </div>
@@ -184,25 +177,24 @@ if(isset($_POST['button_newarticle'])){
     CKEDITOR.replace("text");
 </script>
 <!--[if lt IE 9]-->
-<script src="libs/html5shiv/es5-shim.min.js"></script>
-<script src="libs/html5shiv/html5shiv.min.js"></script>
-<script src="libs/html5shiv/html5shiv-printshiv.min.js"></script>
-<script src="libs/respond/respond.min.js"></script>
+<script src="http://impovar.tt90.ru/libs/html5shiv/es5-shim.min.js"></script>
+<script src="http://impovar.tt90.ru/libs/html5shiv/html5shiv.min.js"></script>
+<script src="http://impovar.tt90.ru/libs/html5shiv/html5shiv-printshiv.min.js"></script>
+<script src="http://impovar.tt90.ru/libs/respond/respond.min.js"></script>
 <!--[endif]-->
-<script src="libs/jquery/jquery-1.11.1.min.js"></script>
-<script src="libs/jquery-mousewheel/jquery.mousewheel.min.js"></script>
-<script src="libs/fancybox/jquery.fancybox.pack.js"></script>
-<script src="libs/waypoints/waypoints-1.6.2.min.js"></script>
-<script src="libs/scrollto/jquery.scrollTo.min.js"></script>
-<script src="libs/owl-carousel/owl.carousel.min.js"></script>
-<script src="libs/countdown/jquery.plugin.js"></script>
-<script src="libs/countdown/jquery.countdown.min.js"></script>
-<script src="libs/countdown/jquery.countdown-ru.js"></script>
-<script src="libs/landing-nav/navigation.js"></script>
-<script src="js/common.js"></script>
-<script src="js/main.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="remodal/remodal.min.js"></script>
-<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<script src="http://impovar.tt90.ru/libs/jquery/jquery-1.11.1.min.js"></script>
+<script src="http://impovar.tt90.ru/libs/jquery-mousewheel/jquery.mousewheel.min.js"></script>
+<script src="http://impovar.tt90.ru/libs/fancybox/jquery.fancybox.pack.js"></script>
+<script src="http://impovar.tt90.ru/libs/waypoints/waypoints-1.6.2.min.js"></script>
+<script src="http://impovar.tt90.ru/libs/scrollto/jquery.scrollTo.min.js"></script>
+<script src="http://impovar.tt90.ru/libs/owl-carousel/owl.carousel.min.js"></script>
+<script src="http://impovar.tt90.ru/libs/countdown/jquery.plugin.js"></script>
+<script src="http://impovar.tt90.ru/libs/countdown/jquery.countdown.min.js"></script>
+<script src="http://impovar.tt90.ru/libs/countdown/jquery.countdown-ru.js"></script>
+<script src="http://impovar.tt90.ru/libs/landing-nav/navigation.js"></script>
+<script src="http://impovar.tt90.ru/js/common.js"></script>
+<script src="http://impovar.tt90.ru/js/main.js"></script>
+<script src="http://impovar.tt90.ru/js/bootstrap.min.js"></script>
+<script src="http://impovar.tt90.ru/remodal/remodal.min.js"></script>
 </html>
 </body>

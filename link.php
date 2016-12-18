@@ -65,17 +65,15 @@ if(!empty($_GET)){
     <meta name="description" content="IMPOVAR" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="shortcut icon" href="img/favicon/favicon.ico" />
-    <link rel="stylesheet" href="libs/font-awesome-4.2.0/css/font-awesome.min.css" />
-    <link rel="stylesheet" href="libs/fancybox/jquery.fancybox.css" />
-    <link rel="stylesheet" href="libs/owl-carousel/owl.carousel.css" />
-    <link rel="stylesheet" href="libs/countdown/jquery.countdown.css" />
-    <link rel="stylesheet" href="remodal/remodal.css">
-    <link rel="stylesheet" href="remodal/remodal-default-theme.css">
-    <link rel="stylesheet" href="css/fonts.css" />
-    <link rel="stylesheet" href="css/main.css" />
-    <link rel="stylesheet" href="css/media.css" />
-    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="shortcut icon" href="http://impovar.tt90.ru/img/favicon/favicon.ico" />
+    <link rel="stylesheet" href="http://impovar.tt90.ru/libs/font-awesome-4.2.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="http://impovar.tt90.ru/libs/fancybox/jquery.fancybox.css" />
+    <link rel="stylesheet" href="http://impovar.tt90.ru/libs/owl-carousel/owl.carousel.css" />
+    <link rel="stylesheet" href="http://impovar.tt90.ru/libs/countdown/jquery.countdown.css" />
+    <link rel="stylesheet" href="http://impovar.tt90.ru/css/fonts.css" />
+    <link rel="stylesheet" href="http://impovar.tt90.ru/css/main.css" />
+    <link rel="stylesheet" href="http://impovar.tt90.ru/css/media.css" />
+    <link rel="stylesheet" href="http://impovar.tt90.ru/css/bootstrap.min.css" />
 </head>
 <body>
 
@@ -88,7 +86,7 @@ if(!empty($_GET)){
     <div class="row">
         <!--лого-->
         <div class="col-md-12 logo_block">
-            <img src="img/category_images/logo.svg" alt="logo" class="img_logo">
+            <i class="fa fa-cutlery fa_cutlery" aria-hidden="true"></i>
             <h1 class="logo_header">GRANDPOVAR</h1>
             <p class="logo_par">Энциклопедия рецептов</p>
             <hr class="hr_line">
@@ -97,12 +95,12 @@ if(!empty($_GET)){
         <div class="col-md-6 col-md-offset-3">
             <ol class="bread_crumb">
                 <li>
-                    <a href="index.php">Главная</a>
+                    <a href="http://impovar.tt90.ru/home">Главная</a>
                     <i class="fa fa-angle-right" aria-hidden="true"></i>
                 </li>
                 <?php foreach($tagTitle1 as $item):?>
                 <li>
-                    <a href="category.php?id=<?php echo $item['main_id']; ?>"><?php echo $item['title'];?></a>
+                    <a href="http://impovar.tt90.ru/category/<?php echo $item['main_id']; ?>"><?php echo $item['title'];?></a>
                     <i class="fa fa-angle-right" aria-hidden="true"></i>
                 </li>
                 <?php endforeach;?>
@@ -122,13 +120,13 @@ if(!empty($_GET)){
                 <h1 style="font-size: 15px;"><?php echo $item['title']; ?></h1></div>
             <div class="link_body">
                 <div class="img_block_link">
-                    <img src="admin/images/<?php echo $item['intro_image']; ?>" alt="..." class="img_link">
+                    <img src="http://impovar.tt90.ru/admin/images/<?php echo $item['intro_image']; ?>" alt="..." class="img_link">
                 </div>
                 <div class="intro_text_link">
                     <p><?php echo $item['intro_text']; ?></p>
                 </div>
                 <div class="look_article">
-                    <a href="full.php?id=<?php echo $item['id']; ?>" class="btn_link">Смотреть</a>
+                    <a href="http://impovar.tt90.ru/article/<?php echo $item['id']; ?>" class="btn_link">Смотреть</a>
                     <br>
                     <div class="link_like_comm_look">
                         <i class="fa fa-heart" aria-hidden="true"></i>
@@ -178,24 +176,24 @@ if(!empty($_GET)){
 <!--<script src="js/bootstrap.min.js"></script>-->
 
 <!--[if lt IE 9]>
-<script src="libs/html5shiv/es5-shim.min.js"></script>
-<script src="libs/html5shiv/html5shiv.min.js"></script>
-<script src="libs/html5shiv/html5shiv-printshiv.min.js"></script>
-<script src="libs/respond/respond.min.js"></script>
+<script src="http://impovar.tt90.ru/libs/html5shiv/es5-shim.min.js"></script>
+<script src="http://impovar.tt90.ru/libs/html5shiv/html5shiv.min.js"></script>
+<script src="http://impovar.tt90.ru/libs/html5shiv/html5shiv-printshiv.min.js"></script>
+<script src="http://impovar.tt90.ru/libs/respond/respond.min.js"></script>
 <![endif]-->
-<script src="libs/jquery/jquery-1.11.1.min.js"></script>
-<script src="libs/jquery-mousewheel/jquery.mousewheel.min.js"></script>
-<script src="libs/fancybox/jquery.fancybox.pack.js"></script>
-<script src="libs/waypoints/waypoints-1.6.2.min.js"></script>
-<script src="libs/scrollto/jquery.scrollTo.min.js"></script>
-<script src="libs/owl-carousel/owl.carousel.min.js"></script>
-<script src="libs/countdown/jquery.plugin.js"></script>
-<script src="libs/countdown/jquery.countdown.min.js"></script>
-<script src="libs/countdown/jquery.countdown-ru.js"></script>
-<script src="libs/landing-nav/navigation.js"></script>
-<script src="js/common.js"></script>
-<script src="js/main.js"></script>
-<script src="remodal/remodal.min.js"></script>
+<script src="http://impovar.tt90.ru/libs/jquery/jquery-1.11.1.min.js"></script>
+<script src="http://impovar.tt90.ru/libs/jquery-mousewheel/jquery.mousewheel.min.js"></script>
+<script src="http://impovar.tt90.ru/libs/fancybox/jquery.fancybox.pack.js"></script>
+<script src="http://impovar.tt90.ru/libs/waypoints/waypoints-1.6.2.min.js"></script>
+<script src="http://impovar.tt90.ru/libs/scrollto/jquery.scrollTo.min.js"></script>
+<script src="http://impovar.tt90.ru/libs/owl-carousel/owl.carousel.min.js"></script>
+<script src="http://impovar.tt90.ru/libs/countdown/jquery.plugin.js"></script>
+<script src="http://impovar.tt90.ru/libs/countdown/jquery.countdown.min.js"></script>
+<script src="http://impovar.tt90.ru/libs/countdown/jquery.countdown-ru.js"></script>
+<script src="http://impovar.tt90.ru/libs/landing-nav/navigation.js"></script>
+<script src="http://impovar.tt90.ru/js/common.js"></script>
+<script src="http://impovar.tt90.ru/js/main.js"></script>
+<script src="http://impovar.tt90.ru/remodal/remodal.min.js"></script>
 <!-- инициализация модал -->
 <script>
     $(window).scroll(function() {

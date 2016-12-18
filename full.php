@@ -3,9 +3,9 @@ include("functions/functions.php");
 include("include/connection.php");
 
 ## проверка ошибок
-//    error_reporting(E_ALL | E_STRICT);
-//    ini_set('display_errors', TRUE);
-//    ini_set('display_startup_errors', TRUE);
+    error_reporting(E_ALL | E_STRICT);
+    ini_set('display_errors', TRUE);
+    ini_set('display_startup_errors', TRUE);
 
 if (!empty($_GET)) {
 
@@ -153,15 +153,15 @@ if (!empty($_GET)) {
     <meta name="description" content="IMPOVAR"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <link rel="shortcut icon" href="img/favicon/favicon.ico"/>
-    <link rel="stylesheet" href="libs/font-awesome-4.2.0/css/font-awesome.min.css"/>
-    <link rel="stylesheet" href="libs/fancybox/jquery.fancybox.css"/>
-    <link rel="stylesheet" href="libs/owl-carousel/owl.carousel.css"/>
-    <link rel="stylesheet" href="libs/countdown/jquery.countdown.css"/>
-    <link rel="stylesheet" href="css/fonts.css"/>
-    <link rel="stylesheet" href="css/main.css"/>
-    <link rel="stylesheet" href="css/media.css"/>
-    <link rel="stylesheet" href="css/bootstrap.min.css"/>
+    <link rel="shortcut icon" href="http://impovar.tt90.ru/img/favicon/favicon.ico"/>
+    <link rel="stylesheet" href="http://impovar.tt90.ru/libs/font-awesome-4.2.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="http://impovar.tt90.ru/libs/fancybox/jquery.fancybox.css"/>
+    <link rel="stylesheet" href="http://impovar.tt90.ru/libs/owl-carousel/owl.carousel.css"/>
+    <link rel="stylesheet" href="http://impovar.tt90.ru/libs/countdown/jquery.countdown.css"/>
+    <link rel="stylesheet" href="http://impovar.tt90.ru/css/fonts.css"/>
+    <link rel="stylesheet" href="http://impovar.tt90.ru/css/main.css"/>
+    <link rel="stylesheet" href="http://impovar.tt90.ru/css/media.css"/>
+    <link rel="stylesheet" href="http://impovar.tt90.ru/css/bootstrap.min.css"/>
 </head>
 <body>
 <i class="fa fa-chevron-up" aria-hidden="true" id="top"></i>
@@ -189,18 +189,18 @@ else:
                 <div class="col-md-6 col-md-offset-3">
                     <ol class="bread_crumb">
                         <li>
-                            <a href="index.php">Главная</a>
+                            <a href="http://impovar.tt90.ru/home">Главная</a>
                             <i class="fa fa-angle-right" aria-hidden="true"></i>
                         </li>
                         <?php foreach ($tagMain as $item): ?>
                             <li>
-                                <a href="category.php?id=<?php echo $item['main_id']; ?>"><?php echo $item['title']; ?></a>
+                                <a href="http://impovar.tt90.ru/category/<?php echo $item['main_id']; ?>"><?php echo $item['title']; ?></a>
                                 <i class="fa fa-angle-right" aria-hidden="true"></i>
                             </li>
                         <?php endforeach; ?>
                         <?php foreach ($tagTitle as $item): ?>
                             <li>
-                                <a href="link.php?id=<?php echo $item['article_id']; ?>&page=1"><?php echo $item['title']; ?></a>
+                                <a href="http://impovar.tt90.ru/preview/<?php echo $item['article_id']; ?>/1/"><?php echo $item['title']; ?></a>
                                 <i class="fa fa-angle-right" aria-hidden="true"></i>
                             </li>
                         <?php endforeach; ?>
@@ -229,7 +229,7 @@ else:
                             elseif ($us_id == 14 AND $artMainid == 1 OR $us_id != 14):
                                 foreach ($auth as $item): ?>
                                     <span class="name_auth">Автор статьи:</span>
-                                    <a href="profile.php?id=<?php echo $item['id']; ?>"
+                                    <a href="http://impovar.tt90.ru/profile/<?php echo $item['id']; ?>"
                                        class="name_auth"><?php echo $item['username']; ?></a>
                                 <?php endforeach; ?>
                             <?php endif; ?>
@@ -247,8 +247,8 @@ else:
                         <div class="user_init_full">
                             <div class="user_photo">
                                 <?php foreach ($users as $key): ?>
-                                    <a href="profile.php?id=<?php echo $key['id']; ?>">
-                                        <img src="img/avatars/<?php echo $_SESSION['ava']; ?>" class="ava_img_fullart">
+                                    <a href="http://impovar.tt90.ru/profile/<?php echo $key['id']; ?>">
+                                        <img src="http://impovar.tt90.ru/img/avatars/<?php echo $_SESSION['ava']; ?>" class="ava_img_fullart">
                                     </a>
                                 <?php endforeach; ?>
                             </div>
@@ -294,9 +294,9 @@ else:
                             <div class="left_block_comment">
                                 <div class="ava">
                                     <div class="photo">
-                                        <img src="img/avatars/<?php echo $item['ava']; ?>" class="ava_img_fullusart">
+                                        <img src="http://impovar.tt90.ru/img/avatars/<?php echo $item['ava']; ?>" class="ava_img_fullusart">
                                     </div>
-                                    <a href="profile.php?id=<?php echo $item['user_id']; ?>" class="user_name_ava">
+                                    <a href="http://impovar.tt90.ru/profile/<?php echo $item['user_id']; ?>" class="user_name_ava">
                                         <?php echo $item['user_name']; ?>
                                     </a>
                                 </div>
@@ -348,24 +348,24 @@ else:
     }
 </script>
 <!--[if lt IE 9]>
-<script src="libs/html5shiv/es5-shim.min.js"></script>
-<script src="libs/html5shiv/html5shiv.min.js"></script>
-<script src="libs/html5shiv/html5shiv-printshiv.min.js"></script>
-<script src="libs/respond/respond.min.js"></script>
+<script src="http://impovar.tt90.ru/libs/html5shiv/es5-shim.min.js"></script>
+<script src="http://impovar.tt90.ru/libs/html5shiv/html5shiv.min.js"></script>
+<script src="http://impovar.tt90.ru/libs/html5shiv/html5shiv-printshiv.min.js"></script>
+<script src="http://impovar.tt90.ru/libs/respond/respond.min.js"></script>
 <![endif]-->
-<script src="libs/jquery/jquery-1.11.1.min.js"></script>
-<script src="libs/jquery-mousewheel/jquery.mousewheel.min.js"></script>
-<script src="libs/fancybox/jquery.fancybox.pack.js"></script>
-<script src="libs/waypoints/waypoints-1.6.2.min.js"></script>
-<script src="libs/scrollto/jquery.scrollTo.min.js"></script>
-<script src="libs/owl-carousel/owl.carousel.min.js"></script>
-<script src="libs/countdown/jquery.plugin.js"></script>
-<script src="libs/countdown/jquery.countdown.min.js"></script>
-<script src="libs/countdown/jquery.countdown-ru.js"></script>
-<script src="libs/landing-nav/navigation.js"></script>
-<script src="js/common.js"></script>
-<script src="js/main.js"></script>
-<script src="remodal/remodal.min.js"></script>
+<script src="http://impovar.tt90.ru/libs/jquery/jquery-1.11.1.min.js"></script>
+<script src="http://impovar.tt90.ru/libs/jquery-mousewheel/jquery.mousewheel.min.js"></script>
+<script src="http://impovar.tt90.ru/libs/fancybox/jquery.fancybox.pack.js"></script>
+<script src="http://impovar.tt90.ru/libs/waypoints/waypoints-1.6.2.min.js"></script>
+<script src="http://impovar.tt90.ru/libs/scrollto/jquery.scrollTo.min.js"></script>
+<script src="http://impovar.tt90.ru/libs/owl-carousel/owl.carousel.min.js"></script>
+<script src="http://impovar.tt90.ru/libs/countdown/jquery.plugin.js"></script>
+<script src="http://impovar.tt90.ru/libs/countdown/jquery.countdown.min.js"></script>
+<script src="http://impovar.tt90.ru/libs/countdown/jquery.countdown-ru.js"></script>
+<script src="http://impovar.tt90.ru/libs/landing-nav/navigation.js"></script>
+<script src="http://impovar.tt90.ru/js/common.js"></script>
+<script src="http://impovar.tt90.ru/js/main.js"></script>
+<script src="http://impovar.tt90.ru/remodal/remodal.min.js"></script>
 
 <!-- Yandex.Metrika counter --><!-- Yandex.Metrika counter -->
 <script type="text/javascript">(function (d, w, c) {

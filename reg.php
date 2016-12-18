@@ -62,36 +62,38 @@ if (isset($data['do_signup'])) {
     if (empty($errors)) {
         $no_photo = "no_ava.png";
         $password = md5($data['password']);
-//        $ins = $pdo->prepare("
-//            INSERT INTO
-//            `users`
-//            SET
-//            username=:username,
-//            ava=:ava,
-//            email=:email,
-//            password=:password,
-//            login=:login ");
-//        $ins->bindParam(":username", $data['username']);
-//        $ins->bindParam(":email", $data['email']);
-//        $ins->bindParam(":ava", $no_photo);
-//        $ins->bindParam(":password", $password);
-//        $ins->bindParam(":login", $data['login']);
-//        $ins->execute();
+        $ins = $pdo->prepare
+        ("
+            INSERT INTO
+            `users`
+            SET
+            username=:username,
+            ava=:ava,
+            email=:email,
+            password=:password,
+            login=:login 
+            ");
+        $ins->bindParam(":username", $data['username']);
+        $ins->bindParam(":email", $data['email']);
+        $ins->bindParam(":ava", $no_photo);
+        $ins->bindParam(":password", $password);
+        $ins->bindParam(":login", $data['login']);
+        $ins->execute();
 //            $result = $ins->FetchAll();
 //            $resultLogin = $ins[0]['login'];
 
         $_SESSION['email'] = $data['email'];
         $_SESSION['user_name'] = $data['username'];
 
-//        $st = $pdo->prepare('SELECT id FROM `users` WHERE login=:login');
-//        $st->bindParam(':login', $data['login'], PDO::PARAM_INT);
-//        $st->execute();
-//        $profile = $st->fetchAll();
-//        $resultPfofile = $profile[0]['id'];
-//
-//        $_SESSION['user_id'] = $resultPfofile;
-//
-//        header("Location: profile.php?id=$resultPfofile");
+        $st = $pdo->prepare('SELECT id FROM `users` WHERE login=:login');
+        $st->bindParam(':login', $data['login'], PDO::PARAM_INT);
+        $st->execute();
+        $profile = $st->fetchAll();
+        $resultPfofile = $profile[0]['id'];
+
+        $_SESSION['user_id'] = $resultPfofile;
+
+        header("Location: success_reg.php");
     } else {
         $error = array_shift($errors);
     }

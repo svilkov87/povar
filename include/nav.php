@@ -84,13 +84,13 @@
     //var_dump($_SERVER['REQUEST_URI']);
     //echo "</pre>";
 
-    //echo "<pre>";
-    //var_dump($_SESSION);
-    //echo "</pre>";
-
-    //echo "<pre>";
-    //var_dump($Mess);
-    //echo "</pre>";
+//    echo "<pre>";
+//    var_dump($_SESSION['user_id']);
+//    echo "</pre>";
+//
+//    echo "<pre>";
+//    var_dump($id);
+//    echo "</pre>";
     //
     //echo "<pre>";
     //var_dump($ResultOfCount);
@@ -152,7 +152,7 @@
                                 </form>
                             </a>
 
-                            <a class="stuff_menu" href="all_users.php" style="margin-bottom: 20px;">
+                            <a class="stuff_menu" href="http://impovar.tt90.ru/allusers" style="margin-bottom: 20px;">
                                 <div class="left_icon"><i class="fa fa-users" aria-hidden="true"></i></div>
                                 <div class="right_info"><span class="span_left">пользователи</span></div>
                             </a>

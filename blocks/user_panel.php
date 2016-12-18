@@ -14,19 +14,19 @@
 ?>
 <div class="stuff_menu">
     <div class="menu_ava">
-            <img src="img/avatars/<?php echo $_SESSION['ava']; ?>" class="ava_img_fullusart"><br>
+            <img src="http://impovar.tt90.ru/img/avatars/<?php echo $_SESSION['ava']; ?>" class="ava_img_fullusart"><br>
     </div>
 <!--<ul class="user_panel">-->
 <!--    <li class="user_panel_li">-->
     <div class="menu_ava">
-        <a href="../profile.php?id=<?php echo $_SESSION['user_id'];?>" class="user_panel_a">
+        <a href="http://impovar.tt90.ru/profile/<?php echo $_SESSION['user_id'];?>" class="user_panel_a">
             <?php echo ($_SESSION['user_name']);?>
         </a>
     </div>
 <!--    </li>-->
 <!--    <li class="user_panel_li">-->
     <div class="menu_ava">
-        <a href="blocks/logout.php" class="user_panel_exit">Выйти</a>
+        <a href="http://impovar.tt90.ru/logout" class="user_panel_exit">Выйти</a>
 <!--    </li>-->
 <!--</ul>-->
     </div>
@@ -34,7 +34,7 @@
 
 <div class="wrapp_all_stuff">
     <div class="all_stuff">
-        <a class="stuff_menu" id="stuff_menu_add" href="add_article.php?id=<?php echo $_SESSION['user_id'];?>">
+        <a class="stuff_menu" id="stuff_menu_add" href="http://impovar.tt90.ru/addarticle/<?php echo $_SESSION['user_id'];?>">
             <div class="left_icon"><i class="fa fa-plus" aria-hidden="true"></i></div>
             <div class="right_info"><span class="span_left">разместить рецепт</span></div>
         </a>

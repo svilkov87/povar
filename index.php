@@ -47,7 +47,8 @@ $tags = $st->fetchAll();
 <div class="container">
 	<div class="row">
 		<div class="col-md-12 logo_block">
-			<img src="img/category_images/logo.svg" alt="logo" class="img_logo">
+            <i class="fa fa-cutlery fa_cutlery" aria-hidden="true"></i>
+<!--			<img src="img/category_images/logo.svg" alt="logo" class="img_logo">-->
 			<h1 class="logo_header">GRANDPOVAR</h1>
 			<p class="logo_par">Энциклопедия рецептов</p>
 			<hr class="hr_line">
@@ -57,7 +58,8 @@ $tags = $st->fetchAll();
 				<div class="col-md-4 block2_main_links">
 					<div class="row">
 						<img src="img/category_images/pot.png" alt="" id="img_circle">
-						<a href="category.php?id=1">
+<!--						<a href="category.php?id=1">-->
+                            <a href="http://impovar.tt90.ru/category/1/">
 							<div class="bottom">
 								<p>Cuckoo 1055</p>
 							</div>
@@ -67,7 +69,8 @@ $tags = $st->fetchAll();
 				<div class="col-md-4 block2_main_links">
 					<div class="row">
 						<img src="img/category_images/inetolko.png" alt=""  id="img_circle">
-						<a href="category.php?id=2">
+<!--						<a href="category.php?id=2">-->
+						<a href="http://impovar.tt90.ru/category/2/">
 							<div class="bottom">
 								<p>Мультиварка и не только</p>
 							</div>
@@ -77,7 +80,7 @@ $tags = $st->fetchAll();
 				<div class="col-md-4 block2_main_links">
 					<div class="row">
 						<img src="img/category_images/for.png" alt="" id="img_circle">
-						<a href="forum.php">
+						<a href="http://impovar.tt90.ru/forum">
 							<div class="bottom">
 								<p>Форум</p>
 							</div>
@@ -93,7 +96,6 @@ $tags = $st->fetchAll();
 			</p>
 			</div>
 		</div>
-		<hr class="hr_line">
 	</div>
 </div>
 <?php include("include/footer.php");?>

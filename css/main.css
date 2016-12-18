@@ -10,14 +10,41 @@ body {
     font-family: "RobotoRegular", sans-serif !important;
     font-size: 14px;
 }
-
+.line_footer{
+    margin: 0 auto;
+    width: 70%;
+    border-top: 1px solid #eae4e4;
+}
+.fa_cutlery{
+    color: #fff;
+    font-size: 45px;
+    background: #000;
+    padding: 18px;
+    width: 78px;
+    height: 78px;
+    border-radius: 50%;
+}
+.fa_cutlery_footer{
+    position: absolute;
+    left: 48%;
+    bottom: 20px;
+    display: block;
+    color: #fff;
+    font-size: 18px;
+    background: #bbb3b3;
+    padding: 10px;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+}
+.fa_cutlery_footer:hover{
+    background: #d1c9c9;
+}
 #footer {
     position: absolute;
     bottom: 0;
     width: 100%;
-    /* Set the fixed height of the footer here */
     height: 80px;
-    background-color: #f5f5f5;
 }
 
 /*прижемаем футер к низу*/
@@ -32,6 +59,9 @@ li {
 }
 
 #top {
+    -webkit-border-radius: 50px;
+    -moz-border-radius: 50px;
+    border-radius: 50px;
     position: fixed;
     z-index: 99999;
     background-color: rgba(177, 177, 177, 0.86);
@@ -39,6 +69,7 @@ li {
     right: 20px;
     display: none;
     cursor: pointer;
+    color: #fff;
 }
 
 .fa-chevron-up {
@@ -59,6 +90,8 @@ li {
 .nav_fixed {
     position: fixed;
     z-index: 9999;
+    -webkit-transition: all 0.4s ease;
+    transition: all 0.4s ease;
 }
 
 #brand {
@@ -413,7 +446,9 @@ a.stuff_menu_search_field {
     position: absolute;
     display: block;
     background: rgb(255, 255, 255);
-    border-radius: 50%;
+    -webkit-border-radius: 50px;
+    -moz-border-radius: 50px;
+    border-radius: 50px;
     text-align: center;
     z-index: 1;
     top: 0;
@@ -650,6 +685,8 @@ a#hidden_id, a#hidden_id_to_user, a#hidden_text_to_comment {
     padding: .6em 1.5em; /* отступ от текста */
     outline: none; /* убирать контур в Mozilla */
     border: none;
+    margin-bottom: 75px;
+    margin-top: 25px;
 }
 
 .btn_default:hover {
@@ -791,7 +828,7 @@ a#hidden_id, a#hidden_id_to_user, a#hidden_text_to_comment {
 
 .last_to_full_link {
     text-decoration: none;
-    color: #d51a08;
+    color: #4f4f4f;
 }
 
 .span_last_rec {
@@ -805,7 +842,6 @@ a#hidden_id, a#hidden_id_to_user, a#hidden_text_to_comment {
     padding: 10px;
     position: relative;
     overflow: hidden;
-    margin-top: 25px;
     margin-bottom: -2px;
     border: 1px solid #ebebeb;
     text-align: center;
@@ -892,7 +928,6 @@ a#hidden_id, a#hidden_id_to_user, a#hidden_text_to_comment {
     margin-bottom: 25px;
     padding: 15px;
     border: 1px solid rgb(232, 231, 231);
-    margin-bottom: -2px;
     -webkit-box-shadow: -1px 9px 50px -10px rgba(0, 0, 0, 0.75);
     -moz-box-shadow: -1px 9px 50px -10px rgba(0, 0, 0, 0.75);
     box-shadow: -1px 9px 50px -10px rgba(0, 0, 0, 0.75);
@@ -978,7 +1013,9 @@ a#hidden_id, a#hidden_id_to_user, a#hidden_text_to_comment {
     background: #fcfeff;
     width: 150px;
     height: 150px;
-    border-radius: 50%;
+    -webkit-border-radius: 50px;
+    -moz-border-radius: 50px;
+    border-radius: 50px;
     border: 1px solid #ccc;
     animation-name: spinOut;
     animation-duration: 2s;
@@ -1030,6 +1067,8 @@ a#hidden_id, a#hidden_id_to_user, a#hidden_text_to_comment {
     height: 35px;
     outline: none;
     border: 1px solid #ccc;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
     border-radius: 3px;
 }
 
@@ -1168,9 +1207,14 @@ a#hidden_id, a#hidden_id_to_user, a#hidden_text_to_comment {
 }
 
 .full_art_panel {
+    margin-top: 30px;
+    margin-bottom: 15px;
     background: #fff;
     padding: 15px;
     border: 1px solid rgb(247, 247, 247);
+    -webkit-box-shadow: -1px 9px 50px -10px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: -1px 9px 50px -10px rgba(0, 0, 0, 0.75);
+    box-shadow: -1px 9px 50px -10px rgba(0, 0, 0, 0.75);
     /*border-radius: 3px;*/
 }
 
@@ -1205,8 +1249,10 @@ a#hidden_id, a#hidden_id_to_user, a#hidden_text_to_comment {
 
 .no_comment_body {
     border: 1px solid rgba(218, 176, 176, 0.41);
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
     border-radius: 3px;
-    padding: 5px;
+    padding: 0 20px 0 20px;
 }
 
 .no_comment_p {
@@ -1278,6 +1324,8 @@ a#hidden_id, a#hidden_id_to_user, a#hidden_text_to_comment {
 }
 
 .photo {
+    -webkit-border-radius: 50px;
+    -moz-border-radius: 50px;
     border-radius: 50px;
     margin: 0 auto;
     width: 55px;
@@ -1360,6 +1408,8 @@ a#hidden_id, a#hidden_id_to_user, a#hidden_text_to_comment {
     margin-top: -1px;
     margin-bottom: -1px;
     border: 1px solid #e8e8e8;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
     border-radius: 3px;
 }
 
@@ -1403,7 +1453,9 @@ a#hidden_id, a#hidden_id_to_user, a#hidden_text_to_comment {
 
 #m {
     height: 30px;
-    border-radius: 2px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
     border: 1px solid rgb(232, 231, 231);
     width: 100%;
     padding-left: 5px;
@@ -1417,7 +1469,9 @@ a#hidden_id, a#hidden_id_to_user, a#hidden_text_to_comment {
     padding-top: 10px;
     padding-left: 10px;
     border: 1px solid rgb(232, 231, 231);
-    border-radius: 2px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
     outline: none;
     font: normal 13px/100% Verdana, Tahoma, sans-serif;
     background: #FFFFFF;
@@ -1493,6 +1547,8 @@ a#hidden_id, a#hidden_id_to_user, a#hidden_text_to_comment {
 }
 
 .img_user_forum {
+    -webkit-border-radius: 50px;
+    -moz-border-radius: 50px;
     border-radius: 50px;
     /*margin-bottom: 15px;*/
     width: 80px;
@@ -1545,6 +1601,8 @@ a#hidden_id, a#hidden_id_to_user, a#hidden_text_to_comment {
 
 .name_sett_input {
     height: 30px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
     border-radius: 2px;
     border: 1px solid #ccc;
     width: 210px;
@@ -1609,6 +1667,8 @@ a#hidden_id, a#hidden_id_to_user, a#hidden_text_to_comment {
 
 .reg_inputs {
     height: 30px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
     border-radius: 2px;
     border: 1px solid #ccc;
     width: 215px;
@@ -1710,6 +1770,8 @@ label {
     /* margin-left: 5px; */
     margin: 0 auto;
     height: 35px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
     border-radius: 2px;
     border: 1px solid #ccc;
     width: 100%;
@@ -1804,4 +1866,8 @@ label {
     color: #000;
     font-weight: bold;
     padding: 5px;
+}
+/*успешная регистрация*/
+.succ_block_header{
+    text-align: center;
 }
