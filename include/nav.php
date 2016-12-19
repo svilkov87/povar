@@ -2,9 +2,9 @@
     //session_start();
     include("include/connection.php");
     //обработка ошибок
-    error_reporting(E_ALL | E_STRICT);
-    ini_set('display_errors', TRUE);
-    ini_set('display_startup_errors', TRUE);
+//    error_reporting(E_ALL | E_STRICT);
+//    ini_set('display_errors', TRUE);
+//    ini_set('display_startup_errors', TRUE);
 
 
     //проверка авторизации
@@ -46,17 +46,7 @@
     $Message = array();
 
     $One = 1;
-    $st = $pdo->prepare
-    ('
-    SELECT 
-    COUNT(*) 
-    FROM 
-    `comments` 
-    WHERE 
-    isnew=:isnew 
-    AND 
-    user_id_art =:user_id_art
-    ');
+    $st = $pdo->prepare('SELECT COUNT(*)FROM `comments` WHERE isnew=:isnew AND user_id_art =:user_id_art');
     $st->bindParam(':isnew', $One, PDO::PARAM_INT);
     $st->bindParam(':user_id_art', $_SESSION['user_id'], PDO::PARAM_INT);
     $st->execute();
@@ -64,12 +54,27 @@
     if ($ResultOfCount[0]['COUNT(*)'] > 0) {
         $Message[] = '<i class="fa fa-envelope-o" aria-hidden="true"></i>';
         $NumberMess = $ResultOfCount[0]['COUNT(*)'];
+
+
+//        уведомление на почту
+//        $user_id_mail = $_SESSION['user_id'];
+//        require_once("./phpmailer/phpmailer/mailfunc.php");
+//        $m_to = $_SESSION['email']; // кому - ящик (из формы)
+//        $m_nameto = ""; // Кому
+//        $m_namefrom = "GRANDPOVAR"; // Поле От в письме
+//        $subj = "Новый комментарий";
+//        $tmsg = 'У Вас есть непрочитанные ответы. Проверьте ваш аккаунт.';
+////        $tmsg = "У Вас есть непрочитанные ответы." .<a href="http://impovar.tt90.ru/myanswers/'.$user_id_mail.'">Прочитать</a>;
+//        $m_from = 'svilkov00@yandex.ru'; // от ког
+//        $m_reply = 'svilkov00@yandex.ru'; // адрес для обратного ответа
+//        $mail1 = phpmailer($subj, $tmsg, $m_to, $m_nameto, $m_namefrom, $m_from, $m_reply, $m_hostmail, $m_port, $m_password, $m_secure);
+
     } else {
         $Message[] = "Нет сообщений";
         $NumberMess = "0";
     }
 
-    if ($_SERVER['REQUEST_URI'] == '/myanswers.php?id=' . $_SESSION['user_id'] . '' AND $ResultOfCount[0]['COUNT(*)'] > 0) {
+    if ($_SERVER['REQUEST_URI'] == '/myanswers/'. $_SESSION['user_id'] .'' AND $ResultOfCount[0]["COUNT(*)"] > 0) {
         $NullValue = 0;
         $st = $pdo->prepare('UPDATE `comments` SET isnew=:isnew WHERE isnew=1 AND user_id_art =:user_id_art');
         $st->bindParam(':isnew', $NullValue, PDO::PARAM_INT);
@@ -80,21 +85,21 @@
 
     $Mess = array_shift($Message);
     //отладка
-    //echo "<pre>";
-    //var_dump($_SERVER['REQUEST_URI']);
-    //echo "</pre>";
-
 //    echo "<pre>";
-//    var_dump($_SESSION['user_id']);
+//    var_dump($_SERVER['REQUEST_URI']);
 //    echo "</pre>";
 //
 //    echo "<pre>";
-//    var_dump($id);
+//    var_dump($_SESSION['user_id']);
 //    echo "</pre>";
-    //
-    //echo "<pre>";
-    //var_dump($ResultOfCount);
-    //echo "</pre>";
+////
+//    echo "<pre>";
+//    var_dump($NumberMess);
+//    echo "</pre>";
+//    //
+//    echo "<pre>";
+//    var_dump($ResultOfCount);
+//    echo "</pre>";
 
 ?>
 <div class="nav">
@@ -143,7 +148,7 @@
                             </a>
                             <a class="stuff_menu_search_field" href="#" style="display: none;">
                                 <div class="col-md-12 col-sm-12 col-xs-12">
-                                    <form action="search.php" class="navbar-form navbar-left" role="search">
+                                    <form action="http://impovar.tt90.ru/search" class="navbar-form navbar-left" role="search">
                                         <input type="text" name="search" placeholder="Поиск" id="form_search">
                                         <button type="submit" id="search_button" name="search_submit"
                                                 style="float: right;">Go!

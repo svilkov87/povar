@@ -3,9 +3,9 @@ include("functions/functions.php");
 include("include/connection.php");
 
 ## проверка ошибок
-    error_reporting(E_ALL | E_STRICT);
-    ini_set('display_errors', TRUE);
-    ini_set('display_startup_errors', TRUE);
+//    error_reporting(E_ALL | E_STRICT);
+//    ini_set('display_errors', TRUE);
+//    ini_set('display_startup_errors', TRUE);
 
 if (!empty($_GET)) {
 
@@ -200,7 +200,7 @@ else:
                         <?php endforeach; ?>
                         <?php foreach ($tagTitle as $item): ?>
                             <li>
-                                <a href="http://impovar.tt90.ru/preview/<?php echo $item['article_id']; ?>/1/"><?php echo $item['title']; ?></a>
+                                <a href="http://impovar.tt90.ru/preview/<?php echo $item['article_id']; ?>"><?php echo $item['title']; ?></a>
                                 <i class="fa fa-angle-right" aria-hidden="true"></i>
                             </li>
                         <?php endforeach; ?>

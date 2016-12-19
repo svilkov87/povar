@@ -10,8 +10,11 @@ include("include/connection.php");
 if (!empty($_GET)) {
 
     $id = intval($_GET['id']);
-    if ($id === 0) {
-        die('Ошибка сжатия чёрной дыры');
+    // если зло вручную поставит другой id пользвателя, то он не попадет на чужую страницу с ответами
+    if ($id === 0 OR $id != $_SESSION['user_id']) {
+//        die('Ошибка сжатия чёрной дыры');
+        header("Location: http://impovar.tt90.ru/home");
+        exit;
     }
 
     //Выбираем юзера, чей аккаунт
@@ -46,18 +49,6 @@ if (!empty($_GET)) {
         $sex = "Не выбран";
     }
 
-
-//    считаем количество рецептов
-//    $st = $pdo->prepare('SELECT COUNT(user_id) FROM `article` WHERE user_id=:user_id');
-//    $st->bindParam(':user_id', $id, PDO::PARAM_INT);
-//    $st->execute();
-//    $art_column = $st->fetchColumn();
-
-//    $st = $pdo->prepare('SELECT * FROM `article` WHERE user_id=:user_id ORDER BY id DESC');
-//    $st->bindParam(':user_id', $id, PDO::PARAM_INT);
-//    $st->execute();
-//    $art_of_user = $st->fetchAll();
-
 //редактура настроек
     $user_id = $_SESSION['user_id'];
     if (isset($_POST['button_newsettings'])) {
@@ -90,7 +81,7 @@ if (!empty($_GET)) {
         $insert->bindParam(':profession', $proff);
         $insert->bindParam(':hobby', $hobby);
         $insert->execute();
-        header("Location: profile.php?id=$user_id");
+        header("Location: http://impovar.tt90.ru/profile/$user_id");
         exit();
     }
 
@@ -100,7 +91,7 @@ if (!empty($_GET)) {
 //echo "</pre>";
 
 if (!isset($_SESSION['email'])) {
-    header("Location: index.php");
+    header("Location: http://impovar.tt90.ru/home");
     exit;
 }
 ?>
@@ -121,17 +112,17 @@ if (!isset($_SESSION['email'])) {
     <meta name="description" content="IMPOVAR"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <link rel="shortcut icon" href="img/favicon/favicon.ico"/>
-    <link rel="stylesheet" href="libs/font-awesome-4.2.0/css/font-awesome.min.css"/>
-    <link rel="stylesheet" href="libs/fancybox/jquery.fancybox.css"/>
-    <link rel="stylesheet" href="libs/owl-carousel/owl.carousel.css"/>
-    <link rel="stylesheet" href="libs/countdown/jquery.countdown.css"/>
-    <link rel="stylesheet" href="remodal/remodal.css">
-    <link rel="stylesheet" href="remodal/remodal-default-theme.css">
-    <link rel="stylesheet" href="css/fonts.css"/>
-    <link rel="stylesheet" href="css/main.css"/>
-    <link rel="stylesheet" href="css/media.css"/>
-    <link rel="stylesheet" href="css/bootstrap.min.css"/>
+    <link rel="shortcut icon" href="http://impovar.tt90.ru/img/favicon/favicon.ico"/>
+    <link rel="stylesheet" href="http://impovar.tt90.ru/libs/font-awesome-4.2.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="http://impovar.tt90.ru/libs/fancybox/jquery.fancybox.css"/>
+    <link rel="stylesheet" href="http://impovar.tt90.ru/libs/owl-carousel/owl.carousel.css"/>
+    <link rel="stylesheet" href="http://impovar.tt90.ru/libs/countdown/jquery.countdown.css"/>
+    <link rel="stylesheet" href="http://impovar.tt90.ru/remodal/remodal.css">
+    <link rel="stylesheet" href="http://impovar.tt90.ru/remodal/remodal-default-theme.css">
+    <link rel="stylesheet" href="http://impovar.tt90.ru/css/fonts.css"/>
+    <link rel="stylesheet" href="http://impovar.tt90.ru/css/main.css"/>
+    <link rel="stylesheet" href="http://impovar.tt90.ru/css/media.css"/>
+    <link rel="stylesheet" href="http://impovar.tt90.ru/css/bootstrap.min.css"/>
 </head>
 <body>
 <html>
@@ -182,25 +173,25 @@ if (!isset($_SESSION['email'])) {
 </div>
 <?php include("include/footer.php"); ?>
 <!--[if lt IE 9]-->
-<script src="libs/html5shiv/es5-shim.min.js"></script>
-<script src="libs/html5shiv/html5shiv.min.js"></script>
-<script src="libs/html5shiv/html5shiv-printshiv.min.js"></script>
-<script src="libs/respond/respond.min.js"></script>
+<script src="http://impovar.tt90.ru/libs/html5shiv/es5-shim.min.js"></script>
+<script src="http://impovar.tt90.ru/libs/html5shiv/html5shiv.min.js"></script>
+<script src="http://impovar.tt90.ru/libs/html5shiv/html5shiv-printshiv.min.js"></script>
+<script src="http://impovar.tt90.ru/libs/respond/respond.min.js"></script>
 <!--[endif]-->
-<script src="libs/jquery/jquery-1.11.1.min.js"></script>
-<script src="libs/jquery-mousewheel/jquery.mousewheel.min.js"></script>
-<script src="libs/fancybox/jquery.fancybox.pack.js"></script>
-<script src="libs/waypoints/waypoints-1.6.2.min.js"></script>
-<script src="libs/scrollto/jquery.scrollTo.min.js"></script>
-<script src="libs/owl-carousel/owl.carousel.min.js"></script>
-<script src="libs/countdown/jquery.plugin.js"></script>
-<script src="libs/countdown/jquery.countdown.min.js"></script>
-<script src="libs/countdown/jquery.countdown-ru.js"></script>
-<script src="libs/landing-nav/navigation.js"></script>
-<script src="js/common.js"></script>
-<script src="js/main.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="remodal/remodal.min.js"></script>
-<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<script src="http://impovar.tt90.ru/libs/jquery/jquery-1.11.1.min.js"></script>
+<script src="http://impovar.tt90.ru/libs/jquery-mousewheel/jquery.mousewheel.min.js"></script>
+<script src="http://impovar.tt90.ru/libs/fancybox/jquery.fancybox.pack.js"></script>
+<script src="http://impovar.tt90.ru/libs/waypoints/waypoints-1.6.2.min.js"></script>
+<script src="http://impovar.tt90.ru/libs/scrollto/jquery.scrollTo.min.js"></script>
+<script src="http://impovar.tt90.ru/libs/owl-carousel/owl.carousel.min.js"></script>
+<script src="http://impovar.tt90.ru/libs/countdown/jquery.plugin.js"></script>
+<script src="http://impovar.tt90.ru/libs/countdown/jquery.countdown.min.js"></script>
+<script src="http://impovar.tt90.ru/libs/countdown/jquery.countdown-ru.js"></script>
+<script src="http://impovar.tt90.ru/libs/landing-nav/navigation.js"></script>
+<script src="http://impovar.tt90.ru/js/common.js"></script>
+<script src="http://impovar.tt90.ru/js/main.js"></script>
+<script src="http://impovar.tt90.ru/js/bootstrap.min.js"></script>
+<script src="http://impovar.tt90.ru/remodal/remodal.min.js"></script>
+<script src="http://impovar.tt90.ru///code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 </html>
 </body>

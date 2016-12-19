@@ -12,23 +12,28 @@ if(!empty($_GET)){
     if ($id === 0){die('Ошибка сжатия чёрной дыры');}
     
     //пагинация
-    $page = intval($_GET['page']);
-    //сколько хотим видеть статей на странице
-    $max_posts = 4;
-
-    //узнаем сколько всего лежит статей в бд
-    $num_posts = $pdo->query('SELECT COUNT(*) FROM `article`')->fetchColumn();
-    //указываем сколько хотим видеть страниц
-    $num_pages = intval(($num_posts - 1) / $max_posts) + 1 ;
-
-    if(empty($page)or $page < 0) $page = 1;
-    if($page > $num_pages) $page = $num_pages;
-
-    //определяем c какого номера выводить
-    $start = $page * $max_posts - $max_posts;
+//    $page = intval($_GET['page']);
+//    //сколько хотим видеть статей на странице
+//    $max_posts = 4;
+//
+//    //узнаем сколько всего лежит статей в бд
+//    $num_posts = $pdo->query('SELECT COUNT(*) FROM `article`')->fetchColumn();
+//    //указываем сколько хотим видеть страниц
+//    $num_pages = intval(($num_posts - 1) / $max_posts) + 1 ;
+//
+//    if(empty($page)or $page < 0) $page = 1;
+//    if($page > $num_pages) $page = $num_pages;
+//
+//    //определяем c какого номера выводить
+//    $start = $page * $max_posts - $max_posts;
 
     //Выбираем статьи относящиеся к вторстепенным тегам
-    $st = $pdo->prepare("SELECT * FROM `article` WHERE cat_id=:id ORDER BY id DESC LIMIT $start, $max_posts ");
+//    $st = $pdo->prepare("SELECT * FROM `article` WHERE cat_id=:id ORDER BY id DESC LIMIT $start, $max_posts ");
+//    $st->bindParam(':id', $id, PDO::PARAM_INT);
+//    $st->execute();
+//    $art = $st->fetchAll();
+
+    $st = $pdo->prepare("SELECT * FROM `article` WHERE cat_id=:id ORDER BY id DESC");
     $st->bindParam(':id', $id, PDO::PARAM_INT);
     $st->execute();
     $art = $st->fetchAll();
@@ -137,38 +142,38 @@ if(!empty($_GET)){
             </div>
         </div>
     <?php endforeach; ?>
-    <ul class="pagination">
-    <?
-    // Проверяем нужны ли стрелки назад
-
-    if ($page != 1) $pervpage = '<a href=link.php?id='.$_GET['id'].'&page=1>Первая</a> | <a href=link.php?id='.$_GET['id'].'&page='. ($page - 1) .'>Предыдущая</a> | ';
-    // Проверяем нужны ли стрелки вперед
-    if ($page != $num_pages) $nextpage = ' | <a href=link.php?id='.$_GET['id'].'&page='. ($page + 1) .'>Следующая</a> | <a href=link.php?id='.$_GET['id'].'&page=' .$num_pages. '>Последняя</a>';
-
-    // Находим две ближайшие станицы с обоих краев, если они есть
-    if($page - 5 > 0) $page5left = ' <a href=link.php?id='.$_GET['id'].'&page='. ($page - 5) .'>'. ($page - 5) .'</a> | ';
-    if($page - 4 > 0) $page4left = ' <a href=link.php?id='.$_GET['id'].'&page='. ($page - 4) .'>'. ($page - 4) .'</a> | ';
-    if($page - 3 > 0) $page3left = ' <a href=link.php?id='.$_GET['id'].'&page='. ($page - 3) .'>'. ($page - 3) .'</a> | ';
-    if($page - 2 > 0) $page2left = ' <a href=link.php?id='.$_GET['id'].'&page='. ($page - 2) .'>'. ($page - 2) .'</a> | ';
-    if($page - 1 > 0) $page1left = ' <a href=link.php?id='.$_GET['id'].'&page='. ($page - 1) .'>'. ($page - 1) .'</a> | ';
-
-    if($page + 5 <= $num_pages) $page5right = ' | <a href=link.php?id='.$_GET['id'].'&page='. ($page + 5) .'>'. ($page + 5) .'</a>';
-    if($page + 4 <= $num_pages) $page4right = ' | <a href=link.php?id='.$_GET['id'].'&page='. ($page + 4) .'>'. ($page + 4) .'</a>';
-    if($page + 3 <= $num_pages) $page3right = ' | <a href=link.php?id='.$_GET['id'].'&page='. ($page + 3) .'>'. ($page + 3) .'</a>';
-    if($page + 2 <= $num_pages) $page2right = ' | <a href=link.php?id='.$_GET['id'].'&page='. ($page + 2) .'>'. ($page + 2) .'</a>';
-    if($page + 1 <= $num_pages) $page1right = ' | <a href=link.php?id='.$_GET['id'].'&page='. ($page + 1) .'>'. ($page + 1) .'</a>';
-
-    // Вывод меню если страниц больше одной
-
-    if ($num_pages > 1)
-    {
-        Error_Reporting(E_ALL & ~E_NOTICE);
-        echo "<div class=\"pstrnav\">";
-        echo $pervpage.$page5left.$page4left.$page3left.$page2left.$page1left.'<b>'.$page.'</b>'.$page1right.$page2right.$page3right.$page4right.$page5right.$nextpage;
-        echo "</div>";
-    }
-    ?>
-    </ul>
+<!--    <ul class="pagination">-->
+<!--    --><?//
+//    // Проверяем нужны ли стрелки назад
+//
+//    if ($page != 1) $pervpage = '<a href=link.php?id='.$_GET['id'].'&page=1>Первая</a> | <a href=link.php?id='.$_GET['id'].'&page='. ($page - 1) .'>Предыдущая</a> | ';
+//    // Проверяем нужны ли стрелки вперед
+//    if ($page != $num_pages) $nextpage = ' | <a href=link.php?id='.$_GET['id'].'&page='. ($page + 1) .'>Следующая</a> | <a href=link.php?id='.$_GET['id'].'&page=' .$num_pages. '>Последняя</a>';
+//
+//    // Находим две ближайшие станицы с обоих краев, если они есть
+//    if($page - 5 > 0) $page5left = ' <a href=link.php?id='.$_GET['id'].'&page='. ($page - 5) .'>'. ($page - 5) .'</a> | ';
+//    if($page - 4 > 0) $page4left = ' <a href=link.php?id='.$_GET['id'].'&page='. ($page - 4) .'>'. ($page - 4) .'</a> | ';
+//    if($page - 3 > 0) $page3left = ' <a href=link.php?id='.$_GET['id'].'&page='. ($page - 3) .'>'. ($page - 3) .'</a> | ';
+//    if($page - 2 > 0) $page2left = ' <a href=link.php?id='.$_GET['id'].'&page='. ($page - 2) .'>'. ($page - 2) .'</a> | ';
+//    if($page - 1 > 0) $page1left = ' <a href=link.php?id='.$_GET['id'].'&page='. ($page - 1) .'>'. ($page - 1) .'</a> | ';
+//
+//    if($page + 5 <= $num_pages) $page5right = ' | <a href=link.php?id='.$_GET['id'].'&page='. ($page + 5) .'>'. ($page + 5) .'</a>';
+//    if($page + 4 <= $num_pages) $page4right = ' | <a href=link.php?id='.$_GET['id'].'&page='. ($page + 4) .'>'. ($page + 4) .'</a>';
+//    if($page + 3 <= $num_pages) $page3right = ' | <a href=link.php?id='.$_GET['id'].'&page='. ($page + 3) .'>'. ($page + 3) .'</a>';
+//    if($page + 2 <= $num_pages) $page2right = ' | <a href=link.php?id='.$_GET['id'].'&page='. ($page + 2) .'>'. ($page + 2) .'</a>';
+//    if($page + 1 <= $num_pages) $page1right = ' | <a href=link.php?id='.$_GET['id'].'&page='. ($page + 1) .'>'. ($page + 1) .'</a>';
+//
+//    // Вывод меню если страниц больше одной
+//
+//    if ($num_pages > 1)
+//    {
+//        Error_Reporting(E_ALL & ~E_NOTICE);
+//        echo "<div class=\"pstrnav\">";
+//        echo $pervpage.$page5left.$page4left.$page3left.$page2left.$page1left.'<b>'.$page.'</b>'.$page1right.$page2right.$page3right.$page4right.$page5right.$nextpage;
+//        echo "</div>";
+//    }
+//    ?>
+<!--    </ul>-->
 </div>
 </div>
 <?php include("include/footer.php");?>

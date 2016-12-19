@@ -98,15 +98,15 @@ if (!empty($_GET)) {
     <meta name="description" content="IMPOVAR"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <link rel="shortcut icon" href="img/favicon/favicon.ico"/>
-    <link rel="stylesheet" href="libs/font-awesome-4.2.0/css/font-awesome.min.css"/>
-    <link rel="stylesheet" href="libs/fancybox/jquery.fancybox.css"/>
-    <link rel="stylesheet" href="libs/owl-carousel/owl.carousel.css"/>
-    <link rel="stylesheet" href="libs/countdown/jquery.countdown.css"/>
-    <link rel="stylesheet" href="css/fonts.css"/>
-    <link rel="stylesheet" href="css/main.css"/>
-    <link rel="stylesheet" href="css/media.css"/>
-    <link rel="stylesheet" href="css/bootstrap.min.css"/>
+    <link rel="shortcut icon" href="http://impovar.tt90.ru/img/favicon/favicon.ico"/>
+    <link rel="stylesheet" href="http://impovar.tt90.ru/libs/font-awesome-4.2.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="http://impovar.tt90.ru/libs/fancybox/jquery.fancybox.css"/>
+    <link rel="stylesheet" href="http://impovar.tt90.ru/libs/owl-carousel/owl.carousel.css"/>
+    <link rel="stylesheet" href="http://impovar.tt90.ru/libs/countdown/jquery.countdown.css"/>
+    <link rel="stylesheet" href="http://impovar.tt90.ru/css/fonts.css"/>
+    <link rel="stylesheet" href="http://impovar.tt90.ru/css/main.css"/>
+    <link rel="stylesheet" href="http://impovar.tt90.ru/css/media.css"/>
+    <link rel="stylesheet" href="http://impovar.tt90.ru/css/bootstrap.min.css"/>
 </head>
 <body>
 <?php
@@ -116,11 +116,11 @@ if (!empty($_GET)) {
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
-            <a href="add_topic.php" class="add_topic">
+            <a href="http://impovar.tt90.ru/newtopic" class="add_topic">
                 <span class="add_text_topic">Добавить тему</span>
                 <i class="fa fa-plus" aria-hidden="true"></i>
             </a>
-            <a href="forum.php" class="back_to_forum">
+            <a href="http://impovar.tt90.ru/forum" class="back_to_forum">
                 <span class="add_text_topic">назад</span>
                 <i class="fa fa-undo" aria-hidden="true"></i>
             </a>
@@ -133,7 +133,7 @@ if (!empty($_GET)) {
             <?php foreach ($topic as $item): ?>
                 <div class="theme_topic">
                     <div class="user_name_of_topic">
-                        <a href="profile.php?id=<?php echo $item['user_id']; ?>">
+                        <a href="http://impovar.tt90.ru/profile/<?php echo $item['user_id']; ?>">
                             <img src="img/avatars/<?php echo $item['user_ava']; ?>" class="img_user_forum">
                             <span class="user_name_link"><?php echo $item['user_name']; ?></span>
                         </a>
@@ -150,14 +150,14 @@ if (!empty($_GET)) {
                     <?php
                     if ($us_id == $_SESSION['user_id']):?>
                         <div class="content_topic">
-                            <a href="edit_topic.php?id=<?php echo $item['id']; ?>"
+                            <a href="http://impovar.tt90.ru/edittopic/<?php echo $item['id']; ?>"
                                class="edit_topic_link">Редактировать</a>
                         </div>
                     <?php endif; ?>
                     <div class="author_of_fullart">
                         <?php foreach ($auth as $item): ?>
                             <span class="name_auth">Автор:</span>
-                            <a href="profile.php?id=<?php echo $item['id']; ?>"
+                            <a href="http://impovar.tt90.ru/profile/<?php echo $item['id']; ?>"
                                class="name_auth"><?php echo $item['username']; ?></a>
                         <?php endforeach; ?>
                         <br>
@@ -177,7 +177,7 @@ if (!empty($_GET)) {
                     <div class="user_init_full">
                         <div class="user_photo">
                             <?php foreach ($auth as $key): ?>
-                                <a href="profile.php?id=<?php echo $key['id']; ?>">
+                                <a href="http://impovar.tt90.ru/profile/<?php echo $key['id']; ?>">
                                     <img src="img/avatars/<?php echo $_SESSION['ava']; ?>" class="ava_img_fullart">
                                 </a>
                             <?php endforeach; ?>
@@ -226,12 +226,12 @@ if (!empty($_GET)) {
                             </div>
                         </div>
                         <div class="middle_content_comm">
-                            <a href="profile.php?id=<?php echo $item['user_id']; ?>" class="user_name_ava">
+                            <a href="http://impovar.tt90.ru/profile/<?php echo $item['user_id']; ?>" class="user_name_ava">
                                 <?php echo $item['user_name']; ?>
                             </a><br>
                             <span class="answer_comment"><?php echo $item['text']; ?></span><br>
 
-                            <a href="profile.php?id=<?php echo $item['user_id']; ?>" class="p"
+                            <a href="http://impovar.tt90.ru/profole/<?php echo $item['user_id']; ?>" class="p"
                                id="answer_item_id<?php echo $item['id']; ?>">
                                 <?php echo $item['user_name']; ?>
                             </a>
@@ -245,71 +245,30 @@ if (!empty($_GET)) {
                     <hr>
                 <?php endforeach; ?>
             </div>
-            <!--            <div class="author_of_fullart">-->
-            <!--                --><?php //foreach($auth as $item): ?>
-            <!--                    <span class="name_auth">Автор статьи:</span>-->
-            <!--                    <a href="profile.php?id=--><?php //echo $item['id'];?><!--" class="name_auth">-->
-            <?php //echo $item['username'];?><!--</a>-->
-            <!--                --><?php //endforeach; ?>
-            <!--            </div>-->
-            <!--            </div>-->
-            <!--            <div class="answer_topic">-->
-            <!--                <div class="col-md-12">-->
-            <!--                    <div class="row">-->
-            <!--                        <form method="post" action="">-->
-            <!--                            <input type="text" name="input_text" id="answer_input">-->
-            <!--                            <input type="text" name="input_theme" id="answer_input" value="-->
-            <?php //echo $topic_theme?><!--">-->
-            <!--                            <input type="text" name="input_user" id="answer_input" value="-->
-            <?php //echo $us_id;?><!--">-->
-            <!--                            <input type="text" name="input_user_id" id="answer_input_to_user">-->
-            <!--                            <textarea class="form-control" rows="3" name="answer_for_comment" id="answer_to_comment"></textarea>-->
-            <!--                            <textarea class="form-control" rows="9" name="text" id="answer"></textarea>-->
-            <!--                            <button class="btn_default" type="submit" name="enter_comment">Оставить комментарий</button>-->
-            <!--                        </form>-->
-            <!--                    </div>-->
-            <!--                </div>-->
-            <!--            </div>-->
-            <!--            <div class="panel panel-info">-->
-            <!--                --><?php //foreach ($comments as $item): ?>
-            <!--                <div class="panel-heading" role="answer_item_id" id="answer_item_id-->
-            <?php //echo $item['id'];?><!--">-->
-            <!--                    <a href="#" id="hidden_id">--><?php //echo $item['id'];?><!--</a>-->
-            <!--                    <a href="#" id="hidden_id_to_user">--><?php //echo $item['user_id'];?><!--</a>-->
-            <!--                    <a href="#" id="hidden_text_to_comment">--><?php //echo $item['text'];?><!--</a>-->
-            <!--                    <a href="profile.php?id=-->
-            <?php //echo $item['user_id'];?><!--" class="p" id="answer_item_id--><?php //echo $item['id'];?><!--">-->
-            <!--                        --><?php //echo $item['user_name'];?>
-            <!--                    </a>-->
-            <!--                    --><?php //echo $item['text'];?>
-            <!--                    <a href="#" class="send_name">ответить</a>-->
-            <!--                </div>-->
-            <!--                --><?php //endforeach;?>
-            <!--            </div>-->
         </div>
     </div>
 </div>
 </div>
 <?php include("include/footer.php"); ?>
 <!--[if lt IE 9]>
-<script src="libs/html5shiv/es5-shim.min.js"></script>
-<script src="libs/html5shiv/html5shiv.min.js"></script>
-<script src="libs/html5shiv/html5shiv-printshiv.min.js"></script>
-<script src="libs/respond/respond.min.js"></script>
+<script src="http://impovar.tt90.ru/libs/html5shiv/es5-shim.min.js"></script>
+<script src="http://impovar.tt90.ru/libs/html5shiv/html5shiv.min.js"></script>
+<script src="http://impovar.tt90.ru/libs/html5shiv/html5shiv-printshiv.min.js"></script>
+<script src="http://impovar.tt90.ru/libs/respond/respond.min.js"></script>
 <![endif]-->
-<script src="libs/jquery/jquery-1.11.1.min.js"></script>
-<script src="libs/jquery-mousewheel/jquery.mousewheel.min.js"></script>
-<script src="libs/fancybox/jquery.fancybox.pack.js"></script>
-<script src="libs/waypoints/waypoints-1.6.2.min.js"></script>
-<script src="libs/scrollto/jquery.scrollTo.min.js"></script>
-<script src="libs/owl-carousel/owl.carousel.min.js"></script>
-<script src="libs/countdown/jquery.plugin.js"></script>
-<script src="libs/countdown/jquery.countdown.min.js"></script>
-<script src="libs/countdown/jquery.countdown-ru.js"></script>
-<script src="libs/landing-nav/navigation.js"></script>
-<script src="js/common.js"></script>
-<script src="js/main.js"></script>
-<script src="remodal/remodal.min.js"></script>
+<script src="http://impovar.tt90.ru/libs/jquery/jquery-1.11.1.min.js"></script>
+<script src="http://impovar.tt90.ru/libs/jquery-mousewheel/jquery.mousewheel.min.js"></script>
+<script src="http://impovar.tt90.ru/libs/fancybox/jquery.fancybox.pack.js"></script>
+<script src="http://impovar.tt90.ru/libs/waypoints/waypoints-1.6.2.min.js"></script>
+<script src="http://impovar.tt90.ru/libs/scrollto/jquery.scrollTo.min.js"></script>
+<script src="http://impovar.tt90.ru/libs/owl-carousel/owl.carousel.min.js"></script>
+<script src="http://impovar.tt90.ru/libs/countdown/jquery.plugin.js"></script>
+<script src="http://impovar.tt90.ru/libs/countdown/jquery.countdown.min.js"></script>
+<script src="http://impovar.tt90.ru/libs/countdown/jquery.countdown-ru.js"></script>
+<script src="http://impovar.tt90.ru/libs/landing-nav/navigation.js"></script>
+<script src="http://impovar.tt90.ru/js/common.js"></script>
+<script src="http://impovar.tt90.ru/js/main.js"></script>
+<script src="http://impovar.tt90.ru/remodal/remodal.min.js"></script>
 
 <!-- Yandex.Metrika counter --><!-- Yandex.Metrika counter -->
 <script type="text/javascript">(function (d, w, c) {

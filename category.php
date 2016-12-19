@@ -86,7 +86,7 @@ if (!empty($_GET)) {
                     <div class="category_block_link">
                         <?php foreach ($art as $item): ?>
 <!--                            <a href="link.php?id=--><?php //echo $item['article_id']; ?><!--&page=1">-->
-                            <a href="http://impovar.tt90.ru/preview/<?php echo $item['article_id']; ?>/1/">
+                            <a href="http://impovar.tt90.ru/preview/<?php echo $item['article_id']; ?>">
                                 <div class="col-md-4 col-sm-4 col-xs-12">
                                     <div class="row">
                                         <figure class="figure">

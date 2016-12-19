@@ -17,14 +17,14 @@ $(document).ready(function(){
   // навигация при скроллинге
 
   $(window).scroll(function() {
-    if ($(this).scrollTop() > 80){
-      $('.nav').addClass("nav_fixed"),
-        $('.nav').fadeIn(2000);
+    if ($(this).scrollTop() > 75){
+      $('.nav').addClass("nav_fixed")
     }
     else{
       $('.nav').removeClass("nav_fixed");
     }
   });
+
 
 
   // показать кнопку наверх

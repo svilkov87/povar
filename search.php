@@ -27,22 +27,22 @@ echo "</pre>";*/
     <meta name="description" content="IMPOVAR"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <link rel="shortcut icon" href="img/favicon/favicon.ico"/>
-    <link rel="stylesheet" href="libs/font-awesome-4.2.0/css/font-awesome.min.css"/>
-    <link rel="stylesheet" href="libs/fancybox/jquery.fancybox.css"/>
-    <link rel="stylesheet" href="libs/owl-carousel/owl.carousel.css"/>
-    <link rel="stylesheet" href="libs/countdown/jquery.countdown.css"/>
-    <link rel="stylesheet" href="css/fonts.css"/>
-    <link rel="stylesheet" href="css/main.css"/>
-    <link rel="stylesheet" href="css/media.css"/>
-    <link rel="stylesheet" href="css/bootstrap.min.css"/>
+    <link rel="shortcut icon" href="http://impovar.tt90.ru/img/favicon/favicon.ico"/>
+    <link rel="stylesheet" href="http://impovar.tt90.ru/libs/font-awesome-4.2.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="http://impovar.tt90.ru/libs/fancybox/jquery.fancybox.css"/>
+    <link rel="stylesheet" href="http://impovar.tt90.ru/libs/owl-carousel/owl.carousel.css"/>
+    <link rel="stylesheet" href="http://impovar.tt90.ru/libs/countdown/jquery.countdown.css"/>
+    <link rel="stylesheet" href="http://impovar.tt90.ru/css/fonts.css"/>
+    <link rel="stylesheet" href="http://impovar.tt90.ru/css/main.css"/>
+    <link rel="stylesheet" href="http://impovar.tt90.ru/css/media.css"/>
+    <link rel="stylesheet" href="http://impovar.tt90.ru/css/bootstrap.min.css"/>
 </head>
 <body>
 <i class="fa fa-chevron-up" aria-hidden="true" id="top"></i>
 <?php include "include/nav.php"; ?>
 <!--лого-->
 <div class="col-md-12 logo_block">
-    <img src="img/category_images/logo.svg" alt="logo" class="img_logo">
+    <img src="http://impovar.tt90.ru/img/category_images/logo.svg" alt="logo" class="img_logo">
     <h1 class="logo_header">GRANDPOVAR</h1>
 </div>
 <div class="container">
@@ -58,14 +58,14 @@ echo "</pre>";*/
                         <div class="link_panel">
                             <div class="panel_head_link">
                                 <h1 style="font-size: 15px;">
-                                    <a href="full.php?id=<?php echo $item['id']; ?>" class="full_link_search">
+                                    <a href="http://impovar.tt90.ru/article/<?php echo $item['id']; ?>" class="full_link_search">
                                         <?php echo $item['title']; ?>
                                     </a>
                                 </h1>
                             </div>
                             <div class="link_body">
                                 <div class="img_block_link">
-                                    <img src="admin/images/<?php echo $item['intro_image']; ?>" alt="..."
+                                    <img src="http://impovar.tt90.ru/admin/images/<?php echo $item['intro_image']; ?>" alt="..."
                                          class="img_link_search">
                                 </div>
                             </div>

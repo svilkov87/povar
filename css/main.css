@@ -6,6 +6,7 @@ html {
 
 body {
     /* Margin bottom by footer height */
+    /*margin-top: 65px !important;*/
     margin-bottom: 80px !important;
     font-family: "RobotoRegular", sans-serif !important;
     font-size: 14px;
@@ -75,23 +76,27 @@ li {
 .fa-chevron-up {
     padding: 15px;
 }
-
+.fa-envelope-o {
+    margin-right: 10px;
+}
 .nav {
-    /*position: fixed;*/
-    /*z-index: 9999;*/
     height: 60px;
-    margin-bottom: 15px;
-    width: 100%;
-    outline: #eaeaea;
-    /*background-color: #525252;*/
+    /*margin-bottom: 15px;*/
+    /*width: 100%;*/
+    /*outline: #eaeaea;*/
+    /*!*background-color: #525252;*!*/
     background: #bb3737;
+    width: 100%;
 }
 
 .nav_fixed {
     position: fixed;
     z-index: 9999;
-    -webkit-transition: all 0.4s ease;
-    transition: all 0.4s ease;
+    height: 65px;
+    /*margin-bottom: 15px;*/
+    width: 100%;
+    outline: #eaeaea;
+    background: #795959;
 }
 
 #brand {
@@ -825,7 +830,49 @@ a#hidden_id, a#hidden_id_to_user, a#hidden_text_to_comment {
     padding: 5px;
     border: 1px solid #e0d3d3;
 }
-
+.staty{
+    font-size: 20px;
+    display: block;
+    width: 63px;
+    height: 63px;
+    margin: 15px auto;
+    text-align: center;
+    padding-top: 17px;
+    padding-left: 11px;
+    background: rgba(204, 204, 204, 0.68);
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    color: #fff;
+}
+.staty:hover{
+    background: rgba(244, 244, 244, 0.68);
+    text-decoration: none;
+    color: #fff;
+}
+.skills_body{
+    padding: 5px;
+    border: 1px solid #e0d3d3;
+    height: 180px;
+}
+.span_skills{
+    display: block;
+    text-align: center;
+    font-weight: bold;
+}
+.fa-cutlery_skills{
+    margin-right: 10px;
+}
+.ul_skills{
+    padding-left: 5px;
+    text-align: center;
+}
+.li_skills{
+    color: #665959;
+    font-weight: bold;
+    margin-bottom: 6px;
+    border-bottom: 1px solid #ccc;
+}
 .last_to_full_link {
     text-decoration: none;
     color: #4f4f4f;
@@ -873,16 +920,21 @@ a#hidden_id, a#hidden_id_to_user, a#hidden_text_to_comment {
 
 .name_of_user_profile {
     font-weight: bold;
+    color: #fff;
+    font-size: 26px;
 }
 
 .span_about {
-    font-weight: bold;
-    color: #22345d;
+    /*font-weight: bold;*/
+    color: #fffbfd;
+    text-transform: uppercase;
 }
 
 .span_about_text {
-    color: #962d2d;
+    color: #f4f6cb;
     font-size: 15px;
+    font-weight: bold;
+    padding: 5px;
 }
 
 .block_edit_twoblocks {
@@ -921,16 +973,37 @@ a#hidden_id, a#hidden_id_to_user, a#hidden_text_to_comment {
     font-size: 13px;
     color: #9c9c9c;
 }
-
-.profile_panel {
-    background-image: url(/img/category_images/wood.png);
-    /*background: #fff;*/
-    margin-bottom: 25px;
+.panel-skills{
+    text-align: center;
     padding: 15px;
-    border: 1px solid rgb(232, 231, 231);
-    -webkit-box-shadow: -1px 9px 50px -10px rgba(0, 0, 0, 0.75);
-    -moz-box-shadow: -1px 9px 50px -10px rgba(0, 0, 0, 0.75);
-    box-shadow: -1px 9px 50px -10px rgba(0, 0, 0, 0.75);
+    /*border: 1px solid #a8a8a8;*/
+    width: 50%;
+    margin: 0 auto;
+    overflow: hidden;
+}
+.panel_heading_profile{
+    margin-bottom: 15px;
+}
+
+.block_wrapp_skill{
+    float: left;
+    margin: 0 15px;
+}
+.profile_panel {
+
+    /*background-image: url(/img/category_images/wood.png);*/
+    background-image: url(/img/category_images/food-516044_1280.jpg);
+    /*background-image: url(http://animations.shoppinng.ru/wp-content/uploads/2014/09/20.jpg?x34229);*/
+    background-repeat: no-repeat;
+    background-size: cover; /* Масштабируем фон */
+    /*background: #fff;*/
+    padding: 4em 0;
+    margin-bottom: 25px;
+    /*padding: 35px;*/
+    /*border: 1px solid rgb(232, 231, 231);*/
+    -webkit-box-shadow: -1px 9px 30px -10px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: -1px 9px 30px -10px rgba(0, 0, 0, 0.75);
+    box-shadow: -1px 9px 30px -10px rgba(0, 0, 0, 0.75);
 }
 
 .panel_items {
@@ -943,7 +1016,8 @@ a#hidden_id, a#hidden_id_to_user, a#hidden_text_to_comment {
 }
 
 .panel_items_text {
-    color: #a5a5a5;
+    color: #454145;
+    font-weight: bold;
 }
 
 .list_of_recipes {
@@ -1000,6 +1074,8 @@ a#hidden_id, a#hidden_id_to_user, a#hidden_text_to_comment {
 .col-md8 {
     width: 70%;
     float: right;
+    padding: 5px;
+    background: rgba(141, 46, 46, 0.24);
 }
 
 .ava_block {
@@ -1010,13 +1086,14 @@ a#hidden_id, a#hidden_id_to_user, a#hidden_text_to_comment {
 }
 
 .ava_img {
-    background: #fcfeff;
+    background: rgba(81, 244, 244, 0.31);
     width: 150px;
+    padding: 5px;
     height: 150px;
-    -webkit-border-radius: 50px;
-    -moz-border-radius: 50px;
-    border-radius: 50px;
-    border: 1px solid #ccc;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    border: 3px solid rgb(255, 255, 255);
     animation-name: spinOut;
     animation-duration: 2s;
 }
@@ -1029,9 +1106,9 @@ a#hidden_id, a#hidden_id_to_user, a#hidden_text_to_comment {
     -o-transition: all 0.5s ease-in-out;
     -moz-transition: all 0.5s ease-in-out;
     transition: all 0.5s ease-in-out;
-    -webkit-box-shadow: -1px 3px 50px -10px rgba(0, 0, 0, 0.75);
-    -moz-box-shadow: -1px 3px 50px -10px rgba(0, 0, 0, 0.75);
-    box-shadow: -1px 3px 50px -10px rgba(0, 0, 0, 0.75);
+    -webkit-box-shadow: -1px 3px 60px -10px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: -1px 3px 60px -10px rgba(0, 0, 0, 0.75);
+    box-shadow: -1px 3px 60px -10px rgba(0, 0, 0, 0.75);
 }
 
 @keyframes spin {

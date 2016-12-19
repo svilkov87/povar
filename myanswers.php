@@ -14,7 +14,7 @@ if (!empty($_GET)) {
     // если зло вручную поставит другой id пользвателя, то он не попадет на чужую страницу с ответами
         if ($id === 0 OR $id != $_SESSION['user_id']) {
 //        die('Ошибка сжатия чёрной дыры');
-            header("Location: index.php");
+            header("Location: http://impovar.tt90.ru/home");
             exit;
     }
 
@@ -25,15 +25,6 @@ if (!empty($_GET)) {
 //    echo "<pre>";
 //    var_dump($id);
 //    echo "</pre>";
-
-//    if ($id != $_SESSION['id']){
-//        die('Ошибка сжатия чёрной дыры');
-//    }
-//        $update = $pdo->prepare("UPDATE `comments` SET isnew=:isnew WHERE id=:id");
-//        $update->bindParam(':isnew', $no);
-//        $update->bindParam(':id', $id);
-//        $update->execute();
-
 
     //Выбираем юзера, чей аккаунт
     $st = $pdo->prepare('SELECT * FROM `users` WHERE id=:id');
@@ -82,7 +73,7 @@ if (!empty($_GET)) {
 //проверка, существует ли такая статья. удалял ли ее автор или не
 
 if (!isset($_SESSION['email'])) {
-    header("Location: index.php");
+    header("Location: http://impovar.tt90.ru/home");
     exit;
 }
 
@@ -104,37 +95,29 @@ if (!isset($_SESSION['email'])) {
     <meta name="description" content="IMPOVAR"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <link rel="shortcut icon" href="img/favicon/favicon.ico"/>
-    <link rel="stylesheet" href="libs/font-awesome-4.2.0/css/font-awesome.min.css"/>
-    <link rel="stylesheet" href="libs/fancybox/jquery.fancybox.css"/>
-    <link rel="stylesheet" href="libs/owl-carousel/owl.carousel.css"/>
-    <link rel="stylesheet" href="libs/countdown/jquery.countdown.css"/>
-    <link rel="stylesheet" href="remodal/remodal.css">
-    <link rel="stylesheet" href="remodal/remodal-default-theme.css">
-    <link rel="stylesheet" href="css/fonts.css"/>
-    <link rel="stylesheet" href="css/main.css"/>
-    <link rel="stylesheet" href="css/media.css"/>
-    <link rel="stylesheet" href="css/bootstrap.min.css"/>
+    <link rel="shortcut icon" href="http://impovar.tt90.ru/img/favicon/favicon.ico"/>
+    <link rel="stylesheet" href="http://impovar.tt90.ru/libs/font-awesome-4.2.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="http://impovar.tt90.ru/libs/fancybox/jquery.fancybox.css"/>
+    <link rel="stylesheet" href="http://impovar.tt90.ru/libs/owl-carousel/owl.carousel.css"/>
+    <link rel="stylesheet" href="http://impovar.tt90.ru/libs/countdown/jquery.countdown.css"/>
+    <link rel="stylesheet" href="http://impovar.tt90.ru/remodal/remodal.css">
+    <link rel="stylesheet" href="http://impovar.tt90.ru/remodal/remodal-default-theme.css">
+    <link rel="stylesheet" href="http://impovar.tt90.ru/css/fonts.css"/>
+    <link rel="stylesheet" href="http://impovar.tt90.ru/css/main.css"/>
+    <link rel="stylesheet" href="http://impovar.tt90.ru/css/media.css"/>
+    <link rel="stylesheet" href="http://impovar.tt90.ru/css/bootstrap.min.css"/>
 </head>
 <body>
 <html>
 <?php include("include/nav.php"); ?>
 <div class="container">
     <div class="row">
-        <div class="col-md-4 ava_block">
-            <a href="profile.php?id=<?php echo $_SESSION['user_id']; ?>">
-                <img src="img/avatars/<?php echo $user_image; ?>" class="ava_img">
+        <div class="col-md-4 col-sm-12 col-xs-12 ava_block">
+            <a href="http://impovar.tt90.ru/profile/<?php echo $_SESSION['user_id']; ?>">
+                <img src="http://impovar.tt90.ru/img/avatars/<?php echo $user_image; ?>" class="ava_img">
             </a>
         </div>
-        <div class="col-md-8" style="margin-bottom: 25px;">
-            <div class="profile_panel">
-                <div class="panel_heading">
-                    <?php foreach ($profile_data as $item): ?>
-                        <span class="name_of_user_profile"><?php echo $item['username']; ?></span>
-                        <br>
-                    <?php endforeach; ?>
-                </div>
-            </div>
+        <div class="col-md-8 col-sm-12 col-xs-12" style="margin-bottom: 25px;">
             <div class="chapters_of_answers">
                 <span class="span_answer">Уведомления</span>
                 <span class="span_answer_number">Новых: <?php echo $NumberMess; ?></b></span>
@@ -150,15 +133,13 @@ if (!isset($_SESSION['email'])) {
                     <div class="block_left_answer">
                         <p class="myanswer_pext_p"><?php echo $item['text']; ?></p><br>
                         <span class="who_is_answer">Написал:</span>
-                        <a href="profile.php?id=<?php echo $item['user_id']; ?>">
+                        <a href="http://impovar.tt90.ru/profile/<?php echo $item['user_id']; ?>">
                             <b><?php echo $item['user_name']; ?>:</b>
                         </a>
                         <br>
                         <?php
                         //если ответ был к статье
                         if ($item['to_comment'] == 0 AND $item['article_id'] != 0):?>
-                            <!--                            <span class="who_is_answer">Ответ к статье</span>-->
-                            <!--                            <br>-->
                             <span class="date_answer"><?php echo $item['date']; ?></span><br>
 
                             <?php
@@ -166,14 +147,12 @@ if (!isset($_SESSION['email'])) {
                         elseif ($item['to_comment'] != 0):?>
                             <span class="who_is_answer">Ответ на коммент</span>
                             <span class="answer_before">
-                                <a href="full.php?id=<?php echo $item['article_id']; ?>#answer_item_id<?php echo $item['id']; ?>">
+                                <a href="http://impovar.tt90.ru/article/<?php echo $item['article_id']; ?>#answer_item_id<?php echo $item['id']; ?>">
                                     <?php echo $item['answer_for_comment']; ?>
                                 </a>
                             </span>
                             <br>
                             <span class="date_answer"><?php echo $item['date']; ?></span><br>
-                            <!--                        --><?php //endif;
-                            ?>
 
                             <?php
                         //если ответ был к топику
@@ -198,15 +177,15 @@ if (!isset($_SESSION['email'])) {
                     //вывод правой части уведомления
                     if ($item['topic_id'] != 0):?>
                         <div class="block_right_answer_topic">
-                            <a href="full_topic_theme.php?id=<?php echo $item['topic_id']; ?>#answer_item_id<?php echo $item['id']; ?>">
+                            <a href="http://impovar.tt90.ru/topictheme/<?php echo $item['topic_id']; ?>#answer_item_id<?php echo $item['id']; ?>">
                                 <span class="who_is_answer"><?php echo $item['topic_theme']; ?></span>
                             </a>
                         </div>
                     <?php else: ?>
                         <div class="block_right_answer">
-                            <a href="full.php?id=<?php echo $item['article_id']; ?>#answer_item_id<?php echo $item['id']; ?>">
+                            <a href="http://impovar.tt90.ru/article/<?php echo $item['article_id']; ?>#answer_item_id<?php echo $item['id']; ?>">
                                 <span class="who_is_answer">Рецепт</span>
-                                <img src="admin/images/<?php echo $item['article_intro_image']; ?>" alt=""
+                                <img src="http://impovar.tt90.ru/admin/images/<?php echo $item['article_intro_image']; ?>" alt=""
                                      class="answer_intro_image">
                             </a>
                         </div>
@@ -219,25 +198,24 @@ if (!isset($_SESSION['email'])) {
 
 <?php include("include/footer.php"); ?>
 <!--[if lt IE 9]-->
-<script src="libs/html5shiv/es5-shim.min.js"></script>
-<script src="libs/html5shiv/html5shiv.min.js"></script>
-<script src="libs/html5shiv/html5shiv-printshiv.min.js"></script>
-<script src="libs/respond/respond.min.js"></script>
+<script src="http://impovar.tt90.ru/libs/html5shiv/es5-shim.min.js"></script>
+<script src="http://impovar.tt90.ru/libs/html5shiv/html5shiv.min.js"></script>
+<script src="http://impovar.tt90.ru/libs/html5shiv/html5shiv-printshiv.min.js"></script>
+<script src="http://impovar.tt90.ru/libs/respond/respond.min.js"></script>
 <!--[endif]-->
-<script src="libs/jquery/jquery-1.11.1.min.js"></script>
-<script src="libs/jquery-mousewheel/jquery.mousewheel.min.js"></script>
-<script src="libs/fancybox/jquery.fancybox.pack.js"></script>
-<script src="libs/waypoints/waypoints-1.6.2.min.js"></script>
-<script src="libs/scrollto/jquery.scrollTo.min.js"></script>
-<script src="libs/owl-carousel/owl.carousel.min.js"></script>
-<script src="libs/countdown/jquery.plugin.js"></script>
-<script src="libs/countdown/jquery.countdown.min.js"></script>
-<script src="libs/countdown/jquery.countdown-ru.js"></script>
-<script src="libs/landing-nav/navigation.js"></script>
-<script src="js/common.js"></script>
-<script src="js/main.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="remodal/remodal.min.js"></script>
-<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<script src="http://impovar.tt90.ru/libs/jquery/jquery-1.11.1.min.js"></script>
+<script src="http://impovar.tt90.ru/libs/jquery-mousewheel/jquery.mousewheel.min.js"></script>
+<script src="http://impovar.tt90.ru/libs/fancybox/jquery.fancybox.pack.js"></script>
+<script src="http://impovar.tt90.ru/libs/waypoints/waypoints-1.6.2.min.js"></script>
+<script src="http://impovar.tt90.ru/libs/scrollto/jquery.scrollTo.min.js"></script>
+<script src="http://impovar.tt90.ru/libs/owl-carousel/owl.carousel.min.js"></script>
+<script src="http://impovar.tt90.ru/libs/countdown/jquery.plugin.js"></script>
+<script src="http://impovar.tt90.ru/libs/countdown/jquery.countdown.min.js"></script>
+<script src="http://impovar.tt90.ru/libs/countdown/jquery.countdown-ru.js"></script>
+<script src="http://impovar.tt90.ru/libs/landing-nav/navigation.js"></script>
+<script src="http://impovar.tt90.ru/js/common.js"></script>
+<script src="http://impovar.tt90.ru/js/main.js"></script>
+<script src="http://impovar.tt90.ru/js/bootstrap.min.js"></script>
+<script src="http://impovar.tt90.ru/remodal/remodal.min.js"></script>
 </html>
 </body>
