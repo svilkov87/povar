@@ -149,7 +149,7 @@ if (!isset($_SESSION['email'])) {
                 </div>
                 <div class="block_settings_item">
                     <span class="sett_chapters">Расскажите о себе, вкратце:</span><br>
-                    <textarea name="about_me" class="about_me_textarea"></textarea>
+                    <input type="text"  name="about_me" class="about_me_textarea"/>
                 </div>
                 <div class="block_settings_item">
                     <span class="sett_chapters">Ваше любимое блюдо</span><br>
@@ -163,6 +163,15 @@ if (!isset($_SESSION['email'])) {
                     <span class="sett_chapters">Ваше Хобби</span><br>
                     <input type="text" name="hobby" class="name_sett_input" value="<?php echo $hobby_info; ?>">
                 </div>
+<!--                <span class="sett_header">Изменить пароль</span>-->
+<!--                <div class="block_settings_item">-->
+<!--                    <span class="sett_chapters">Новый пароль</span><br>-->
+<!--                    <input type="password" name="new_password" class="name_sett_input">-->
+<!--                </div>-->
+<!--                <div class="block_settings_item">-->
+<!--                    <span class="sett_chapters">Повторите пароль</span><br>-->
+<!--                    <input type="password" name="e_new_password" class="name_sett_input">-->
+<!--                </div>-->
 
                 <div class="block_margin">
                     <button type="submit" name="button_newsettings" class="btn_sett">Сохранить</button>

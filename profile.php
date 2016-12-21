@@ -7,6 +7,8 @@ include("include/connection.php");
 //ini_set('display_errors', TRUE);
 //ini_set('display_startup_errors', TRUE);
 
+
+
 if (!empty($_GET)) {
 
     $id = intval($_GET['id']);
@@ -131,27 +133,24 @@ if (!empty($_GET)) {
     <div class="window">
         <a href="#fa_close_window" class="fa_close_window">x</a><br>
         <div class="mindow_items">
-<!--            <p class="remind_p">Оставить сообщение пользователю</p>-->
-<!--            <p class="remind_p">--><?php //echo $user_name; ?><!--</p>-->
-<!--            <p class="remind_p">не представляется возможным.</p>-->
-            <p class="remind_p">Данный раздел находится в разработке</p>
-<!--            <div class="confirm_block">-->
-<!--                <a href="" class="last_confirn_del">--><?php //echo $NumberOfTopic; ?><!--</a>-->
-<!--                <a href="#fa_close_window" class="last_confirn_del_no">Нет</a>-->
-<!--            </div>-->
+            <form action="" method="post">
+                <p class="remind_p">Отправка сообщения пользователю</p>
+                <p class="remind_p" align="center"><?php echo $user_name;?></p>
+                <input hidden type="text" name="id_to_user" value="<?php echo $user_id;?>"/>
+                <textarea name="text_to_user" class="text_field_modal"></textarea>
+                <button class="btn_default" type="new_message" name="enter_message">Отправить сообщение</button>
+            </form>
         </div>
     </div>
 </div>
 <!--/call confirm modal-->
 <?php include("include/nav.php"); ?>
-<!--<div class="container">-->
-<!--    <div class="row">-->
 <div class="container-fluid">
     <div class="row">
         <div class="profile_panel">
             <div class="panel_heading_profile">
                 <?php foreach ($profile_data as $item): ?>
-                    <div class="col-md-4 col-sm-12 col-xs-12 ava_block">
+                    <div class="col-md-2 col-md-offset-1 col-sm-12 col-xs-12 ava_block">
                         <a href="http://impovar.tt90.ru/profile/<?php echo $user_id; ?>" class="dfg">
                             <img src="http://impovar.tt90.ru/img/avatars/<?php echo $user_image; ?>" class="ava_img">
                         </a>
@@ -177,32 +176,14 @@ if (!empty($_GET)) {
                             <span class="span_about">Профессия:</span>
                             <span class="span_about_text"><?php echo $item['profession']; ?></span>
                         </div>
+                        <div class="about_me">
+                            <span class="span_about">Профессия:</span>
+                            <span class="span_about_text"><?php echo $item['hobby']; ?></span>
+                        </div>
                     </div>
                     <div class="clearfix"></div>
                 <?php endforeach; ?>
             </div>
-            <!--            <div class="panel-skills">-->
-            <!--                <div class="block_wrapp_skill">-->
-            <!--                    <span class="panel_items_number">--><?php //echo $art_column; ?><!--</span>-->
-            <!--                    <br>-->
-            <!--                    <span class="panel_items_text">рецепт(ов)</span>-->
-            <!--                </div>-->
-            <!--                <div class="block_wrapp_skill">-->
-            <!--                    <span class="panel_items_number">0%</span>-->
-            <!--                    <br>-->
-            <!--                    <span class="panel_items_text">рейтинг</span>-->
-            <!--                </div>-->
-            <!--                <div class="block_wrapp_skill">-->
-            <!--                    <span class="panel_items_number">--><?php //echo $NumberOfTopic; ?><!--</span>-->
-            <!--                    <br>-->
-            <!--                    <span class="panel_items_text">диалоги</span>-->
-            <!--                </div>-->
-            <!--                <div class="block_wrapp_skill">-->
-            <!--                    <span class="panel_items_text">прокачка</span>-->
-            <!--                    <br>-->
-            <!--                    <span class="panel_items_number">ветеран</span>-->
-            <!--                </div>-->
-            <!--            </div>-->
         </div>
     </div>
 </div>
@@ -247,7 +228,7 @@ if ($art_column == 0):?>
 <?php //else: ?>
     <?php endif; ?>
     <?php if ($id == $_SESSION['user_id']): ?>
-        <div class="col-md-2 col-md-offset-2 col-sm-2 col-sm-offset-2 col-xs-6 col-xs-offset-3 ">
+        <div class="col-md-2 col-md-offset-1 col-sm-12 col-xs-12">
             <div class="skills_body">
                 <div class="last_art_header">
                         <span class="span_skills">Достижения</span>
@@ -269,7 +250,7 @@ if ($art_column == 0):?>
                 </div>
             </div>
         </div>
-        <div class="col-md-8 col-sm-8 col-xs-12">
+        <div class="col-md-8 col-sm-12 col-xs-12">
             <div class="last_of_body">
                 <span class="span_last_rec">Рецепты Автора:</span>
             </div>

@@ -8,13 +8,15 @@ unset($_SESSION["user_name"]);
 include("include/connection.php");
 
 //проверка ошибок
-error_reporting(E_ALL | E_STRICT);
-ini_set('display_errors', TRUE);
-ini_set('display_startup_errors', TRUE);
+//error_reporting(E_ALL | E_STRICT);
+//ini_set('display_errors', TRUE);
+//ini_set('display_startup_errors', TRUE);
 
 $data = $_POST;
 if (isset($data['do_signup'])) {
+
     $errors = array();
+
     if (strlen($data['username']) > 20){
         $errors[] = "Имя не должно превышать 20 символов";
     }
@@ -73,44 +75,44 @@ if (isset($data['do_signup'])) {
     if (empty($errors)) {
         $no_photo = "no_ava.png";
         $password = md5($data['password']);
-//        $ins = $pdo->prepare
-//        ("
-//            INSERT INTO
-//            `users`
-//            SET
-//            username=:username,
-//            ava=:ava,
-//            email=:email,
-//            password=:password,
-//            login=:login
-//            ");
-//        $ins->bindParam(":username", $data['username']);
-//        $ins->bindParam(":email", $data['email']);
-//        $ins->bindParam(":ava", $no_photo);
-//        $ins->bindParam(":password", $password);
-//        $ins->bindParam(":login", $data['login']);
-//        $ins->execute();
-////            $result = $ins->FetchAll();
-////            $resultLogin = $ins[0]['login'];
-//
-//        $_SESSION['email'] = $data['email'];
-//        $_SESSION['user_name'] = $data['username'];
-//
-//        $st = $pdo->prepare('SELECT id FROM `users` WHERE login=:login');
-//        $st->bindParam(':login', $data['login'], PDO::PARAM_INT);
-//        $st->execute();
-//        $profile = $st->fetchAll();
-//        $resultPfofile = $profile[0]['id'];
-//
-//        $_SESSION['user_id'] = $resultPfofile;
+        $ins = $pdo->prepare
+        ("
+            INSERT INTO
+            `users`
+            SET
+            username=:username,
+            ava=:ava,
+            email=:email,
+            password=:password,
+            login=:login
+            ");
+        $ins->bindParam(":username", $data['username']);
+        $ins->bindParam(":email", $data['email']);
+        $ins->bindParam(":ava", $no_photo);
+        $ins->bindParam(":password", $password);
+        $ins->bindParam(":login", $data['login']);
+        $ins->execute();
+//            $result = $ins->FetchAll();
+//            $resultLogin = $ins[0]['login'];
+
+        $_SESSION['email'] = $data['email'];
+        $_SESSION['user_name'] = $data['username'];
+
+        $st = $pdo->prepare('SELECT id FROM `users` WHERE login=:login');
+        $st->bindParam(':login', $data['login'], PDO::PARAM_INT);
+        $st->execute();
+        $profile = $st->fetchAll();
+        $resultPfofile = $profile[0]['id'];
+
+        $_SESSION['user_id'] = $resultPfofile;
 
         header("Location: success_reg.php");
     } else {
         $error = array_shift($errors);
     }
-    echo "<pre>";
-    var_dump($password);
-    echo "</pre>";
+//    echo "<pre>";
+//    var_dump($password);
+//    echo "</pre>";
 }
 //        если конпка не нажата
 if (!isset($data['do_signup'])) {
@@ -124,13 +126,13 @@ if (!isset($data['do_signup'])) {
 
 //
 //
-    echo "<pre>";
-    var_dump($ins);
-    echo "</pre>";
-
-    echo "<pre>";
-    var_dump(strlen($data['username']));
-    echo "</pre>";
+//    echo "<pre>";
+//    var_dump($ins);
+//    echo "</pre>";
+//
+//    echo "<pre>";
+//    var_dump(strlen($data['username']));
+//    echo "</pre>";
 ?>
 
 <!DOCTYPE html>

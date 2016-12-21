@@ -25,11 +25,16 @@ body {
     height: 78px;
     border-radius: 50%;
 }
-.fa_cutlery_footer{
+.fa_cutlery_footer_a{
     position: absolute;
-    left: 48%;
+    left: 0px;
+    right: 0px;
+    bottom: 5px;
+    width: 100%;
+    text-align: center;
+}
+.fa_cutlery_footer{
     bottom: 20px;
-    display: block;
     color: #fff;
     font-size: 18px;
     background: #bbb3b3;
@@ -78,6 +83,7 @@ li {
 }
 .fa-envelope-o {
     margin-right: 10px;
+    /*margin-left: 4px;*/
 }
 .nav {
     height: 60px;
@@ -97,6 +103,9 @@ li {
     width: 100%;
     outline: #eaeaea;
     background: #795959;
+    -webkit-box-shadow: -1px 9px 30px -10px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: -1px 9px 30px -10px rgba(0, 0, 0, 0.75);
+    box-shadow: -1px 9px 30px -10px rgba(0, 0, 0, 0.75);
 }
 
 #brand {
@@ -451,9 +460,9 @@ a.stuff_menu_search_field {
     position: absolute;
     display: block;
     background: rgb(255, 255, 255);
-    -webkit-border-radius: 50px;
-    -moz-border-radius: 50px;
-    border-radius: 50px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
     text-align: center;
     z-index: 1;
     top: 0;
@@ -853,7 +862,7 @@ a#hidden_id, a#hidden_id_to_user, a#hidden_text_to_comment {
 .skills_body{
     padding: 5px;
     border: 1px solid #e0d3d3;
-    height: 180px;
+    height: 200px;
 }
 .span_skills{
     display: block;
@@ -871,6 +880,7 @@ a#hidden_id, a#hidden_id_to_user, a#hidden_text_to_comment {
     color: #665959;
     font-weight: bold;
     margin-bottom: 6px;
+    padding-bottom: 10px;
     border-bottom: 1px solid #ccc;
 }
 .last_to_full_link {
@@ -1692,6 +1702,7 @@ a#hidden_id, a#hidden_id_to_user, a#hidden_text_to_comment {
     width: 100%;
     padding-left: 5px;
     outline: none;
+    min-height: 32px;
 }
 
 .sex_select {
@@ -1776,7 +1787,17 @@ label {
 .last_form_hidd {
     display: none;
 }
-
+.text_field_modal{
+    width: 100%;
+    outline: none;
+    color: #897777;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    border-left: none;
+    border-right: none;
+    height: 165px;
+    /*overflow: hidden;*/
+}
 #modalWindow {
     position: fixed;
     z-index: 99999999;
@@ -1789,14 +1810,15 @@ label {
     pointer-events: none;
 }
 
+
 #modalWindow:target {
     pointer-events: auto;
     display: block;
 }
 
 .window {
-    width: 300px;
-    height: 220px;
+    width: 480px;
+    height: 350px;
     background: #fff;
     margin: 10% auto;
     padding-left: 10px;
@@ -1947,4 +1969,15 @@ label {
 /*успешная регистрация*/
 .succ_block_header{
     text-align: center;
+}
+
+/*статисткика*/
+.footer_stat{
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    bottom: 5px;
+    width: 100%;
+    text-align: center;
+    display: none;
 }

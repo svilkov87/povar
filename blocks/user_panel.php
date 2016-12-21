@@ -3,12 +3,12 @@
 //    var_dump($Mess);
 //    echo "</pre>";
 
-    if ($Mess == "Нет сообщений"){
-        $AnotherMess = "";
-    }
-    else{
-        $AnotherMess = "+1";
-    }
+//    if ($Mess == "Нет сообщений"){
+//        $AnotherMess = "";
+//    }
+//    else{
+//        $AnotherMess = "+1";
+//    }
 
 
 ?>
@@ -53,12 +53,12 @@
 
         <a class="stuff_menu" href="http://impovar.tt90.ru/myanswers/<?php echo $_SESSION['user_id'];?>">
             <div class="left_icon"><i class="fa fa-comment-o" aria-hidden="true"></i></div>
-            <div class="right_info"><span class="span_left">мои ответы<?php echo $AnotherMess;?></span>
+            <div class="right_info"><span class="span_left">мои ответы</span>
             </div>
         </a>
-        <a class="stuff_menu" href="http://impovar.tt90.ru/profile/<?php echo $_SESSION['user_id'];?>">
+        <a class="stuff_menu" href="http://impovar.tt90.ru/messages/<?php echo $_SESSION['user_id'];?>">
             <div class="left_icon"><i class="fa fa-user" aria-hidden="true"></i></div>
-            <div class="right_info"><span class="span_left">мой профиль</span></div>
+            <div class="right_info"><span class="span_left">сообщения</span></div>
         </a>
         <a class="stuff_menu" href="http://impovar.tt90.ru/settings/<?php echo $_SESSION['user_id'];?>">
             <div class="left_icon"><i class="fa fa-cog" aria-hidden="true"></i></div>

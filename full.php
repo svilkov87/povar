@@ -83,6 +83,7 @@ if (!empty($_GET)) {
             SET 
             text=:text, 
             isnew=:isnew, 
+            count_isnew=:count_isnew, 
             ava=:ava, 
             article_id=:article_id, 
             article_intro_image=:article_intro_image, 
@@ -94,6 +95,7 @@ if (!empty($_GET)) {
             answer_for_comment=:answer_for_comment
             ");
         $insert->bindParam(':isnew', $ValueOne);
+        $insert->bindParam(':count_isnew', $ValueOne);
         $insert->bindParam(':text', $text);
         $insert->bindParam(':to_comment', $input_text);
         $insert->bindParam(':to_user', $input_user_id);
@@ -324,8 +326,6 @@ else:
             </div>
         </div>
     </div>
-    <!--    --><?php //endforeach;
-    ?>
 <?php endif; ?>
 <?php include("include/footer.php"); ?>
 <!--присваиваем всем тегам img class="img-responsive"-->
@@ -366,40 +366,5 @@ else:
 <script src="http://impovar.tt90.ru/js/common.js"></script>
 <script src="http://impovar.tt90.ru/js/main.js"></script>
 <script src="http://impovar.tt90.ru/remodal/remodal.min.js"></script>
-
-<!-- Yandex.Metrika counter --><!-- Yandex.Metrika counter -->
-<script type="text/javascript">(function (d, w, c) {
-        (w[c] = w[c] || []).push(function () {
-            try {
-                w.yaCounter25346996 = new Ya.Metrika({
-                    id: 25346996,
-                    webvisor: true,
-                    clickmap: true,
-                    trackLinks: true,
-                    accurateTrackBounce: true
-                });
-            } catch (e) {
-            }
-        });
-        var n = d.getElementsByTagName("script")[0], s = d.createElement("script"), f = function () {
-            n.parentNode.insertBefore(s, n);
-        };
-        s.type = "text/javascript";
-        s.async = true;
-        s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js";
-        if (w.opera == "[object Opera]") {
-            d.addEventListener("DOMContentLoaded", f, false);
-        } else {
-            f();
-        }
-    })(document, window, "yandex_metrika_callbacks");</script>
-<noscript>
-    <div><img src="//mc.yandex.ru/watch/25346996" style="position:absolute; left:-9999px;" alt=""/></div>
-</noscript><!-- /Yandex.Metrika counter --><!-- /Yandex.Metrika counter -->
-<!-- Google Analytics counter --><!-- /Google Analytics counter -->
-<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>-->
-<!--<script src="js/bootstrap.min.js"></script>-->
-
-
 </body>
 </html>

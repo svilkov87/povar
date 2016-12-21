@@ -128,6 +128,9 @@
 		width: 100%;
 		height: auto;
 	}
+    .window{
+        width: 300px;
+    }
 	.settings_wrapper {
 		width: 385px;
 	}
@@ -145,6 +148,9 @@
 		width: 100%;
 		height: auto;
 	}
+    .window{
+        width: 300px;
+    }
 	.middle_content_comm{
 		text-align: left;
 		overflow: hidden;
@@ -172,6 +178,9 @@
 	.ava{
 		float: left;
 	}
+    .window{
+        width: 300px;
+    }
 	.col_7_media{
 		padding:0 !important;
 	}

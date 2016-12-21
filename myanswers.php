@@ -36,11 +36,6 @@ if (!empty($_GET)) {
         $user_image = "no_ava.png";
     }
 
-//    считаем количество рецептов
-    $st = $pdo->prepare('SELECT COUNT(user_id) FROM `article` WHERE user_id=:user_id AND main_id != 2');
-    $st->bindParam(':user_id', $id, PDO::PARAM_INT);
-    $st->execute();
-    $art_column = $st->fetchColumn();
 
     ##ответы к моим комментариям
     $stm = $pdo->prepare('SELECT * FROM `comments` WHERE user_id_art =:user_id_art AND user_id_art != user_id OR to_user=:to_user ORDER BY `id` DESC ');
@@ -49,19 +44,21 @@ if (!empty($_GET)) {
     $stm->execute();
     $user_from = $stm->fetchAll();
 
+
     $number_of_answer = count($user_from);
 
 //    ##ответы к моим комментариям
     $art_array = array_column($user_from, 'article_id');
     $art_string = implode(",", $art_array);
     $user_id_art = $user_from[0]['user_id_art'];
+//    $user_id = $user_from[0]['user_id'];
 
 }
 //
 //echo "<pre>";
-//var_dump($_SERVER['PHP_SELF']);
+//var_dump($result_one);
 //echo "</pre>";
-//
+////
 //echo "<pre>";
 //var_dump($_SERVER['REQUEST_URI']);
 //echo "</pre>";
@@ -112,15 +109,12 @@ if (!isset($_SESSION['email'])) {
 <?php include("include/nav.php"); ?>
 <div class="container">
     <div class="row">
-        <div class="col-md-4 col-sm-12 col-xs-12 ava_block">
-            <a href="http://impovar.tt90.ru/profile/<?php echo $_SESSION['user_id']; ?>">
-                <img src="http://impovar.tt90.ru/img/avatars/<?php echo $user_image; ?>" class="ava_img">
-            </a>
-        </div>
-        <div class="col-md-8 col-sm-12 col-xs-12" style="margin-bottom: 25px;">
+        <div class="col-md-8 col-md-offset-2 col-sm-12 col-xs-12" style="margin-bottom: 25px;">
             <div class="chapters_of_answers">
                 <span class="span_answer">Уведомления</span>
-                <span class="span_answer_number">Новых: <?php echo $NumberMess; ?></b></span>
+                <span class="span_answer_number">
+                    <a href="http://impovar.tt90.ru/profile/<?php echo $user_id_art; ?>">Назад к профилю</a>
+                </span>
             </div>
             <?php
             if ($user_id_art == ""):?>
@@ -128,8 +122,17 @@ if (!isset($_SESSION['email'])) {
                     <span class="span_answer">У Вас пока нет уведомлений...</span>
                 </div>
             <?php endif; ?>
-            <?php foreach ($user_from as $item): ?>
-                <div class="wrapp_answer">
+            <?php foreach ($user_from as $item):
+            //если есть новые сообщения, помечаем их цветом
+                if ($item['count_isnew'] == 1):
+                ?>
+                <div class="wrapp_answer" style="background-color: rgba(140, 174, 199, 0.12);">
+
+                    <?php else: ?>
+                    <div class="wrapp_answer">
+
+                    <?php endif;?>
+<!--                    --><?php //echo $item['count_isnew']; ?>
                     <div class="block_left_answer">
                         <p class="myanswer_pext_p"><?php echo $item['text']; ?></p><br>
                         <span class="who_is_answer">Написал:</span>
