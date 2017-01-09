@@ -40,53 +40,40 @@ if (!empty($_GET)) {
     <meta name="description" content="IMPOVAR"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <link rel="shortcut icon" href="http://impovar.tt90.ru/img/favicon/favicon.ico"/>
-    <link rel="stylesheet" href="http://impovar.tt90.ru/libs/font-awesome-4.2.0/css/font-awesome.min.css"/>
-    <link rel="stylesheet" href="http://impovar.tt90.ru/libs/fancybox/jquery.fancybox.css"/>
-    <link rel="stylesheet" href="http://impovar.tt90.ru/libs/owl-carousel/owl.carousel.css"/>
-    <link rel="stylesheet" href="http://impovar.tt90.ru/libs/countdown/jquery.countdown.css"/>
-    <link rel="stylesheet" href="http://impovar.tt90.ru/css/fonts.css"/>
-    <link rel="stylesheet" href="http://impovar.tt90.ru/css/main.css"/>
-    <link rel="stylesheet" href="http://impovar.tt90.ru/css/media.css"/>
-    <link rel="stylesheet" href="http://impovar.tt90.ru/css/bootstrap.min.css"/>
+    <link rel="shortcut icon" href="http://<?php echo $_SERVER["HTTP_HOST"];?>/img/favicon/favicon.ico"/>
+    <link rel="stylesheet" href="http://<?php echo $_SERVER["HTTP_HOST"];?>/libs/font-awesome-4.2.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="http://<?php echo $_SERVER["HTTP_HOST"];?>/libs/fancybox/jquery.fancybox.css"/>
+    <link rel="stylesheet" href="http://<?php echo $_SERVER["HTTP_HOST"];?>/libs/owl-carousel/owl.carousel.css"/>
+    <link rel="stylesheet" href="http://<?php echo $_SERVER["HTTP_HOST"];?>/libs/countdown/jquery.countdown.css"/>
+    <link rel="stylesheet" href="http://<?php echo $_SERVER["HTTP_HOST"];?>/css/fonts.css"/>
+    <link rel="stylesheet" href="http://<?php echo $_SERVER["HTTP_HOST"];?>/css/main.css"/>
+    <link rel="stylesheet" href="http://<?php echo $_SERVER["HTTP_HOST"];?>/css/media.css"/>
+    <link rel="stylesheet" href="http://<?php echo $_SERVER["HTTP_HOST"];?>/css/bootstrap.min.css"/>
 </head>
 <body>
 <i class="fa fa-chevron-up" aria-hidden="true" id="top"></i>
-
 <?php include "include/nav.php"; ?>
-<div class="container">
+<div class="container-fluid" style="padding-top: 70px;">
     <div class="row">
-        <!--лого-->
-        <div class="col-md-12 logo_block">
-            <img src="http://impovar.tt90.ru/img/category_images/logo.svg" alt="logo" class="img_logo">
-            <h1 class="logo_header">GRANDPOVAR</h1>
-            <p class="logo_par">Энциклопедия рецептов</p>
-            <hr class="hr_line">
-        </div>
-        <!--/лого-->
-        <!--breadcrumb-->
-        <div class="col-md-6 col-md-offset-3">
-            <ol class="bread_crumb">
-                <?php foreach ($tagTitle as $item): ?>
-                    <li>
-                        <a href="http://impovar.tt90.ru/home">Главная</a>
-                        <i class="fa fa-angle-right" aria-hidden="true"></i>
-                    </li>
-                    <li><?php echo $item['title']; ?></li>
-                <?php endforeach; ?>
-            </ol>
-        </div>
-        <!--breadcrumb-->
-    </div>
-    <hr class="hr_line">
-    <div class="main_block_category">
-        <div class="container-fluid">
+        <?php include("include/block_fix.php"); ?>
+        <div class="col-md-6 logo_block">
             <div class="row">
-                <div class="col-md-8 col-md-offset-2 col-sm-12 col-xs-12">
+                <ol class="bread_crumb">
+                    <?php foreach ($tagTitle as $item): ?>
+                        <li>
+                            <a href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/home">Главная</a>
+                            <i class="fa fa-angle-right" aria-hidden="true"></i>
+                        </li>
+                        <li><?php echo $item['title']; ?></li>
+                    <?php endforeach; ?>
+                </ol>
+            </div>
+            <div class="main_block_category">
+                <div class="row">
                     <div class="category_block_link">
                         <?php foreach ($art as $item): ?>
-<!--                            <a href="link.php?id=--><?php //echo $item['article_id']; ?><!--&page=1">-->
-                            <a href="http://impovar.tt90.ru/preview/<?php echo $item['article_id']; ?>">
+                            <!--                            <a href="link.php?id=--><?php //echo $item['article_id']; ?><!--&page=1">-->
+                            <a href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/preview/<?php echo $item['article_id']; ?>">
                                 <div class="col-md-4 col-sm-4 col-xs-12">
                                     <div class="row">
                                         <figure class="figure">
@@ -102,9 +89,10 @@ if (!empty($_GET)) {
                             </a>
                         <?php endforeach; ?>
                     </div>
-                </div><!--row-->
-            </div><!--container-fluid-->
+                </div>
+            </div>
         </div>
+        <?php include("include/menu_open.php"); ?>
     </div>
 </div>
 
@@ -120,53 +108,22 @@ if (!empty($_GET)) {
 </script>
 
 <!--[if lt IE 9]>
-<script src="http://impovar.tt90.ru/libs/html5shiv/es5-shim.min.js"></script>
-<script src="http://impovar.tt90.ru/libs/html5shiv/html5shiv.min.js"></script>
-<script src="http://impovar.tt90.ru/libs/html5shiv/html5shiv-printshiv.min.js"></script>
-<script src="http://impovar.tt90.ru/libs/respond/respond.min.js"></script>
+<script src="http://<?php echo $_SERVER['HTTP_HOST'];?>/libs/html5shiv/es5-shim.min.js"></script>
+<script src="http://<?php echo $_SERVER['HTTP_HOST'];?>/libs/html5shiv/html5shiv.min.js"></script>
+<script src="http://<?php echo $_SERVER['HTTP_HOST'];?>/libs/html5shiv/html5shiv-printshiv.min.js"></script>
+<script src="http://<?php echo $_SERVER['HTTP_HOST'];?>/libs/respond/respond.min.js"></script>
 <![endif]-->
-<script src="http://impovar.tt90.ru/libs/jquery/jquery-1.11.1.min.js"></script>
-<script src="http://impovar.tt90.ru/libs/jquery-mousewheel/jquery.mousewheel.min.js"></script>
-<script src="http://impovar.tt90.ru/libs/fancybox/jquery.fancybox.pack.js"></script>
-<script src="http://impovar.tt90.ru/libs/waypoints/waypoints-1.6.2.min.js"></script>
-<script src="http://impovar.tt90.ru/libs/scrollto/jquery.scrollTo.min.js"></script>
-<script src="http://impovar.tt90.ru/libs/owl-carousel/owl.carousel.min.js"></script>
-<script src="http://impovar.tt90.ru/libs/countdown/jquery.plugin.js"></script>
-<script src="http://impovar.tt90.ru/libs/countdown/jquery.countdown.min.js"></script>
-<script src="http://impovar.tt90.ru/libs/countdown/jquery.countdown-ru.js"></script>
-<script src="http://impovar.tt90.ru/libs/landing-nav/navigation.js"></script>
-<script src="http://impovar.tt90.ru/js/common.js"></script>
-<script src="http://impovar.tt90.ru/js/main.js"></script>
-
-<!-- Yandex.Metrika counter --><!-- Yandex.Metrika counter -->
-<script type="text/javascript">(function (d, w, c) {
-        (w[c] = w[c] || []).push(function () {
-            try {
-                w.yaCounter25346996 = new Ya.Metrika({
-                    id: 25346996,
-                    webvisor: true,
-                    clickmap: true,
-                    trackLinks: true,
-                    accurateTrackBounce: true
-                });
-            } catch (e) {
-            }
-        });
-        var n = d.getElementsByTagName("script")[0], s = d.createElement("script"), f = function () {
-            n.parentNode.insertBefore(s, n);
-        };
-        s.type = "text/javascript";
-        s.async = true;
-        s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js";
-        if (w.opera == "[object Opera]") {
-            d.addEventListener("DOMContentLoaded", f, false);
-        } else {
-            f();
-        }
-    })(document, window, "yandex_metrika_callbacks");</script>
-<noscript>
-    <div><img src="//mc.yandex.ru/watch/25346996" style="position:absolute; left:-9999px;" alt=""/></div>
-</noscript><!-- /Yandex.Metrika counter --><!-- /Yandex.Metrika counter -->
-<!-- Google Analytics counter --><!-- /Google Analytics counter -->
+<script src="http://<?php echo $_SERVER['HTTP_HOST'];?>/libs/jquery/jquery-1.11.1.min.js"></script>
+<script src="http://<?php echo $_SERVER['HTTP_HOST'];?>/libs/jquery-mousewheel/jquery.mousewheel.min.js"></script>
+<script src="http://<?php echo $_SERVER['HTTP_HOST'];?>/libs/fancybox/jquery.fancybox.pack.js"></script>
+<script src="http://<?php echo $_SERVER['HTTP_HOST'];?>/libs/waypoints/waypoints-1.6.2.min.js"></script>
+<script src="http://<?php echo $_SERVER['HTTP_HOST'];?>/libs/scrollto/jquery.scrollTo.min.js"></script>
+<script src="http://<?php echo $_SERVER['HTTP_HOST'];?>/libs/owl-carousel/owl.carousel.min.js"></script>
+<script src="http://<?php echo $_SERVER['HTTP_HOST'];?>/libs/countdown/jquery.plugin.js"></script>
+<script src="http://<?php echo $_SERVER['HTTP_HOST'];?>/libs/countdown/jquery.countdown.min.js"></script>
+<script src="http://<?php echo $_SERVER['HTTP_HOST'];?>/libs/countdown/jquery.countdown-ru.js"></script>
+<script src="http://<?php echo $_SERVER['HTTP_HOST'];?>/libs/landing-nav/navigation.js"></script>
+<script src="http://<?php echo $_SERVER['HTTP_HOST'];?>/js/common.js"></script>
+<script src="http://<?php echo $_SERVER['HTTP_HOST'];?>/js/main.js"></script>
 </body>
 </html>

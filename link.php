@@ -81,67 +81,67 @@ if(!empty($_GET)){
     <link rel="stylesheet" href="http://impovar.tt90.ru/css/bootstrap.min.css" />
 </head>
 <body>
-
 <i class="fa fa-chevron-up" aria-hidden="true" id="top"></i>
-
-
 <?php include "include/nav.php"; ?>
-<!--breadcrumb-->
-<div class="container">
+<div class="container-fluid" style="padding-top: 70px;">
     <div class="row">
-        <!--лого-->
-        <div class="col-md-12 logo_block">
-            <i class="fa fa-cutlery fa_cutlery" aria-hidden="true"></i>
-            <h1 class="logo_header">GRANDPOVAR</h1>
-            <p class="logo_par">Энциклопедия рецептов</p>
-            <hr class="hr_line">
-        </div>
-        <!--/лого-->
-        <div class="col-md-6 col-md-offset-3">
-            <ol class="bread_crumb">
-                <li>
-                    <a href="http://impovar.tt90.ru/home">Главная</a>
-                    <i class="fa fa-angle-right" aria-hidden="true"></i>
-                </li>
-                <?php foreach($tagTitle1 as $item):?>
-                <li>
-                    <a href="http://impovar.tt90.ru/category/<?php echo $item['main_id']; ?>"><?php echo $item['title'];?></a>
-                    <i class="fa fa-angle-right" aria-hidden="true"></i>
-                </li>
-                <?php endforeach;?>
-                <?php foreach($tagTitle as $item):?>
-                <li><?php echo $item['title'];?></li>
-                <?php endforeach;?>
-            </ol>
-        </div>
-    </div>
-</div><!--breadcrumb-->
-<hr class="hr_line">
-<div class="container">
-<div class="col-md-6 col-md-offset-3">
-    <?php foreach ($art as $item): ?>
-        <div class="link_panel">
-            <div class="panel_head_link">
-                <h1 style="font-size: 15px;"><?php echo $item['title']; ?></h1></div>
-            <div class="link_body">
-                <div class="img_block_link">
-                    <img src="http://impovar.tt90.ru/admin/images/<?php echo $item['intro_image']; ?>" alt="..." class="img_link">
-                </div>
-                <div class="intro_text_link">
-                    <p><?php echo $item['intro_text']; ?></p>
-                </div>
-                <div class="look_article">
-                    <a href="http://impovar.tt90.ru/article/<?php echo $item['id']; ?>" class="btn_link">Смотреть</a>
-                    <br>
-                    <div class="link_like_comm_look">
-                        <i class="fa fa-heart" aria-hidden="true"></i>
-                        <i class="fa fa-comment-o" aria-hidden="true"></i>
-                        <i class="fa fa-eye" aria-hidden="true"></i>
-                    </div>
+        <?php include("include/block_fix.php"); ?>
+        <div class="col-md-6 logo_block">
+            <div class="row">
+                <ol class="bread_crumb">
+                    <li>
+                        <a href="http://impovar.tt90.ru/home">Главная</a>
+                        <i class="fa fa-angle-right" aria-hidden="true"></i>
+                    </li>
+                    <?php foreach ($tagTitle1 as $item): ?>
+                        <li>
+                            <a href="http://impovar.tt90.ru/category/<?php echo $item['main_id']; ?>"><?php echo $item['title']; ?></a>
+                            <i class="fa fa-angle-right" aria-hidden="true"></i>
+                        </li>
+                    <?php endforeach; ?>
+                    <?php foreach ($tagTitle as $item): ?>
+                        <li><?php echo $item['title']; ?></li>
+                    <?php endforeach; ?>
+                </ol>
+                <div class="block">
+                    <?php foreach ($art as $item): ?>
+                        <div class="col-md-6">
+<!--                            <div class="row">-->
+                            <a href="http://impovar.tt90.ru/article/<?php echo $item['id']; ?>" class="link_by_link">
+                            <div class="link_panel">
+                                <div class="panel_head_link">
+                                    <h1 style="font-size: 15px;"><?php echo $item['title']; ?></h1>
+                                </div>
+                                <div class="link_body">
+                                    <div class="img_block_link">
+                                        <img src="http://impovar.tt90.ru/admin/images/<?php echo $item['intro_image']; ?>"
+                                             alt="..." class="img_link">
+                                    </div>
+                                    <!--                <div class="intro_text_link">-->
+                                    <!--                    <p>--><?php //echo $item['intro_text']; ?><!--</p>-->
+                                    <!--                </div>-->
+<!--                                    <div class="look_article">-->
+<!--                                        <a href="http://impovar.tt90.ru/article/--><?php //echo $item['id']; ?><!--"-->
+<!--                                           class="btn_link">Смотреть</a>-->
+<!--                                        <br>-->
+<!--                                        <div class="link_like_comm_look">-->
+<!--                                            <i class="fa fa-heart" aria-hidden="true"></i>-->
+<!--                                            <i class="fa fa-comment-o" aria-hidden="true"></i>-->
+<!--                                            <i class="fa fa-eye" aria-hidden="true"></i>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+                                </div>
+                            </div>
+                            </a>
+<!--                            </div>-->
+                        </div>
+                    <?php endforeach; ?>
                 </div>
             </div>
         </div>
-    <?php endforeach; ?>
+        <?php include("include/menu_open.php"); ?>
+    </div>
+</div>
 <!--    <ul class="pagination">-->
 <!--    --><?//
 //    // Проверяем нужны ли стрелки назад
@@ -174,8 +174,7 @@ if(!empty($_GET)){
 //    }
 //    ?>
 <!--    </ul>-->
-</div>
-</div>
+
 <?php include("include/footer.php");?>
 <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>-->
 <!--<script src="js/bootstrap.min.js"></script>-->

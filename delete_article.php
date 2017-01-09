@@ -13,7 +13,27 @@ if (isset($_GET['id'])) {
     $del = $pdo->prepare("DELETE FROM `article` WHERE id=:id");
     $del->bindParam(':id', $id);
     $del->execute();
-    header("Location: profile.php?id=$user_id");
+
+
+    //    Считаем общее количество статей
+    $st = $pdo->prepare('SELECT COUNT(user_id) FROM `article` WHERE user_id=:user_id');
+    $st->bindParam(':user_id', $user_id, PDO::PARAM_INT);
+    $st->execute();
+    $art_column = $st->fetchColumn();
+
+    //    обновляем статистику в таблице пользователей
+    $update = $pdo->prepare("
+        UPDATE 
+        `users` 
+        SET 
+        count_of_articles =:count_of_articles
+        WHERE 
+        id=:id");
+    $update->bindParam(':count_of_articles', $art_column);
+    $update->bindParam(':id', $user_id);
+    $update->execute();
+
+    header("Location: http://impovar.tt90.ru/profile/$user_id");
     exit;
 }
 

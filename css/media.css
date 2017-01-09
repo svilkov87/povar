@@ -18,16 +18,16 @@
 	.logo_link{
 		color: red;
 	}
-	.menu_open {
-		width: 100%;
-		height: auto;
-		background-color: #f7f7f7;
-		top: 60px;
-		position: absolute;
-		margin: 0;
-		right: 0;
-		text-align: center;
-	}
+	/*.menu_open {*/
+		/*width: 100%;*/
+		/*height: auto;*/
+		/*background-color: #f7f7f7;*/
+		/*top: 60px;*/
+		/*position: absolute;*/
+		/*margin: 0;*/
+		/*right: 0;*/
+		/*text-align: center;*/
+	/*}*/
 	.all_stuff{
 		margin-bottom: 25px;
 	}
@@ -38,7 +38,7 @@
 		color: #000;
 	}
 	.hr_line{
-		width: 350px;
+		width: 330px;
 	}
 	.user_panel{
 		padding-left: 15px;
@@ -140,6 +140,41 @@
 	.registration_link{
 		display: none;
 	}
+    .go_to_1055_header{
+        width: 340px;
+    }
+    .h1_go_1055{
+        color: orange;
+    }
+    .go_to_1055_wrapp{
+        width: 340px;
+        margin: 0 auto;
+    }
+    .cuckoo_pot{
+        width: 340px;
+        text-align: center;
+        float: none;
+    }
+    .cuckoo_text{
+        width: 340px;
+        float: none;
+    }
+    #link_go_to_not {
+        display: none;
+    }
+    #link_go_to_forum {
+        display: none;
+    }
+    .cuckoo_text{
+        font-size: 12px;
+    }
+    section#block_cuckoo_not {
+        height: 100vh;
+        padding-top: 40px;
+    }
+    .h1_go_not {
+        font-size: 23px;
+    }
 }
 
 /* Custom, iPhone Retina */
@@ -172,6 +207,31 @@
 	.registration_link{
 		display: none;
 	}
+    section#block_cuckoo_1055{
+        padding-top: 90px;
+    }
+    .go_to_1055_header{
+        width: 280px;
+    }
+    .h1_go_1055{
+        color: orange;
+    }
+    .go_to_1055_wrapp{
+        /*border: 1px solid #7c4d00;*/
+        width: 280px;
+        margin: 0 auto;
+    }
+    .cuckoo_pot{
+        width: 280px;
+        text-align: center;
+        /*background: #ccc;*/
+        float: none;
+    }
+    .cuckoo_text{
+        width: 280px;
+        /*background: #e8e8e8;*/
+        float: none;
+    }
 }
 
 @media only screen and (max-width : 375px) {
@@ -210,6 +270,31 @@
 	a.registration_link{
 		display: none;
 	}
+    section#block_cuckoo_1055{
+        padding-top: 90px;
+    }
+    .go_to_1055_header{
+        width: 280px;
+    }
+    .h1_go_1055{
+        color: orange;
+    }
+    .go_to_1055_wrapp{
+        /*border: 1px solid #7c4d00;*/
+        width: 280px;
+        margin: 0 auto;
+    }
+    .cuckoo_pot{
+        width: 280px;
+        text-align: center;
+        /*background: #ccc;*/
+        float: none;
+    }
+    .cuckoo_text{
+        width: 280px;
+        /*background: #e8e8e8;*/
+        float: none;
+    }
 }
 @media only screen and (max-width : 320px) {
 	.settings_wrapper {

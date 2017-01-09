@@ -18,14 +18,6 @@ if (!empty($_GET)) {
             exit;
     }
 
-//    echo "<pre>";
-//    var_dump($_SESSION['user_id']);
-//    echo "</pre>";
-//
-//    echo "<pre>";
-//    var_dump($id);
-//    echo "</pre>";
-
     //Выбираем юзера, чей аккаунт
     $st = $pdo->prepare('SELECT * FROM `users` WHERE id=:id');
     $st->bindParam(':id', $id, PDO::PARAM_INT);
@@ -107,14 +99,16 @@ if (!isset($_SESSION['email'])) {
 <body>
 <html>
 <?php include("include/nav.php"); ?>
-<div class="container">
+<div class="container-fluid" style="padding-top: 70px;">
     <div class="row">
-        <div class="col-md-8 col-md-offset-2 col-sm-12 col-xs-12" style="margin-bottom: 25px;">
+        <?php include("include/block_fix.php"); ?>
+        <div class="col-md-6" style="margin-bottom: 25px;">
+            <div class="answers_wrapp">
             <div class="chapters_of_answers">
-                <span class="span_answer">Уведомления</span>
                 <span class="span_answer_number">
                     <a href="http://impovar.tt90.ru/profile/<?php echo $user_id_art; ?>">Назад к профилю</a>
                 </span>
+                <span class="span_answer">Уведомления</span>
             </div>
             <?php
             if ($user_id_art == ""):?>
@@ -124,15 +118,15 @@ if (!isset($_SESSION['email'])) {
             <?php endif; ?>
             <?php foreach ($user_from as $item):
             //если есть новые сообщения, помечаем их цветом
-                if ($item['count_isnew'] == 1):
-                ?>
-                <div class="wrapp_answer" style="background-color: rgba(140, 174, 199, 0.12);">
+            if ($item['count_isnew'] == 1):
+            ?>
+            <div class="wrapp_answer" style="background-color: rgba(140, 174, 199, 0.12);">
 
-                    <?php else: ?>
-                    <div class="wrapp_answer">
+                <?php else: ?>
+                <div class="wrapp_answer">
 
-                    <?php endif;?>
-<!--                    --><?php //echo $item['count_isnew']; ?>
+                    <?php endif;
+                    ?>
                     <div class="block_left_answer">
                         <p class="myanswer_pext_p"><?php echo $item['text']; ?></p><br>
                         <span class="who_is_answer">Написал:</span>
@@ -188,16 +182,19 @@ if (!isset($_SESSION['email'])) {
                         <div class="block_right_answer">
                             <a href="http://impovar.tt90.ru/article/<?php echo $item['article_id']; ?>#answer_item_id<?php echo $item['id']; ?>">
                                 <span class="who_is_answer">Рецепт</span>
-                                <img src="http://impovar.tt90.ru/admin/images/<?php echo $item['article_intro_image']; ?>" alt=""
+                                <img src="http://impovar.tt90.ru/admin/images/<?php echo $item['article_intro_image']; ?>"
+                                     alt=""
                                      class="answer_intro_image">
                             </a>
                         </div>
                     <?php endif; ?>
                 </div>
-            <?php endforeach; ?>
+                <?php endforeach; ?>
+            </div>
+            </div>
+            <?php include("include/menu_open.php"); ?>
         </div>
     </div>
-</div>
 
 <?php include("include/footer.php"); ?>
 <!--[if lt IE 9]-->

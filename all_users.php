@@ -12,8 +12,11 @@ ini_set('display_startup_errors', TRUE);
 $st = $pdo->query('SELECT * FROM `users`');
 $all_users = $st->fetchAll();
 
+//Считаем общее количество пользователей
+$CountOfUsers = $pdo->query('SELECT COUNT(id) FROM `users`')->fetchColumn();
+
 //echo "<pre>";
-//var_dump($all_users);
+//var_dump($CountOfUsers);
 //echo "</pre>";
 
 ?>
@@ -49,28 +52,44 @@ $all_users = $st->fetchAll();
 <body>
 <html>
 <?php include("include/nav.php"); ?>
-<div class="container">
+<div class="container-fluid" style="padding-top: 70px;">
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <?php foreach ($all_users as $item): ?>
-                <div class="col-md-2 col-sm-3 col-xs-4">
-                    <div class="row">
+        <?php include("include/block_fix.php"); ?>
+        <div class="col-md-6">
+            <div class="row">
+                <div class="all_users_wrapp">
+                    <div class="all_users_count">
+                        <span class="span_answer">Зарегистрированных пользователей:</span>
+                        <span class="span_all_us_number"><?php echo $CountOfUsers; ?></span>
+                    </div>
+                    <?php foreach ($all_users as $item): ?>
                         <a href="http://impovar.tt90.ru/profile/<?php echo $item['id']; ?>">
                             <div class="all_user_body">
                                 <div class="all_us_ava_block">
                                     <img src="img/avatars/<?php echo $item['ava']; ?>" alt="" class="all_us_img">
                                 </div>
                                 <div class="all_us_link_block">
-                                    <a href="http://impovar.tt90.ru/profile/<?php echo $item['id']; ?>" class="all_us_link_to_profile">
+                                    <a href="http://impovar.tt90.ru/profile/<?php echo $item['id']; ?>"
+                                       class="all_us_link_to_profile">
                                         <?php echo $item['username']; ?>
                                     </a>
+                                    <div class="all_us_desc">
+                                        Рецептов:&nbsp;<?php echo $item['count_of_articles']; ?>
+                                    </div>
+                                    <div class="all_us_desc">
+                                        Постов:&nbsp;<?php echo $item['count_of_articles']; ?>
+                                    </div>
+                                    <div class="all_us_desc">
+                                        Ответов:&nbsp;<?php echo $item['count_of_articles']; ?>
+                                    </div>
                                 </div>
                             </div>
                         </a>
-                    </div>
+                    <?php endforeach; ?>
                 </div>
-            <?php endforeach; ?>
+            </div>
         </div>
+        <?php include("include/menu_open.php"); ?>
     </div>
 </div>
 

@@ -7,7 +7,7 @@ error_reporting(E_ALL | E_STRICT);
 ini_set('display_errors', TRUE);
 ini_set('display_startup_errors', TRUE);
 
-if(!empty($_GET)) {
+if (!empty($_GET)) {
 
     $id = intval($_GET['id']);
     // если зло вручную поставит другой id пользвателя, то он не попадет на чужую страницу с ответами
@@ -23,7 +23,7 @@ if(!empty($_GET)) {
     $st->execute();
     $profile_data = $st->fetchAll();
     $user_image = $profile_data[0]["ava"];
-    if ($user_image == ""){
+    if ($user_image == "") {
         $user_image = "no_ava.png";
     }
 
@@ -34,38 +34,32 @@ if(!empty($_GET)) {
     $st->execute();
     $profile_data = $st->fetchAll();
     $intro_image = $profile_data[0]['ava'];
-    if ($intro_image == ""){
+    if ($intro_image == "") {
         $intro_image = "no_ava.png";
     }
-        $st = $pdo->prepare('SELECT * FROM `article` WHERE user_id=:user_id ORDER BY id DESC');
-        $st->bindParam(':user_id', $id, PDO::PARAM_INT);
-        $st->execute();
-        $art_of_user = $st->fetchAll();
+    $st = $pdo->prepare('SELECT * FROM `article` WHERE user_id=:user_id ORDER BY id DESC');
+    $st->bindParam(':user_id', $id, PDO::PARAM_INT);
+    $st->execute();
+    $art_of_user = $st->fetchAll();
 
-//    Считаем общее количество статей
-        $st = $pdo->prepare('SELECT COUNT(user_id) FROM `article` WHERE user_id=:user_id');
-        $st->bindParam(':user_id', $id, PDO::PARAM_INT);
-        $st->execute();
-        $art_column = $st->fetchColumn();
-}
 
 //добавление статьи. если стаью добавляет админ, то записываем в таблицу article
-$user_id = $_SESSION['user_id'];
-$user_name = $_SESSION['user_name'];
+    $user_id = $_SESSION['user_id'];
+    $user_name = $_SESSION['user_name'];
 //if(isset($_POST['button_newarticle']) AND $user_id != 14){
-if(isset($_POST['button_newarticle'])){
-    $title = $_POST['title'];
-    $text = $_POST['text'];
-    if(isset ($_FILES['image'])){
-        $image_name = $_FILES['image']['name'];
-        $image_tmp = $_FILES['image']['tmp_name'];
-        $upload = "admin/images/";
-        move_uploaded_file($image_tmp, $upload.$image_name);
-        if($_FILES["image"]["name"] == ""){
-            $image_name = "no_intro.png";
-        }
-        $insert = $pdo->prepare
-        ("
+    if (isset($_POST['button_newarticle'])) {
+        $title = $_POST['title'];
+        $text = $_POST['text'];
+        if (isset ($_FILES['image'])) {
+            $image_name = $_FILES['image']['name'];
+            $image_tmp = $_FILES['image']['tmp_name'];
+            $upload = "admin/images/";
+            move_uploaded_file($image_tmp, $upload . $image_name);
+            if ($_FILES["image"]["name"] == "") {
+                $image_name = "no_intro.png";
+            }
+            $insert = $pdo->prepare
+            ("
         INSERT INTO 
         `article` 
         SET 
@@ -75,20 +69,41 @@ if(isset($_POST['button_newarticle'])){
         intro_image=:intro_image, 
         text=:text
         ");
-        $insert->bindParam(':title', $title);
-        $insert->bindParam(':text', $text);
-        $insert->bindParam(':user_id', $user_id );
-        $insert->bindParam(':user_name', $user_name);
-        $insert->bindParam(':intro_image', $image_name);
-        $insert->execute();
-        header("Location: http://impovar.tt90.ru/profile/$user_id");
-        exit;
+            $insert->bindParam(':title', $title);
+            $insert->bindParam(':text', $text);
+            $insert->bindParam(':user_id', $user_id);
+            $insert->bindParam(':user_name', $user_name);
+            $insert->bindParam(':intro_image', $image_name);
+            $insert->execute();
+
+            //    Считаем общее количество статей
+            $st = $pdo->prepare('SELECT COUNT(user_id) FROM `article` WHERE user_id=:user_id');
+            $st->bindParam(':user_id', $id, PDO::PARAM_INT);
+            $st->execute();
+            $art_column = $st->fetchColumn();
+
+            //    обновляем статистику в таблице пользователей
+            $update = $pdo->prepare("
+        UPDATE 
+        `users` 
+        SET 
+        count_of_articles =:count_of_articles
+        WHERE 
+        id=:id");
+            $update->bindParam(':count_of_articles', $art_column);
+            $update->bindParam(':id', $id);
+            $update->execute();
+
+
+            header("Location: http://impovar.tt90.ru/profile/$user_id");
+            exit;
 
 //    echo '<pre>';
 //    var_dump($_FILES["image"]["name"]);
 //    echo '</pre>';
 
 
+        }
     }
 }
 
@@ -103,47 +118,50 @@ if(isset($_POST['button_newarticle'])){
 ?>
 
 <!DOCTYPE html>
-<!--[if lt IE 7]><html lang="ru" class="lt-ie9 lt-ie8 lt-ie7"><![endif]-->
-<!--[if IE 7]><html lang="ru" class="lt-ie9 lt-ie8"><![endif]-->
-<!--[if IE 8]><html lang="ru" class="lt-ie9"><![endif]-->
+<!--[if lt IE 7]>
+<html lang="ru" class="lt-ie9 lt-ie8 lt-ie7"><![endif]-->
+<!--[if IE 7]>
+<html lang="ru" class="lt-ie9 lt-ie8"><![endif]-->
+<!--[if IE 8]>
+<html lang="ru" class="lt-ie9"><![endif]-->
 <!--[if gt IE 8]><!-->
 <html lang="ru">
 <!--<![endif]-->
 <head>
-    <meta charset="utf-8" />
+    <meta charset="utf-8"/>
     <title>Добавить статью</title>
     <script src="http://impovar.tt90.ru/admin/ckeditor/ckeditor.js"></script>
-    <meta name="description" content="IMPOVAR" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="shortcut icon" href="http://impovar.tt90.ru/img/favicon/favicon.ico" />
-    <link rel="stylesheet" href="http://impovar.tt90.ru/libs/font-awesome-4.2.0/css/font-awesome.min.css" />
-    <link rel="stylesheet" href="http://impovar.tt90.ru/libs/fancybox/jquery.fancybox.css" />
-    <link rel="stylesheet" href="http://impovar.tt90.ru/libs/owl-carousel/owl.carousel.css" />
-    <link rel="stylesheet" href="http://impovar.tt90.ru/libs/countdown/jquery.countdown.css" />
+    <meta name="description" content="IMPOVAR"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="shortcut icon" href="http://impovar.tt90.ru/img/favicon/favicon.ico"/>
+    <link rel="stylesheet" href="http://impovar.tt90.ru/libs/font-awesome-4.2.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="http://impovar.tt90.ru/libs/fancybox/jquery.fancybox.css"/>
+    <link rel="stylesheet" href="http://impovar.tt90.ru/libs/owl-carousel/owl.carousel.css"/>
+    <link rel="stylesheet" href="http://impovar.tt90.ru/libs/countdown/jquery.countdown.css"/>
     <link rel="stylesheet" href="http://impovar.tt90.ru/remodal/remodal.css">
     <link rel="stylesheet" href="http://impovar.tt90.ru/remodal/remodal-default-theme.css">
-    <link rel="stylesheet" href="http://impovar.tt90.ru/css/fonts.css" />
-    <link rel="stylesheet" href="http://impovar.tt90.ru/css/main.css" />
-    <link rel="stylesheet" href="http://impovar.tt90.ru/css/media.css" />
-    <link rel="stylesheet" href="http://impovar.tt90.ru/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="http://impovar.tt90.ru/css/fonts.css"/>
+    <link rel="stylesheet" href="http://impovar.tt90.ru/css/main.css"/>
+    <link rel="stylesheet" href="http://impovar.tt90.ru/css/media.css"/>
+    <link rel="stylesheet" href="http://impovar.tt90.ru/css/bootstrap.min.css"/>
 </head>
 <body>
 <html>
-<?php include("include/nav.php");?>
-<div class="container">
+<?php include("include/nav.php"); ?>
+<div class="container-fluid" style="padding-top: 70px;">
     <div class="row">
-        <div class="col-md-8 col-md-offset-2" style="margin-bottom: 25px; background: #eeeff2;">
+        <?php include("include/block_fix.php"); ?>
+        <div class="col-md-6" style="margin-bottom: 25px; background: #eeeff2;">
             <div class="chapters_of_answers">
                 <span class="span_answer">Раздел добавления статьи</span>
             </div>
-
-<!--        <div class="col-md-8">-->
             <div class="wrapp_add_art">
                 <form method="post" action="" enctype="multipart/form-data">
                     <div class="form-group">
                         <label class="label_admin_user">Заголовок статьи</label>
-                        <input type="text" class="form-control" name="title" id="field1" placeholder="Введите название статьи">
+                        <input type="text" class="form-control" name="title" id="field1"
+                               placeholder="Введите название статьи">
                     </div>
                     <!--загрузка картинок-->
                     <div class="form-group">
@@ -154,25 +172,17 @@ if(isset($_POST['button_newarticle'])){
 
                     <div class="form-group">
                         <label class="label_admin_user">Содержание статьи</label>
-                        <textarea rows="10" cols="20" class="form-control" name="text" id="text" placeholder="Пишите вашу стаью"></textarea>
+                        <textarea rows="10" cols="20" class="form-control" name="text" id="text"
+                                  placeholder="Пишите вашу стаью"></textarea>
                     </div>
-                    <button type="submit" name="button_newarticle"  class="btn_default">Разместить</button>
+                    <button type="submit" name="button_newarticle" class="btn_default">Разместить</button>
                 </form>
             </div>
         </div>
+        <?php include("include/menu_open.php"); ?>
     </div>
-    </div>
-
-<!---->
-<!---->
-<!--        </div>-->
-<!---->
-<!---->
-<!---->
-<!--    </div>-->
-<!--</div>-->
-
-<?php include("include/footer.php");?>
+</div>
+<?php include("include/footer.php"); ?>
 <script>
     CKEDITOR.replace("text");
 </script>

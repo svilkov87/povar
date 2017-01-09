@@ -35,7 +35,7 @@ if (isset($_POST['enter_comment'])) {
     $insert->bindParam(':user_name', $user_name);
     $insert->bindParam(':user_id', $user_id);
     $insert->execute();
-    header("Location: forum.php");
+    header("Location: http://impovar.tt90.ru/forum");
     exit;
 }
 //}
@@ -67,9 +67,10 @@ if (isset($_POST['enter_comment'])) {
 ?>
 <i class="fa fa-chevron-up" aria-hidden="true" id="top"></i>
 <?php include "include/nav.php"; ?>
-<div class="container">
+<div class="container-fluid">
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
+        <?php include("include/block_fix.php"); ?>
+        <div class="col-md-6">
             <div class="wrapp_add_art">
                 <div class="add_topic_panel_heading">
                     <span class="add_topic_span">Добавить топик</span>
@@ -86,6 +87,7 @@ if (isset($_POST['enter_comment'])) {
                 </div>
             </div>
         </div>
+        <?php include("include/menu_open.php"); ?>
     </div>
 </div>
 <?php include("include/footer.php"); ?>

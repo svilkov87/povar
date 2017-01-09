@@ -18,42 +18,55 @@ if (!empty($_GET)) {
         exit;
     }
 
-    //Выбираем юзера, чей аккаунт
-    $st = $pdo->prepare('SELECT * FROM `users` WHERE id=:id');
-    $st->bindParam(':id', $id, PDO::PARAM_INT);
-    $st->execute();
-    $profile_data = $st->fetchAll();
-    $user_image = $profile_data[0]['ava'];
-    if ($user_image == "") {
-        $user_image = "no_ava.png";
-    }
-    
-    ##ответы к моим комментариям
-    $stm = $pdo->prepare('SELECT * FROM `messages` WHERE to_us =:to_us ORDER BY `id` DESC ');
+    ##превью сообщений
+
+    //получаем мы
+    $stm = $pdo->prepare('SELECT MAX(id) FROM `messages` WHERE to_us =:to_us OR from_us =:from_us GROUP BY dialog_id ');
     $stm->bindParam(':to_us', $id, PDO::PARAM_INT);
+    $stm->bindParam(':from_us', $id, PDO::PARAM_INT);
     $stm->execute();
     $MyMess = $stm->fetchAll();
 
+    ## Многомерный массив превращаем в строку
+    $StringArray = array();
+    for ($i = 0; $i < count($MyMess); $i++) {
+        $StringArray[] = $MyMess[$i]['MAX(id)'];
+    }
 
-//    $number_of_answer = count($user_from);
+    ## Превращение одномерного массива в строку
+    $StringTag = implode(',', $StringArray);
+
+    ## вывод результата
+    $NameTags = $pdo->query('SELECT from_us, to_us, text FROM `messages` WHERE `id` IN ('.$StringTag.') AND from_us != to_us ORDER BY id ASC')->fetchAll();
+
+//    $ImageMess = $pdo->query('SELECT dialog_id FROM `messages` WHERE  from_us = dialog_id /'.$id.' OR to_us = dialog_id /'.$id.' AND from_us != to_us  GROUP BY dialog_id')->fetchAll();
 //
-////    ##ответы к моим комментариям
-//    $art_array = array_column($user_from, 'article_id');
-//    $art_string = implode(",", $art_array);
-//    $user_id_art = $user_from[0]['user_id_art'];
+//    ## Многомерный массив превращаем в строку
+//    $StringUserData = array();
+//    for ($i = 0; $i < count($ImageMess); $i++) {
+//        $StringUserData[] = $ImageMess[$i]["dialog_id"] / $id;
+//    }
+//
+//    ## Превращение одномерного массива в строку
+//    $UserData = implode(',', $StringUserData);
+//
+//    $ImageUser = $pdo->query('SELECT id, username FROM `users` WHERE  id IN ('.$UserData.')')->fetchAll();
+
+
 
 }
-//
+
+
 //echo "<pre>";
-//var_dump($MyMess);
+//var_dump($ImageUser);
 //echo "</pre>";
-////
-echo "<pre>";
-var_dump($_SERVER['REQUEST_URI']);
-echo "</pre>";
 //
 //echo "<pre>";
-//var_dump($NullValue);
+//var_dump($NameTags);
+//echo "</pre>";
+
+//echo "<pre>";
+//var_dump($result);
 //echo "</pre>";
 
 //проверка, существует ли такая статья. удалял ли ее автор или не
@@ -98,13 +111,25 @@ if (!isset($_SESSION['email'])) {
 <?php include("include/nav.php"); ?>
 <div class="container">
     <div class="row">
-        <?php foreach ($MyMess as $item):?>
-        <p><?php echo $item['text'];?></p>
-            <span><?php echo $item['from_us_name'];?></span>
-        <?php endforeach;?>
-
+        <div class="col-md-8 col-md-offset-2 col-sm-12 col-xs-12" style="margin-bottom: 25px;">
+            <div class="chapters_of_answers">
+                <span class="span_answer_number">
+                    <a href="http://impovar.tt90.ru/profile/<?php echo $_SESSION['user_id']; ?>">Назад к профилю</a>
+                </span>
+                <span class="span_answer">Личные сообщения</span>
+            </div>
+                <?php foreach ($NameTags as $item):?>
+                    <a href="http://impovar.tt90.ru/fmess/<?php echo $item['dialog_id']; ?>/<?php echo $_SESSION['user_id']; ?>">
+            <div class="wrapp_message">
+                <img src="http://impovar.tt90.ru/img/avatars/<?php echo $item['user_image']; ?>" class="ava_img_litmess">
+                <span class="span_answer"><?php echo $item['from_us_name'];?></span>
+                    <p><?php echo $item['text'];?></p>
+            </div>
+                    </a>
+                <?php endforeach;?>
+        </div>
     </div>
-    </div>
+</div>
 
     <?php include("include/footer.php"); ?>
     <!--[if lt IE 9]-->

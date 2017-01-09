@@ -110,6 +110,29 @@ if (!empty($_GET)) {
         header("Location: " . $_SERVER["HTTP_REFERER"]);
         exit;
     }
+    ##подсчет кол-ва комментов для превью
+
+    //считаем кол-во комментов для этой статьи
+
+    $st = $pdo->prepare('SELECT COUNT(article_id)FROM `comments` WHERE article_id=:article_id');
+    $st->bindParam(':article_id', $id, PDO::PARAM_INT);
+    $st->execute();
+    $ResultCountMess = $st->fetchAll();
+
+
+
+    //обновляем кол-во просмотров в таблице article
+
+    if ($ResultCountMess[0]["COUNT(article_id)"] > 0){
+        $update = $pdo->prepare("UPDATE `article` SET comments=:comments WHERE id=:id");
+        $update->bindParam(':comments', $ResultCountMess[0]["COUNT(article_id)"]);
+        $update->bindParam(':id', $id);
+        $update->execute();
+    }
+
+
+
+
 //        вывод всех комментариев, которые соответствуют статье
     $st = $pdo->prepare('SELECT * FROM `comments` WHERE `article_id` =:article_id ORDER BY id DESC');
     $st->bindParam(':article_id', $id, PDO::PARAM_INT);
@@ -136,7 +159,7 @@ if (!empty($_GET)) {
 }
 //
 //        echo "<pre>";
-//        var_dump($us_id);
+//        var_dump($ResultCountMess);
 //        echo "</pre>";
 //
 //        echo "<pre>";
@@ -168,80 +191,66 @@ if (!empty($_GET)) {
 <body>
 <i class="fa fa-chevron-up" aria-hidden="true" id="top"></i>
 <?php include "include/nav.php"; ?>
-<?php
-
-if ($art[0]['id'] == ""):?>
-    <div class="container">
-        <div class="row">
-            <div class="panel panel-default panel_full">
-                <div class="panel-heading">
-                    автор удалил данную статью...
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <?php
-else:
-//    foreach($art as $item):
-    ?>
-    <div class="container">
-        <div class="container">
+<div class="container-fluid" style="padding-top: 70px;">
+    <div class="row">
+        <?php include("include/block_fix.php"); ?>
+        <div class="col-md-6 logo_block">
             <div class="row">
-                <div class="col-md-6 col-md-offset-3">
-                    <ol class="bread_crumb">
+                <ol class="bread_crumb">
+                    <li>
+                        <a href="http://impovar.tt90.ru/home">Главная</a>
+                        <i class="fa fa-angle-right" aria-hidden="true"></i>
+                    </li>
+                    <?php foreach ($tagMain as $item): ?>
                         <li>
-                            <a href="http://impovar.tt90.ru/home">Главная</a>
+                            <a href="http://impovar.tt90.ru/category/<?php echo $item['main_id']; ?>"><?php echo $item['title']; ?></a>
                             <i class="fa fa-angle-right" aria-hidden="true"></i>
                         </li>
-                        <?php foreach ($tagMain as $item): ?>
-                            <li>
-                                <a href="http://impovar.tt90.ru/category/<?php echo $item['main_id']; ?>"><?php echo $item['title']; ?></a>
-                                <i class="fa fa-angle-right" aria-hidden="true"></i>
-                            </li>
+                    <?php endforeach; ?>
+                    <?php foreach ($tagTitle as $item): ?>
+                        <li>
+                            <a href="http://impovar.tt90.ru/preview/<?php echo $item['article_id']; ?>"><?php echo $item['title']; ?></a>
+                            <i class="fa fa-angle-right" aria-hidden="true"></i>
+                        </li>
+                    <?php endforeach; ?>
+                </ol>
+            </div>
+        </div>
+        <?php if ($art[0]['id'] != ""): ?>
+        <div class="col-md-6 col_7_media">
+            <?php foreach ($art as $item): ?>
+            <div class="full_art_panel">
+                <div class="full_art_heading">
+                    <h3 class="panel-title"><?php echo $item['title']; ?></h3>
+                </div>
+                <div class="full_art_body">
+                    <?php echo $item['text']; ?>
+                </div>
+                <div class="author_of_fullart">
+                    <?php
+                    if ($us_id != 14 AND $artMainid == 2):
+                        foreach ($auth as $item): ?>
+                            <span class="name_auth">Автор статьи:</span>
+                            <a href="profile.php?id=<?php echo $item['id']; ?>"
+                               class="name_auth"><?php echo $item['username']; ?></a>
+                        <?php endforeach;
+                    elseif ($us_id == 14 AND $artMainid == 1 OR $us_id != 14):
+                        foreach ($auth as $item): ?>
+                            <span class="name_auth">Автор статьи:</span>
+                            <a href="http://impovar.tt90.ru/profile/<?php echo $item['id']; ?>"
+                               class="name_auth"><?php echo $item['username']; ?></a>
                         <?php endforeach; ?>
-                        <?php foreach ($tagTitle as $item): ?>
-                            <li>
-                                <a href="http://impovar.tt90.ru/preview/<?php echo $item['article_id']; ?>"><?php echo $item['title']; ?></a>
-                                <i class="fa fa-angle-right" aria-hidden="true"></i>
-                            </li>
-                        <?php endforeach; ?>
-                    </ol>
+                    <?php endif; ?>
+                    <span class="count_watches">Просмотров:&nbsp;<b><?php echo $count_of_watches; ?></b></span>
                 </div>
             </div>
-        </div><!--breadcrumb-->
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2 col_7_media">
-                <?php foreach ($art as $item): ?>
-                    <div class="full_art_panel">
-                        <div class="full_art_heading">
-                            <h3 class="panel-title"><?php echo $item['title']; ?></h3>
-                        </div>
-                        <div class="full_art_body">
-                            <?php echo $item['text']; ?>
-                        </div>
-                        <div class="author_of_fullart">
-                            <?php
-                            if ($us_id != 14 AND $artMainid == 2):
-                                foreach ($auth as $item): ?>
-                                    <span class="name_auth">Автор статьи:</span>
-                                    <a href="profile.php?id=<?php echo $item['id']; ?>"
-                                       class="name_auth"><?php echo $item['username']; ?></a>
-                                <?php endforeach;
-                            elseif ($us_id == 14 AND $artMainid == 1 OR $us_id != 14):
-                                foreach ($auth as $item): ?>
-                                    <span class="name_auth">Автор статьи:</span>
-                                    <a href="http://impovar.tt90.ru/profile/<?php echo $item['id']; ?>"
-                                       class="name_auth"><?php echo $item['username']; ?></a>
-                                <?php endforeach; ?>
-                            <?php endif; ?>
-                            <span class="count_watches">Просмотров:&nbsp;<b><?php echo $count_of_watches; ?></b></span>
-                        </div>
-                    </div>
 
-                    <div class="comment_body">
-                        <span class="span_answer">Комментариев&nbsp;<?php echo $number_of_comments; ?></span>
-                    </div>
+
+            <div class="comment_answer_body">
+
+                <div class="comment_body">
+                    <span class="span_answer">Комментариев&nbsp;<?php echo $number_of_comments; ?></span>
+                </div>
                 <?php endforeach; ?>
                 <?php
                 if (isset($_SESSION['email'])):?>
@@ -250,7 +259,8 @@ else:
                             <div class="user_photo">
                                 <?php foreach ($users as $key): ?>
                                     <a href="http://impovar.tt90.ru/profile/<?php echo $key['id']; ?>">
-                                        <img src="http://impovar.tt90.ru/img/avatars/<?php echo $_SESSION['ava']; ?>" class="ava_img_fullart">
+                                        <img src="http://impovar.tt90.ru/img/avatars/<?php echo $_SESSION['ava']; ?>"
+                                             class="ava_img_fullart">
                                     </a>
                                 <?php endforeach; ?>
                             </div>
@@ -264,7 +274,7 @@ else:
                                    value="<?php echo $image_var; ?>">
                             <textarea readonly hidden class="form-control" rows="3" name="answer_for_comment"
                                       id="answer_to_comment"></textarea>
-                            <textarea class="form-control" rows="3" name="text" id="answer"
+                            <textarea class="form-control" rows="3" name="text" id="answer_input_comment_to"
                                       placeholder="Введите сообшение..." onfocus="placeholder='';"
                                       onblur="placeholder='Введите сообшение...';"></textarea>
                             <div class="button_n_delete">
@@ -296,9 +306,11 @@ else:
                             <div class="left_block_comment">
                                 <div class="ava">
                                     <div class="photo">
-                                        <img src="http://impovar.tt90.ru/img/avatars/<?php echo $item['ava']; ?>" class="ava_img_fullusart">
+                                        <img src="http://impovar.tt90.ru/img/avatars/<?php echo $item['ava']; ?>"
+                                             class="ava_img_fullusart">
                                     </div>
-                                    <a href="http://impovar.tt90.ru/profile/<?php echo $item['user_id']; ?>" class="user_name_ava">
+                                    <a href="http://impovar.tt90.ru/profile/<?php echo $item['user_id']; ?>"
+                                       class="user_name_ava">
                                         <?php echo $item['user_name']; ?>
                                     </a>
                                 </div>
@@ -324,9 +336,21 @@ else:
                     <?php endforeach; ?>
                 </div>
             </div>
+            <!--           comment_answer_body     -->
         </div>
+        <?php else: ?>
+        <div class="col-md-6 col_7_media">
+            <div class="full_art_panel">
+                <div class="full_art_heading">
+                    <h3 class="panel-title">Автор удалил данную статью...</h3>
+                </div>
+            </div>
+        </div>
+        <?php endif; ?>
+        <?php include("include/menu_open.php"); ?>
     </div>
-<?php endif; ?>
+</div>
+
 <?php include("include/footer.php"); ?>
 <!--присваиваем всем тегам img class="img-responsive"-->
 <script>

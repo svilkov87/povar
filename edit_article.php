@@ -21,12 +21,6 @@ if (!empty($_GET)) {
         $user_image = "no_ava.png";
     }
 
-    //    Считаем общее количество статей
-    $st = $pdo->prepare('SELECT COUNT(user_id) FROM `article` WHERE user_id=:user_id');
-    $st->bindParam(':user_id', $user, PDO::PARAM_INT);
-    $st->execute();
-    $art_column = $st->fetchColumn();
-
     //выборка для вставки в форму для редактирования
     $stmt = $pdo->prepare('SELECT * FROM `article` WHERE id = :id');
     $stmt->bindParam(':id', $id, PDO::PARAM_INT);
@@ -36,25 +30,24 @@ if (!empty($_GET)) {
     $text = $row['text'];
     $intro_image = $row['intro_image'];
 
-}
 
 //редактирование статьи
-$user_id = $_SESSION['user_id'];
-$user_name = $_SESSION['user_name'];
-if (isset($_POST['button_newarticle'])) {
-    $title = strip_tags($_POST['title']);
-    $text = $_POST['text'];
-    $id = $_GET['id'];
-    if (isset ($_FILES['image'])) {
-        $image_name = $_FILES['image']['name'];
-        $image_tmp = $_FILES['image']['tmp_name'];
-        $upload = "admin/images/";
-        move_uploaded_file($image_tmp, $upload . $image_name);
-        if ($_FILES["image"]["name"] == "") {
-            $image_name = "no_intro.png";
-        }
-        $update = $pdo->prepare
-        ("
+    $user_id = $_SESSION['user_id'];
+    $user_name = $_SESSION['user_name'];
+    if (isset($_POST['button_newarticle'])) {
+        $title = strip_tags($_POST['title']);
+        $text = $_POST['text'];
+        $id = $_GET['id'];
+        if (isset ($_FILES['image'])) {
+            $image_name = $_FILES['image']['name'];
+            $image_tmp = $_FILES['image']['tmp_name'];
+            $upload = "admin/images/";
+            move_uploaded_file($image_tmp, $upload . $image_name);
+            if ($_FILES["image"]["name"] == "") {
+                $image_name = "no_intro.png";
+            }
+            $update = $pdo->prepare
+            ("
         UPDATE 
         `article` 
         SET 
@@ -64,14 +57,15 @@ if (isset($_POST['button_newarticle'])) {
         intro_image=:intro_image 
         WHERE 
         id=:id");
-        $update->bindParam(':title', $title);
-        $update->bindParam(':text', $text);
-        $update->bindParam(':user_name', $user_name);
-        $update->bindParam(':intro_image', $image_name);
-        $update->bindParam(':id', $id);
-        $update->execute();
-        header("Location: http://impovar.tt90.ru/profile/$user_id");
-        exit();
+            $update->bindParam(':title', $title);
+            $update->bindParam(':text', $text);
+            $update->bindParam(':user_name', $user_name);
+            $update->bindParam(':intro_image', $image_name);
+            $update->bindParam(':id', $id);
+            $update->execute();
+            header("Location: http://impovar.tt90.ru/profile/$user_id");
+            exit();
+        }
     }
 }
 
@@ -114,11 +108,12 @@ if (isset($_POST['button_newarticle'])) {
 <body>
 <html>
 <?php include("include/nav.php"); ?>
-<div class="container">
+<div class="container-fluid" style="padding-top: 70px;">
     <div class="row">
-        <div class="col-md-10 col-md-offset-1" style="margin-bottom: 25px; background: #eeeff2;">
+        <?php include("include/block_fix.php"); ?>
+        <div class="col-md-6" style="margin-bottom: 25px; background: #eeeff2;">
             <div class="chapters_of_answers">
-                <span class="span_answer">Раздел добавления статьи</span>
+                <span class="span_answer">Раздел редактирования статьи</span>
             </div>
             <form method="post" action="" enctype="multipart/form-data">
                 <div class="form-group">
@@ -134,15 +129,16 @@ if (isset($_POST['button_newarticle'])) {
 
                 <div class="form-group">
                     <label class="label_admin_user">Содержание статьи</label>
-                    <textarea rows="10" cols="20" class="form-control" name="text" id="text" placeholder="Пишите вашу стаью">
+                    <textarea rows="10" cols="20" class="form-control" name="text" id="text"
+                              placeholder="Пишите вашу стаью">
                         <?php echo $text; ?>
                     </textarea>
                 </div>
-                <button type="submit" name="button_newarticle"  class="btn_default">Редактировать</button>
+                <button type="submit" name="button_newarticle" class="btn_default">Редактировать</button>
             </form>
         </div>
+        <?php include("include/menu_open.php"); ?>
     </div>
-</div>
 </div>
 
 <?php include("include/footer.php"); ?>

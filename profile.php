@@ -8,7 +8,6 @@ include("include/connection.php");
 //ini_set('display_startup_errors', TRUE);
 
 
-
 if (!empty($_GET)) {
 
     $id = intval($_GET['id']);
@@ -31,7 +30,7 @@ if (!empty($_GET)) {
     $st->bindParam(':user_id', $id, PDO::PARAM_INT);
     $st->execute();
     $art_column = $st->fetchColumn();
-
+    
 
     $forAdminId = $profile_data[0]["id"];
     //Выбираем статьи относящиеся к этим тегам
@@ -77,17 +76,10 @@ if (!empty($_GET)) {
     }
     ## Превращение одномерного массива в строку
     $NumberOfTopic = implode(',', $StringArray);
-
-
-//    $st = $pdo->prepare('SELECT * FROM `article` WHERE user_id=:user_id ORDER BY id DESC');
-//    $st->bindParam(':user_id', $id, PDO::PARAM_INT);
-//    $st->execute();
-//    $art_of_user = $st->fetchAll();
-
-
+    
 }
 //echo "<pre>";
-//var_dump($id);
+//var_dump($user_id);
 //echo "</pre>";
 //
 //echo "<pre>";
@@ -128,197 +120,175 @@ if (!empty($_GET)) {
 <body>
 <html>
 <i class="fa fa-chevron-up" aria-hidden="true" id="top"></i>
-<!--call confirm modal-->
-<div id="modalWindow">
-    <div class="window">
-        <a href="#fa_close_window" class="fa_close_window">x</a><br>
-        <div class="mindow_items">
-            <form action="" method="post">
-                <p class="remind_p">Отправка сообщения пользователю</p>
-                <p class="remind_p" align="center"><?php echo $user_name;?></p>
-                <input hidden type="text" name="id_to_user" value="<?php echo $user_id;?>"/>
-                <textarea name="text_to_user" class="text_field_modal"></textarea>
-                <button class="btn_default" type="new_message" name="enter_message">Отправить сообщение</button>
-            </form>
-        </div>
-    </div>
-</div>
-<!--/call confirm modal-->
 <?php include("include/nav.php"); ?>
-<div class="container-fluid">
+<div class="container-fluid" style="padding-top: 70px;">
     <div class="row">
-        <div class="profile_panel">
-            <div class="panel_heading_profile">
-                <?php foreach ($profile_data as $item): ?>
-                    <div class="col-md-2 col-md-offset-1 col-sm-12 col-xs-12 ava_block">
-                        <a href="http://impovar.tt90.ru/profile/<?php echo $user_id; ?>" class="dfg">
-                            <img src="http://impovar.tt90.ru/img/avatars/<?php echo $user_image; ?>" class="ava_img">
-                        </a>
-                        <br>
-                        <a href="#modalWindow" class="staty">
-                            <i class="fa fa-envelope-o" aria-hidden="true"></i>
-                        </a>
-                    </div>
-                    <div class="col-md-8 col-sm-12 col-xs-12 col-md8">
-                        <span class="name_of_user_profile"><?php echo $item['username']; ?></span>
-                        <br>
-                        <div class="about_me">
-                            <span class="span_about">О cебе:</span>
-                            <div class="span_about_text">
-                                <?php echo $item['about']; ?>
+        <?php include("include/block_fix.php"); ?>
+        <div class="col-md-6">
+            <div class="row">
+                <div class="profile_panel">
+                    <div class="panel_heading_profile">
+                        <?php foreach ($profile_data as $item): ?>
+                            <div class="col-md-4 ava_block">
+                                <div class="profile_image">
+                                    <a href="http://impovar.tt90.ru/profile/<?php echo $user_id; ?>" class="dfg">
+                                        <img src="http://impovar.tt90.ru/img/avatars/<?php echo $user_image; ?>"
+                                             class="ava_img">
+                                        <!--                                <img src="http://impovar.tt90.ru/img/avatars/я.jpg" class="ava_img">-->
+                                    </a>
+                                </div>
+                                <br>
                             </div>
-                        </div>
-                        <div class="about_me">
-                            <span class="span_about">Любимое блюдо:</span>
-                            <span class="span_about_text"><?php echo $item['fav_food']; ?></span>
-                        </div>
-                        <div class="about_me">
-                            <span class="span_about">Профессия:</span>
-                            <span class="span_about_text"><?php echo $item['profession']; ?></span>
-                        </div>
-                        <div class="about_me">
-                            <span class="span_about">Профессия:</span>
-                            <span class="span_about_text"><?php echo $item['hobby']; ?></span>
-                        </div>
+                            <div class="col-md-6 col-md8">
+                                <span class="name_of_user_profile"><?php echo $item['username']; ?></span>
+                                <br>
+                                <div class="about_me">
+                                    <span class="span_about">О cебе:</span>
+                                    <div class="span_about_text">
+                                        <?php echo $item['about']; ?>
+                                    </div>
+                                </div>
+                                <div class="about_me">
+                                    <span class="span_about">Любимое блюдо:</span>
+                                    <span class="span_about_text"><?php echo $item['fav_food']; ?></span>
+                                </div>
+                                <div class="about_me">
+                                    <span class="span_about">Профессия:</span>
+                                    <span class="span_about_text"><?php echo $item['profession']; ?></span>
+                                </div>
+                                <div class="about_me">
+                                    <span class="span_about">Хобби:</span>
+                                    <span class="span_about_text"><?php echo $item['hobby']; ?></span>
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+                        <?php endforeach; ?>
                     </div>
-                    <div class="clearfix"></div>
-                <?php endforeach; ?>
+                </div>
             </div>
-        </div>
-    </div>
-</div>
-<?php
-if ($art_column == 0):?>
-    <div class="col-md-8 col-md-offset-4">
-        <div class="list_of_recipes">
-            <span class="span_answer">Нет ни одного рецепта</span>
-        </div>
-        <div class="last_of_body">
-            <span class="span_last_rec">Последние рецепты пользователей:</span>
-        </div>
-        <div class="list_of_recipes">
-            <?php foreach ($LastArt as $item): ?>
-                <div class="col-md-4 col-sm-6 col-xs-12">
-                    <div class="last_art_body">
-                        <div class="last_art_header">
+            <?php if ($art_column == 0): ?>
+                <div class="row">
+                    <div class="profile_recipes_wrapp">
+                        <div class="list_of_recipes">
+                            <span class="span_answer">Нет ни одного рецепта</span>
+                        </div>
+                        <div class="last_of_body">
+                            <span class="span_last_rec">Последние рецепты пользователей:</span>
+                        </div>
+                        <div class="list_of_recipes">
+                            <?php foreach ($LastArt as $item): ?>
+                                <div class="col-md-4 col-sm-6 col-xs-12">
+                                    <div class="last_art_body">
+                                        <div class="last_art_header">
                             <span class="span_last">
                                 <a href="http://impovar.tt90.ru/article/<?php echo $item['id']; ?>"
                                    class="last_to_full_link">
                                     <?php echo $item['title']; ?>
                                 </a>
                             </span>
-                        </div>
-                        <div class="wrapp_last">
-                            <img src="http://impovar.tt90.ru/admin/images/<?php echo $item['intro_image']; ?>"
-                                 alt=""
-                                 class="last_intro_image">
-                            <div class="bottom_prof">
-                                <span class="wathes_full_art">просмотров:</span>
-                                <span class="wathes_full_art"><?php echo $item['watches']; ?></span>
-                                <br>
-                                <span class="wathes_full_art">комменты:</span>
-                                <span class="wathes_full_art"><?php echo $item['watches']; ?></span>
-                            </div>
+                                        </div>
+                                        <div class="wrapp_last">
+                                            <img src="http://impovar.tt90.ru/admin/images/<?php echo $item['intro_image']; ?>"
+                                                 alt=""
+                                                 class="last_intro_image">
+                                            <div class="bottom_prof">
+                                                <span class="wathes_full_art">просмотров:</span>
+                                                <span class="wathes_full_art"><?php echo $item['watches']; ?></span>
+                                                <br>
+                                                <span class="wathes_full_art">комменты:</span>
+                                                <span class="wathes_full_art"><?php echo $item['comments']; ?></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            <?php endforeach; ?>
                         </div>
                     </div>
                 </div>
-            <?php endforeach; ?>
-        </div>
-    </div>
-<?php //else: ?>
-    <?php endif; ?>
-    <?php if ($id == $_SESSION['user_id']): ?>
-        <div class="col-md-2 col-md-offset-1 col-sm-12 col-xs-12">
-            <div class="skills_body">
-                <div class="last_art_header">
-                        <span class="span_skills">Достижения</span>
-                    <ul class="ul_skills">
-                        <li class="li_skills">
-                            <i class="fa fa-graduation-cap" aria-hidden="true"></i>
-                            <br>
-                            <span>Ветеран кулирании</span>
-                        </li>
-                        <li class="li_skills">
-                            <i class="fa fa-cutlery fa-cutlery_skills" aria-hidden="true"></i>
-                            <span><?php echo $art_column; ?></span>
-                        </li>
-                        <li class="li_skills">
-                            <i class="fa fa-bullhorn" aria-hidden="true"></i>
-                            <span><?php echo $NumberOfTopic; ?></span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-8 col-sm-12 col-xs-12">
-            <div class="last_of_body">
-                <span class="span_last_rec">Рецепты Автора:</span>
-            </div>
-    <div class="list_of_recipes">
-        <?php foreach ($art_of_user as $item): ?>
-            <div class="col-md-4 col-sm-6 col-xs-12">
-                <div class="last_art_body">
-                    <div class="last_art_header">
+            <?php endif; ?>
+            <?php if ($id == $_SESSION['user_id']): ?>
+                <div class="row">
+                    <div class="profile_recipes_wrapp">
+                        <div class="last_of_body">
+                            <span class="span_last_rec">Рецепты Автора:</span>
+                        </div>
+
+                        <div class="list_of_recipes">
+                            <?php foreach ($art_of_user as $item): ?>
+                                <div class="col-md-4 col-sm-6 col-xs-12">
+                                    <div class="last_art_body">
+                                        <div class="last_art_header">
                         <span class="span_last">
                              <a href="http://impovar.tt90.ru/article/<?php echo $item['id']; ?>"
                                 class="last_to_full_link">
                                  <?php echo $item['title']; ?>
                              </a>
                          </span>
-                    </div>
-                    <div class="wrapp_last">
-                        <img src="http://impovar.tt90.ru/admin/images/<?php echo $item['intro_image']; ?>"
-                             alt=""
-                             class="last_intro_image">
-                        <div class="bottom_prof">
-                            <a href="delete_article.php?id=<?php echo $item['id']; ?>"
-                               onclick="return confirm('Удалить статью?')" class="fa-trash-del">
-                                <i class="fa fa-trash fa-trash-del" aria-hidden="true"></i>
-                            </a>
-                            <a href="http://impovar.tt90.ru/editart/<?php echo $item['id']; ?>/<?php echo $item['user_id']; ?>"
-                               class="fa-trash-del">
-                                <i class="fa fa-pencil-square" aria-hidden="true"></i>
-                            </a>
+                                        </div>
+                                        <div class="wrapp_last">
+                                            <img src="http://impovar.tt90.ru/admin/images/<?php echo $item['intro_image']; ?>"
+                                                 alt=""
+                                                 class="last_intro_image">
+                                            <div class="bottom_prof">
+                                                <a href="http://impovar.tt90.ru/delart/<?php echo $item['id']; ?>"
+                                                   onclick="return confirm('Удалить статью?')" class="fa-trash-del">
+                                                    <i class="fa fa-trash fa-trash-del" aria-hidden="true"></i>
+                                                </a>
+                                                <a href="http://impovar.tt90.ru/editart/<?php echo $item['id']; ?>/<?php echo $item['user_id']; ?>"
+                                                   class="fa-trash-del">
+                                                    <i class="fa fa-pencil-square" aria-hidden="true"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            <?php endforeach; ?>
                         </div>
                     </div>
                 </div>
-            </div>
-        <?php endforeach; ?>
-    </div>
-</div>
-<?php endif; ?>
-<?php if ($id != $_SESSION['user_id']): ?>
-    <div class="col-md-8 col-md-offset-4">
-        <div class="list_of_recipes">
-            <?php foreach ($art_of_user as $item): ?>
-                <div class="col-md-4 col-sm-6 col-xs-12">
-                    <div class="last_art_body">
-                        <div class="last_art_header">
+            <?php endif; ?>
+            <?php if ($id != $_SESSION['user_id'] AND $art_column != 0): ?>
+                <div class="row">
+                    <div class="profile_recipes_wrapp">
+                        <div class="last_of_body">
+                            <span class="span_last_rec">Рецепты Автора:</span>
+                        </div>
+                        <div class="list_of_recipes">
+                            <?php foreach ($art_of_user as $item): ?>
+                                <div class="col-md-4 col-sm-6 col-xs-12">
+                                    <div class="last_art_body">
+                                        <div class="last_art_header">
                                     <span class="span_last">
                                         <a href="http://impovar.tt90.ru/article/<?php echo $item['id']; ?>"
                                            class="last_to_full_link">
                                             <?php echo $item['title']; ?>
                                         </a>
                                     </span>
-                        </div>
-                        <div class="wrapp_last">
-                            <img src="http://impovar.tt90.ru/admin/images/<?php echo $item['intro_image']; ?>"
-                                 alt=""
-                                 class="last_intro_image">
-                            <div class="bottom_prof">
-                                <span class="wathes_full_art">просмотров:</span>
-                                <span class="wathes_full_art"><?php echo $item['watches']; ?></span>
-                                <br>
-                                <span class="wathes_full_art">комменты:</span>
-                                <span class="wathes_full_art"><?php echo $item['watches']; ?></span>
-                            </div>
+                                        </div>
+                                        <div class="wrapp_last">
+                                            <img src="http://impovar.tt90.ru/admin/images/<?php echo $item['intro_image']; ?>"
+                                                 alt=""
+                                                 class="last_intro_image">
+                                            <div class="bottom_prof">
+                                                <span class="wathes_full_art">просмотров:</span>
+                                                <span class="wathes_full_art"><?php echo $item['watches']; ?></span>
+                                                <br>
+                                                <span class="wathes_full_art">комменты:</span>
+                                                <span class="wathes_full_art"><?php echo $item['comments']; ?></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            <?php endforeach; ?>
                         </div>
                     </div>
                 </div>
-            <?php endforeach; ?>
+            <?php endif; ?>
         </div>
+        <?php include("include/menu_open.php"); ?>
     </div>
-<?php endif; ?>
+</div>
+
 <!--</div>-->
 <?php include("include/footer.php"); ?>
 <!--[if lt IE 9]-->
@@ -341,6 +311,5 @@ if ($art_column == 0):?>
 <script src="http://impovar.tt90.ru/js/main.js"></script>
 <script src="http://impovar.tt90.ru/js/bootstrap.min.js"></script>
 <script src="http://impovar.tt90.ru/remodal/remodal.min.js"></script>
-<script src="http://impovar.tt90.ru///code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 </html>
 </body>

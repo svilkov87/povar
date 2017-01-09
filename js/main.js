@@ -1,6 +1,41 @@
+// one page sroll
+jQuery(window).scroll(function(){
+    var $sections = $('section');
+    $sections.each(function(i,el){
+        var top  = $(el).offset().top-100;
+        var bottom = top +$(el).height();
+        var scroll = $(window).scrollTop();
+        var id = $(el).attr('id');
+        if( scroll > top && scroll < bottom){
+            $('a.active').removeClass('active');
+            $('a[href="#'+id+'"]').addClass('active');
+
+        }
+    })
+});
+
+//плавный скролл по секциям на главной странице
+$(".go_to_1055").click(function() {
+    $.scrollTo($("#block_cuckoo_1055"), 600, {
+        offset: -55
+    });
+});
+
+$(".go_to_inetolko").click(function() {
+    $.scrollTo($("#block_cuckoo_not"), 600, {
+        offset: -55
+    });
+});
+$(".go_to_forum").click(function() {
+    $.scrollTo($("#block_forum"), 600, {
+        offset: -55
+    });
+});
+
+
 // выпадающее меню
 $(document).ready(function(){
-  $(".fa-angle-down").click(function(){
+  $(".fa-down").click(function(){
     $(".menu_open").fadeToggle(500);
     // $(".fa-angle-down").css("transform", "rotate(180deg)");
   });
@@ -16,14 +51,14 @@ $(document).ready(function(){
 
   // навигация при скроллинге
 
-  $(window).scroll(function() {
-    if ($(this).scrollTop() > 75){
-      $('.nav').addClass("nav_fixed")
-    }
-    else{
-      $('.nav').removeClass("nav_fixed");
-    }
-  });
+  // $(window).scroll(function() {
+  //   if ($(this).scrollTop() > 75){
+  //     $('.nav').addClass("nav_fixed")
+  //   }
+  //   else{
+  //     $('.nav').removeClass("nav_fixed");
+  //   }
+  // });
 
 
 

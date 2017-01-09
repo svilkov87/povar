@@ -7,6 +7,7 @@ RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^home?$ index.php
 RewriteRule ^registration?$ reg.php
 RewriteRule ^forum?$ forum.php
+RewriteRule ^addtopic?$ add_topic.php
 RewriteRule ^search?$ search.php
 RewriteRule ^newtopic?$ add_topic.php
 RewriteRule ^allusers?$ all_users.php
@@ -17,10 +18,12 @@ RewriteRule ^article/([0-9]+)/?$ full.php?id=$1 [L]
 RewriteRule ^profile/([0-9]+)/?$ profile.php?id=$1 [L]
 RewriteRule ^myanswers/([0-9]+)/?$ myanswers.php?id=$1 [L]
 RewriteRule ^messages/([0-9]+)/?$ messages.php?id=$1 [L]
+RewriteRule ^fmess/([0-9]+)/([0-9]+) full_message.php?id=$1&user=$2 [L]
 RewriteRule ^settings/([0-9]+)/?$ settings.php?id=$1 [L]
 RewriteRule ^addarticle/([0-9]+)/?$ add_article.php?id=$1 [L]
 RewriteRule ^topictheme/([0-9]+)/?$ full_topic_theme.php?id=$1 [L]
 RewriteRule ^edittopic/([0-9]+)/?$ edit_topic.php?id=$1 [L]
+RewriteRule ^delart/([0-9]+)/?$ delete_article.php?id=$1 [L]
 RewriteRule ^editart/([0-9]+)/([0-9]+) edit_article.php?id=$1&user=$2 [L]
 #RewriteRule ^preview/([0-9]+)/([0-9]+) link.php?id=$1&page=$2 [L]
 RewriteRule ^preview/([0-9]+)/?$ link.php?id=$1 [L]
