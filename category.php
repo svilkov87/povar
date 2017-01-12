@@ -53,11 +53,12 @@ if (!empty($_GET)) {
 <body>
 <i class="fa fa-chevron-up" aria-hidden="true" id="top"></i>
 <?php include "include/nav.php"; ?>
-<div class="container-fluid" style="padding-top: 70px;">
+<div class="container-fluid center_wrapp">
     <div class="row">
         <?php include("include/block_fix.php"); ?>
-        <div class="col-md-6 logo_block">
+        <div class="col-md-6">
             <div class="row">
+                <div class="link_bread">
                 <ol class="bread_crumb">
                     <?php foreach ($tagTitle as $item): ?>
                         <li>
@@ -67,6 +68,7 @@ if (!empty($_GET)) {
                         <li><?php echo $item['title']; ?></li>
                     <?php endforeach; ?>
                 </ol>
+                    </div>
             </div>
             <div class="main_block_category">
                 <div class="row">
@@ -95,18 +97,7 @@ if (!empty($_GET)) {
         <?php include("include/menu_open.php"); ?>
     </div>
 </div>
-
 <?php include("include/footer.php"); ?>
-<!--присваиваем всем классам cuckoo-text красный цвет-->
-<script>
-    var classColor = document.getElementsByClassName('cuckoo-text');
-    for (var i = 0; i < classColor.length; i++) {
-        classColor[i].style.color = 'red';
-        classColor[i].style.fontSize = 18 + 'px';
-        ;
-    }
-</script>
-
 <!--[if lt IE 9]>
 <script src="http://<?php echo $_SERVER['HTTP_HOST'];?>/libs/html5shiv/es5-shim.min.js"></script>
 <script src="http://<?php echo $_SERVER['HTTP_HOST'];?>/libs/html5shiv/html5shiv.min.js"></script>

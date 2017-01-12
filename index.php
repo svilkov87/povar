@@ -48,113 +48,116 @@ $tags = $st->fetchAll();
 <body>
 <i class="fa fa-chevron-up" aria-hidden="true" id="top"></i>
 <?php include("include/nav.php"); ?>
-<div class="container-fluid" style="padding-top: 70px;">
+<div class="container-fluid center_wrapp_home">
     <div class="row">
         <?php include("include/block_fix.php"); ?>
-        <div class="col-md-6  home_wrapp">
+        <div class="col-md-6">
             <div class="row">
-<section id="block_home">
-            <div class="col-md-12 logo_wrapp">
-                <i class="fa fa-cutlery fa_cutlery" aria-hidden="true"></i>
-                <h1 class="logo_header">GRANDPOVAR</h1>
-                <p class="logo_par">Энциклопедия рецептов</p>
-                <hr class="hr_line">
-    </div>
+                <section id="block_home">
+                    <div class="col-md-12 logo_wrapp">
+                        <i class="fa fa-cutlery fa_cutlery" aria-hidden="true"></i>
+                        <h1 class="logo_header">GRANDPOVAR</h1>
+                        <p class="logo_par">Энциклопедия рецептов</p>
+                        <hr class="hr_line">
+                    </div>
     <span id="link_go_to_1055">
         <p class="logo_par">Далее</p>
         <i class="fa fa-angle-down go_to_1055" aria-hidden="true"></i>
     </span>
-</section>
-<section id="block_cuckoo_1055">
-<!--    <div class="container">-->
-<!--        <div class="row">-->
-            <div class="go_to_1055_header">
-                <h1 class="h1_go_1055">Cuckoo 1055</h1>
-            </div>
-            <div class="go_to_1055_wrapp">
-                <div class="cuckoo_pot">
-                    <img src="img/category_images/pot.png" alt="" id="img_circle">
-                    <a href="http://impovar.tt90.ru/category/1/">
-<!--                        <div class="bottom">-->
-<!--                            <p>Cuckoo 1055</p>-->
-<!--                        </div>-->
-                    </a>
-                </div>
-                <div class="cuckoo_text">
-                    <p class="cuckoo_desc">Лучшие рецепты, приготовленные профессионалами в мультиварке CUCKOO.
-                        В данном разделе Вы найдете не только полюбившиеся блюда, но другие, удивляющие своей изысканностю.
-                    </p>
-                    <a href="http://impovar.tt90.ru/category/1/" class="link_to_cuckoo">
-                        смотреть
-                    </a>
-                </div>
-            </div>
-<!--        </div>-->
-<!--    </div>-->
+                </section>
+                <section id="block_cuckoo_1055">
+                    <!--    <div class="container">-->
+                    <!--        <div class="row">-->
+                    <div class="go_to_1055_header">
+                        <h1 class="h1_go_1055">Cuckoo 1055</h1>
+                    </div>
+                    <div class="go_to_1055_wrapp">
+                        <div class="cuckoo_pot">
+                            <img src="img/category_images/pot.png" alt="" id="img_circle">
+                            <a href="http://impovar.tt90.ru/category/1/">
+                                <!--                        <div class="bottom">-->
+                                <!--                            <p>Cuckoo 1055</p>-->
+                                <!--                        </div>-->
+                            </a>
+                        </div>
+                        <div class="cuckoo_text">
+                            <p class="cuckoo_desc">Лучшие рецепты, приготовленные профессионалами в мультиварке CUCKOO.
+                                В данном разделе Вы найдете не только полюбившиеся блюда, но другие, удивляющие своей
+                                изысканностю.
+                            </p>
+                            <a href="http://impovar.tt90.ru/category/1/" class="link_to_cuckoo">
+                                смотреть
+                            </a>
+                        </div>
+                    </div>
+                    <!--        </div>-->
+                    <!--    </div>-->
+                    <div class="clearfix"></div>
         <span id="link_go_to_not">
 <!--        <p class="logo_par_net">Мультиварка и не только</p>-->
         <i class="fa fa-angle-down go_to_inetolko" aria-hidden="true"></i>
     </span>
-</section>
-<section id="block_cuckoo_not">
-<!--    <div class="container">-->
-<!--        <div class="row">-->
-            <div class="go_to_1055_header">
-                <h1 class="h1_go_not">Мультиварка и не только</h1>
-            </div>
-            <div class="go_to_1055_wrapp">
-                <div class="cuckoo_pot">
-                    <img src="img/category_images/inet.png" alt="" id="img_circle">
-                </div>
-                <div class="cuckoo_text">
-                    <p class="cuckoo_desc">Лучшие рецепты, приготовленные профессионалами в мультиварке CUCKOO.
-                        В данном разделе Вы найдете не только полюбившиеся блюда, но другие, удивляющие своей изысканностю.
-                    </p>
-                    <a href="http://impovar.tt90.ru/category/2/" class="link_to_not">
-                        смотреть
-                    </a>
-                </div>
-            </div>
-<!--        </div>-->
-<!--    </div>-->
+                </section>
+                <section id="block_cuckoo_not">
+                    <!--    <div class="container">-->
+                    <!--        <div class="row">-->
+                    <div class="go_to_1055_header">
+                        <h1 class="h1_go_not">Мультиварка и не только</h1>
+                    </div>
+                    <div class="go_to_1055_wrapp">
+                        <div class="cuckoo_pot">
+                            <img src="img/category_images/inet.png" alt="" id="img_circle">
+                        </div>
+                        <div class="cuckoo_text">
+                            <p class="cuckoo_desc">Лучшие рецепты, приготовленные профессионалами в мультиварке CUCKOO.
+                                В данном разделе Вы найдете не только полюбившиеся блюда, но другие, удивляющие своей
+                                изысканностю.
+                            </p>
+                            <a href="http://impovar.tt90.ru/category/2/" class="link_to_not">
+                                смотреть
+                            </a>
+                        </div>
+                    </div>
+                    <!--        </div>-->
+                    <!--    </div>-->
     <span id="link_go_to_forum">
         <i class="fa fa-angle-down go_to_forum" aria-hidden="true"></i>
     </span>
-</section>
-<section id="block_forum">
-<!--    <div class="container">-->
-<!--        <div class="row">-->
-            <div class="go_to_1055_header">
-                <h1 class="h1_go_forum">Форум</h1>
+                </section>
+                <section id="block_forum">
+                    <!--    <div class="container">-->
+                    <!--        <div class="row">-->
+                    <div class="go_to_1055_header">
+                        <h1 class="h1_go_forum">Форум</h1>
+                    </div>
+                    <div class="go_to_1055_wrapp">
+                        <div class="cuckoo_pot">
+                            <img src="img/category_images/chat.png" alt="" id="img_circle">
+                            <!--                    <a href="http://impovar.tt90.ru/forum">-->
+                            <!--                        <div class="bottom">-->
+                            <!--                            <p>Cuckoo 1055</p>-->
+                            <!--                        </div>-->
+                            <!--                    </a>-->
+                        </div>
+                        <div class="cuckoo_text">
+                            <p class="cuckoo_desc">Лучшие рецепты, приготовленные профессионалами в мультиварке CUCKOO.
+                                В данном разделе Вы найдете не только полюбившиеся блюда, но другие, удивляющие своей
+                                изысканностю.
+                            </p>
+                            <a href="http://impovar.tt90.ru/forum" class="link_to_forum">
+                                Перейти к форуму
+                            </a>
+                        </div>
+                    </div>
+                    <!--        </div>-->
+                    <!--    </div>-->
+                </section>
             </div>
-            <div class="go_to_1055_wrapp">
-                <div class="cuckoo_pot">
-                    <img src="img/category_images/chat.png" alt="" id="img_circle">
-<!--                    <a href="http://impovar.tt90.ru/forum">-->
-<!--                        <div class="bottom">-->
-<!--                            <p>Cuckoo 1055</p>-->
-<!--                        </div>-->
-<!--                    </a>-->
-                </div>
-                <div class="cuckoo_text">
-                    <p class="cuckoo_desc">Лучшие рецепты, приготовленные профессионалами в мультиварке CUCKOO.
-                        В данном разделе Вы найдете не только полюбившиеся блюда, но другие, удивляющие своей изысканностю.
-                    </p>
-                    <a href="http://impovar.tt90.ru/forum" class="link_to_forum">
-                        Перейти к форуму
-                    </a>
-                </div>
-            </div>
-<!--        </div>-->
-<!--    </div>-->
-</section>
-                </div>
-                </div>
+        </div>
 
         <?php include("include/menu_open.php"); ?>
-                </div>
-                </div>
-
+    </div>
+</div>
 <?php include("include/footer.php"); ?>
 <!--[if lt IE 9]>
 <script src="libs/html5shiv/es5-shim.min.js"></script>

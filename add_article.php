@@ -95,7 +95,8 @@ if (!empty($_GET)) {
             $update->execute();
 
 
-            header("Location: http://impovar.tt90.ru/profile/$user_id");
+//            header("Location: http://impovar.tt90.ru/profile/$user_id");
+            header("Location: http://".$_SERVER['HTTP_HOST']."/profile/".$user_id);
             exit;
 
 //    echo '<pre>';
@@ -149,7 +150,7 @@ if (!empty($_GET)) {
 <body>
 <html>
 <?php include("include/nav.php"); ?>
-<div class="container-fluid" style="padding-top: 70px;">
+<div class="container-fluid center_wrapp">
     <div class="row">
         <?php include("include/block_fix.php"); ?>
         <div class="col-md-6" style="margin-bottom: 25px; background: #eeeff2;">

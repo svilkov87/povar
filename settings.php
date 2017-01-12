@@ -53,29 +53,32 @@ if (!empty($_GET)) {
     $user_id = $_SESSION['user_id'];
     if (isset($_POST['button_newsettings'])) {
         $input_name = $_POST['input_name'];
+        $_SESSION['user_name'] = $input_name;
         $sex = $_POST["sex"];
         $about = $_POST["about_me"];
         $fav_food = $_POST["food"];
         $proff = $_POST["proff"];
         $hobby = $_POST["hobby"];
         if (isset ($_FILES['image'])) {
+//            $test = "02929202";
+//            $image_name = $test . $_FILES['image']['name'];
             $image_name = $_FILES['image']['name'];
             $_SESSION['ava'] = $image_name;
             $image_tmp = $_FILES['image']['tmp_name'];
             $upload = "img/avatars/";
             move_uploaded_file($image_tmp, $upload . $image_name);
             $insert = $pdo->prepare("
-            UPDATE 
-            `users` 
-            SET 
-            username=:username, 
-            sex=:sex, 
-            about=:about, 
-            fav_food=:fav_food, 
-            profession=:profession, 
-            hobby=:hobby, 
-            ava=:ava 
-            WHERE 
+            UPDATE
+            `users`
+            SET
+            username=:username,
+            sex=:sex,
+            about=:about,
+            fav_food=:fav_food,
+            profession=:profession,
+            hobby=:hobby,
+            ava=:ava
+            WHERE
             id=:id
             ");
             $insert->bindParam(':username', $input_name);
@@ -87,18 +90,39 @@ if (!empty($_GET)) {
             $insert->bindParam(':profession', $proff);
             $insert->bindParam(':hobby', $hobby);
             $insert->execute();
-            header("Location: http://impovar.tt90.ru/profile/$user_id");
+
+
+            //обновляем все ранее оставленные в комментах аватарки
+
+            $update = $pdo->prepare("UPDATE `comments` SET ava=:ava, user_name=:user_name WHERE user_id=:user_id");
+            $update->bindParam(':ava', $image_name);
+            $update->bindParam(':user_name', $input_name);
+            $update->bindParam(':user_id', $_SESSION['user_id']);
+            $update->execute();
+
+            //обновляем все ранее оставленные в заголовках топиков аватарки
+            $updateOnForum = $pdo->prepare("UPDATE `forum_questions` SET user_ava=:user_ava, user_name=:user_name WHERE user_id=:user_id");
+            $updateOnForum->bindParam(':user_ava', $image_name);
+            $updateOnForum->bindParam(':user_name', $input_name);
+            $updateOnForum->bindParam(':user_id', $_SESSION['user_id']);
+            $updateOnForum->execute();
+
+
+//            header("Location: http://impovar.tt90.ru/profile/$user_id");
+            header("Location: http://".$_SERVER['HTTP_HOST']."/profile/".$user_id);
             exit();
+
+//            echo "<pre>";
+//            var_dump($image_name);
+//            echo "</pre>";
         }
     }
-
 }
-//echo "<pre>";
-//var_dump($intro_image);
-//echo "</pre>";
+
 
 if (!isset($_SESSION['email'])) {
-    header("Location: http://impovar.tt90.ru/home");
+//    header("Location: http://impovar.tt90.ru/home");
+    header("Location: http://".$_SERVER['HTTP_HOST']."/home");
     exit;
 }
 ?>
@@ -134,7 +158,7 @@ if (!isset($_SESSION['email'])) {
 <body>
 <html>
 <?php include("include/nav.php"); ?>
-<div class="container-fluid" style="padding-top: 70px;">
+<div class="container-fluid center_wrapp"">
     <div class="row">
         <?php include("include/block_fix.php"); ?>
         <div class="col-md-6">
@@ -149,6 +173,11 @@ if (!isset($_SESSION['email'])) {
                             <span class="sett_chapters">Ваше имя</span><br>
                             <input type="text" name="input_name" class="name_sett_input"
                                    value="<?php echo $name_info; ?>">
+                            <div class="block_settings_pass_title">
+                                <a href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/changepass/<?php echo $_SESSION['user_id']; ?>/">
+                                    <span class="sett_chapters">Изменить пароль</span><br>
+                                </a>
+                            </div>
                         </div>
                         <!--                <div class="block_settings_item">-->
                         <!--                    <span class="sett_chapters">Пол</span><br>-->
@@ -181,16 +210,6 @@ if (!isset($_SESSION['email'])) {
                             <span class="sett_chapters">Ваше Хобби</span><br>
                             <input type="text" name="hobby" class="name_sett_input" value="<?php echo $hobby_info; ?>">
                         </div>
-                        <!--                <span class="sett_header">Изменить пароль</span>-->
-                        <!--                <div class="block_settings_item">-->
-                        <!--                    <span class="sett_chapters">Новый пароль</span><br>-->
-                        <!--                    <input type="password" name="new_password" class="name_sett_input">-->
-                        <!--                </div>-->
-                        <!--                <div class="block_settings_item">-->
-                        <!--                    <span class="sett_chapters">Повторите пароль</span><br>-->
-                        <!--                    <input type="password" name="e_new_password" class="name_sett_input">-->
-                        <!--                </div>-->
-
                         <div class="block_margin">
                             <button type="submit" name="button_newsettings" class="btn_sett">Сохранить</button>
                         </div>

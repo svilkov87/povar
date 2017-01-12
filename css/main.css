@@ -8,7 +8,7 @@ body {
     margin-bottom: 80px !important;
     font-family: "RobotoRegular", sans-serif !important;
     font-size: 14px;
-    background: #f1f1f1 !important;
+    background: #f8f8f8 !important;
 }
 .line_footer{
     margin: 0 auto;
@@ -95,7 +95,9 @@ li {
     /* width: 100%; */
     /* outline: #eaeaea; */
     /*background: #bb3737;*/
-    background: #341919;
+    background: #409787;
+    /*background: #556a7f;*/
+    /*background: rgba(85, 106, 127, 0.73);*/
     width: 100%;
 }
 
@@ -162,6 +164,7 @@ li {
     color: #fff;
     cursor: pointer;
     margin-left: 10px;
+    display: none;
 }
 
 .fa-angle-up {
@@ -252,6 +255,7 @@ li {
     /*top: 90px;*/
     top: 70px;
     /*right: 50px;*/
+    /*background: #409787;*/
     background: rgb(255, 255, 255);
     /*width: 250px;*/
     width: 280px;
@@ -373,8 +377,8 @@ a.stuff_menu {
 }
 
 a.stuff_menu:hover {
-    color: #000000;
-    background: #e2e2e2;
+    color: #00aeff;
+    background: #f8f8f8;
 }
 
 #form_search {
@@ -409,12 +413,20 @@ a.stuff_menu_search_field {
 
 .span_left {
     float: left;
+    text-transform: uppercase;
+    font-size: 12px;
 }
 
 /*главная страница*/
 #block {
     margin-top: 70px;
     margin-bottom: 25px;
+}
+.center_wrapp{
+    padding-top: 64px;
+}
+.center_wrapp_home{
+    padding-top: 70px;
 }
 .logo_wrapp{
     text-align: center;
@@ -436,23 +448,27 @@ section#block_home{
 section#block_cuckoo_1055{
     height:100vh;
     padding-top: 100px;
+    background: #fff;
 }
 section#block_cuckoo_not{
     height:100vh;
     padding-top: 100px;
+    background: #fff;
 }
 section#block_forum{
-    height: 400px;
+    height: 100vh;
     padding-top: 100px;
+    background: #fff;
 }
 .go_to_1055_header{
-    border-bottom: 1px solid orange;
-    width: 650px;
     margin: 0 auto;
     margin-bottom: 15px;
+    padding-top: 25px;
+    text-align: center;
  }
 .h1_go_1055{
     color: orange;
+    margin: 0 !important;
 }
 .h1_go_not{
     color: #ff5504;
@@ -495,18 +511,16 @@ section#block_forum{
 }
 .go_to_1055_wrapp{
     /*border: 1px solid #7c4d00;*/
-    width: 650px;
     margin: 0 auto;
 }
 .cuckoo_pot{
     width: 215px;
-    /*background: #ccc;*/
-    float: left;
+    text-align: center;
+    margin: 0 auto;
 }
 .cuckoo_text{
     width: 435px;
-    /*background: #e8e8e8;*/
-    float: right;
+    margin: 0 auto;
 }
 .cuckoo_desc{
     text-transform: uppercase;
@@ -818,7 +832,7 @@ section#block_forum{
 
 .bread_crumb > li > a {
     text-decoration: none;
-    color: #656565;
+    color: #000000;
     font-weight: bold;
     text-transform: uppercase;
 }
@@ -1083,10 +1097,23 @@ a#hidden_id, a#hidden_id_to_user, a#hidden_text_to_comment {
 .link_body {
     padding: 5px 7px;
 }
+.link_wrapp {
+    overflow: hidden;
+    background: #fff;
+}
 
 .panel_head_link {
     padding: 0px 10px;
     height: 50px;
+}
+.link_bread{
+    overflow: hidden;
+    background: #fff;
+    border: 1px solid rgb(247, 247, 247);
+}
+.link_head_h{
+    font-size: 15px;
+    margin: 0;
 }
 .link_by_link{
     color: #000;
@@ -1581,10 +1608,6 @@ a#hidden_id, a#hidden_id_to_user, a#hidden_text_to_comment {
     background: #fff;
     padding: 15px;
     border: 1px solid rgb(247, 247, 247);
-    -webkit-box-shadow: -1px 9px 50px -10px rgba(0, 0, 0, 0.75);
-    -moz-box-shadow: -1px 9px 50px -10px rgba(0, 0, 0, 0.75);
-    box-shadow: -1px 9px 50px -10px rgba(0, 0, 0, 0.75);
-    /*border-radius: 3px;*/
 }
 
 .author_of_fullart {
@@ -1600,14 +1623,14 @@ a#hidden_id, a#hidden_id_to_user, a#hidden_text_to_comment {
     /*border-radius: 3px;*/
 }
 .comment_answer_body{
-    -webkit-box-shadow: -1px 9px 50px -10px rgba(0, 0, 0, 0.75);
-    -moz-box-shadow: -1px 9px 50px -10px rgba(0, 0, 0, 0.75);
-    box-shadow: -1px 9px 50px -10px rgba(0, 0, 0, 0.75);
+    /*-webkit-box-shadow: -1px 9px 50px -10px rgba(0, 0, 0, 0.75);*/
+    /*-moz-box-shadow: -1px 9px 50px -10px rgba(0, 0, 0, 0.75);*/
+    /*box-shadow: -1px 9px 50px -10px rgba(0, 0, 0, 0.75);*/
 }
 
 .span_answer {
     color: #191d5d;
-    font-size: 13px;
+    font-size: 11px;
     display: inline-block;
     padding: 5px;
     font-weight: bold;
@@ -1643,7 +1666,8 @@ a#hidden_id, a#hidden_id_to_user, a#hidden_text_to_comment {
     padding: 5px 15px;
     border: 1px solid #e8e8e8;
     margin-top: -1px;
-    /*border: 1px solid rgb(247, 247, 247);*/
+    background: #fff;
+   /*border: 1px solid rgb(247, 247, 247);*/
 }
 
 .answer_body {
@@ -1812,7 +1836,7 @@ a#hidden_id, a#hidden_id_to_user, a#hidden_text_to_comment {
 }
 
 .content_topic {
-    padding: 15px 10px;
+    padding: 5px 10px;
     background: #fff;
     margin: 0 auto;
     width: 100%;
@@ -1965,8 +1989,9 @@ a#hidden_id, a#hidden_id_to_user, a#hidden_text_to_comment {
 
 /*добавление статьи*/
 .wrapp_add_art {
+    background: #fff;
     padding: 10px;
-    border: 1px solid rgb(232, 231, 231);
+    border: 1px solid #ccc;
 }
 
 /*добавление топика*/
@@ -1975,10 +2000,20 @@ a#hidden_id, a#hidden_id_to_user, a#hidden_text_to_comment {
 }
 
 .label_add {
-    font-weight: bold;
+    color: #1a1212;
+    font-size: 13px;
+    text-transform: lowercase;
 }
 
 /*страница настроек*/
+.rem_pass_wrapp {
+    display: none;
+    position: fixed;
+    z-index: 9999999;
+    height: 100vh;
+    width: 100%;
+    background: rgba(64, 68, 88, 0.39);
+}
 .settings_wrapper {
     padding: 15px;
     width: 460px;
@@ -2000,6 +2035,19 @@ a#hidden_id, a#hidden_id_to_user, a#hidden_text_to_comment {
 
 .block_settings_item {
     padding: 5px;
+}
+.block_settings_pass_title {
+    margin-top: 10px;
+}
+.block_settings_pass{
+    padding: 5px;
+    margin-top: 15px;
+    border-top: 1px dashed #ccc;
+    text-align: center;
+}
+.sett_pass_span{
+    font-size: 13px;
+    text-transform: lowercase;
 }
 
 .settings_block_header {
@@ -2242,8 +2290,30 @@ label {
 /*страница поиска*/
 .poisk_word {
     text-transform: uppercase;
-    color: #000;
-    background: #7cff5b;
+    color: #0523ad
+}
+.search_result_header{
+    color: #000000;
+    font-weight: bold;
+}
+.search_body_header{
+    border: 1px solid rgba(218, 176, 176, 0.41);
+    padding: 0 20px 0 20px;
+    background: #fff;
+}
+.search_wrapp{
+    background: #fff;
+}
+.search_panel{
+    padding: 5px;
+    overflow: hidden;
+}
+.search_left_panel{
+    float: left;
+}
+.search_right_panel{
+    float: right;
+    width: 80%;
 }
 
 .img_link_search {
@@ -2308,7 +2378,7 @@ label {
 
 .all_user_body {
     height: 120px;
-    /* background: #ccc; */
+     background: #fff;
     /* margin-bottom: 10px; */
     /* background-repeat: no-repeat; */
     /* background-size: cover; */
@@ -2349,7 +2419,7 @@ label {
 
 .all_us_link_block {
     width: 80%;
-    background: #f1f1f1;
+    background: #fff;
     float: right;
     padding: 7px 0 0;
     overflow: hidden;
@@ -2372,17 +2442,42 @@ label {
     font-size: 13px;
 }
 /*блок фикс*/
-.home_last_art{
+.home_last_art {
     border: 1px solid #ccc;
     background: #fff;
+    border-radius: 5px;
+    width: 280px;
+    margin: 0 auto;
+    padding-bottom: 15px;
+}
+.home_img_prev{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+.home_img_previmg-responsive {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
 }
 .home_last_art_head{
-    background: #341919;
-    /*height: 25px;*/
+    background: rgb(114, 209, 169);
+    /* background: #341919; */
+    /* height: 25px; */
+}
+.home_last_img_forum{
+    width: 25%;
+    float: left;
+    text-align: right;
+    padding: 4px;
+}
+.home_last_wrapp_forum{
+    overflow: hidden;
 }
 .home_last_art_body{
     overflow: hidden;
     padding: 2px;
+    margin-bottom: 5px;
 }
 .home_left_last_art{
     width: 30%;
@@ -2396,10 +2491,11 @@ label {
 }
 .span_last_art_head {
     color: #fff;
-    font-size: 13px;
+    font-size: 11px;
     display: inline-block;
     padding: 5px;
     font-weight: bold;
+    text-transform: uppercase;
 }
 .last_prev_img{
     width: 50px;
@@ -2416,18 +2512,22 @@ label {
     background: #f2f2f2;
 }
 .span_last_forum{
+    font-size: 11px;
     font-weight: bold;
+    color: #00aeff;
+    text-transform: uppercase;
 }
 .home_title_last_forum{
     font-weight: bold;
-    font-size: 12px;
-    text-transform: lowercase;
+    font-size: 10px;
+    text-transform: uppercase;
     color: #2a5885;
-    margin-left: 22px;
     margin-bottom: 5px;
 }
 .home_last_art_forum {
-    overflow: hidden;
-     padding: 4px;
+    /* overflow: hidden; */
+    padding: 4px;
+    width: 75%;
+    float: right;
 }
 

@@ -1,5 +1,5 @@
 <div class="col-md-3  home_wrapp">
-    <div class="home_last_art" style="height: 310px;">
+    <div class="home_last_art">
         <div class="home_last_art_head">
             <span class="span_last_art_head">Последние рецепты</span>
         </div>
@@ -20,9 +20,16 @@
         </div>
         <?php foreach ($LastForumLimitTwo as $item): ?>
             <a href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/topictheme/<?php echo $item['id']; ?>">
-            <div class="home_last_art_forum">
-                     <div class="home_title_last_forum">
-                        <?php echo $item['title']; ?>
+                <div class="home_last_wrapp_forum">
+                    <div class="home_last_img_forum">
+                        <img src="http://<?php echo $_SERVER['HTTP_HOST']; ?>/img/avatars/<?php echo $item['user_ava']; ?>"
+                             alt="" class="home_img_prev">
+                    </div>
+                    <div class="home_last_art_forum">
+                        <div class="home_title_last_forum">
+                           <?php echo substr(($item['title']), 0, 80); ?>
+                            <span>...</span>
+                        </div>
                     </div>
                 </div>
             </a>

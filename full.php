@@ -191,35 +191,39 @@ if (!empty($_GET)) {
 <body>
 <i class="fa fa-chevron-up" aria-hidden="true" id="top"></i>
 <?php include "include/nav.php"; ?>
-<div class="container-fluid" style="padding-top: 70px;">
+<div class="container-fluid center_wrapp">
     <div class="row">
         <?php include("include/block_fix.php"); ?>
-        <div class="col-md-6 logo_block">
+        <div class="col-md-6">
             <div class="row">
-                <ol class="bread_crumb">
-                    <li>
-                        <a href="http://impovar.tt90.ru/home">Главная</a>
-                        <i class="fa fa-angle-right" aria-hidden="true"></i>
-                    </li>
-                    <?php foreach ($tagMain as $item): ?>
+                <div class="link_bread">
+                    <ol class="bread_crumb">
                         <li>
-                            <a href="http://impovar.tt90.ru/category/<?php echo $item['main_id']; ?>"><?php echo $item['title']; ?></a>
+                            <a href="http://impovar.tt90.ru/home">Главная</a>
                             <i class="fa fa-angle-right" aria-hidden="true"></i>
                         </li>
-                    <?php endforeach; ?>
-                    <?php foreach ($tagTitle as $item): ?>
-                        <li>
-                            <a href="http://impovar.tt90.ru/preview/<?php echo $item['article_id']; ?>"><?php echo $item['title']; ?></a>
-                            <i class="fa fa-angle-right" aria-hidden="true"></i>
-                        </li>
-                    <?php endforeach; ?>
-                </ol>
+                        <?php foreach ($tagMain as $item): ?>
+                            <li>
+                                <a href="http://impovar.tt90.ru/category/<?php echo $item['main_id']; ?>"><?php echo $item['title']; ?></a>
+                                <i class="fa fa-angle-right" aria-hidden="true"></i>
+                            </li>
+                        <?php endforeach; ?>
+                        <?php foreach ($tagTitle as $item): ?>
+                            <li>
+                                <a href="http://impovar.tt90.ru/preview/<?php echo $item['article_id']; ?>"><?php echo $item['title']; ?></a>
+                                <i class="fa fa-angle-right" aria-hidden="true"></i>
+                            </li>
+                        <?php endforeach; ?>
+                    </ol>
+                </div>
             </div>
         </div>
         <?php if ($art[0]['id'] != ""): ?>
         <div class="col-md-6 col_7_media">
             <?php foreach ($art as $item): ?>
+            <div class="row">
             <div class="full_art_panel">
+
                 <div class="full_art_heading">
                     <h3 class="panel-title"><?php echo $item['title']; ?></h3>
                 </div>
@@ -243,100 +247,101 @@ if (!empty($_GET)) {
                     <?php endif; ?>
                     <span class="count_watches">Просмотров:&nbsp;<b><?php echo $count_of_watches; ?></b></span>
                 </div>
+                </div>
             </div>
 
-
-            <div class="comment_answer_body">
-
-                <div class="comment_body">
-                    <span class="span_answer">Комментариев&nbsp;<?php echo $number_of_comments; ?></span>
-                </div>
-                <?php endforeach; ?>
-                <?php
-                if (isset($_SESSION['email'])):?>
-                    <div class="full_art_forms">
-                        <div class="user_init_full">
-                            <div class="user_photo">
-                                <?php foreach ($users as $key): ?>
-                                    <a href="http://impovar.tt90.ru/profile/<?php echo $key['id']; ?>">
-                                        <img src="http://impovar.tt90.ru/img/avatars/<?php echo $_SESSION['ava']; ?>"
-                                             class="ava_img_fullart">
-                                    </a>
-                                <?php endforeach; ?>
+            <div class="row">
+                <div class="comment_answer_body">
+                    <div class="comment_body">
+                        <span class="span_answer">Комментариев&nbsp;<?php echo $number_of_comments; ?></span>
+                    </div>
+                    <?php endforeach; ?>
+                    <?php
+                    if (isset($_SESSION['email'])):?>
+                        <div class="full_art_forms">
+                            <div class="user_init_full">
+                                <div class="user_photo">
+                                    <?php foreach ($users as $key): ?>
+                                        <a href="http://impovar.tt90.ru/profile/<?php echo $key['id']; ?>">
+                                            <img src="http://impovar.tt90.ru/img/avatars/<?php echo $_SESSION['ava']; ?>"
+                                                 class="ava_img_fullart">
+                                        </a>
+                                    <?php endforeach; ?>
+                                </div>
                             </div>
-                        </div>
-                        <form method="post" action="">
-                            <input readonly hidden type="text" name="input_text" id="answer_input">
-                            <input readonly hidden type="text" name="input_user" id="answer_input"
-                                   value="<?php echo $us_id; ?>">
-                            <input readonly hidden type="text" name="input_user_id" id="answer_input_to_user">
-                            <input readonly hidden type="text" name="article_intro_image" id="answer_input_image"
-                                   value="<?php echo $image_var; ?>">
+                            <form method="post" action="">
+                                <input readonly hidden type="text" name="input_text" id="answer_input">
+                                <input readonly hidden type="text" name="input_user" id="answer_input"
+                                       value="<?php echo $us_id; ?>">
+                                <input readonly hidden type="text" name="input_user_id" id="answer_input_to_user">
+                                <input readonly hidden type="text" name="article_intro_image" id="answer_input_image"
+                                       value="<?php echo $image_var; ?>">
                             <textarea readonly hidden class="form-control" rows="3" name="answer_for_comment"
                                       id="answer_to_comment"></textarea>
                             <textarea class="form-control" rows="3" name="text" id="answer_input_comment_to"
                                       placeholder="Введите сообшение..." onfocus="placeholder='';"
                                       onblur="placeholder='Введите сообшение...';"></textarea>
-                            <div class="button_n_delete">
-                                <button class="btn_default" type="submit" name="enter_comment">Ответить</button>
-                                <ul class="answer_stuffs">
-                                    <li class="span_delete_username">
+                                <div class="button_n_delete">
+                                    <button class="btn_default" type="submit" name="enter_comment">Ответить</button>
+                                    <ul class="answer_stuffs">
+                                        <li class="span_delete_username">
 
-                                    </li>
-                                    <li class="span_delete_items">
-                                        <i class="fa fa-times" aria-hidden="true"></i>
-                                    </li>
-                                </ul>
-                            </div>
-                        </form>
-                        <!--                                    </div>-->
-                    </div>
-                    <!--                            </div>-->
+                                        </li>
+                                        <li class="span_delete_items">
+                                            <i class="fa fa-times" aria-hidden="true"></i>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </form>
+                            <!--                                    </div>-->
+                        </div>
+                        <!--                            </div>-->
 
-                <?php else: ?>
-                    <div class="no_comment_body">
-                        <p class="no_comment_p">Комментарии могут оставлять только зарегистрированные или авторизованные
-                            пользователи</p>
-                    </div>
-                <?php endif; ?>
-
-                <div class="answers_panel">
-                    <?php foreach ($commentary as $item): ?>
-                        <div class="profile_link" role="answer_item_id" id="answer_item_id<?php echo $item['id']; ?>">
-                            <div class="left_block_comment">
-                                <div class="ava">
-                                    <div class="photo">
-                                        <img src="http://impovar.tt90.ru/img/avatars/<?php echo $item['ava']; ?>"
-                                             class="ava_img_fullusart">
+                    <?php else: ?>
+                        <div class="no_comment_body">
+                            <p class="no_comment_p">Комментарии могут оставлять только зарегистрированные или
+                                авторизованные
+                                пользователи</p>
+                        </div>
+                    <?php endif; ?>
+                    <div class="answers_panel">
+                        <?php foreach ($commentary as $item): ?>
+                            <div class="profile_link" role="answer_item_id"
+                                 id="answer_item_id<?php echo $item['id']; ?>">
+                                <div class="left_block_comment">
+                                    <div class="ava">
+                                        <div class="photo">
+                                            <img src="http://impovar.tt90.ru/img/avatars/<?php echo $item['ava']; ?>"
+                                                 class="ava_img_fullusart">
+                                        </div>
+                                        <a href="http://impovar.tt90.ru/profile/<?php echo $item['user_id']; ?>"
+                                           class="user_name_ava">
+                                            <?php echo $item['user_name']; ?>
+                                        </a>
                                     </div>
-                                    <a href="http://impovar.tt90.ru/profile/<?php echo $item['user_id']; ?>"
-                                       class="user_name_ava">
+                                </div>
+                                <?php foreach ($art as $key): ?>
+                                    <a href="#" id="hidden_image_to_comment"><?php echo $key['intro_image']; ?></a>
+                                <?php endforeach; ?>
+                                <div class="middle_content_comm">
+                                    <span class="answer_comment"><?php echo $item['text']; ?></span><br>
+
+                                    <a href="profile.php?id=<?php echo $item['user_id']; ?>" class="p"
+                                       id="answer_item_id<?php echo $item['id']; ?>">
                                         <?php echo $item['user_name']; ?>
                                     </a>
+                                    <a href="#" id="hidden_id"><?php echo $item['id']; ?></a>
+                                    <a href="#" id="hidden_id_to_user"><?php echo $item['user_id']; ?></a>
+                                    <a href="#" id="hidden_text_to_comment"><?php echo $item['text']; ?></a>
+                                    <a href="#" class="send_name">ответить</a><br>
+                                    <span class="text-date"><?php echo $item['date']; ?></span>
                                 </div>
                             </div>
-                            <?php foreach ($art as $key): ?>
-                                <a href="#" id="hidden_image_to_comment"><?php echo $key['intro_image']; ?></a>
-                            <?php endforeach; ?>
-                            <div class="middle_content_comm">
-                                <span class="answer_comment"><?php echo $item['text']; ?></span><br>
-
-                                <a href="profile.php?id=<?php echo $item['user_id']; ?>" class="p"
-                                   id="answer_item_id<?php echo $item['id']; ?>">
-                                    <?php echo $item['user_name']; ?>
-                                </a>
-                                <a href="#" id="hidden_id"><?php echo $item['id']; ?></a>
-                                <a href="#" id="hidden_id_to_user"><?php echo $item['user_id']; ?></a>
-                                <a href="#" id="hidden_text_to_comment"><?php echo $item['text']; ?></a>
-                                <a href="#" class="send_name">ответить</a><br>
-                                <span class="text-date"><?php echo $item['date']; ?></span>
-                            </div>
-                        </div>
-                        <hr>
-                    <?php endforeach; ?>
+                            <hr>
+                        <?php endforeach; ?>
+                    </div>
                 </div>
             </div>
-            <!--           comment_answer_body     -->
         </div>
         <?php else: ?>
         <div class="col-md-6 col_7_media">

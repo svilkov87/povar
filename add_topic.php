@@ -67,7 +67,7 @@ if (isset($_POST['enter_comment'])) {
 ?>
 <i class="fa fa-chevron-up" aria-hidden="true" id="top"></i>
 <?php include "include/nav.php"; ?>
-<div class="container-fluid">
+<div class="container-fluid center_wrapp">
     <div class="row">
         <?php include("include/block_fix.php"); ?>
         <div class="col-md-6">

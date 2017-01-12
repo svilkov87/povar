@@ -41,14 +41,12 @@ $tags = $st->fetchAll();
     <link rel="stylesheet" href="http://<?php echo $_SERVER["HTTP_HOST"];?>/css/bootstrap.min.css"/>
 </head>
 <body>
-<?php
-?>
 <i class="fa fa-chevron-up" aria-hidden="true" id="top"></i>
 <?php include "include/nav.php"; ?>
-<div class="container-fluid" style="padding-top: 70px;">
+<div class="container-fluid center_wrapp">
     <div class="row">
         <?php include("include/block_fix.php"); ?>
-        <div class="col-md-6  home_wrapp">
+        <div class="col-md-6">
             <div class="answers_wrapp">
                 <div class="chapters_of_topic">
                 <span class="span_forum_number">
@@ -68,6 +66,8 @@ $tags = $st->fetchAll();
                         <div class="desc_topic">
                             <span class="theme_topic_desc"><?php echo $item['number_of_comments'];?></span>
                             <span class="theme_topic_desc">ответов</span>
+                            <span class="theme_topic_desc"><?php echo $item['watches'];?></span>
+                            <span class="theme_topic_desc">просмотров</span>
                         </div>
                     </div>
                 </a>

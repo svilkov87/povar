@@ -99,7 +99,7 @@ if (!isset($_SESSION['email'])) {
 <body>
 <html>
 <?php include("include/nav.php"); ?>
-<div class="container-fluid" style="padding-top: 70px;">
+<div class="container-fluid center_wrapp">
     <div class="row">
         <?php include("include/block_fix.php"); ?>
         <div class="col-md-6" style="margin-bottom: 25px;">

@@ -35,7 +35,7 @@ $(".go_to_forum").click(function() {
 
 // выпадающее меню
 $(document).ready(function(){
-  $(".fa-down").click(function(){
+  $(".fa-angle-down").click(function(){
     $(".menu_open").fadeToggle(500);
     // $(".fa-angle-down").css("transform", "rotate(180deg)");
   });

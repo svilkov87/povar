@@ -107,7 +107,9 @@ if (isset($data['do_signup'])) {
         $_SESSION['user_id'] = $resultPfofile;
 
         header("Location: success_reg.php");
-    } else {
+        exit;
+    } 
+    else {
         $error = array_shift($errors);
     }
 //    echo "<pre>";

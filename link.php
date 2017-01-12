@@ -83,11 +83,12 @@ if(!empty($_GET)){
 <body>
 <i class="fa fa-chevron-up" aria-hidden="true" id="top"></i>
 <?php include "include/nav.php"; ?>
-<div class="container-fluid" style="padding-top: 70px;">
+<div class="container-fluid center_wrapp">
     <div class="row">
         <?php include("include/block_fix.php"); ?>
-        <div class="col-md-6 logo_block">
+        <div class="col-md-6">
             <div class="row">
+                <div class="link_bread">
                 <ol class="bread_crumb">
                     <li>
                         <a href="http://impovar.tt90.ru/home">Главная</a>
@@ -103,37 +104,25 @@ if(!empty($_GET)){
                         <li><?php echo $item['title']; ?></li>
                     <?php endforeach; ?>
                 </ol>
-                <div class="block">
+                </div>
+                <div class="link_wrapp">
                     <?php foreach ($art as $item): ?>
                         <div class="col-md-6">
-<!--                            <div class="row">-->
+                            <div class="row">
                             <a href="http://impovar.tt90.ru/article/<?php echo $item['id']; ?>" class="link_by_link">
                             <div class="link_panel">
-                                <div class="panel_head_link">
-                                    <h1 style="font-size: 15px;"><?php echo $item['title']; ?></h1>
-                                </div>
                                 <div class="link_body">
                                     <div class="img_block_link">
                                         <img src="http://impovar.tt90.ru/admin/images/<?php echo $item['intro_image']; ?>"
                                              alt="..." class="img_link">
                                     </div>
-                                    <!--                <div class="intro_text_link">-->
-                                    <!--                    <p>--><?php //echo $item['intro_text']; ?><!--</p>-->
-                                    <!--                </div>-->
-<!--                                    <div class="look_article">-->
-<!--                                        <a href="http://impovar.tt90.ru/article/--><?php //echo $item['id']; ?><!--"-->
-<!--                                           class="btn_link">Смотреть</a>-->
-<!--                                        <br>-->
-<!--                                        <div class="link_like_comm_look">-->
-<!--                                            <i class="fa fa-heart" aria-hidden="true"></i>-->
-<!--                                            <i class="fa fa-comment-o" aria-hidden="true"></i>-->
-<!--                                            <i class="fa fa-eye" aria-hidden="true"></i>-->
-<!--                                        </div>-->
-<!--                                    </div>-->
+                                </div>
+                                <div class="panel_head_link">
+                                    <h1 class="link_head_h"><?php echo $item['title']; ?></h1>
                                 </div>
                             </div>
                             </a>
-<!--                            </div>-->
+                            </div>
                         </div>
                     <?php endforeach; ?>
                 </div>
@@ -176,9 +165,6 @@ if(!empty($_GET)){
 <!--    </ul>-->
 
 <?php include("include/footer.php");?>
-<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>-->
-<!--<script src="js/bootstrap.min.js"></script>-->
-
 <!--[if lt IE 9]>
 <script src="http://impovar.tt90.ru/libs/html5shiv/es5-shim.min.js"></script>
 <script src="http://impovar.tt90.ru/libs/html5shiv/html5shiv.min.js"></script>
@@ -199,19 +185,5 @@ if(!empty($_GET)){
 <script src="http://impovar.tt90.ru/js/main.js"></script>
 <script src="http://impovar.tt90.ru/remodal/remodal.min.js"></script>
 <!-- инициализация модал -->
-<script>
-    $(window).scroll(function() {
-        $('.mov').each(function(){
-            var imagePos = $(this).offset().top;
-            var topOfWindow = $(window).scrollTop();
-            if (imagePos < topOfWindow+400) {
-                $(this).addClass('fadeInDown');
-            }
-        });
-    });
-</script>
-<!-- /инициализация модал -->
-<!-- Yandex.Metrika counter --><!-- Yandex.Metrika counter --><script type="text/javascript">(function (d, w, c) { (w[c] = w[c] || []).push(function() { try { w.yaCounter25346996 = new Ya.Metrika({id:25346996, webvisor:true, clickmap:true, trackLinks:true, accurateTrackBounce:true}); } catch(e) { } }); var n = d.getElementsByTagName("script")[0], s = d.createElement("script"), f = function () { n.parentNode.insertBefore(s, n); }; s.type = "text/javascript"; s.async = true; s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js"; if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); } })(document, window, "yandex_metrika_callbacks");</script><noscript><div><img src="//mc.yandex.ru/watch/25346996" style="position:absolute; left:-9999px;" alt="" /></div></noscript><!-- /Yandex.Metrika counter --><!-- /Yandex.Metrika counter -->
-<!-- Google Analytics counter --><!-- /Google Analytics counter -->
 </body>
 </html>

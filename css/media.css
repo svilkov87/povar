@@ -11,6 +11,15 @@
 
 /* Medium Devices, Desktops */
 @media only screen and (max-width : 992px) {
+    .center_wrapp{
+        padding-top: 60px;
+    }
+    .center_wrapp_home{
+        padding-top: 40px;
+    }
+    .home_wrapp{
+        display: none;
+    }
 	.last_intro_image {
 		width: 100%;
 		height: 220px;
@@ -18,7 +27,11 @@
 	.logo_link{
 		color: red;
 	}
-	/*.menu_open {*/
+    .fa-angle-down{
+        display: inline-block;
+    }
+	.menu_open {
+        display: none;
 		/*width: 100%;*/
 		/*height: auto;*/
 		/*background-color: #f7f7f7;*/
@@ -27,7 +40,7 @@
 		/*margin: 0;*/
 		/*right: 0;*/
 		/*text-align: center;*/
-	/*}*/
+	}
 	.all_stuff{
 		margin-bottom: 25px;
 	}

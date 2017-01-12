@@ -121,7 +121,7 @@ if (!empty($_GET)) {
 <html>
 <i class="fa fa-chevron-up" aria-hidden="true" id="top"></i>
 <?php include("include/nav.php"); ?>
-<div class="container-fluid" style="padding-top: 70px;">
+<div class="container-fluid center_wrapp">
     <div class="row">
         <?php include("include/block_fix.php"); ?>
         <div class="col-md-6">

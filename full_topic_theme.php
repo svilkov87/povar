@@ -106,7 +106,8 @@ if (!empty($_GET)) {
         $update->bindParam(':number_of_comments', $TopicCountResult);
         $update->bindParam(':id', $id);
         $update->execute();
-        header("Location: full_topic_theme.php?id=$id");
+//        header("Location: full_topic_theme.php?id=$id");
+        header("Location: http://".$_SERVER['HTTP_HOST']."/topictheme/".$id);
         exit;
     }
 }
@@ -136,10 +137,10 @@ if (!empty($_GET)) {
 ?>
 <i class="fa fa-chevron-up" aria-hidden="true" id="top"></i>
 <?php include "include/nav.php"; ?>
-<div class="container-fluid" style="padding-top: 70px;">
+<div class="container-fluid center_wrapp">
     <div class="row">
         <?php include("include/block_fix.php"); ?>
-        <div class="col-md-6 home_wrapp">
+        <div class="col-md-6">
             <div class="answers_wrapp">
                 <div class="chapters_of_topic">
                     <a href="http://<?php echo $_SERVER["HTTP_HOST"]; ?>/forum" class="back_to_forum">

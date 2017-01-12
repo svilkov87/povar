@@ -14,9 +14,9 @@ if (isset($_GET['search_submit'])) {
     $st->execute(array($poisk));
     $data = $st->fetchAll();
 }
-/*echo "<pre>";
-var_dump($data);
-echo "</pre>";*/
+//echo "<pre>";
+//var_dump($data);
+//echo "</pre>";
 ?>
 
 <!DOCTYPE html>
@@ -40,42 +40,38 @@ echo "</pre>";*/
 <body>
 <i class="fa fa-chevron-up" aria-hidden="true" id="top"></i>
 <?php include "include/nav.php"; ?>
-<!--лого-->
-<div class="col-md-12 logo_block">
-    <img src="http://impovar.tt90.ru/img/category_images/logo.svg" alt="logo" class="img_logo">
-    <h1 class="logo_header">GRANDPOVAR</h1>
-</div>
-<div class="container">
+<div class="container-fluid center_wrapp">
     <div class="row">
-        <!--/лого-->
-        <div class="col-md-6 col-md-offset-3">
-            <div class="no_comment_body">
-                <p class="no_comment_p">По запросу <span class="poisk_word"><?php echo $poisk; ?></span> найдено:</p>
+        <?php include("include/block_fix.php"); ?>
+        <div class="col-md-6">
+            <div class="search_body_header">
+                <p class="search_result_header">По запросу <span class="poisk_word"><?php echo $poisk; ?></span> найдено:</p>
             </div>
-            <?php foreach ($data as $item): ?>
-                <div class="col-md-12">
-                    <div class="row">
-                        <div class="link_panel">
-                            <div class="panel_head_link">
-                                <h1 style="font-size: 15px;">
-                                    <a href="http://impovar.tt90.ru/article/<?php echo $item['id']; ?>" class="full_link_search">
-                                        <?php echo $item['title']; ?>
-                                    </a>
-                                </h1>
-                            </div>
-                            <div class="link_body">
-                                <div class="img_block_link">
-                                    <img src="http://impovar.tt90.ru/admin/images/<?php echo $item['intro_image']; ?>" alt="..."
-                                         class="img_link_search">
-                                </div>
+            <div class="search_wrapp">
+                <?php foreach ($data as $item): ?>
+                    <div class="search_panel">
+                        <div class="search_left_panel">
+                            <div class="img_block_link">
+                                <img src="http://impovar.tt90.ru/admin/images/<?php echo $item['intro_image']; ?>"
+                                     alt="..."
+                                     class="img_link_search">
                             </div>
                         </div>
+                        <div class="search_right_panel">
+                            <h1 style="font-size: 15px;">
+                                <a href="http://impovar.tt90.ru/article/<?php echo $item['id']; ?>"
+                                   class="full_link_search">
+                                    <?php echo $item['title']; ?>
+                                </a>
+                            </h1>
+                        </div>
                     </div>
-                </div>
-            <?php endforeach; ?>
+                <?php endforeach; ?>
+            </div>
         </div>
-    </div><!--/row-->
-</div><!--/container-->
+        <?php include("include/menu_open.php"); ?>
+    </div>
+</div>
 <?php include("include/footer.php"); ?>
 <!--[if lt IE 9]>
 <script src="libs/html5shiv/es5-shim.min.js"></script>
