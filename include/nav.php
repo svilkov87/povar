@@ -268,6 +268,7 @@ if (isset($_POST['enter'])) {
             </div>
         <?php else: ?>
             <div class="fa-align">
+                <i class="fa fa-align-justify" id="justify_nav" aria-hidden="true"></i>&nbsp;
                 <a href="http://<?php echo $_SERVER["HTTP_HOST"]; ?>/registration"
                    class="registration_link">Регистрация</a>
             </div>

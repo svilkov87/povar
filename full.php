@@ -111,6 +111,8 @@ if (!empty($_GET)) {
 
 
         header("Location: " . $_SERVER["HTTP_REFERER"]);
+//        header("Location: http://".$_SERVER['HTTP_HOST']."/article/".$id."/#answer_item_id".$comments[0]['id']."");
+//        header("Location: http://".$_SERVER['HTTP_HOST']."/article/".$id."/#answer_input_comment_to");
         exit;
     }
 
@@ -280,6 +282,14 @@ if (!empty($_GET)) {
                                        value="<?php echo $image_var; ?>">
                             <textarea readonly hidden class="form-control" rows="3" name="answer_for_comment"
                                       id="answer_to_comment"></textarea>
+<!--                                <input readonly  type="text" name="input_text" id="answer_input">-->
+<!--                                <input readonly  type="text" name="input_user" id="answer_input"-->
+<!--                                       value="--><?php //echo $us_id; ?><!--">-->
+<!--                                <input readonly  type="text" name="input_user_id" id="answer_input_to_user">-->
+<!--                                <input readonly  type="text" name="article_intro_image" id="answer_input_image"-->
+<!--                                       value="--><?php //echo $image_var; ?><!--">-->
+<!--                            <textarea readonly  class="form-control" rows="3" name="answer_for_comment"-->
+<!--                                      id="answer_to_comment"></textarea>-->
                             <textarea class="form-control" rows="3" name="text" id="answer_input_comment_to"
                                       placeholder="Введите сообшение..." onfocus="placeholder='';"
                                       onblur="placeholder='Введите сообшение...';"></textarea>
@@ -335,7 +345,7 @@ if (!empty($_GET)) {
                                     <a href="#" id="hidden_id"><?php echo $item['id']; ?></a>
                                     <a href="#" id="hidden_id_to_user"><?php echo $item['user_id']; ?></a>
                                     <a href="#" id="hidden_text_to_comment"><?php echo $item['text']; ?></a>
-                                    <a href="#" class="send_name">ответить</a><br>
+                                    <a href="#" class="send_name_full">ответить</a><br>
                                     <span class="text-date"><?php echo $item['date']; ?></span>
                                 </div>
                             </div>
@@ -386,17 +396,17 @@ if (!empty($_GET)) {
 <script src="http://<?php echo $_SERVER['HTTP_HOST'];?>/libs/html5shiv/html5shiv-printshiv.min.js"></script>
 <script src="http://<?php echo $_SERVER['HTTP_HOST'];?>/libs/respond/respond.min.js"></script>
 <![endif]-->
-<script src="http://<?php echo $_SERVER["HTTP_HOST"];?>libs/jquery/jquery-1.11.1.min.js"></script>
-<script src="http://<?php echo $_SERVER["HTTP_HOST"];?>/libs/jquery-mousewheel/jquery.mousewheel.min.js"></script>
-<script src="http://<?php echo $_SERVER["HTTP_HOST"];?>/libs/fancybox/jquery.fancybox.pack.js"></script>
-<script src="http://<?php echo $_SERVER["HTTP_HOST"];?>/libs/waypoints/waypoints-1.6.2.min.js"></script>
-<script src="http://<?php echo $_SERVER["HTTP_HOST"];?>/libs/scrollto/jquery.scrollTo.min.js"></script>
-<script src="http://<?php echo $_SERVER["HTTP_HOST"];?>/libs/owl-carousel/owl.carousel.min.js"></script>
-<script src="http://<?php echo $_SERVER["HTTP_HOST"];?>/libs/countdown/jquery.plugin.js"></script>
-<script src="http://<?php echo $_SERVER["HTTP_HOST"];?>/libs/countdown/jquery.countdown.min.js"></script>
-<script src="http://<?php echo $_SERVER["HTTP_HOST"];?>/libs/countdown/jquery.countdown-ru.js"></script>
-<script src="http://<?php echo $_SERVER["HTTP_HOST"];?>/libs/landing-nav/navigation.js"></script>
-<script src="http://<?php echo $_SERVER["HTTP_HOST"];?>/js/common.js"></script>
-<script src="http://<?php echo $_SERVER["HTTP_HOST"];?>/js/main.js"></script>
+<script src="http://<?php echo $_SERVER['HTTP_HOST'];?>/libs/jquery/jquery-1.11.1.min.js"></script>
+<script src="http://<?php echo $_SERVER['HTTP_HOST'];?>/libs/jquery-mousewheel/jquery.mousewheel.min.js"></script>
+<script src="http://<?php echo $_SERVER['HTTP_HOST'];?>/libs/fancybox/jquery.fancybox.pack.js"></script>
+<script src="http://<?php echo $_SERVER['HTTP_HOST'];?>/libs/waypoints/waypoints-1.6.2.min.js"></script>
+<script src="http://<?php echo $_SERVER['HTTP_HOST'];?>/libs/scrollto/jquery.scrollTo.min.js"></script>
+<script src="http://<?php echo $_SERVER['HTTP_HOST'];?>/libs/owl-carousel/owl.carousel.min.js"></script>
+<script src="http://<?php echo $_SERVER['HTTP_HOST'];?>/libs/countdown/jquery.plugin.js"></script>
+<script src="http://<?php echo $_SERVER['HTTP_HOST'];?>/libs/countdown/jquery.countdown.min.js"></script>
+<script src="http://<?php echo $_SERVER['HTTP_HOST'];?>/libs/countdown/jquery.countdown-ru.js"></script>
+<script src="http://<?php echo $_SERVER['HTTP_HOST'];?>/libs/landing-nav/navigation.js"></script>
+<script src="http://<?php echo $_SERVER['HTTP_HOST'];?>/js/common.js"></script>
+<script src="http://<?php echo $_SERVER['HTTP_HOST'];?>/js/main.js"></script>
 </body>
 </html>

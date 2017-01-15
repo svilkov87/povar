@@ -106,12 +106,14 @@ if (!empty($_GET)) {
         $update->bindParam(':number_of_comments', $TopicCountResult);
         $update->bindParam(':id', $id);
         $update->execute();
-//        header("Location: full_topic_theme.php?id=$id");
-        header("Location: http://".$_SERVER['HTTP_HOST']."/topictheme/".$id);
+        header("Location: http://".$_SERVER['HTTP_HOST']."/topictheme/".$id."/#answer_item_id".$comments[0]['id']."");
         exit;
     }
 }
-
+//
+//echo "<pre>";
+//var_dump($comments[0]['id']);
+//echo "</pre>";
 ?>
 
 <!DOCTYPE html>
@@ -249,7 +251,7 @@ if (!empty($_GET)) {
                                     </div>
                                 </div>
                                 <div class="middle_content_comm">
-                                    <a href="http://<?php echo $_SERVER["HTTP_HOST"]; ?>/profile/<?php echo $item['user_id']; ?>" class="user_name_ava">
+                                    <a href="http://<?php echo $_SERVER["HTTP_HOST"]; ?>/profile/<?php echo $item['user_id']; ?>#answer_item_id<?php echo $item['id']; ?>" class="user_name_ava">
                                         <?php echo $item['user_name']; ?>
                                     </a><br>
                                     <span class="answer_comment"><?php echo $item['text']; ?></span><br>

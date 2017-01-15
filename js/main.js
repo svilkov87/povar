@@ -92,8 +92,13 @@ $(document).ready(function(){
       offset: -350
     });
   });
+    $(".send_name_full").click(function() {
+    $.scrollTo($("#answer_input_comment_to"), 600, {
+      offset: -350
+    });
+  });
 
-// ответ юзеру(перемещение информации в поля отправки)
+// ответ юзеру(перемещение информации в поля отправки на форуме)
   $('.send_name').click(function(e){
     e.preventDefault();
     $('#answer').val($(this).siblings('.p').html().trim() + ',')
@@ -110,6 +115,28 @@ $(document).ready(function(){
     $('li.span_delete_username').html('');
     $('.fa-times').css("display", "none");
     $('#answer').val('');
+    $('#answer_to_comment').val('');
+    $('#answer_input_to_user').val('');
+    $('#answer_input').val('');
+
+  });
+    // ответ юзеру(перемещение информации в поля отправки на странице полной статьи)
+  $('.send_name_full').click(function(e){
+    e.preventDefault();
+    $('#answer_input_comment_to').val($(this).siblings('.p').html().trim() + ',')
+    $('.fa-times').css("display", "block");
+    $('#answer_input').val($(this).siblings('#hidden_id').html().trim());
+    $('#answer_input_to_user').val($(this).siblings('#hidden_id_to_user').html().trim());
+    $('#answer_to_comment').val($(this).siblings('#hidden_text_to_comment').html().trim());
+    $('#answer_input_image').val($(this).siblings('#hidden_image_to_comment').html().trim());
+  });
+
+
+  //удаление данных
+  $('.span_delete_items').on('click', function() {
+    $('li.span_delete_username').html('');
+    $('.fa-times').css("display", "none");
+    $('#answer_input_comment_to').val('');
     $('#answer_to_comment').val('');
     $('#answer_input_to_user').val('');
     $('#answer_input').val('');
