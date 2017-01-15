@@ -2,7 +2,10 @@
 <div id="footer">
     <div class="container">
         <div class="row">
-            <a href="http://impovar.tt90.ru/home" class="fa_cutlery_footer_a">
+            <div class="footer_wrapp">
+                
+            </div>
+            <a href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/home" class="fa_cutlery_footer_a">
                 <i class="fa fa-cutlery fa_cutlery_footer" aria-hidden="true"></i>
             </a>
         </div>

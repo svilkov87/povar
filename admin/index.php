@@ -6,6 +6,17 @@ error_reporting(E_ALL | E_STRICT);
 ini_set('display_errors', TRUE);
 ini_set('display_startup_errors', TRUE);
 
+//    считаем isnew
+$st = $pdo->prepare('SELECT COUNT(*) FROM `comments` WHERE 
+    count_isnew=:count_isnew 
+    AND 
+    user_id_art =:user_id_art
+    ');
+$st->bindParam(':count_isnew', $One, PDO::PARAM_INT);
+$st->bindParam(':user_id_art', $_SESSION['user_id'], PDO::PARAM_INT);
+$st->execute();
+$isNew = $st->fetchAll();
+
 //проверка админа при авторизации
 if(isset($_POST['enter'])){
     $e_email = $_POST['e_email'];
@@ -18,11 +29,14 @@ if(isset($_POST['enter'])){
     //    обращаемся к элементу массива id, которое получили при выборке из таблицы юзеров
     $user_id = $user_data["id"];
     $user_name = $user_data["username"];
+    $user_ava = $user_data["ava"];
 
         if($user_data['password'] == $e_password){
             $_SESSION['email'] = $e_email;
             $_SESSION['user_id'] = $user_id;
             $_SESSION['user_name'] = $user_name;
+            $_SESSION['ava'] = $user_ava;
+            $_SESSION['letter'] = $isNew[0]['COUNT(*)'].'&nbsp;<i class="fa fa-envelope-o" aria-hidden="true"></i>';
             header("Location: /admin/admin.php");
             exit;
         }

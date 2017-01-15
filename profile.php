@@ -105,17 +105,17 @@ if (!empty($_GET)) {
     <meta name="description" content="IMPOVAR"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <link rel="shortcut icon" href="http://impovar.tt90.ru/img/favicon/favicon.ico"/>
-    <link rel="stylesheet" href="http://impovar.tt90.ru/libs/font-awesome-4.2.0/css/font-awesome.min.css"/>
-    <link rel="stylesheet" href="http://impovar.tt90.ru/libs/fancybox/jquery.fancybox.css"/>
-    <link rel="stylesheet" href="http://impovar.tt90.ru/libs/owl-carousel/owl.carousel.css"/>
-    <link rel="stylesheet" href="http://impovar.tt90.ru/libs/countdown/jquery.countdown.css"/>
-    <link rel="stylesheet" href="http://impovar.tt90.ru/remodal/remodal.css">
-    <link rel="stylesheet" href="http://impovar.tt90.ru/remodal/remodal-default-theme.css">
-    <link rel="stylesheet" href="http://impovar.tt90.ru/css/fonts.css"/>
-    <link rel="stylesheet" href="http://impovar.tt90.ru/css/main.css"/>
-    <link rel="stylesheet" href="http://impovar.tt90.ru/css/media.css"/>
-    <link rel="stylesheet" href="http://impovar.tt90.ru/css/bootstrap.min.css"/>
+    <link rel="shortcut icon" href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/img/favicon/favicon.ico"/>
+    <link rel="stylesheet" href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/libs/font-awesome-4.2.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/libs/fancybox/jquery.fancybox.css"/>
+    <link rel="stylesheet" href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/libs/owl-carousel/owl.carousel.css"/>
+    <link rel="stylesheet" href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/libs/countdown/jquery.countdown.css"/>
+    <link rel="stylesheet" href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/remodal/remodal.css">
+    <link rel="stylesheet" href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/remodal/remodal-default-theme.css">
+    <link rel="stylesheet" href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/css/fonts.css"/>
+    <link rel="stylesheet" href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/css/main.css"/>
+    <link rel="stylesheet" href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/css/media.css"/>
+    <link rel="stylesheet" href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/css/bootstrap.min.css"/>
 </head>
 <body>
 <html>
@@ -131,8 +131,8 @@ if (!empty($_GET)) {
                         <?php foreach ($profile_data as $item): ?>
                             <div class="col-md-4 ava_block">
                                 <div class="profile_image">
-                                    <a href="http://impovar.tt90.ru/profile/<?php echo $user_id; ?>" class="dfg">
-                                        <img src="http://impovar.tt90.ru/img/avatars/<?php echo $user_image; ?>"
+                                    <a href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/profile/<?php echo $user_id; ?>" class="dfg">
+                                        <img src="http://<?php echo $_SERVER['HTTP_HOST']; ?>/img/avatars/<?php echo $user_image; ?>"
                                              class="ava_img">
                                         <!--                                <img src="http://impovar.tt90.ru/img/avatars/я.jpg" class="ava_img">-->
                                     </a>
@@ -181,14 +181,14 @@ if (!empty($_GET)) {
                                     <div class="last_art_body">
                                         <div class="last_art_header">
                             <span class="span_last">
-                                <a href="http://impovar.tt90.ru/article/<?php echo $item['id']; ?>"
+                                <a href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/article/<?php echo $item['id']; ?>"
                                    class="last_to_full_link">
                                     <?php echo $item['title']; ?>
                                 </a>
                             </span>
                                         </div>
                                         <div class="wrapp_last">
-                                            <img src="http://impovar.tt90.ru/admin/images/<?php echo $item['intro_image']; ?>"
+                                            <img src="http://<?php echo $_SERVER['HTTP_HOST']; ?>/admin/images/<?php echo $item['intro_image']; ?>"
                                                  alt=""
                                                  class="last_intro_image">
                                             <div class="bottom_prof">
@@ -219,22 +219,22 @@ if (!empty($_GET)) {
                                     <div class="last_art_body">
                                         <div class="last_art_header">
                         <span class="span_last">
-                             <a href="http://impovar.tt90.ru/article/<?php echo $item['id']; ?>"
+                             <a href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/article/<?php echo $item['id']; ?>"
                                 class="last_to_full_link">
                                  <?php echo $item['title']; ?>
                              </a>
                          </span>
                                         </div>
                                         <div class="wrapp_last">
-                                            <img src="http://impovar.tt90.ru/admin/images/<?php echo $item['intro_image']; ?>"
+                                            <img src="http://<?php echo $_SERVER['HTTP_HOST']; ?>/admin/images/<?php echo $item['intro_image']; ?>"
                                                  alt=""
                                                  class="last_intro_image">
                                             <div class="bottom_prof">
-                                                <a href="http://impovar.tt90.ru/delart/<?php echo $item['id']; ?>"
+                                                <a href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/delart/<?php echo $item['id']; ?>"
                                                    onclick="return confirm('Удалить статью?')" class="fa-trash-del">
                                                     <i class="fa fa-trash fa-trash-del" aria-hidden="true"></i>
                                                 </a>
-                                                <a href="http://impovar.tt90.ru/editart/<?php echo $item['id']; ?>/<?php echo $item['user_id']; ?>"
+                                                <a href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/editart/<?php echo $item['id']; ?>/<?php echo $item['user_id']; ?>"
                                                    class="fa-trash-del">
                                                     <i class="fa fa-pencil-square" aria-hidden="true"></i>
                                                 </a>
@@ -259,14 +259,14 @@ if (!empty($_GET)) {
                                     <div class="last_art_body">
                                         <div class="last_art_header">
                                     <span class="span_last">
-                                        <a href="http://impovar.tt90.ru/article/<?php echo $item['id']; ?>"
+                                        <a href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/article/<?php echo $item['id']; ?>"
                                            class="last_to_full_link">
                                             <?php echo $item['title']; ?>
                                         </a>
                                     </span>
                                         </div>
                                         <div class="wrapp_last">
-                                            <img src="http://impovar.tt90.ru/admin/images/<?php echo $item['intro_image']; ?>"
+                                            <img src="http://<?php echo $_SERVER['HTTP_HOST']; ?>/admin/images/<?php echo $item['intro_image']; ?>"
                                                  alt=""
                                                  class="last_intro_image">
                                             <div class="bottom_prof">
@@ -292,24 +292,23 @@ if (!empty($_GET)) {
 <!--</div>-->
 <?php include("include/footer.php"); ?>
 <!--[if lt IE 9]-->
-<script src="http://impovar.tt90.ru/libs/html5shiv/es5-shim.min.js"></script>
-<script src="http://impovar.tt90.ru/libs/html5shiv/html5shiv.min.js"></script>
-<script src="http://impovar.tt90.ru/libs/html5shiv/html5shiv-printshiv.min.js"></script>
-<script src="http://impovar.tt90.ru/libs/respond/respond.min.js"></script>
+<script src="http://<?php echo $_SERVER['HTTP_HOST']; ?>/libs/html5shiv/es5-shim.min.js"></script>
+<script src="http://<?php echo $_SERVER['HTTP_HOST']; ?>/libs/html5shiv/html5shiv.min.js"></script>
+<script src="http://<?php echo $_SERVER['HTTP_HOST']; ?>/libs/html5shiv/html5shiv-printshiv.min.js"></script>
+<script src="http://<?php echo $_SERVER['HTTP_HOST']; ?>/libs/respond/respond.min.js"></script>
 <!--[endif]-->
-<script src="http://impovar.tt90.ru/libs/jquery/jquery-1.11.1.min.js"></script>
-<script src="http://impovar.tt90.ru/libs/jquery-mousewheel/jquery.mousewheel.min.js"></script>
-<script src="http://impovar.tt90.ru/libs/fancybox/jquery.fancybox.pack.js"></script>
-<script src="http://impovar.tt90.ru/libs/waypoints/waypoints-1.6.2.min.js"></script>
-<script src="http://impovar.tt90.ru/libs/scrollto/jquery.scrollTo.min.js"></script>
-<script src="http://impovar.tt90.ru/libs/owl-carousel/owl.carousel.min.js"></script>
-<script src="http://impovar.tt90.ru/libs/countdown/jquery.plugin.js"></script>
-<script src="http://impovar.tt90.ru/libs/countdown/jquery.countdown.min.js"></script>
-<script src="http://impovar.tt90.ru/libs/countdown/jquery.countdown-ru.js"></script>
-<script src="http://impovar.tt90.ru/libs/landing-nav/navigation.js"></script>
-<script src="http://impovar.tt90.ru/js/common.js"></script>
-<script src="http://impovar.tt90.ru/js/main.js"></script>
-<script src="http://impovar.tt90.ru/js/bootstrap.min.js"></script>
-<script src="http://impovar.tt90.ru/remodal/remodal.min.js"></script>
+<script src="http://<?php echo $_SERVER['HTTP_HOST']; ?>/libs/jquery/jquery-1.11.1.min.js"></script>
+<script src="http://<?php echo $_SERVER['HTTP_HOST']; ?>/libs/jquery-mousewheel/jquery.mousewheel.min.js"></script>
+<script src="http://<?php echo $_SERVER['HTTP_HOST']; ?>/libs/fancybox/jquery.fancybox.pack.js"></script>
+<script src="http://<?php echo $_SERVER['HTTP_HOST']; ?>/libs/waypoints/waypoints-1.6.2.min.js"></script>
+<script src="http://<?php echo $_SERVER['HTTP_HOST']; ?>/libs/scrollto/jquery.scrollTo.min.js"></script>
+<script src="http://<?php echo $_SERVER['HTTP_HOST']; ?>/libs/owl-carousel/owl.carousel.min.js"></script>
+<script src="http://<?php echo $_SERVER['HTTP_HOST']; ?>/libs/countdown/jquery.plugin.js"></script>
+<script src="http://<?php echo $_SERVER['HTTP_HOST']; ?>/libs/countdown/jquery.countdown.min.js"></script>
+<script src="http://<?php echo $_SERVER['HTTP_HOST']; ?>/libs/countdown/jquery.countdown-ru.js"></script>
+<script src="http://<?php echo $_SERVER['HTTP_HOST']; ?>/libs/landing-nav/navigation.js"></script>
+<script src="http://<?php echo $_SERVER['HTTP_HOST']; ?>/js/common.js"></script>
+<script src="http://<?php echo $_SERVER['HTTP_HOST']; ?>/js/main.js"></script>
+<script src="http://<?php echo $_SERVER['HTTP_HOST']; ?>/js/bootstrap.min.js"></script>
 </html>
 </body>

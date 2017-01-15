@@ -60,14 +60,20 @@ $tags = $st->fetchAll();
                 <?php foreach ($tags as $item): ?>
                 <a href="http://<?php echo $_SERVER["HTTP_HOST"];?>/topictheme/<?php echo $item['id']; ?>">
                     <div class="wrapp_topic">
-                        <div class="title_topic">
-                            <h1 class="theme_topic_text_prev"><?php echo $item['title']; ?></h1>
+                        <div class="img_auth_topic">
+                            <img src="http://<?php echo $_SERVER["HTTP_HOST"]; ?>/img/avatars/<?php echo $item['user_ava']; ?>"
+                                 class="ava_img_auth_topic" title="<?php echo $item['user_name']; ?>">
                         </div>
-                        <div class="desc_topic">
-                            <span class="theme_topic_desc"><?php echo $item['number_of_comments'];?></span>
-                            <span class="theme_topic_desc">ответов</span>
-                            <span class="theme_topic_desc"><?php echo $item['watches'];?></span>
-                            <span class="theme_topic_desc">просмотров</span>
+                        <div class="right_part_topic">
+                            <div class="title_topic">
+                                <h1 class="theme_topic_text_prev"><?php echo $item['title']; ?></h1>
+                            </div>
+                            <div class="desc_topic">
+                                <span class="theme_topic_desc"><?php echo $item['number_of_comments'];?></span>
+                                <span class="theme_topic_desc">ответов</span>
+                                <span class="theme_topic_desc"><?php echo $item['watches'];?></span>
+                                <span class="theme_topic_desc">просмотров</span>
+                            </div>
                         </div>
                     </div>
                 </a>
@@ -75,49 +81,6 @@ $tags = $st->fetchAll();
             </div>
         </div>
         <?php include("include/menu_open.php"); ?>
-
-<!--        <table class="table table-bordered table-hover table-responsive">-->
-<!--            <thead>-->
-<!--            <tr class="success">-->
-<!--                <th width="150px">Автор темы</th>-->
-<!--                <th>Название</th>-->
-<!--                <th>Дата</th>-->
-<!--                <th>Просмотры</th>-->
-<!--                <th>Комментарии</th>-->
-<!--            </tr>-->
-<!--            </thead>-->
-<!--            <tbody>-->
-<!--            --><?php //foreach ($tags as $item): ?>
-<!--                <tr>-->
-<!--                    <th>-->
-<!--                        <div class="user_name_of_topic">-->
-<!--                            <a href="profile.php?id=--><?php //echo $item['user_id']; ?><!--">-->
-<!--                                <img src="img/avatars/--><?php //echo $item['user_ava']; ?><!--" class="ava_imgonforum">-->
-<!--                                <span class="user_name_link">--><?php //echo $item['user_name']; ?><!--</span>-->
-<!--                            </a>-->
-<!--                        </div>-->
-<!--                    </th>-->
-<!--                    <th>-->
-<!--                        <div class="text_of_topic">-->
-<!--                            <a href="full_topic_theme.php?id=--><?php //echo $item['id']; ?><!--" class="topic_theme_link">-->
-<!--                                <h1 class="theme_topic_text_prev">--><?php //echo $item['title']; ?><!--</h1>-->
-<!--                            </a>-->
-<!--                        </div>-->
-<!--                    </th>-->
-<!--                    <th style="font-weight: normal">-->
-<!--                        --><?php //echo $item['date']; ?>
-<!--                    </th>-->
-<!--                    <th width="40px" style="text-align: center;">-->
-<!--                        --><?php //echo $item['watches']; ?>
-<!--                    </th>-->
-<!--                    <th width="40px" style="text-align: center;">-->
-<!--                        --><?php //echo $item['number_of_comments']; ?>
-<!--                    </th>-->
-<!--                </tr>-->
-<!--            --><?php //endforeach; ?>
-<!--            </tbody>-->
-<!--        </table>-->
-
     </div>
 </div>
 <?php include("include/footer.php"); ?>
@@ -139,32 +102,5 @@ $tags = $st->fetchAll();
 <script src="http://<?php echo $_SERVER['HTTP_HOST'];?>/libs/landing-nav/navigation.js"></script>
 <script src="http://<?php echo $_SERVER['HTTP_HOST'];?>/js/common.js"></script>
 <script src="http://<?php echo $_SERVER['HTTP_HOST'];?>/js/main.js"></script>
-
-<!-- Yandex.Metrika counter --><!-- Yandex.Metrika counter -->
-<script type="text/javascript">(function (d, w, c) {
-        (w[c] = w[c] || []).push(function () {
-            try {
-                w.yaCounter25346996 = new Ya.Metrika({
-                    id: 25346996,
-                    webvisor: true,
-                    clickmap: true,
-                    trackLinks: true,
-                    accurateTrackBounce: true
-                });
-            } catch (e) {
-            }
-        });
-        var n = d.getElementsByTagName("script")[0], s = d.createElement("script"), f = function () {
-            n.parentNode.insertBefore(s, n);
-        };
-        s.type = "text/javascript";
-        s.async = true;
-        s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js";
-        if (w.opera == "[object Opera]") {
-            d.addEventListener("DOMContentLoaded", f, false);
-        } else {
-            f();
-        }
-    })(document, window, "yandex_metrika_callbacks");</script>
 </body>
 </html>

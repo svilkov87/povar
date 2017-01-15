@@ -5,6 +5,7 @@
         </div>
         <?php foreach ($LastArtLimitTwo as $item): ?>
         <div class="home_last_art_body">
+            <a href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/article/<?php echo $item['id']; ?>">
             <div class="home_left_last_art">
                 <img src="http://<?php echo $_SERVER['HTTP_HOST']; ?>/admin/images/<?php echo $item['intro_image']; ?>" alt="" class="last_prev_img">
             </div>
@@ -13,6 +14,7 @@
                     <?php echo $item['title']; ?>
                 </div>
             </div>
+            </a>
         </div>
         <?php endforeach;?>
         <div class="home_last_forum">

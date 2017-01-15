@@ -73,7 +73,7 @@ $last_article = implode('', $last[0]);
                         <thead>
                         <tr class="success">
                             <th>фото-превью</th>
-                            <th style="color: red;"> Юра, необращай внимания, работай дaльше</th>
+                            <th>Название</th>
                             <th>дата</th>
                             <th>просмотры</th>
 <!--                            <th>автор</th>-->

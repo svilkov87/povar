@@ -2,11 +2,6 @@
 include("functions/functions.php");
 include("include/connection.php");
 
-## проверка ошибок
-error_reporting(E_ALL | E_STRICT);
-ini_set('display_errors', TRUE);
-ini_set('display_startup_errors', TRUE);
-
 $email = $_POST['input_email'];
 
 if (isset($_POST['input_email'])) {
@@ -77,17 +72,17 @@ if (isset($_POST['input_email'])) {
     <meta name="description" content="IMPOVAR"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <link rel="shortcut icon" href="http://impovar.tt90.ru/img/favicon/favicon.ico"/>
-    <link rel="stylesheet" href="http://impovar.tt90.ru/libs/font-awesome-4.2.0/css/font-awesome.min.css"/>
-    <link rel="stylesheet" href="http://impovar.tt90.ru/libs/fancybox/jquery.fancybox.css"/>
-    <link rel="stylesheet" href="http://impovar.tt90.ru/libs/owl-carousel/owl.carousel.css"/>
-    <link rel="stylesheet" href="http://impovar.tt90.ru/libs/countdown/jquery.countdown.css"/>
-    <link rel="stylesheet" href="http://impovar.tt90.ru/remodal/remodal.css">
-    <link rel="stylesheet" href="http://impovar.tt90.ru/remodal/remodal-default-theme.css">
-    <link rel="stylesheet" href="http://impovar.tt90.ru/css/fonts.css"/>
-    <link rel="stylesheet" href="http://impovar.tt90.ru/css/main.css"/>
-    <link rel="stylesheet" href="http://impovar.tt90.ru/css/media.css"/>
-    <link rel="stylesheet" href="http://impovar.tt90.ru/css/bootstrap.min.css"/>
+    <link rel="shortcut icon" href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/img/favicon/favicon.ico"/>
+    <link rel="stylesheet" href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/libs/font-awesome-4.2.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/libs/fancybox/jquery.fancybox.css"/>
+    <link rel="stylesheet" href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/libs/owl-carousel/owl.carousel.css"/>
+    <link rel="stylesheet" href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/libs/countdown/jquery.countdown.css"/>
+    <link rel="stylesheet" href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/remodal/remodal.css">
+    <link rel="stylesheet" href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/remodal/remodal-default-theme.css">
+    <link rel="stylesheet" href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/css/fonts.css"/>
+    <link rel="stylesheet" href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/css/main.css"/>
+    <link rel="stylesheet" href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/css/media.css"/>
+    <link rel="stylesheet" href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/css/bootstrap.min.css"/>
 </head>
 <body>
 <html>
@@ -113,23 +108,23 @@ if (isset($_POST['input_email'])) {
 </div>
 <?php include("include/footer.php"); ?>
 <!--[if lt IE 9]-->
-<script src="http://impovar.tt90.ru/libs/html5shiv/es5-shim.min.js"></script>
-<script src="http://impovar.tt90.ru/libs/html5shiv/html5shiv.min.js"></script>
-<script src="http://impovar.tt90.ru/libs/html5shiv/html5shiv-printshiv.min.js"></script>
-<script src="http://impovar.tt90.ru/libs/respond/respond.min.js"></script>
+<script src="http://<?php echo $_SERVER['HTTP_HOST']; ?>/libs/html5shiv/es5-shim.min.js"></script>
+<script src="http://<?php echo $_SERVER['HTTP_HOST']; ?>/libs/html5shiv/html5shiv.min.js"></script>
+<script src="http://<?php echo $_SERVER['HTTP_HOST']; ?>/libs/html5shiv/html5shiv-printshiv.min.js"></script>
+<script src="http://<?php echo $_SERVER['HTTP_HOST']; ?>/libs/respond/respond.min.js"></script>
 <!--[endif]-->
-<script src="http://impovar.tt90.ru/libs/jquery/jquery-1.11.1.min.js"></script>
-<script src="http://impovar.tt90.ru/libs/jquery-mousewheel/jquery.mousewheel.min.js"></script>
-<script src="http://impovar.tt90.ru/libs/fancybox/jquery.fancybox.pack.js"></script>
-<script src="http://impovar.tt90.ru/libs/waypoints/waypoints-1.6.2.min.js"></script>
-<script src="http://impovar.tt90.ru/libs/scrollto/jquery.scrollTo.min.js"></script>
-<script src="http://impovar.tt90.ru/libs/owl-carousel/owl.carousel.min.js"></script>
-<script src="http://impovar.tt90.ru/libs/countdown/jquery.plugin.js"></script>
-<script src="http://impovar.tt90.ru/libs/countdown/jquery.countdown.min.js"></script>
-<script src="http://impovar.tt90.ru/libs/countdown/jquery.countdown-ru.js"></script>
-<script src="http://impovar.tt90.ru/libs/landing-nav/navigation.js"></script>
-<script src="http://impovar.tt90.ru/js/common.js"></script>
-<script src="http://impovar.tt90.ru/js/main.js"></script>
-<script src="http://impovar.tt90.ru/js/bootstrap.min.js"></script>
+<script src="http://<?php echo $_SERVER['HTTP_HOST']; ?>/libs/jquery/jquery-1.11.1.min.js"></script>
+<script src="http://<?php echo $_SERVER['HTTP_HOST']; ?>/libs/jquery-mousewheel/jquery.mousewheel.min.js"></script>
+<script src="http://<?php echo $_SERVER['HTTP_HOST']; ?>/libs/fancybox/jquery.fancybox.pack.js"></script>
+<script src="http://<?php echo $_SERVER['HTTP_HOST']; ?>/libs/waypoints/waypoints-1.6.2.min.js"></script>
+<script src="http://<?php echo $_SERVER['HTTP_HOST']; ?>/libs/scrollto/jquery.scrollTo.min.js"></script>
+<script src="http://<?php echo $_SERVER['HTTP_HOST']; ?>/libs/owl-carousel/owl.carousel.min.js"></script>
+<script src="http://<?php echo $_SERVER['HTTP_HOST']; ?>/libs/countdown/jquery.plugin.js"></script>
+<script src="http://<?php echo $_SERVER['HTTP_HOST']; ?>/libs/countdown/jquery.countdown.min.js"></script>
+<script src="http://<?php echo $_SERVER['HTTP_HOST']; ?>/libs/countdown/jquery.countdown-ru.js"></script>
+<script src="http://<?php echo $_SERVER['HTTP_HOST']; ?>/libs/landing-nav/navigation.js"></script>
+<script src="http://<?php echo $_SERVER['HTTP_HOST']; ?>/js/common.js"></script>
+<script src="http://<?php echo $_SERVER['HTTP_HOST']; ?>/js/main.js"></script>
+<script src="http://<?php echo $_SERVER['HTTP_HOST']; ?>/js/bootstrap.min.js"></script>
 </html>
 </body>

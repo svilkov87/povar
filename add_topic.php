@@ -35,7 +35,26 @@ if (isset($_POST['enter_comment'])) {
     $insert->bindParam(':user_name', $user_name);
     $insert->bindParam(':user_id', $user_id);
     $insert->execute();
-    header("Location: http://impovar.tt90.ru/forum");
+
+    //    Считаем общее количество топиков
+    $st = $pdo->prepare('SELECT COUNT(user_id) FROM `forum_questions` WHERE user_id=:user_id');
+    $st->bindParam(':user_id', $_SESSION['user_id'], PDO::PARAM_INT);
+    $st->execute();
+    $topic_column = $st->fetchColumn();
+
+    //    обновляем статистику в таблице пользователей
+    $update = $pdo->prepare("
+        UPDATE 
+        `users` 
+        SET 
+        count_of_topics =:count_of_topics
+        WHERE 
+        id=:id");
+    $update->bindParam(':count_of_topics', $topic_column);
+    $update->bindParam(':id', $_SESSION['user_id']);
+    $update->execute();
+
+    header("Location: http://".$_SERVER['HTTP_HOST']."/forum");
     exit;
 }
 //}
@@ -52,15 +71,15 @@ if (isset($_POST['enter_comment'])) {
     <meta name="description" content="IMPOVAR"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <link rel="shortcut icon" href="img/favicon/favicon.ico"/>
-    <link rel="stylesheet" href="libs/font-awesome-4.2.0/css/font-awesome.min.css"/>
-    <link rel="stylesheet" href="libs/fancybox/jquery.fancybox.css"/>
-    <link rel="stylesheet" href="libs/owl-carousel/owl.carousel.css"/>
-    <link rel="stylesheet" href="libs/countdown/jquery.countdown.css"/>
-    <link rel="stylesheet" href="css/fonts.css"/>
-    <link rel="stylesheet" href="css/main.css"/>
-    <link rel="stylesheet" href="css/media.css"/>
-    <link rel="stylesheet" href="css/bootstrap.min.css"/>
+    <link rel="shortcut icon" href="http://<?php echo $_SERVER['HTTP_HOST']; ?>img/favicon/favicon.ico"/>
+    <link rel="stylesheet" href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/libs/font-awesome-4.2.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/libs/fancybox/jquery.fancybox.css"/>
+    <link rel="stylesheet" href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/libs/owl-carousel/owl.carousel.css"/>
+    <link rel="stylesheet" href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/libs/countdown/jquery.countdown.css"/>
+    <link rel="stylesheet" href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/css/fonts.css"/>
+    <link rel="stylesheet" href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/css/main.css"/>
+    <link rel="stylesheet" href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/css/media.css"/>
+    <link rel="stylesheet" href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/css/bootstrap.min.css"/>
 </head>
 <body>
 <?php
@@ -92,58 +111,24 @@ if (isset($_POST['enter_comment'])) {
 </div>
 <?php include("include/footer.php"); ?>
 <!--[if lt IE 9]>
-<script src="libs/html5shiv/es5-shim.min.js"></script>
-<script src="libs/html5shiv/html5shiv.min.js"></script>
-<script src="libs/html5shiv/html5shiv-printshiv.min.js"></script>
-<script src="libs/respond/respond.min.js"></script>
+<script src="http://<?php echo $_SERVER['HTTP_HOST']; ?>/libs/html5shiv/es5-shim.min.js"></script>
+<script src="http://<?php echo $_SERVER['HTTP_HOST']; ?>/libs/html5shiv/html5shiv.min.js"></script>
+<script src="http://<?php echo $_SERVER['HTTP_HOST']; ?>/libs/html5shiv/html5shiv-printshiv.min.js"></script>
+<script src="http://<?php echo $_SERVER['HTTP_HOST']; ?>/libs/respond/respond.min.js"></script>
 <![endif]-->
-<script src="libs/jquery/jquery-1.11.1.min.js"></script>
-<script src="libs/jquery-mousewheel/jquery.mousewheel.min.js"></script>
-<script src="libs/fancybox/jquery.fancybox.pack.js"></script>
-<script src="libs/waypoints/waypoints-1.6.2.min.js"></script>
-<script src="libs/scrollto/jquery.scrollTo.min.js"></script>
-<script src="libs/owl-carousel/owl.carousel.min.js"></script>
-<script src="libs/countdown/jquery.plugin.js"></script>
-<script src="libs/countdown/jquery.countdown.min.js"></script>
-<script src="libs/countdown/jquery.countdown-ru.js"></script>
-<script src="libs/landing-nav/navigation.js"></script>
-<script src="js/common.js"></script>
-<script src="js/main.js"></script>
-<script src="remodal/remodal.min.js"></script>
-
-<!-- Yandex.Metrika counter --><!-- Yandex.Metrika counter -->
-<script type="text/javascript">(function (d, w, c) {
-        (w[c] = w[c] || []).push(function () {
-            try {
-                w.yaCounter25346996 = new Ya.Metrika({
-                    id: 25346996,
-                    webvisor: true,
-                    clickmap: true,
-                    trackLinks: true,
-                    accurateTrackBounce: true
-                });
-            } catch (e) {
-            }
-        });
-        var n = d.getElementsByTagName("script")[0], s = d.createElement("script"), f = function () {
-            n.parentNode.insertBefore(s, n);
-        };
-        s.type = "text/javascript";
-        s.async = true;
-        s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js";
-        if (w.opera == "[object Opera]") {
-            d.addEventListener("DOMContentLoaded", f, false);
-        } else {
-            f();
-        }
-    })(document, window, "yandex_metrika_callbacks");</script>
-<noscript>
-    <div><img src="//mc.yandex.ru/watch/25346996" style="position:absolute; left:-9999px;" alt=""/></div>
-</noscript><!-- /Yandex.Metrika counter --><!-- /Yandex.Metrika counter -->
-<!-- Google Analytics counter --><!-- /Google Analytics counter -->
+<script src="http://<?php echo $_SERVER['HTTP_HOST']; ?>libs/jquery/jquery-1.11.1.min.js"></script>
+<script src="http://<?php echo $_SERVER['HTTP_HOST']; ?>libs/jquery-mousewheel/jquery.mousewheel.min.js"></script>
+<script src="http://<?php echo $_SERVER['HTTP_HOST']; ?>libs/fancybox/jquery.fancybox.pack.js"></script>
+<script src="http://<?php echo $_SERVER['HTTP_HOST']; ?>libs/waypoints/waypoints-1.6.2.min.js"></script>
+<script src="http://<?php echo $_SERVER['HTTP_HOST']; ?>libs/scrollto/jquery.scrollTo.min.js"></script>
+<script src="http://<?php echo $_SERVER['HTTP_HOST']; ?>libs/owl-carousel/owl.carousel.min.js"></script>
+<script src="http://<?php echo $_SERVER['HTTP_HOST']; ?>libs/countdown/jquery.plugin.js"></script>
+<script src="http://<?php echo $_SERVER['HTTP_HOST']; ?>libs/countdown/jquery.countdown.min.js"></script>
+<script src="http://<?php echo $_SERVER['HTTP_HOST']; ?>libs/countdown/jquery.countdown-ru.js"></script>
+<script src="http://<?php echo $_SERVER['HTTP_HOST']; ?>libs/landing-nav/navigation.js"></script>
+<script src="http://<?php echo $_SERVER['HTTP_HOST']; ?>js/common.js"></script>
+<script src="http://<?php echo $_SERVER['HTTP_HOST']; ?>js/main.js"></script>
 <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>-->
 <!--<script src="js/bootstrap.min.js"></script>-->
-
-
 </body>
 </html>

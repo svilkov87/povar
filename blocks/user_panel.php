@@ -1,28 +1,10 @@
-<?php
-
-//    echo "<pre>";
-//    var_dump($user_ava);
-//    echo "</pre>";
-
-?>
 <div class="stuff_menu">
-    <div class="menu_ava">
-            <img src="http://<?php echo $_SERVER["HTTP_HOST"]; ?>/img/avatars/<?php echo $_SESSION['ava']; ?>" class="ava_img_fullusart"><br>
-    </div>
-<!--<ul class="user_panel">-->
-<!--    <li class="user_panel_li">-->
-    <div class="menu_ava">
-        <a href="http://<?php echo $_SERVER["HTTP_HOST"]; ?>/profile/<?php echo $_SESSION['user_id'];?>" class="user_panel_a">
-            <?php echo $_SESSION['user_name'];?>
-        </a>
-    </div>
-<!--    </li>-->
-<!--    <li class="user_panel_li">-->
-    <div class="menu_ava">
-        <a href="http://<?php echo $_SERVER["HTTP_HOST"]; ?>/logout" class="user_panel_exit">Выйти</a>
-<!--    </li>-->
-<!--</ul>-->
-    </div>
+            <div class="menu_ava">
+                <a href="http://<?php echo $_SERVER["HTTP_HOST"]; ?>/profile/<?php echo $_SESSION['user_id']; ?>" class="user_panel_a_link">
+                    <img src="http://<?php echo $_SERVER["HTTP_HOST"]; ?>/img/avatars/<?php echo $_SESSION['ava']; ?>" class="ava_img_fullusart"><br>
+                </a>
+                <a href="http://<?php echo $_SERVER["HTTP_HOST"]; ?>/logout" class="user_panel_exit">Выйти</a>
+            </div>
 </div>
 
 <div class="wrapp_all_stuff">
@@ -47,6 +29,7 @@
         <a class="stuff_menu" href="http://<?php echo $_SERVER["HTTP_HOST"]; ?>/myanswers/<?php echo $_SESSION['user_id'];?>">
             <div class="left_icon"><i class="fa fa-comment-o" aria-hidden="true"></i></div>
             <div class="right_info"><span class="span_left">мои ответы</span>
+<!--                --><?php //echo $_SESSION['letter'];?>
             </div>
         </a>
 <!--        <a class="stuff_menu" href="http://impovar.tt90.ru/messages/--><?php //echo $_SESSION['user_id'];?><!--">-->

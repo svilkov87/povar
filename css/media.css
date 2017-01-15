@@ -4,7 +4,7 @@
 @media only screen and (max-width : 1200px) {
 	.last_intro_image {
 		width: 100%;
-		height: 140px;
+		height: 110px;
 	}
 
 }
@@ -22,14 +22,14 @@
     }
 	.last_intro_image {
 		width: 100%;
-		height: 220px;
+		height: 110px;
 	}
 	.logo_link{
 		color: red;
 	}
-    .fa-angle-down{
-        display: inline-block;
-    }
+    /*.fa-angle-down{*/
+        /*display: inline-block;*/
+    /*}*/
 	.menu_open {
         display: none;
 		/*width: 100%;*/
@@ -67,10 +67,6 @@
 	#img_circle{
 		margin-bottom: 25px;
 	}
-	.ava_block{
-		text-align: center;
-		margin-bottom: 10px;
-	}
 }
 
 /* Small Devices, Tablets */
@@ -80,8 +76,27 @@
     }
 	.last_intro_image {
 		width: 100%;
-		height: auto;
+        height: 250px;
 	}
+    #justify_nav{
+        color: #fff;
+        line-height: 60px;
+        font-size: 13px;
+        display: inline-block;
+    }
+    .fa-circle{
+        display: none;
+    }
+    .user_panel_a_link{
+        text-decoration: none;
+        font-weight: bold;
+        color: #fff;
+        display: inline-block;
+        line-height: 60px;
+    }
+    .user_panel_a{
+        display: none;
+    }
 	.last_art_body{
 		margin-bottom: 10px;
 	}
@@ -105,11 +120,8 @@
 		height: auto;
 	}
 	.user_name_of_topic {
-		height: auto;
-		float: left;
-		/* width: 80px; */
-		width: 20%;
-		text-align: center;
+        height: auto;
+        float: left;
 	}
 	.block_middle_profile{
 		margin-left: 10px;
@@ -131,6 +143,24 @@
 		font-size: 13px;
 		color: #9c9c9c;
 	}
+    .menu_open{
+        -webkit-box-shadow: -1px 9px 30px -10px rgba(0, 0, 0, 0.75);
+        -moz-box-shadow: -1px 9px 30px -10px rgba(0, 0, 0, 0.75);
+        box-shadow: -1px 9px 30px -10px rgba(0, 0, 0, 0.75);
+    }
+    .ava_block{
+        text-align: center;
+        margin-bottom: 20px;
+        float: left;
+        width: 100%;
+    }
+    .col-md8 {
+        /* width: 70%; */
+        /* float: right; */
+        width: 100%;
+        padding: 5px;
+        background: rgba(141, 46, 46, 0.24);
+    }
 
 
 }
@@ -151,13 +181,14 @@
 		padding: 0;
 	}
 	.registration_link{
-		display: none;
+		/*display: none;*/
 	}
     .go_to_1055_header{
         width: 340px;
     }
     .h1_go_1055{
         color: orange;
+        font-size: 18px;
     }
     .go_to_1055_wrapp{
         width: 340px;
@@ -186,7 +217,18 @@
         padding-top: 40px;
     }
     .h1_go_not {
-        font-size: 23px;
+        font-size: 18px;
+    }
+    .h1_go_forum {
+        font-size: 18px;
+    }
+    .link_article {
+        width: 100%;
+        height: 100%;
+    }
+    .img_block_link {
+        width: 100%;
+        height: 100%;
     }
 }
 
@@ -228,11 +270,18 @@
     }
     .h1_go_1055{
         color: orange;
+        font-size: 18px;
     }
     .go_to_1055_wrapp{
         /*border: 1px solid #7c4d00;*/
         width: 280px;
         margin: 0 auto;
+    }
+    .h1_go_not {
+        font-size: 18px;
+    }
+    .h1_go_forum {
+        font-size: 18px;
     }
     .cuckoo_pot{
         width: 280px;
@@ -258,9 +307,8 @@
 		padding:0 !important;
 	}
 	.theme_topic_text{
-		font: bold 20px/100% Comic Sans MS;
-		padding-left: 45px;
-		color: #656262;
+        padding-left: 20px;
+        color: #000;
 	}
 	.middle_content_comm{
 		text-align: left;
@@ -291,6 +339,7 @@
     }
     .h1_go_1055{
         color: orange;
+        font-size: 18px;
     }
     .go_to_1055_wrapp{
         /*border: 1px solid #7c4d00;*/
@@ -341,5 +390,10 @@
 }
 /* Large Devices, Wide Screens */
 @media only screen and (min-width : 1200px){
+    .last_intro_image {
+        border: 1px solid #e9e7e7;
+        width: 100%;
+        height: 150px;
+    }
 
 }

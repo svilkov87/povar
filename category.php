@@ -59,19 +59,19 @@ if (!empty($_GET)) {
         <div class="col-md-6">
             <div class="row">
                 <div class="link_bread">
-                <ol class="bread_crumb">
-                    <?php foreach ($tagTitle as $item): ?>
-                        <li>
-                            <a href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/home">Главная</a>
-                            <i class="fa fa-angle-right" aria-hidden="true"></i>
-                        </li>
-                        <li><?php echo $item['title']; ?></li>
-                    <?php endforeach; ?>
-                </ol>
-                    </div>
+                    <ol class="bread_crumb">
+                        <?php foreach ($tagTitle as $item): ?>
+                            <li>
+                                <a href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/home">Главная</a>
+                                <i class="fa fa-angle-right" aria-hidden="true"></i>
+                            </li>
+                            <li><?php echo $item['title']; ?></li>
+                        <?php endforeach; ?>
+                    </ol>
+                </div>
             </div>
-            <div class="main_block_category">
-                <div class="row">
+            <div class="row">
+                <div class="main_block_category">
                     <div class="category_block_link">
                         <?php foreach ($art as $item): ?>
                             <!--                            <a href="link.php?id=--><?php //echo $item['article_id']; ?><!--&page=1">-->
@@ -79,7 +79,8 @@ if (!empty($_GET)) {
                                 <div class="col-md-4 col-sm-4 col-xs-12">
                                     <div class="row">
                                         <figure class="figure">
-                                            <img src="/img/category_images/<?php echo $item['image']; ?>" alt=""
+                                            <img src="http://<?php echo $_SERVER['HTTP_HOST']; ?>/img/category_images/<?php echo $item['image']; ?>"
+                                                 alt=""
                                                  class="img-responsive">
                                             <figcaption>
                                                 <h1 class="name_of_category"><?php echo $item['title']; ?></h1>

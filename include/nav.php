@@ -5,8 +5,6 @@
 //    ini_set('display_errors', TRUE);
 //    ini_set('display_startup_errors', TRUE);
 
-
-
     $One = 1;
     //    считаем isnew
     $st = $pdo->prepare('SELECT COUNT(*) FROM `comments` WHERE 
@@ -20,8 +18,8 @@
     $isNew = $st->fetchAll();
     if ($isNew[0]['COUNT(*)'] == 0 ) {
 
-        $_SESSION['letter'] = ''.$isNew[0]['COUNT(*)'].' &nbsp;<i class="fa fa-envelope-o" aria-hidden="true"></i>';
-        $_SESSION['count_message'] = $isNew[0]['COUNT(*)'];
+//        $_SESSION['letter'] = ''.$isNew[0]['COUNT(*)'].' &nbsp;<i class="fa fa-envelope-o" aria-hidden="true"></i>';
+//        $_SESSION['count_message'] = $isNew[0]['COUNT(*)'];
 }
 
 
@@ -34,19 +32,19 @@ if ($ResultOfCount[0]['COUNT(*)'] > 0 ) {
 
     $_SESSION['letter'] = ''.$ResultOfCount[0]['COUNT(*)'].' &nbsp;<i class="fa fa-envelope-o" aria-hidden="true"></i>';
     $_SESSION['count_message'] = $ResultOfCount[0]['COUNT(*)'];
-    $NumberMess = $ResultOfCount[0]['COUNT(*)'];
+//    $NumberMess = $ResultOfCount[0]['COUNT(*)'];
 
 //        уведомление на почту
-        $user_id_mail = $_SESSION['user_id'];
-        require_once("./phpmailer/phpmailer/mailfunc.php");
-        $m_to = $_SESSION['email']; // кому - ящик (из формы)
-        $m_nameto = ""; // Кому
-        $m_namefrom = "GRANDPOVAR"; // Поле От в письме
-        $subj = "Новый комментарий";
-        $tmsg = 'У Вас есть непрочитанные ответы. Проверьте ваш аккаунт.';
-        $m_from = 'svilkov00@yandex.ru'; // от ког
-        $m_reply = 'svilkov00@yandex.ru'; // адрес для обратного ответа
-        $mail1 = phpmailer($subj, $tmsg, $m_to, $m_nameto, $m_namefrom, $m_from, $m_reply, $m_hostmail, $m_port, $m_password, $m_secure);
+//        $user_id_mail = $_SESSION['user_id'];
+//        require_once("./phpmailer/phpmailer/mailfunc.php");
+//        $m_to = $_SESSION['email']; // кому - ящик (из формы)
+//        $m_nameto = ""; // Кому
+//        $m_namefrom = "GRANDPOVAR"; // Поле От в письме
+//        $subj = "Новый комментарий";
+//        $tmsg = 'У Вас есть непрочитанные ответы. Проверьте ваш аккаунт.';
+//        $m_from = 'svilkov00@yandex.ru'; // от ког
+//        $m_reply = 'svilkov00@yandex.ru'; // адрес для обратного ответа
+//        $mail1 = phpmailer($subj, $tmsg, $m_to, $m_nameto, $m_namefrom, $m_from, $m_reply, $m_hostmail, $m_port, $m_password, $m_secure);
 
 
     $NullValue = 0;
@@ -66,14 +64,15 @@ elseif($_SERVER['REQUEST_URI'] == '/myanswers/'. $_SESSION['user_id'] .'') {
     $st->execute();
 
     unset($_SESSION['count_message']);
+    $_SESSION['letter'] = '0&nbsp;<i class="fa fa-envelope-o" aria-hidden="true"></i>';
 //    $_SESSION["letter"] = "Нет уведомлений";
-    $NumberMess = "0";
+//    $NumberMess = "0";
 }
 
 
 ##отправка личного сообщения
 
-$OneNewMess =1;
+//$OneNewMess =1;
 //if (isset($_POST['enter_message'])) {
 //    $to_us = $_POST['id_to_user'];
 //    $text_mess = $_POST['text_to_user'];
@@ -205,6 +204,7 @@ if (isset($_POST['enter'])) {
         $_SESSION['user_id'] = $user_id;
         $_SESSION['user_name'] = $user_name;
         $_SESSION['ava'] = $user_ava;
+        $_SESSION['letter'] = $isNew[0]['COUNT(*)'].'&nbsp;<i class="fa fa-envelope-o" aria-hidden="true"></i>';
 //            $_SESSION['letter'] = "нет сообщений";
 
         //        если у юзера пока нет фото, стави дефолтное
@@ -230,40 +230,48 @@ if (isset($_POST['enter'])) {
     $LastForumLimitTwo = $st->fetchAll();
 //отладка
 
-    //echo "<pre>";
-    //var_dump($user_data);
-    //echo "</pre>";
 //    echo "<pre>";
-//    var_dump($_SESSION['user_id']);
+//    var_dump($isNew);
+//    echo "</pre>";
+//    echo "<pre>";
+//    var_dump($ResultOfCount);
 //    echo "</pre>";
 //
 //    echo "<pre>";
-//    var_dump($_SESSION['text_of_mess']);
-//    echo "</pre>";
-//
-//    echo "<pre>";
-//    var_dump($Message);
+//    var_dump($_SERVER['HTTP_REFERER']);
 //    echo "</pre>";
 
 ?>
 <div class="nav">
     <div class="container">
         <div id="brand">
-            <a href="http://<?php echo $_SERVER["HTTP_HOST"];?>/home" class="logo_link">GRANDPOVAR</a>
-            <a href="http://<?php echo $_SERVER["HTTP_HOST"];?>/registration" class="registration_link">Регистрация</a>
+            <a href="http://<?php echo $_SERVER["HTTP_HOST"]; ?>/home" class="logo_link">GRANDPOVAR</a>
         </div>
-        <div id="fa-align">
-            <?php
-            if (isset($_SESSION['email'])):?>
-                <span style="color: #fff;"><?php echo $_SESSION['letter']; ?></span>
-                <i class="fa fa-circle" aria-hidden="true"></i>
-                <i class="fa fa-angle-down fa-down" aria-hidden="true"></i>
 
-            <?php else:
-                ?>
-                <i class="fa fa-angle-down fa-down" aria-hidden="true"></i>
-            <?php endif; ?>
-        </div>
+        <?php
+        if (isset($_SESSION['email'])):?>
+            <div class="fa-align">
+                <span class="menu_ava">
+                    <?php echo $_SESSION['letter']; ?>
+                    <i class="fa fa-align-justify" id="justify_nav" aria-hidden="true"></i>
+                    <a href="http://<?php echo $_SERVER["HTTP_HOST"]; ?>/profile/<?php echo $_SESSION['user_id']; ?>"
+                       class="user_panel_a"><?php echo $_SESSION['user_name']; ?>
+                        <span>
+                        <img src="http://<?php echo $_SERVER["HTTP_HOST"]; ?>/img/avatars/<?php echo $_SESSION['ava']; ?>"
+                             class="ava_img_nav">
+                    </span>
+                    </a>
+                    <span>
+                        <i class="fa fa-circle" aria-hidden="true"></i>
+                    </span>
+                </span>
+            </div>
+        <?php else: ?>
+            <div class="fa-align">
+                <a href="http://<?php echo $_SERVER["HTTP_HOST"]; ?>/registration"
+                   class="registration_link">Регистрация</a>
+            </div>
+        <?php endif; ?>
     </div>
 </div>
 

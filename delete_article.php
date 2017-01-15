@@ -33,7 +33,7 @@ if (isset($_GET['id'])) {
     $update->bindParam(':id', $user_id);
     $update->execute();
 
-    header("Location: http://impovar.tt90.ru/profile/$user_id");
+    header("Location: http://".$_SERVER['HTTP_HOST']."/profile/".$user_id);
     exit;
 }
 

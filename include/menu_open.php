@@ -46,7 +46,8 @@
                             <div class="left_icon"><i class="fa fa-users" aria-hidden="true"></i></div>
                             <div class="right_info"><span class="span_left">пользователи</span></div>
                         </a>
-                        <a class="stuff_menu" href="http://<?php echo $_SERVER["HTTP_HOST"]; ?>/forum" style="margin-bottom: 20px;">
+                        <a class="stuff_menu" href="http://<?php echo $_SERVER["HTTP_HOST"]; ?>/forum"
+                           style="margin-bottom: 20px;">
                             <div class="left_icon"><i class="fa fa-users" aria-hidden="true"></i></div>
                             <div class="right_info"><span class="span_left">ФОРУМ</span></div>
                         </a>
