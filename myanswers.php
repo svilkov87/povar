@@ -100,7 +100,7 @@ if (!empty($_GET)) {
             <div class="answers_wrapp">
             <div class="chapters_of_answers">
                 <span class="span_answer_number">
-                    <a href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/profile/<?php echo $user_id_art; ?>">Назад к профилю</a>
+                    <a href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/profile/<?php echo $_SESSION['user_id']; ?>">Назад к профилю</a>
                 </span>
                 <span class="span_answer">Уведомления</span>
             </div>

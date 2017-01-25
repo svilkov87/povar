@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="8c62af28-5f86-489b-8804-9a9654d3f3d8" name="37.46.129.49 " url="http://37.46.129.49 ">
+        <fileTransfer host="impovar.tt90.ru" port="21" password="df8bdf8bdfdedfdedf9fdf9fdf9cdf9cdfd3dfd3" username="serg">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+          <option name="port" value="21" />
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

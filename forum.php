@@ -49,12 +49,14 @@ $tags = $st->fetchAll();
         <div class="col-md-6">
             <div class="answers_wrapp">
                 <div class="chapters_of_topic">
+                    <?php if (isset($_SESSION['email'])): ?>
                 <span class="span_forum_number">
                     <a href="http://<?php echo $_SERVER["HTTP_HOST"];?>/addtopic" class="add_topic">
                         <span class="add_text_topic">Добавить тему</span>
                         <i class="fa fa-plus" aria-hidden="true"></i>
                     </a>
                 </span>
+                    <?php endif;?>
                     <span class="span_answer">Темы Форума</span>
                 </div>
                 <?php foreach ($tags as $item): ?>

@@ -25,11 +25,11 @@ $tags = $st->fetchAll();
 <!--<![endif]-->
 <head>
     <meta charset="utf-8"/>
-    <title>IMPOVAR</title>
+    <title>Grandpovar</title>
     <meta name="description" content="IMPOVAR"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <link rel="shortcut icon" href="http://<?php echo $_SERVER['HTTP_HOST'];?>img/favicon/favicon.ico"/>
+    <link rel="shortcut icon" href="http://<?php echo $_SERVER['HTTP_HOST'];?>/img/favicon/favicon.ico"/>
     <link rel="stylesheet" href="http://<?php echo $_SERVER['HTTP_HOST'];?>/libs/font-awesome-4.2.0/css/font-awesome.min.css"/>
     <link rel="stylesheet" href="http://<?php echo $_SERVER['HTTP_HOST'];?>/libs/fancybox/jquery.fancybox.css"/>
     <link rel="stylesheet" href="http://<?php echo $_SERVER['HTTP_HOST'];?>/libs/owl-carousel/owl.carousel.css"/>
@@ -50,64 +50,128 @@ $tags = $st->fetchAll();
         <div class="col-md-6">
             <div class="row">
                 <section id="block_home">
-                    <div class="col-md-12 logo_wrapp">
+                    <div class="logo_wrapp">
                         <i class="fa fa-cutlery fa_cutlery" aria-hidden="true"></i>
                         <h1 class="logo_header">GRANDPOVAR</h1>
                         <p class="logo_par">Энциклопедия рецептов</p>
                         <hr class="hr_line">
                     </div>
-                    <div class="go_to_1055_header">
-                        <h1 class="h1_go_1055">Cuckoo 1055</h1>
-                    </div>
-                    <div class="go_to_1055_wrapp">
-                        <div class="cuckoo_pot">
-                            <img src="http://<?php echo $_SERVER['HTTP_HOST'];?>/img/category_images/pot.png" alt="" id="img_circle">
+
+                    <a href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/category/1/"
+                       class="link_to_cuckoo">
+                    <div class="section_1055">
+                        <div class="col-md-8">
+                            <div class="row">
+                                <div class="cuckoo_img"></div>
+                                <div class="cuckoo_img_hidd">
+                                    <h1 class="name_of_category">Cuckoo 1055</h1>
+                                    <p class="cuckoo_desc">Лучшие рецепты, приготовленные профессионалами в мультиварке
+                                        CUCKOO
+                                    </p>
+                                </div>
+                            </div>
                         </div>
-                        <div class="cuckoo_text">
-                            <p class="cuckoo_desc">Лучшие рецепты, приготовленные профессионалами в мультиварке CUCKOO.
-                                В данном разделе Вы найдете не только полюбившиеся блюда, но другие, удивляющие своей
-                                изысканностю.
-                            </p>
-                            <a href="http://<?php echo $_SERVER['HTTP_HOST'];?>/category/1/" class="link_to_cuckoo">
-                                смотреть
-                            </a>
-                        </div>
-                    </div>
-                    <div class="clearfix"></div>
-                    <div class="go_to_1055_header">
-                        <h1 class="h1_go_not">Мультиварка и не только</h1>
-                    </div>
-                    <div class="go_to_1055_wrapp">
-                        <div class="cuckoo_pot">
-                            <img src="http://<?php echo $_SERVER['HTTP_HOST'];?>/img/category_images/inet.png" alt="" id="img_circle">
-                        </div>
-                        <div class="cuckoo_text">
-                            <p class="cuckoo_desc">Лучшие рецепты, приготовленные профессионалами в мультиварке CUCKOO.
-                                В данном разделе Вы найдете не только полюбившиеся блюда, но другие, удивляющие своей
-                                изысканностю.
-                            </p>
-                            <a href="http://<?php echo $_SERVER['HTTP_HOST'];?>/category/2/" class="link_to_not">
-                                смотреть
-                            </a>
+                        <div class="col-md-4">
+                            <div class="cuckoo_descript">
+                                <h1 class="cuckoo_header">Cuckoo 1055</h1>
+                                <div class="cuckoo_pot">
+<!--                                    <img src="http://--><?php //echo $_SERVER['HTTP_HOST']; ?><!--/img/category_images/pot.png"-->
+<!--                                         alt="" id="img_circle">-->
+                                    <p class="p_desrtp">
+                                        Блюда приготовленные профессионалами, в мультиварке Cuckoo 1055...
+                                    </p>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="go_to_1055_header">
-                        <h1 class="h1_go_forum">Форум</h1>
-                    </div>
-                    <div class="go_to_1055_wrapp">
-                        <div class="cuckoo_pot">
-                            <img src="http://<?php echo $_SERVER['HTTP_HOST'];?>/img/category_images/chat.png" alt="" id="img_circle">
+                    </a>
+                    <a href="http://<?php echo $_SERVER['HTTP_HOST']; ?>/category/2/"
+                       class="link_to_not">
+                    <div class="section_1055">
+                        <div class="col-md-4">
+                            <div class="cuckoo_descript">
+                                <h1 class="cuckoo_header">Мультиварка и не только</h1>
+                                <div class="cuckoo_pot">
+<!--                                    <img src="http://--><?php //echo $_SERVER['HTTP_HOST']; ?><!--/img/category_images/inet.png"-->
+<!--                                         alt="" id="img_circle">-->
+                                    <p class="p_desrtp">
+                                        Здесь вы найдете не только массу интересных рецептов блюд, но и выберете свой люимое...
+                                    </p>
+                                </div>
+                            </div>
                         </div>
-                        <div class="cuckoo_text">
-                            <p class="cuckoo_desc">Лучшие рецепты, приготовленные профессионалами в мультиварке CUCKOO.
-                                В данном разделе Вы найдете не только полюбившиеся блюда, но другие, удивляющие своей
-                                изысканностю.
-                            </p>
-                            <a href="http://<?php echo $_SERVER['HTTP_HOST'];?>/forum" class="link_to_forum">
-                                Перейти к форуму
-                            </a>
+                        <div class="col-md-8">
+                            <div class="row">
+                                <div class="inet_img"></div>
+                                <div class="cuckoo_inet_hidd">
+                                    <h1 class="name_of_category">Мультиварка и не только</h1>
+                                    <p class="inet_desc">Лучшие рецепты, приготовленные профессионалами в мультиварке
+                                        CUCKOO
+                                    </p>
+                                </div>
+                            </div>
                         </div>
                     </div>
+                    </a>
+
+<!--                    <div class="logo_wrapp">-->
+<!--                        <i class="fa fa-cutlery fa_cutlery" aria-hidden="true"></i>-->
+<!--                        <h1 class="logo_header">GRANDPOVAR</h1>-->
+<!--                        <p class="logo_par">Энциклопедия рецептов</p>-->
+<!--                        <hr class="hr_line">-->
+<!--                    </div>-->
+<!--                    <div class="go_to_1055_header">-->
+<!--                        <h1 class="h1_go_1055">Cuckoo 1055</h1>-->
+<!--                    </div>-->
+<!--                    <div class="go_to_1055_wrapp">-->
+<!--                        <div class="cuckoo_pot">-->
+<!--                            <img src="http://--><?php //echo $_SERVER['HTTP_HOST'];?><!--/img/category_images/pot.png" alt="" id="img_circle">-->
+<!--                        </div>-->
+<!--                        <div class="cuckoo_text">-->
+<!--                            <p class="cuckoo_desc">Лучшие рецепты, приготовленные профессионалами в мультиварке CUCKOO.-->
+<!--                                В данном разделе Вы найдете не только полюбившиеся блюда, но другие, удивляющие своей-->
+<!--                                изысканностю.-->
+<!--                            </p>-->
+<!--                            <a href="http://--><?php //echo $_SERVER['HTTP_HOST'];?><!--/category/1/" class="link_to_cuckoo">-->
+<!--                                смотреть-->
+<!--                            </a>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="clearfix"></div>-->
+<!--                    <div class="go_to_1055_header">-->
+<!--                        <h1 class="h1_go_not">Мультиварка и не только</h1>-->
+<!--                    </div>-->
+<!--                    <div class="go_to_1055_wrapp">-->
+<!--                        <div class="cuckoo_pot">-->
+<!--                            <img src="http://--><?php //echo $_SERVER['HTTP_HOST'];?><!--/img/category_images/inet.png" alt="" id="img_circle">-->
+<!--                        </div>-->
+<!--                        <div class="cuckoo_text">-->
+<!--                            <p class="cuckoo_desc">Лучшие рецепты, приготовленные профессионалами в мультиварке CUCKOO.-->
+<!--                                В данном разделе Вы найдете не только полюбившиеся блюда, но другие, удивляющие своей-->
+<!--                                изысканностю.-->
+<!--                            </p>-->
+<!--                            <a href="http://--><?php //echo $_SERVER['HTTP_HOST'];?><!--/category/2/" class="link_to_not">-->
+<!--                                смотреть-->
+<!--                            </a>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="go_to_1055_header">-->
+<!--                        <h1 class="h1_go_forum">Форум</h1>-->
+<!--                    </div>-->
+<!--                    <div class="go_to_1055_wrapp">-->
+<!--                        <div class="cuckoo_pot">-->
+<!--                            <img src="http://--><?php //echo $_SERVER['HTTP_HOST'];?><!--/img/category_images/chat.png" alt="" id="img_circle">-->
+<!--                        </div>-->
+<!--                        <div class="cuckoo_text">-->
+<!--                            <p class="cuckoo_desc">Лучшие рецепты, приготовленные профессионалами в мультиварке CUCKOO.-->
+<!--                                В данном разделе Вы найдете не только полюбившиеся блюда, но другие, удивляющие своей-->
+<!--                                изысканностю.-->
+<!--                            </p>-->
+<!--                            <a href="http://--><?php //echo $_SERVER['HTTP_HOST'];?><!--/forum" class="link_to_forum">-->
+<!--                                Перейти к форуму-->
+<!--                            </a>-->
+<!--                        </div>-->
+<!--                    </div>-->
                 </section>
             </div>
         </div>

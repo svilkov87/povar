@@ -148,12 +148,14 @@ if (!empty($_GET)) {
                     <a href="http://<?php echo $_SERVER["HTTP_HOST"]; ?>/forum" class="back_to_forum">
                         <span class="span_answer">Назад</span>
                     </a>
-                <span class="span_forum_number">
-                    <a href="http://<?php echo $_SERVER["HTTP_HOST"]; ?>/addtopic" class="add_topic">
-                        <span class="add_text_topic">Добавить тему</span>
-                        <i class="fa fa-plus" aria-hidden="true"></i>
-                    </a>
-                </span>
+                    <?php if (isset($_SESSION['email'])): ?>
+                        <span class="span_forum_number">
+                            <a href="http://<?php echo $_SERVER["HTTP_HOST"]; ?>/addtopic" class="add_topic">
+                                <span class="add_text_topic">Добавить тему</span>
+                                <i class="fa fa-plus" aria-hidden="true"></i>
+                            </a>
+                        </span>
+                    <?php endif; ?>
                 </div>
                 <div class="wrapp_full_topic">
                     <?php foreach ($topic as $item): ?>
@@ -175,14 +177,14 @@ if (!empty($_GET)) {
                             <?php
                             if ($us_id == $_SESSION['user_id']):?>
                                 <div class="content_topic">
-                                    <a href="http://impovar.tt90.ru/edittopic/<?php echo $item['id']; ?>"
+                                    <a href="http://<?php echo $_SERVER["HTTP_HOST"]; ?>/edittopic/<?php echo $item['id']; ?>"
                                        class="edit_topic_link">Редактировать</a>
                                 </div>
                             <?php endif; ?>
                             <div class="author_of_fullart">
                                 <?php foreach ($auth as $item): ?>
                                     <span class="name_auth">Автор:</span>
-                                    <a href="http://<?php echo $_SERVER["HTTP_HOST"]; ?>/<?php echo $item['id']; ?>"
+                                    <a href="http://<?php echo $_SERVER["HTTP_HOST"]; ?>/profile/<?php echo $item['id']; ?>"
                                        class="name_auth"><?php echo $item['username']; ?></a>
                                 <?php endforeach; ?>
                                 <br>
